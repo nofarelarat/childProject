@@ -26,5 +26,28 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
+        private void Button_Click_Parent(object sender, RoutedEventArgs e)
+        {
+            Frame toParent = Window.Current.Content as Frame;
+            //toParent.Navigate(typeof(ParentPage));
+            //this.Frame.Navigate(typeof(ParentPage), null);
+        }
+
+        private void Button_Click_Teacher(object sender, RoutedEventArgs e)
+        {
+            Frame toTeacher = Window.Current.Content as Frame;
+            toTeacher.Navigate(typeof(TeacherPage));
+        }
+
+        private void Button_Click_Friend(object sender, RoutedEventArgs e)
+        {
+            Frame toFriend = Window.Current.Content as Frame;
+            //toFriend.Navigate(typeof(FriendPage));
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
