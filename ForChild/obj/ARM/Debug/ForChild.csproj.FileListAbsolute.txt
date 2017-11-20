@@ -215,3 +215,13 @@ C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\qualifiers.tx
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\qualifiers.txt.intermediate
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\ProjectArchitectures.txt
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\FriendPage.g.i.cs
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\FriendPage.g.cs
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\ParentPage.g.i.cs
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\ParentPage.g.cs
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\FriendPage.xaml
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\ParentPage.xaml
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\FriendPage.xbf
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\ARM\Debug\ParentPage.xbf
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\bin\ARM\Debug\FriendPage.xbf
+C:\Users\project-pc\Desktop\health\ForChild\ForChild\bin\ARM\Debug\ParentPage.xbf

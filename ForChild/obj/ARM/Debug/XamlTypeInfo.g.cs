@@ -132,17 +132,21 @@ namespace ForChild.ForChild_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[4];
-            _typeNameTable[0] = "ForChild.MainPage";
+            _typeNameTable = new string[6];
+            _typeNameTable[0] = "ForChild.FriendPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "ForChild.TeacherPage";
+            _typeNameTable[3] = "ForChild.MainPage";
+            _typeNameTable[4] = "ForChild.ParentPage";
+            _typeNameTable[5] = "ForChild.TeacherPage";
 
-            _typeTable = new global::System.Type[4];
-            _typeTable[0] = typeof(global::ForChild.MainPage);
+            _typeTable = new global::System.Type[6];
+            _typeTable[0] = typeof(global::ForChild.FriendPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::ForChild.TeacherPage);
+            _typeTable[3] = typeof(global::ForChild.MainPage);
+            _typeTable[4] = typeof(global::ForChild.ParentPage);
+            _typeTable[5] = typeof(global::ForChild.TeacherPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -177,8 +181,10 @@ namespace ForChild.ForChild_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::ForChild.MainPage(); }
-        private object Activate_3_TeacherPage() { return new global::ForChild.TeacherPage(); }
+        private object Activate_0_FriendPage() { return new global::ForChild.FriendPage(); }
+        private object Activate_3_MainPage() { return new global::ForChild.MainPage(); }
+        private object Activate_4_ParentPage() { return new global::ForChild.ParentPage(); }
+        private object Activate_5_TeacherPage() { return new global::ForChild.TeacherPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -190,9 +196,9 @@ namespace ForChild.ForChild_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  ForChild.MainPage
+            case 0:   //  ForChild.FriendPage
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_FriendPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -205,9 +211,23 @@ namespace ForChild.ForChild_XamlTypeInfo
                 xamlType = new global::ForChild.ForChild_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  ForChild.TeacherPage
+            case 3:   //  ForChild.MainPage
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_TeacherPage;
+                userType.Activator = Activate_3_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  ForChild.ParentPage
+                userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_ParentPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  ForChild.TeacherPage
+                userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_TeacherPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

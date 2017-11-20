@@ -13,6 +13,7 @@
       <RootProperty Name="Children" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="ForChild.FriendPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
@@ -49,6 +50,7 @@
       <RootProperty Name="Rotation" />
     </RootType>
     <RootType FullName="ForChild.MainPage" />
+    <RootType FullName="ForChild.ParentPage" />
     <RootType FullName="ForChild.TeacherPage" />
   </Roots.RootTypes>
 </Roots>

@@ -367,6 +367,18 @@
     <AppxPackagedFile Include="C:\Users\project-pc\.nuget\packages\system.xml.xmlserializer\4.0.11\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\project-pc\Desktop\health\ForChild\ForChild\father.jpg">
+      <PackagePath>father.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\project-pc\Desktop\health\ForChild\ForChild\friends.jpg">
+      <PackagePath>friends.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\project-pc\Desktop\health\ForChild\ForChild\mather.jpg">
+      <PackagePath>mather.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\project-pc\Desktop\health\ForChild\ForChild\teacher.jpg">
+      <PackagePath>teacher.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\project-pc\Desktop\health\ForChild\ForChild\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
