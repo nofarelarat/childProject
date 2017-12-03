@@ -44,10 +44,6 @@ namespace ForChild
             Frame toFriend = Window.Current.Content as Frame;
             toFriend.Navigate(typeof(FriendPage));
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
