@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="ForParent.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ForParent"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Content="הוסף ילד" HorizontalAlignment="Left" Margin="223,81,0,0" VerticalAlignment="Top" Click="AddChildButton" Width="109"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="הילדים שלי" VerticalAlignment="Top" Height="27" Width="73" FontSize="15"/>
+        <Image HorizontalAlignment="Right" Height="38" Margin="0,29,2,0" VerticalAlignment="Top" Width="180" Source="children.png"/>
+        <Image HorizontalAlignment="Right" Height="38" Margin="0,30,178,0" VerticalAlignment="Top" Width="180" Source="children.png"/>
+    </Grid>
+</Page>
