@@ -98,6 +98,9 @@
     <Compile Include="chat.xaml.cs">
       <DependentUpon>chat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectServiceBus.xaml.cs">
+      <DependentUpon>ConnectServiceBus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FriendPage.xaml.cs">
       <DependentUpon>FriendPage.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectServiceBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
