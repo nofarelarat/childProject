@@ -29,6 +29,27 @@ namespace ChildAppAPI.Controllers
             }
         }
 
+        [HttpDelete]
+        public bool deleteUser([FromBody] string email)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var user = db.users
+                    .Where(b => b.email.Equals(email))
+                    .FirstOrDefault();
+                    db.users.Remove(user);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         [HttpPost]
         public bool createUser([FromBody] user user)
         {
