@@ -40,17 +40,25 @@ namespace ForChild
 
         }
 
-        private async void Button_Click(System.Object sender, RoutedEventArgs e) //HERE???
+        private async void Button_Click(System.Object sender, RoutedEventArgs e) 
         {
-            // TextRange MyChatMyText = new TextRange(You.Document.ContentEnd, You.Document.ContenEnd);
-            ConnectServiceBus obj = new ConnectServiceBus();
-            int status = await obj.sendMSG("testmsg");
-            if (status != 200 & status !=204)
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + "sharon");
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+            try
             {
-                //ERROR MSG!!
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
             }
-            
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
         }
-             
+
     }
 }
