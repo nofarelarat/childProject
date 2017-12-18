@@ -10,6 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox HorizontalAlignment="Left" Margin="240,143,0,0" TextWrapping="Wrap" Text="שיחה עם חבר" VerticalAlignment="Top" Height="150" Width="287"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="121,63,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
+        <Button Content="send" HorizontalAlignment="Left" Margin="462,374,0,0" VerticalAlignment="Top" AutomationProperties.Name="FriendSend" Click="FriendSendClick"/>
 
     </Grid>
 </Page>

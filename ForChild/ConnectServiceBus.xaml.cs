@@ -17,9 +17,9 @@ namespace ForChild
     public sealed partial class ConnectServiceBus : Page
     {
         
-        public async Task<int> sendMSG()
+        public async Task<int> sendMSG(string msg)
         {
-            string completeUri = "http://localhost:49875/api/chat";
+            string completeUri = "http://localhost:49875/api/chat?msg=" +msg;
             Uri requestUri = new Uri(completeUri);
 
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -45,7 +45,7 @@ namespace ForChild
 
             return 0;
         }
-        public async Task<int> ReciveMSG()
+        public async Task<string> ReciveMSG()
         {
             string completeUri = "http://localhost:49875/api/chat";
             Uri requestUri = new Uri(completeUri);
@@ -62,16 +62,14 @@ namespace ForChild
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                //  ReadToObject(httpResponseBody);
-                return (int)httpResponse.StatusCode;
+                return httpResponseBody;
             }
 
             catch (Exception ex)
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
-
-            return 0;
+            return "";
         }
     }
 }

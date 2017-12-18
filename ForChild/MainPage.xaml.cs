@@ -44,6 +44,7 @@ namespace ForChild
             Frame toFriend = Window.Current.Content as Frame;
             toFriend.Navigate(typeof(FriendPage));
         }
+
         
     }
 }

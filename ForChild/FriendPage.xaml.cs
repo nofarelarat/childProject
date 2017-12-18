@@ -31,5 +31,14 @@ namespace ForChild
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
+        private async void FriendSendClick(object sender, RoutedEventArgs e)
+        {
+            ConnectServiceBus obj = new ConnectServiceBus();
+            int status = await obj.sendMSG("testmsg");
+            if (status != 200 & status != 204)
+            {
+                //ERROR MSG!!
+            }
+        }
     }
 }
