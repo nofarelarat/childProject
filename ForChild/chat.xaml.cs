@@ -13,7 +13,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using System.Threading.Tasks;
 //using System.Windows.Documents;
+
 
 
 
@@ -36,9 +40,16 @@ namespace ForChild
 
         }
 
-        private void Button_Click(System.Object sender, RoutedEventArgs e)
+        private async void Button_Click(System.Object sender, RoutedEventArgs e) //HERE???
         {
-           // TextRange MyChatMyText = new TextRange(You.Document.ContentEnd, You.Document.ContenEnd);
+            // TextRange MyChatMyText = new TextRange(You.Document.ContentEnd, You.Document.ContenEnd);
+            ConnectServiceBus obj = new ConnectServiceBus();
+            int status = await obj.sendMSG("testmsg");
+            if (status != 200 & status !=204)
+            {
+                //ERROR MSG!!
+            }
+            
         }
              
     }

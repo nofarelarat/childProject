@@ -63,6 +63,10 @@
     </RootType>
     <RootType FullName="ForChild.chat" />
     <RootType FullName="ForChild.ConnectServiceBus" />
+    <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
+      <RootMethod Name="GetName" />
+      <RootMethod Name="SetName" />
+    </RootType>
     <RootType FullName="ForChild.FriendPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="Template" />

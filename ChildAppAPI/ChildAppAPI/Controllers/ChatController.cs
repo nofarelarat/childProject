@@ -24,13 +24,15 @@ namespace ChildAppAPI.Controllers
 
         
         [HttpGet]
-        void sendMessage() {
+        void sendMessage([FromUri]string msg) {
             MainAsyncSend().GetAwaiter().GetResult();
         }
+        
         [HttpGet]
         void getMessage(){
             MainAsyncget().GetAwaiter().GetResult();
         }
+        
         static async Task MainAsyncSend()
         {
             const int numberOfMessages = 10;
