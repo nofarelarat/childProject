@@ -151,18 +151,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Net.UWPCoreRuntimeSdk">
-      <Version>2.1.1</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
     </PackageReference>
-    <PackageReference Include="runtime.win10-arm.Microsoft.Net.UWPCoreRuntimeSdk">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="runtime.win10-x64.Microsoft.Net.UWPCoreRuntimeSdk">
-      <Version>2.1.1</Version>
-    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="windows, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.15063.0\Facade\windows.winmd</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

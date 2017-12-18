@@ -1,5 +1,4 @@
 ﻿using System;
-using Windows.System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -80,7 +79,7 @@ namespace ForParent
         /// <param name="sender">The Frame which failed navigation</param>
         /// <param name="e">Details about the navigation failure</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-        {   
+        {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
