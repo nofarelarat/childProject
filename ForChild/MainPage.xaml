@@ -39,6 +39,6 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <TextBox HorizontalAlignment="Stretch" Width="1014" Height="78" TextWrapping="Wrap" Text="אני רוצה לספר ל...גגגגדד" VerticalAlignment="Top"  TextChanged="TextBox_TextChanged" Background="AntiqueWhite" FontSize="12" Foreground="Teal" FontFamily="Century Gothic" />
+        <TextBox HorizontalAlignment="Stretch" Width="1014" Height="78" TextWrapping="Wrap" Text="אני רוצה לספר ל...גגגגדד" VerticalAlignment="Top" Background="AntiqueWhite" FontSize="12" Foreground="Teal" FontFamily="Century Gothic" />
     </Grid>
 </Page>
