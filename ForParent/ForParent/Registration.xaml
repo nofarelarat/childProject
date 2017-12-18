@@ -14,17 +14,22 @@
             <Run Text=" "/>
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="245,243,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox HorizontalAlignment="Left" Margin="129,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="128,136,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="129,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="firstName"/>
+        <TextBox HorizontalAlignment="Left" Margin="128,136,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="lastName"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="gardenName"/>
         <TextBlock HorizontalAlignment="Left" Margin="242,277,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox HorizontalAlignment="Left" Margin="129,204,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,204,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="childAge"/>
         <TextBlock HorizontalAlignment="Left" Margin="137,23,0,0" TextWrapping="Wrap" Text="הרשמה" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20"/>
         <Button Content="הרשמה" HorizontalAlignment="Left" Margin="128,376,0,0" VerticalAlignment="Top" Click="Register"/>
         <TextBlock HorizontalAlignment="Left" Margin="242,175,0,0" TextWrapping="Wrap" Text="שם הגן" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox HorizontalAlignment="Left" Margin="129,237,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="129,270,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,237,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="email"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,270,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="password"/>
         <TextBlock HorizontalAlignment="Left" Margin="233,211,0,0" TextWrapping="Wrap" Text="גיל הילד" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <CheckBox Content="האם המשתמש עבור הילד בעל הצרכים המיוחדים" HorizontalAlignment="Left" Margin="26.235,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="30" UseLayoutRounding="False" Width="348.618" d:LayoutRounding="Auto" AutomationProperties.Name="isChild">
+            <CheckBox.RenderTransform>
+                <CompositeTransform SkewX="13.241" TranslateX="3.765"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
 
     </Grid>
 </Page>

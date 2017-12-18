@@ -23,7 +23,7 @@ namespace ChildAppAPI.Controllers
         static ISubscriptionClient subscriptionClient;
 
         
-        [HttpPost]
+        [HttpGet]
         void sendMessage() {
             MainAsyncSend().GetAwaiter().GetResult();
         }

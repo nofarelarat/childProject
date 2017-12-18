@@ -53,3 +53,37 @@ C:\Users\shosh\source\repos\Sadna\childProject\ChildAppAPI\ChildAppAPI\obj\Debug
 C:\Users\shosh\source\repos\Sadna\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.csproj.CoreCompileInputs.cache
 C:\Users\shosh\source\repos\Sadna\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.dll
 C:\Users\shosh\source\repos\Sadna\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.pdb
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\ChildAppAPI.dll.config
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\ChildAppAPI.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\ChildAppAPI.pdb
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\EntityFramework.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\EntityFramework.SqlServer.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.Azure.Amqp.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.Azure.ServiceBus.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Newtonsoft.Json.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Net.WebSockets.Client.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Net.WebSockets.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Runtime.Serialization.Primitives.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Runtime.Serialization.Xml.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Web.Http.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\EntityFramework.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\EntityFramework.SqlServer.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.Azure.Amqp.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.Azure.ServiceBus.pdb
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.Azure.ServiceBus.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\Newtonsoft.Json.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Web.Http.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.csprojResolveAssemblyReference.cache
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.csproj.CoreCompileInputs.cache
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.dll
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ChildAppAPI\ChildAppAPI\obj\Debug\ChildAppAPI.pdb
