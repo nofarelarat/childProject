@@ -32,5 +32,17 @@ namespace ForParent
             Frame toAdd = Window.Current.Content as Frame;
             toAdd.Navigate(typeof(AddChild));
         }
+
+        private void forRegister_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toRegister = Window.Current.Content as Frame;
+            toRegister.Navigate(typeof(Registration));
+        }
+
+        private void forLogin_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginParent));
+        }
     }
 }
