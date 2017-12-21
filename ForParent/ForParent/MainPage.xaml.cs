@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
+﻿using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +26,12 @@ namespace ForParent
         {
             Frame toAdd = Window.Current.Content as Frame;
             toAdd.Navigate(typeof(AddChild));
+        }
+
+        private void RegisterButton(object sender, RoutedEventArgs e)
+        {
+            Frame toRegister = Window.Current.Content as Frame;
+            toRegister.Navigate(typeof(Registration));
         }
     }
 }

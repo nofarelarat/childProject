@@ -27,8 +27,53 @@ namespace ForParent
             this.InitializeComponent();
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private async void RegisterAsync(object sender, RoutedEventArgs e)
         {
+            //get data from textbox
+            string email;
+            string firstName;
+            string lastName;
+            string childAge;
+            bool childCheckBox;
+            string gardenName;
+            string password;
+            string birthDate;
+            string msg = "";
+
+            DateTime dt = Convert.ToDateTime(birthDate);
+
+            ConnectDB db = new ConnectDB();
+            bool isPass = db.ValidateUser(email,firstName,lastName,dt,childAge,childCheckBox, gardenName
+                ,password,out msg);
+            if (isPass == false)
+            {
+                //textbox = faild + msg
+            }
+            else
+            {
+                user newUser = new user
+                {
+                    email = email,
+                    firstname = firstName,
+                    lastname = lastName,
+                    childage = childAge,
+                    childcheckbox = childCheckBox,
+                    gardenname = gardenName,
+                    password = password,
+                    birthdate = dt
+                };
+
+                isPass = await db.CreateUser(newUser);
+
+                if (isPass == false)
+                {
+                    //textbox = faild + msg
+                }
+                if (isPass == false)
+                {
+                    //textbox = success
+                }
+            }
 
         }
 

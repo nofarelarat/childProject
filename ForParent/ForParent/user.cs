@@ -12,9 +12,9 @@ namespace ForParent
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string childage { get; set; }
-        public string childcheckbox { get; set; }
+        public bool childcheckbox { get; set; }
         public string gardenname { get; set; }
         public string password { get; set; }
-        public string birthdate { get; set; }
+        public DateTime birthdate { get; set; }
     }
 }

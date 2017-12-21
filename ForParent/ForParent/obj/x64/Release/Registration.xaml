@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="ForParent.Registration"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ForParent"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:ConnectionId='1' HorizontalAlignment="Left" Margin="268,108,0,0" TextWrapping="Wrap" Text="שם " VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567"/>
+        <TextBlock x:ConnectionId='2' HorizontalAlignment="Left" Margin="211,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Height="17" Width="89">
+            <Run Text="שם משפחה"/>
+            <Run Text=" "/>
+        </TextBlock>
+        <TextBlock x:ConnectionId='3' HorizontalAlignment="Left" Margin="245,243,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="firstName"/>
+        <TextBox HorizontalAlignment="Left" Margin="128,136,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="lastName"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="gardenName"/>
+        <TextBlock x:ConnectionId='4' HorizontalAlignment="Left" Margin="242,277,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,204,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="childAge"/>
+        <TextBlock x:ConnectionId='5' HorizontalAlignment="Left" Margin="137,23,0,0" TextWrapping="Wrap" Text="הרשמה" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20"/>
+        <Button x:ConnectionId='6' Content="הרשמה" HorizontalAlignment="Left" Margin="128,376,0,0" VerticalAlignment="Top"                 />
+        <TextBlock x:ConnectionId='7' HorizontalAlignment="Left" Margin="242,175,0,0" TextWrapping="Wrap" Text="שם הגן" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,237,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="email"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,270,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AutomationProperties.Name="password"/>
+        <TextBlock x:ConnectionId='8' HorizontalAlignment="Left" Margin="233,211,0,0" TextWrapping="Wrap" Text="גיל הילד" VerticalAlignment="Top"                                               RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <CheckBox Content="האם המשתמש עבור הילד בעל הצרכים המיוחדים" HorizontalAlignment="Left" Margin="26.235,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="30" UseLayoutRounding="False" Width="348.618" d:LayoutRounding="Auto" AutomationProperties.Name="isChild">
+            <CheckBox.RenderTransform>
+                <CompositeTransform SkewX="13.241" TranslateX="3.765"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+
+    </Grid>
+</Page>
+

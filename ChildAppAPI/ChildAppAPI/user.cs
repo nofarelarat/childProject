@@ -21,6 +21,6 @@ namespace ChildAppAPI
         public string childcheckbox { get; set; }
         public string gardenname { get; set; }
         public string password { get; set; }
-        public string birthdate { get; set; }
+        public DateTime birthdate { get; set; }
     }
 }
