@@ -8,10 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="#FF9DC3E7">
-        <TextBox HorizontalAlignment="Left" Margin="556,220,0,0" TextWrapping="Wrap" Text="אני רוצה לספר..." VerticalAlignment="Top" Height="411" Width="372" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Margin="556,220,0,0" TextWrapping="Wrap" Text="אני רוצה לספר..." VerticalAlignment="Top" Height="261" Width="372" TextChanged="TextBox_TextChanged" Name="sendMsg"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Click="Button_Click_back" Width="174"/>
-        <Button Content="שלח" HorizontalAlignment="Left" Margin="731,660,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="175,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="411" Width="372"/>
+        <Button Content="שלח" HorizontalAlignment="Left" Margin="597,500,0,0" VerticalAlignment="Top" Height="72" Width="214"/>
+        <TextBox HorizontalAlignment="Left" Margin="175,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="261" Width="372"/>
         <Image HorizontalAlignment="Left" Height="166" Margin="699,52,0,0" VerticalAlignment="Top" Width="258" Source="Me.jpg"/>
         <Image HorizontalAlignment="Left" Height="166" Margin="303,52,0,0" VerticalAlignment="Top" Width="258" Source="father2.jpg"/>
 

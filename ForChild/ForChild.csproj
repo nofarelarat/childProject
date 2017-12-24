@@ -98,11 +98,15 @@
     <Compile Include="chat.xaml.cs">
       <DependentUpon>chat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectDB.cs" />
     <Compile Include="ConnectServiceBus.xaml.cs">
       <DependentUpon>ConnectServiceBus.xaml</DependentUpon>
     </Compile>
     <Compile Include="FatherPage.xaml.cs">
       <DependentUpon>FatherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="loginChild.xaml.cs">
+      <DependentUpon>loginChild.xaml</DependentUpon>
     </Compile>
     <Compile Include="SisterPage.xaml.cs">
       <DependentUpon>SisterPage.xaml</DependentUpon>
@@ -117,6 +121,7 @@
       <DependentUpon>MotherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -156,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FatherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="loginChild.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

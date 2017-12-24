@@ -50,5 +50,11 @@ namespace ForChild
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(MotherPage));
         }
+
+        private void forLogin_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toMather = Window.Current.Content as Frame;
+            toMather.Navigate(typeof(loginChild));
+        }
     }
 }

@@ -706,3 +706,9 @@ C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.xaml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\MotherPage.xbf
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\ForChild.csprojResolveAssemblyReference.cache
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.g.i.cs
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.g.cs
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.xaml
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.xbf
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\loginChild.xbf

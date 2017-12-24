@@ -132,27 +132,29 @@ namespace ForChild.ForChild_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[9];
+            _typeNameTable = new string[10];
             _typeNameTable[0] = "ForChild.chat";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "ForChild.ConnectServiceBus";
             _typeNameTable[4] = "ForChild.FatherPage";
-            _typeNameTable[5] = "ForChild.SisterPage";
-            _typeNameTable[6] = "ForChild.FriendPage";
-            _typeNameTable[7] = "ForChild.MainPage";
-            _typeNameTable[8] = "ForChild.MotherPage";
+            _typeNameTable[5] = "ForChild.loginChild";
+            _typeNameTable[6] = "ForChild.SisterPage";
+            _typeNameTable[7] = "ForChild.FriendPage";
+            _typeNameTable[8] = "ForChild.MainPage";
+            _typeNameTable[9] = "ForChild.MotherPage";
 
-            _typeTable = new global::System.Type[9];
+            _typeTable = new global::System.Type[10];
             _typeTable[0] = typeof(global::ForChild.chat);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::ForChild.ConnectServiceBus);
             _typeTable[4] = typeof(global::ForChild.FatherPage);
-            _typeTable[5] = typeof(global::ForChild.SisterPage);
-            _typeTable[6] = typeof(global::ForChild.FriendPage);
-            _typeTable[7] = typeof(global::ForChild.MainPage);
-            _typeTable[8] = typeof(global::ForChild.MotherPage);
+            _typeTable[5] = typeof(global::ForChild.loginChild);
+            _typeTable[6] = typeof(global::ForChild.SisterPage);
+            _typeTable[7] = typeof(global::ForChild.FriendPage);
+            _typeTable[8] = typeof(global::ForChild.MainPage);
+            _typeTable[9] = typeof(global::ForChild.MotherPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -190,10 +192,11 @@ namespace ForChild.ForChild_XamlTypeInfo
         private object Activate_0_chat() { return new global::ForChild.chat(); }
         private object Activate_3_ConnectServiceBus() { return new global::ForChild.ConnectServiceBus(); }
         private object Activate_4_FatherPage() { return new global::ForChild.FatherPage(); }
-        private object Activate_5_SisterPage() { return new global::ForChild.SisterPage(); }
-        private object Activate_6_FriendPage() { return new global::ForChild.FriendPage(); }
-        private object Activate_7_MainPage() { return new global::ForChild.MainPage(); }
-        private object Activate_8_MotherPage() { return new global::ForChild.MotherPage(); }
+        private object Activate_5_loginChild() { return new global::ForChild.loginChild(); }
+        private object Activate_6_SisterPage() { return new global::ForChild.SisterPage(); }
+        private object Activate_7_FriendPage() { return new global::ForChild.FriendPage(); }
+        private object Activate_8_MainPage() { return new global::ForChild.MainPage(); }
+        private object Activate_9_MotherPage() { return new global::ForChild.MotherPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -234,30 +237,37 @@ namespace ForChild.ForChild_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 5:   //  ForChild.SisterPage
+            case 5:   //  ForChild.loginChild
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_5_SisterPage;
+                userType.Activator = Activate_5_loginChild;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 6:   //  ForChild.FriendPage
+            case 6:   //  ForChild.SisterPage
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_FriendPage;
+                userType.Activator = Activate_6_SisterPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  ForChild.MainPage
+            case 7:   //  ForChild.FriendPage
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_7_MainPage;
+                userType.Activator = Activate_7_FriendPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  ForChild.MotherPage
+            case 8:   //  ForChild.MainPage
                 userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_MotherPage;
+                userType.Activator = Activate_8_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 9:   //  ForChild.MotherPage
+                userType = new global::ForChild.ForChild_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_9_MotherPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

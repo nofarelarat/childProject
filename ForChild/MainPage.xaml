@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Margin="-30,0,10,0" Background="#FF9DC3E7">
-        <Button Height="354.65" Width="646.484" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_mother" RenderTransformOrigin="0.5,0.5" Margin="-94.592,-2.825,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <Button Height="285.57" Width="498.986" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_mother" RenderTransformOrigin="0.5,0.5" Margin="41.157,-2.285,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-0.419"/>
             </Button.RenderTransform>
@@ -18,7 +18,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Height="348" Width="971" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="-265,0,0,73">
+        <Button Height="280" Width="839" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="-145,0,0,73">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="father.jpg" />
@@ -26,20 +26,21 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="343" Width="600" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Friend" Margin="0,4,-93,0">
+        <Button Height="267" Width="488" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Friend" Margin="0,4,11,0">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="friends.jpg" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Height="347" Width="365" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click_Sister" Margin="0,0,34,79">
+        <Button Height="279" Width="293" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click_Sister" Margin="0,0,98,79">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="sister.jpg" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Image HorizontalAlignment="Left" Height="290" Margin="441,198,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
+        <Image HorizontalAlignment="Left" Height="290" Margin="585,178,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
+        <Button x:Name="forLogin" Content="היכנס" HorizontalAlignment="Left" Margin="578,478,0,104" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click"/>
     </Grid>
 </Page>
