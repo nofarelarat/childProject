@@ -25729,20 +25729,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shosh\\.nuget\\packages\\": {}
+    "C:\\Users\\noypi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shosh\\source\\repos\\Sadna\\childProject\\ForChild\\ForChild.csproj",
+      "projectUniqueName": "C:\\Users\\noypi\\OneDrive\\Documents\\Visual Studio 2017\\Sadana\\childProject\\ForChild\\ForChild.csproj",
       "projectName": "ForChild",
-      "projectPath": "C:\\Users\\shosh\\source\\repos\\Sadna\\childProject\\ForChild\\ForChild.csproj",
-      "packagesPath": "C:\\Users\\shosh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shosh\\source\\repos\\Sadna\\childProject\\ForChild\\obj\\",
+      "projectPath": "C:\\Users\\noypi\\OneDrive\\Documents\\Visual Studio 2017\\Sadana\\childProject\\ForChild\\ForChild.csproj",
+      "packagesPath": "C:\\Users\\noypi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\noypi\\OneDrive\\Documents\\Visual Studio 2017\\Sadana\\childProject\\ForChild\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\shosh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\noypi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

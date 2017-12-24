@@ -14,7 +14,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ForParent
 {
     /// <summary>
@@ -22,6 +21,7 @@ namespace ForParent
     /// </summary>
     public sealed partial class LoginParent : Page
     {
+        static string saved_email = "";
         public LoginParent()
         {
             this.InitializeComponent();
@@ -35,14 +35,22 @@ namespace ForParent
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync("rami@gmail.com");
+            user user = await db.GetUserByMailAsync(email.Text);
+            saved_email = user.email;
             if(user == null)
             {
                 result.Text = "faild get user";
             }
             else
             {
-                result.Text = user.firstname;
+                if(user.password.Equals(password.Text))
+                {
+                    result.Text = user.firstname;
+                }
+               else
+                {
+                    result.Text = "wrong password";
+                }
             }
         }
 
