@@ -6,8 +6,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-/ForChild/bin/*
-/ForChild/obj/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
