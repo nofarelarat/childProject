@@ -7,15 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#FF9DC3E7">
         <TextBlock HorizontalAlignment="Left" Margin="242,102,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="239,136,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="137,23,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20"/>
-        <Button Content="הרשמה" HorizontalAlignment="Left" Margin="128,376,0,0" VerticalAlignment="Top" Click="Register"/>
-        <TextBox HorizontalAlignment="Left" Margin="126,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="126,129,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="137,23,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="85,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="112" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Margin="86,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111"/>
         <Button Content="עוד לא נרשמת?" HorizontalAlignment="Left" Margin="64,197,0,0" VerticalAlignment="Top" Click="Register"/>
         <Button Content="הכנס" HorizontalAlignment="Left" Margin="202,197,0,0" VerticalAlignment="Top" Click="EnterApp"/>
+        <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
 
     </Grid>
 </Page>

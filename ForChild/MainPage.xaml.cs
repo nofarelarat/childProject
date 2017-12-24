@@ -26,18 +26,6 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
-        private void Button_Click_Parent(object sender, RoutedEventArgs e)
-        {
-            Frame toParent = Window.Current.Content as Frame;
-            toParent.Navigate(typeof(ParentPage));
-            this.Frame.Navigate(typeof(ParentPage), null);
-        }
-
-        private void Button_Click_Teacher(object sender, RoutedEventArgs e)
-        {
-            Frame toTeacher = Window.Current.Content as Frame;
-            toTeacher.Navigate(typeof(TeacherPage));
-        }
 
         private void Button_Click_Friend(object sender, RoutedEventArgs e)
         {
@@ -45,6 +33,22 @@ namespace ForChild
             toFriend.Navigate(typeof(FriendPage));
         }
 
-        
+        private void Button_Click_father(object sender, RoutedEventArgs e)
+        {
+            Frame toFather = Window.Current.Content as Frame;
+            toFather.Navigate(typeof(FatherPage));
+        }
+
+        private void Button_Click_Sister(object sender, RoutedEventArgs e)
+        {
+            Frame toFather = Window.Current.Content as Frame;
+            toFather.Navigate(typeof(SisterPage));
+        }
+
+        private void Button_Click_mother(object sender, RoutedEventArgs e)
+        {
+            Frame toMather = Window.Current.Content as Frame;
+            toMather.Navigate(typeof(MotherPage));
+        }
     }
 }

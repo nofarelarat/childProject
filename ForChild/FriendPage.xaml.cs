@@ -40,5 +40,10 @@ namespace ForChild
                 //ERROR MSG!!
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

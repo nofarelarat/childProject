@@ -32,5 +32,15 @@ namespace ForParent
 
         }
 
+        private void Button_Click_back(object sender, RoutedEventArgs e)
+        {
+            Frame toHome = Window.Current.Content as Frame;
+            toHome.Navigate(typeof(MainPage));
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

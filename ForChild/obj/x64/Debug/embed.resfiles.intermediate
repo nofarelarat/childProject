@@ -1,7 +1,8 @@
 App.xbf
 chat.xbf
 ConnectServiceBus.xbf
+FatherPage.xbf
 FriendPage.xbf
 MainPage.xbf
-ParentPage.xbf
-TeacherPage.xbf
+MatherPage.xbf
+SisterPage.xbf
