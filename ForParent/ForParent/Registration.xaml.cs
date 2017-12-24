@@ -13,8 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ForParent
 {
     /// <summary>
@@ -27,8 +25,52 @@ namespace ForParent
             this.InitializeComponent();
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private async void RegisterAsync(object sender, RoutedEventArgs e)
         {
+            //get data from textbox
+            
+            string Email = email.Text;
+            string firstName = firstname.Text;
+            string lastName = lastname.Text;
+            string childYear = childyear.Text;
+            bool childCheckBox = (bool)Ischild.IsChecked;
+            string gardenName = gardenname.Text;
+            string Password = password.Text;
+            string msg = "";
+            
+            ConnectDB db = new ConnectDB();
+            msg = await db.ValidateUserAsync(Email, firstName, lastName,
+                childYear, childCheckBox, gardenName, Password);
+            if (!msg.Equals("success"))
+            {
+                result.Text = "faild: " + msg;
+            }
+            else
+            {
+                user newUser = new user
+                {
+                    email = Email,
+                    firstname = firstName,
+                    lastname = lastName,
+                    childyear = int.Parse(childYear),
+                    childcheckbox = childCheckBox,
+                    gardenname = gardenName,
+                    password = Password,
+                };
+
+                bool isPass = await db.CreateUserAsync(newUser);
+
+                if (isPass == false)
+                {
+                    msg = "Can't connect database";
+                    result.Text = "faild: " + msg;
+                }
+
+                if (isPass == true)
+                {
+                    result.Text = "success";
+                }
+            }
 
         }
 

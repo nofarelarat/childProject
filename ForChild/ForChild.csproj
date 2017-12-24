@@ -122,7 +122,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ForChild_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="father.jpg" />

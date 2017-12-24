@@ -32,6 +32,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Name" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
@@ -79,6 +80,6 @@
       <RootProperty Name="Rotation" />
     </RootType>
     <RootType FullName="ForChild.MainPage" />
-    <RootType FullName="ForChild.MatherPage" />
+    <RootType FullName="ForChild.MotherPage" />
   </Roots.RootTypes>
 </Roots>

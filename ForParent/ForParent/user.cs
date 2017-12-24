@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace ForParent
 {
-    class user
+    public partial class user
     {
         public string email { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public string childage { get; set; }
-        public string childcheckbox { get; set; }
+        public Nullable<bool> childcheckbox { get; set; }
         public string gardenname { get; set; }
         public string password { get; set; }
-        public string birthdate { get; set; }
+        public Nullable<int> childyear { get; set; }
     }
 }

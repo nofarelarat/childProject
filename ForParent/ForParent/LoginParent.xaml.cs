@@ -32,10 +32,18 @@ namespace ForParent
 
         }
 
-        private void EnterApp(object sender, RoutedEventArgs e)
+        private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
-            Frame toMainPage = Window.Current.Content as Frame;
-            toMainPage.Navigate(typeof(MainPage));
+            ConnectDB db = new ConnectDB();
+            user user = await db.GetUserByMailAsync("rami@gmail.com");
+            if(user == null)
+            {
+                result.Text = "faild get user";
+            }
+            else
+            {
+                result.Text = user.firstname;
+            }
         }
 
         private void Register(object sender, RoutedEventArgs e)

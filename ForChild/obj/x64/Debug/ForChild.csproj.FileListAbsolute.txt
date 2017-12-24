@@ -226,7 +226,6 @@ C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\x64\Debug\qualifiers.tx
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\project-pc\Desktop\health\ForChild\ForChild\obj\x64\Debug\ForChild.csprojResolveAssemblyReference.cache
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\ForChild.csprojResolveAssemblyReference.cache
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\App.g.i.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\App.g.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\FriendPage.g.i.cs
@@ -492,16 +491,12 @@ C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\FatherPage
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\FatherPage.g.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\ConnectServiceBus.xaml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\FatherPage.xaml
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MatherPage.xaml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\ConnectServiceBus.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\FatherPage.xbf
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MatherPage.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\SisterPage.g.i.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\SisterPage.g.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\SisterPage.xaml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\SisterPage.xbf
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MatherPage.g.i.cs
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MatherPage.g.cs
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\App.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\chat.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\ConnectServiceBus.xbf
@@ -509,7 +504,6 @@ C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\FatherPage
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\SisterPage.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\FriendPage.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\MainPage.xbf
-C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\MatherPage.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\ForChild.xr.xml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\ForChild.exe
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\ForChild.pdb
@@ -707,3 +701,8 @@ C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\qualifiers
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\ProjectArchitectures.txt
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.g.i.cs
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.g.cs
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.xaml
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\MotherPage.xbf
+C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\MotherPage.xbf
