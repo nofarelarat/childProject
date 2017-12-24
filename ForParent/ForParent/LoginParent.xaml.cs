@@ -37,20 +37,21 @@ namespace ForParent
         {
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
-            saved_email = user.email;
             if (user == null)
             {
-                result.Text = "faild get user";
+                result.Text = "user doesn't exists";
             }
             else
             {
                 if (user.password.Equals(password.Text))
                 {
-                    result.Text = user.firstname;
+                    result.Text = "welcome " + user.firstname + "!";
+
                 }
                 else
                 {
-                   result.Text = "wrong password";
+                    result.Text = "incorrect password";
+
                 }
             }
         }

@@ -258,24 +258,16 @@ C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChil
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FriendPage.g.cs
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MainPage.g.i.cs
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MainPage.g.cs
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ParentPage.g.i.cs
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ParentPage.g.cs
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\TeacherPage.g.i.cs
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\TeacherPage.g.cs
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\App.xaml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\chat.xaml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ConnectServiceBus.xaml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FriendPage.xaml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MainPage.xaml
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ParentPage.xaml
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\TeacherPage.xaml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\App.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\chat.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ConnectServiceBus.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FriendPage.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MainPage.xbf
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ParentPage.xbf
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\TeacherPage.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\XamlTypeInfo.g.cs
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\XamlSaveStateFile.xml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\ForChild.csproj.CoreCompileInputs.cache
@@ -284,8 +276,6 @@ C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChil
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ConnectServiceBus.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\FriendPage.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\MainPage.xbf
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ParentPage.xbf
-C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\TeacherPage.xbf
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ForChild.xr.xml
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ForChild.exe
 C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ForChild.pdb
@@ -712,3 +702,23 @@ C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.xaml
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\obj\x64\Debug\loginChild.xbf
 C:\Users\shosh\source\repos\Sadna\childProject\ForChild\bin\x64\Debug\loginChild.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\FatherPage.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\loginChild.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\SisterPage.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\MotherPage.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FatherPage.g.i.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FatherPage.g.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\loginChild.g.i.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\loginChild.g.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\SisterPage.g.i.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\SisterPage.g.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MotherPage.g.i.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MotherPage.g.cs
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FatherPage.xaml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\loginChild.xaml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\SisterPage.xaml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MotherPage.xaml
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\FatherPage.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\loginChild.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\SisterPage.xbf
+C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\obj\x64\Debug\MotherPage.xbf
