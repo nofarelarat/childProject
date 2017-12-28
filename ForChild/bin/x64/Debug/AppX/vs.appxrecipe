@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-24T16:06:48.057</Modified>
+      <Modified>2017-12-28T21:10:59.477</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\ForChild.exe">
       <PackagePath>entrypoint\ForChild.exe</PackagePath>
-      <Modified>2017-12-24T16:06:46.034</Modified>
+      <Modified>2017-12-28T21:10:58.317</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\noypi\.nuget\packages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -580,11 +580,11 @@
     <AppxPackagedFile Include="C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-24T16:06:47.608</Modified>
+      <Modified>2017-12-24T17:13:30.350</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\noypi\OneDrive\Documents\Visual Studio 2017\Sadana\childProject\ForChild\bin\x64\Debug\Core\ForChild.exe">
       <PackagePath>ForChild.exe</PackagePath>
-      <Modified>2017-12-24T16:06:48.042</Modified>
+      <Modified>2017-12-28T21:10:59.462</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
