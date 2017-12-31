@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Http;
-using System.IO;
 using System.Runtime.Serialization.Json;
 using Windows.Data.Json;
 using Windows.Web.Http;
+using System.IO;
 
-namespace ForParent
+namespace ForTeacher
 {
     class ConnectDB
     {
@@ -45,8 +44,6 @@ namespace ForParent
         public async Task<bool> CreateUserAsync(user user)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users";
-            //string completeUri = "http://localhost:49875/api/users";
-
             string json = WriteFromObject(user);
 
             try
@@ -55,7 +52,7 @@ namespace ForParent
                 HttpStringContent stringContent = new HttpStringContent(json.ToString());
 
                 System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, completeUri);
-                request.Content = new StringContent(json,
+                request.Content = new System.Net.Http.StringContent(json,
                                                     Encoding.UTF8,
                                                     "application/json");//CONTENT-TYPE header
 
@@ -97,7 +94,7 @@ namespace ForParent
            string gardenName, string password)
         {
             string msg = "success";
-            
+
             if (email == "" || firstName == "" || lastName == ""
            || childYear == "" || gardenName == "" || password == "")
             {
@@ -123,5 +120,6 @@ namespace ForParent
             }
             return msg;
         }
+
     }
 }

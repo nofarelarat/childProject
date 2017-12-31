@@ -12,10 +12,12 @@
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="firstname" Type="varchar" MaxLength="50" />
           <Property Name="lastname" Type="varchar" MaxLength="50" />
-          <Property Name="childcheckbox" Type="bit" />
           <Property Name="gardenname" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="childyear" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="count_month" Type="int" />
+          <Property Name="count_year" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="APP_DBModelStoreContainer">
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
@@ -33,8 +35,10 @@
           <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gardenname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="childyear" Type="Int32" />
-          <Property Name="password" Type="String" Nullable="false" />
-          <Property Name="childcheckbox" Type="Boolean" Nullable="false" />
+          <Property Name="password" Type="String" Unicode="false" FixedLength="false" MaxLength="50" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="count_month" Type="Int32" />
+          <Property Name="count_year" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="APP_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.user" />
@@ -48,8 +52,10 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="APP_DBModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="count_year" ColumnName="count_year" />
+                <ScalarProperty Name="count_month" ColumnName="count_month" />
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="childcheckbox" ColumnName="childcheckbox" />
                 <ScalarProperty Name="childyear" ColumnName="childyear" />
                 <ScalarProperty Name="gardenname" ColumnName="gardenname" />
                 <ScalarProperty Name="email" ColumnName="email" />

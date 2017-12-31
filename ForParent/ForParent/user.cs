@@ -11,9 +11,11 @@ namespace ForParent
         public string email { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public Nullable<bool> childcheckbox { get; set; }
         public string gardenname { get; set; }
-        public string password { get; set; }
         public Nullable<int> childyear { get; set; }
+        public string password { get; set; }
+        public string type { get; set; }
+        public Nullable<int> count_month { get; set; }
+        public string count_year { get; set; }
     }
 }
