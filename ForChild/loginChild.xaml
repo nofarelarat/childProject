@@ -8,13 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Background="#FF9DC3E7">
-        <TextBlock HorizontalAlignment="Left" Margin="864,91,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBlock HorizontalAlignment="Left" Margin="864,118,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="862,169,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="655,38,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="445,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="445,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
         <TextBox x:Name="password" HorizontalAlignment="Left" Margin="447,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
-        <Button Content="הכנס" HorizontalAlignment="Left" Margin="480,222,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
+        <Button Content="הכנס" HorizontalAlignment="Left" Margin="490,568,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
-        <TextBox Name ="result" HorizontalAlignment="Left" Margin="604,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <TextBox Name ="result" HorizontalAlignment="Left" Margin="588,571,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <TextBlock HorizontalAlignment="Left" Margin="858,289,0,0" TextWrapping="Wrap" Text="חבר ראשון" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="79"/>
+        <TextBox x:Name="email_Copy" HorizontalAlignment="Left" Margin="439,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
+        <TextBlock HorizontalAlignment="Left" Margin="873,339,0,0" TextWrapping="Wrap" Text="חבר שני" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53" SelectionChanged="TextBlock_SelectionChanged_1"/>
+        <TextBox x:Name="email_Copy1" HorizontalAlignment="Left" Margin="439,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
+        <TextBlock HorizontalAlignment="Left" Margin="893,389,0,0" TextWrapping="Wrap" Text="אמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="email_Copy2" HorizontalAlignment="Left" Margin="441,380,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
+        <TextBlock HorizontalAlignment="Left" Margin="894,441,0,0" TextWrapping="Wrap" Text="אבא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="email_Copy3" HorizontalAlignment="Left" Margin="439,432,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" TextChanged="TextBox_TextChanged" Height="40"/>
     </Grid>
 </Page>
