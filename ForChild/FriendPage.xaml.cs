@@ -34,10 +34,11 @@ namespace ForChild
         }
         private async void FriendSendClick(object sender, RoutedEventArgs e)
         {
+            // Create final message
+            String final_msg = sendMsg.Text + "$" + loginChild.who_am_i;
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
-            String msg = sendMsg.Text;
-            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + msg);
+            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg);
 
             ////Send the GET request asynchronously and retrieve the response as a string.
             HttpResponseMessage httpResponse = new HttpResponseMessage();

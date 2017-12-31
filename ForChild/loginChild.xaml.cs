@@ -22,6 +22,7 @@ namespace ForChild
     /// </summary>
     public sealed partial class loginChild : Page
     {
+        public static string who_am_i = "";
         public loginChild()
         {
             this.InitializeComponent();
@@ -45,7 +46,7 @@ namespace ForChild
                 if (user.password.Equals(password.Text))
                 {
                     result.Text ="welcome "+ user.firstname+ "!";
-
+                     who_am_i = user.email;
                 }
                 else {
                     result.Text = "incorrect password";
