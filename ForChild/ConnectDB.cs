@@ -15,7 +15,7 @@ namespace ForChild
     {
         public async Task<user> GetUserByMailAsync(string email)
         {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/users?email=" + email;
+            string completeUri = "http://localhost:49876/api/users?email=" + email;
             Uri requestUri = new Uri(completeUri);
 
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -67,7 +67,30 @@ namespace ForChild
                 return false;
             }
         }
+        public async void UpdateUserCountersAsync(Counters counter)
+        {
+            string completeUri = "http://localhost:49876/api/users";
+            string json = WriteFromObject(counter);
 
+            try
+            {
+                //Send the POSR request
+                HttpStringContent stringContent = new HttpStringContent(json.ToString());
+
+                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PATCH"), completeUri);
+                request.Content = new StringContent(json,
+                                                    Encoding.UTF8,
+                                                    "application/json");//CONTENT-TYPE header
+
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+            }
+
+            catch (Exception ex)
+            {
+            }
+        }
+        
         public static user ReadToObject(string json)
         {
             user deserializedUser = new user();
@@ -86,6 +109,19 @@ namespace ForChild
             // Serializer the User object to the stream.
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(user));
             ser.WriteObject(ms, user);
+            byte[] json = ms.ToArray();
+            //ms.Close();
+            return Encoding.UTF8.GetString(json, 0, json.Length);
+        }
+
+        public static string WriteFromObject(Counters Counters)
+        {
+            //Create a stream to serialize the object to.
+            MemoryStream ms = new MemoryStream();
+
+            // Serializer the User object to the stream.
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Counters));
+            ser.WriteObject(ms, Counters);
             byte[] json = ms.ToArray();
             //ms.Close();
             return Encoding.UTF8.GetString(json, 0, json.Length);

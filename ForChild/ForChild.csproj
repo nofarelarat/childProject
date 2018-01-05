@@ -102,6 +102,7 @@
     <Compile Include="ConnectServiceBus.xaml.cs">
       <DependentUpon>ConnectServiceBus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Counters.cs" />
     <Compile Include="FatherPage.xaml.cs">
       <DependentUpon>FatherPage.xaml</DependentUpon>
     </Compile>

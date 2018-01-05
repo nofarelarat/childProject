@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ChildAppAPI.Controllers
@@ -29,7 +27,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpDelete]
-        public bool deleteUser([FromBody] string email)
+        public bool deleteUser([FromUri] string email)
         {
             try
             {
@@ -60,6 +58,48 @@ namespace ChildAppAPI.Controllers
                     db.SaveChanges();
                     return true;
                 }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        [HttpGet]
+        public user[] getTeacherUsers([FromUri]string garden)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var users = db.users
+                    .Where(b => b.gardenname.Equals(garden));
+                    user[] res = users.ToArray();
+                    return res;
+                }
+            }
+            catch (Exception ex)
+            {
+                return (null);
+            }
+        }
+
+        [HttpPatch]
+        public bool UpdateUser([FromBody] Counters counter)
+        {   
+            try
+            {
+                int count = counter.countUpdate;
+                string countall = counter.countYearUpdate;
+                string email = counter.email;
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var userdb = db.users.FirstOrDefault(u => u.email == email);
+                    userdb.count_month = count;
+                    userdb.count_year = countall;
+                    db.SaveChanges();
+                }
+                return true;
             }
             catch (Exception ex)
             {

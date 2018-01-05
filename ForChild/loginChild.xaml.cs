@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,12 +16,7 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             ConnectDB db = new ConnectDB();
@@ -48,9 +32,9 @@ namespace ForChild
                     result.Text ="welcome "+ user.firstname+ "!";
                      who_am_i = user.email;
                 }
-                else {
+                else
+                {
                     result.Text = "incorrect password";
-
                 }
             }
         }
@@ -60,10 +44,6 @@ namespace ForChild
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

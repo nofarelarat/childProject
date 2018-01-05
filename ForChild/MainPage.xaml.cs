@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace ForChild
 {
@@ -25,6 +12,7 @@ namespace ForChild
         public MainPage()
         {
             this.InitializeComponent();
+            CountForAnalyzeAsync();
         }
 
         private void Button_Click_Friend(object sender, RoutedEventArgs e)
@@ -55,6 +43,37 @@ namespace ForChild
         {
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(loginChild));
+        }
+        
+        private async void CountForAnalyzeAsync()
+        {
+            if (loginChild.who_am_i == "")
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            int month;
+            if (DateTime.Now.Month == 1)
+                month = 12;
+            else
+                month = DateTime.Now.Month - 1;
+            if (DateTime.Now.Day == 1)
+            {
+                //change to static email - noy
+                string email = loginChild.who_am_i;
+                ConnectDB db = new ConnectDB();
+                user user = await db.GetUserByMailAsync(email);
+                int countMonth = (int)user.count_month;
+                user.count_year = user.count_year + "_" + countMonth + "-" + (DateTime.Now.Month - 1);
+                user.count_month = 0;
+                Counters counts = new Counters
+                {
+                    email = user.email,
+                    countUpdate = countMonth,
+                    countYearUpdate = user.count_year
+                };
+                db.UpdateUserCountersAsync(counts);
+            }
         }
     }
 }
