@@ -22,30 +22,27 @@ namespace ForParent
     /// </summary>
     public sealed partial class LoginParent : Page
     {
-        static string saved_email = "";
         public LoginParent()
         {
             this.InitializeComponent();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
+            string Email = email.Text;
+            string Password = password.Text;
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email.Text);
+            user user = await db.GetUserByMailAsync(Email);
             if (user == null)
             {
                 result.Text = "user doesn't exists";
             }
             else
             {
-                if (user.password.Equals(password.Text))
+                if (user.password.Equals(Password))
                 {
                     result.Text = "welcome " + user.firstname + "!";
+                    Common.who_am_i = Email;
 
                 }
                 else
@@ -68,9 +65,5 @@ namespace ForParent
             toHome.Navigate(typeof(MainPage));
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

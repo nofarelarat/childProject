@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ChildAppAPI.Controllers
@@ -29,7 +27,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpDelete]
-        public bool deleteUser([FromBody] string email)
+        public bool deleteUser([FromUri] string email)
         {
             try
             {
@@ -43,7 +41,7 @@ namespace ChildAppAPI.Controllers
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -61,10 +59,70 @@ namespace ChildAppAPI.Controllers
                     return true;
                 }
             }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        [HttpGet]
+        public user[] getTeacherUsers([FromUri]string garden)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var users = db.users
+                    .Where(b => b.gardenname.Equals(garden));
+                    user[] res = users.ToArray();
+                    return res;
+                }
+            }
+            catch (Exception)
+            {
+                return (null);
+            }
+        }
+
+        [HttpGet]
+        public bool UpdateUserCounter([FromBody] symbol data)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    db.symbols.Add(data);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
             catch (Exception ex)
             {
                 return false;
             }
         }
+
+        [HttpGet]
+        public symbol[] getUserSymbolUsage([FromUri] string email, [FromUri] string symbolName)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var userSymbol = db.symbols.Where(u => u.email == email && u.symbolName == symbolName);
+                    
+                    if (userSymbol != null)
+                    {
+                        return userSymbol.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,9 +8,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Net.Http;
 using Newtonsoft.Json;
-
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace ForChild
 {
@@ -59,6 +50,7 @@ namespace ForChild
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(loginChild));
         }
+
         //noy added need to check
         private async void get_msg()
         {
@@ -86,5 +78,20 @@ namespace ForChild
             }
 
         }
+        private void test_Click(object sender, RoutedEventArgs e)
+        {
+            //ConnectDB db = new ConnectDB();
+            //db.TestDelete("osnat@gmail.con");
+            //db.GetGardenChildren("flowers");
+            //Common.UpdateCounterAsync("iagree");
+            //Common.GetUserCounterAsync("iagree");
+        }
+
+        private void Button_Click_Plus(object sender, RoutedEventArgs e)
+        {
+            Frame toAddUsersForChat = Window.Current.Content as Frame;
+            toAddUsersForChat.Navigate(typeof(AddUsersForChat));
+        }       
+
     }
 }

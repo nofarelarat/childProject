@@ -92,12 +92,16 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddUsersForChat.xaml.cs">
+      <DependentUpon>AddUsersForChat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="chat.xaml.cs">
       <DependentUpon>chat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common.cs" />
     <Compile Include="ConnectDB.cs" />
     <Compile Include="ConnectServiceBus.xaml.cs">
       <DependentUpon>ConnectServiceBus.xaml</DependentUpon>
@@ -122,6 +126,7 @@
       <DependentUpon>MotherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="symbol.cs" />
     <Compile Include="user.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +143,7 @@
     <Content Include="mather.jpg" />
     <Content Include="me.jpg" />
     <Content Include="mother2.jpg" />
+    <Content Include="plus.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddUsersForChat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +200,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1</Version>

@@ -25,12 +25,26 @@ namespace ForParent
         public MainPage()
         {
             this.InitializeComponent();
+            //if there is parent in xml file 
+            //update common.who_am_i
         }
 
-        private void AddChildButton(object sender, RoutedEventArgs e)
+        private void forChat_Click(object sender, RoutedEventArgs e)
         {
-            Frame toAdd = Window.Current.Content as Frame;
-            toAdd.Navigate(typeof(AddChild));
+            if (Common.who_am_i == "")
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
+            else
+            {
+                //if there is no chat email in the local xml
+                //file goto add child
+                //else check in db the child has the parent
+                //in his contact list and then open chat with the child
+                Frame toAdd = Window.Current.Content as Frame;
+                toAdd.Navigate(typeof(AddChild));
+            }
         }
 
         private void forRegister_Click(object sender, RoutedEventArgs e)

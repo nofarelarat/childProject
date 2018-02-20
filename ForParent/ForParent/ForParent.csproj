@@ -98,6 +98,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common.cs" />
     <Compile Include="ConnectDB.cs" />
     <Compile Include="LoginParent.xaml.cs">
       <DependentUpon>LoginParent.xaml</DependentUpon>

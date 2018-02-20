@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="APP_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APP_DB.dbo.contacts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="symbols">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="symbolName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="email" />
@@ -16,10 +27,9 @@
           <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="childyear" Type="int" />
           <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="count_month" Type="int" />
-          <Property Name="count_year" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="APP_DBModelStoreContainer">
+          <EntitySet Name="symbols" EntityType="Self.symbols" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -37,12 +47,20 @@
           <Property Name="childyear" Type="Int32" />
           <Property Name="password" Type="String" Unicode="false" FixedLength="false" MaxLength="50" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="count_month" Type="Int32" />
-          <Property Name="count_year" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="APP_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="symbols" EntityType="APP_DBModel.symbol" />
         </EntityContainer>
+        <EntityType Name="symbol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="symbolName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -52,8 +70,6 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="APP_DBModel.user">
               <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="count_year" ColumnName="count_year" />
-                <ScalarProperty Name="count_month" ColumnName="count_month" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="childyear" ColumnName="childyear" />
@@ -61,6 +77,16 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="symbols">
+            <EntityTypeMapping TypeName="APP_DBModel.symbol">
+              <MappingFragment StoreEntitySet="symbols">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="symbolName" ColumnName="symbolName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
