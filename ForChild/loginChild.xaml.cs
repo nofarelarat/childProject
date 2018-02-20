@@ -2,8 +2,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ForChild
 {
     /// <summary>
@@ -11,7 +9,6 @@ namespace ForChild
     /// </summary>
     public sealed partial class loginChild : Page
     {
-        public static string who_am_i = "";
         public loginChild()
         {
             this.InitializeComponent();
@@ -30,7 +27,7 @@ namespace ForChild
                 if (user.password.Equals(password.Text))
                 {
                     result.Text ="welcome "+ user.firstname+ "!";
-                     who_am_i = user.email;
+                     Common.who_am_i = user.email;
                 }
                 else
                 {

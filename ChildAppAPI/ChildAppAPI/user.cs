@@ -21,7 +21,5 @@ namespace ChildAppAPI
         public Nullable<int> childyear { get; set; }
         public string password { get; set; }
         public string type { get; set; }
-        public Nullable<int> count_month { get; set; }
-        public string count_year { get; set; }
     }
 }

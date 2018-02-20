@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.IO;
 using System.Runtime.Serialization.Json;
-using Windows.Data.Json;
 using Windows.Web.Http;
 
 namespace ForParent

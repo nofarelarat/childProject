@@ -26,5 +26,6 @@ namespace ChildAppAPI
         }
     
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<symbol> symbols { get; set; }
     }
 }

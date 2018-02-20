@@ -11,7 +11,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="281,102,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="274,136,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="137,23,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="24,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="24,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
         <TextBox x:Name="password" HorizontalAlignment="Left" Margin="25,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239"/>
         <Button Content="עוד לא נרשמת?" HorizontalAlignment="Left" Margin="64,197,0,0" VerticalAlignment="Top" Click="Register"/>
         <Button Content="הכנס" HorizontalAlignment="Left" Margin="202,197,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>

@@ -41,7 +41,7 @@ namespace ChildAppAPI.Controllers
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -59,7 +59,7 @@ namespace ChildAppAPI.Controllers
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -78,33 +78,51 @@ namespace ChildAppAPI.Controllers
                     return res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return (null);
             }
         }
 
-        [HttpPatch]
-        public bool UpdateUser([FromBody] Counters counter)
-        {   
+        [HttpGet]
+        public bool UpdateUserCounter([FromBody] symbol data)
+        {
             try
             {
-                int count = counter.countUpdate;
-                string countall = counter.countYearUpdate;
-                string email = counter.email;
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
-                    var userdb = db.users.FirstOrDefault(u => u.email == email);
-                    userdb.count_month = count;
-                    userdb.count_year = countall;
+                    db.symbols.Add(data);
                     db.SaveChanges();
+                    return true;
                 }
-                return true;
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
+
+        [HttpGet]
+        public symbol[] getUserSymbolUsage([FromUri] string email, [FromUri] string symbolName)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var userSymbol = db.symbols.Where(u => u.email == email && u.symbolName == symbolName);
+                    
+                    if (userSymbol != null)
+                    {
+                        return userSymbol.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }
