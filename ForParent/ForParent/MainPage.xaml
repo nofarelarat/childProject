@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="#FF9DC3E7">
-        <Button Content="הוסף ילד" HorizontalAlignment="Left" Margin="223,81,0,0" VerticalAlignment="Top" Click="AddChildButton" Width="102"/>
+        <Button x:Name="forChat" Content="goto chat" HorizontalAlignment="Left" Margin="223,81,0,0" VerticalAlignment="Top" Click="forChat_Click" Width="102"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="27" Width="128" FontSize="15" Margin="145,15,87,0" FontWeight="Bold"/>
         <Button x:Name="forRegister" Content="להרשמה" HorizontalAlignment="Left" Margin="223,125,0,0" VerticalAlignment="Top" Height="31" Width="102" Click="forRegister_Click"/>
         <Button x:Name="forLogin" Content="כניסה" HorizontalAlignment="Left" Margin="223,170,0,0" VerticalAlignment="Top" Width="102" Click="forLogin_Click"/>
