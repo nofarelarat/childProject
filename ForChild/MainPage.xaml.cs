@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
+using Newtonsoft.Json;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -55,6 +58,33 @@ namespace ForChild
         {
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(loginChild));
+        }
+        //noy added need to check
+        private async void get_msg()
+        {
+            //Create an HTTP client object
+            HttpClient httpClient = new HttpClient();
+            Uri requestUri = new Uri("https://functionqueuecob099.table.core.windows.net/outTable?$filter=Message_Send%20eq%" + loginChild.who_am_i);
+
+            ////Send the GET request asynchronously and retrieve the response as a string.
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                string[] userMsg = JsonConvert.DeserializeObject<string[]>(httpResponseBody);
+
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
         }
     }
 }

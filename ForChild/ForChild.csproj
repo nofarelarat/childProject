@@ -108,6 +108,7 @@
     <Compile Include="loginChild.xaml.cs">
       <DependentUpon>loginChild.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OutTable.cs" />
     <Compile Include="SisterPage.xaml.cs">
       <DependentUpon>SisterPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="config.txt" />
     <Content Include="father.jpg" />
     <Content Include="father2.jpg" />
     <Content Include="friends.jpg" />
@@ -187,7 +189,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.1</Version>
+      <Version>6.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

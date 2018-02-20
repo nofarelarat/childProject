@@ -35,6 +35,8 @@ namespace ForChild
 
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
+            string[] lines = System.IO.File.ReadAllLines(@"config.txt");
+            
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
             if (user == null)
