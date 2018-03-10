@@ -23,6 +23,8 @@ namespace ForChild
     /// </summary>
     public sealed partial class FriendPage : Page
     {
+
+        public String friendName="Osnat@gmail.com";
         public FriendPage()
         {
             this.InitializeComponent();
@@ -34,17 +36,18 @@ namespace ForChild
         }
         private async void FriendSendClick(object sender, RoutedEventArgs e)
         {
+            
             // Create final message
-            String final_msg = sendMsg.Text + "$" + Common.who_am_i;
+            String final_msg = sendMsg.Text + "$" + Common.who_am_i + "$" + friendName;
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
             Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg);
 
-            ////Send the GET request asynchronously and retrieve the response as a string.
+            //Send the GET request asynchronously and retrieve the response as a string.
             HttpResponseMessage httpResponse = new HttpResponseMessage();
             try
             {
-                ////Send the GET request
+                //Send the GET request
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 // errormessage.Text = await response.Content.ReadAsStringAsync();

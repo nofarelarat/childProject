@@ -7,31 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#FF9DC3E7">
-        <TextBlock HorizontalAlignment="Left" Margin="282,108,0,0" TextWrapping="Wrap" Text="שם " VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567"/>
-        <TextBlock HorizontalAlignment="Left" Margin="227,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Height="17" Width="89">
+    <Grid Margin="0,-2,0,2">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="images/registerBackground.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Left" Margin="879,115,0,0" TextWrapping="Wrap" Text="שם " VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567"/>
+        <TextBlock HorizontalAlignment="Left" Margin="823,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Height="17" Width="89">
             <Run Text="שם משפחה"/>
             <Run Text=" "/>
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="265,239,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="firstname" HorizontalAlignment="Left" Margin="29,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" Height="28"/>
-        <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="30,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
-        <TextBox x:Name="gardenname" HorizontalAlignment="Left" Margin="30,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBlock HorizontalAlignment="Left" Margin="262,277,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="childyear" HorizontalAlignment="Left" Margin="30,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,23,800,0" TextWrapping="Wrap" Text="הרשמה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
-        <Button Content="הרשם" HorizontalAlignment="Left" Margin="128,376,0,0" VerticalAlignment="Top" Click="RegisterAsync"/>
-        <TextBlock HorizontalAlignment="Left" Margin="258,177,0,0" TextWrapping="Wrap" Text="שם הגן" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="29,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="29,272,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBlock HorizontalAlignment="Left" Margin="210,208,0,0" TextWrapping="Wrap" Text="שנת לידת הילד" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="98"/>
-        <CheckBox Name="Isteacher" Content="האם אתה הילד?" HorizontalAlignment="Left" Margin="158,316.5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <TextBlock HorizontalAlignment="Left" Margin="851,310,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="firstname" HorizontalAlignment="Left" Margin="593,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" Height="28"/>
+        <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="594,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+        <TextBox x:Name="gardenname" HorizontalAlignment="Left" Margin="595,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
+        <TextBlock HorizontalAlignment="Left" Margin="845,357,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="childyear" HorizontalAlignment="Left" Margin="596,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
+        <Button Content="הרשם" HorizontalAlignment="Left" Margin="709,446,0,0" VerticalAlignment="Top" Click="RegisterAsync"/>
+        <TextBlock HorizontalAlignment="Left" Margin="849,213,0,0" TextWrapping="Wrap" Text="שם הגן" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="595,305,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="597,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
+        <TextBlock HorizontalAlignment="Left" Margin="800,256,0,0" TextWrapping="Wrap" Text="שנת לידת הילד" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="98"/>
+        <CheckBox Name="Isteacher" Content="האם אתה הילד?" HorizontalAlignment="Left" Margin="602,399,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <CheckBox.RenderTransform>
                 <CompositeTransform Rotation="0.726"/>
             </CheckBox.RenderTransform>
         </CheckBox>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
-        <TextBox HorizontalAlignment="Left" Margin="41,465,0,0" TextWrapping="Wrap" Text="יש להרשם בנפרד עבורך ועבור ילדך. בעת הרשמת ילדך יש לסמן כי מדובר בהרשמה עבורו בשדה מתאים." VerticalAlignment="Top" Height="87" Width="254"/>
-        <TextBox x:Name="result" HorizontalAlignment="Left" Margin="131,420,0,0" TextWrapping="Wrap" Text="result" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="495,499,0,0" TextWrapping="Wrap" Text="יש להרשם בנפרד עבורך ועבור ילדך. בעת הרשמת ילדך יש לסמן כי מדובר בהרשמה עבורו בשדה מתאים." VerticalAlignment="Top" Height="87" Width="331"/>
+        <TextBox x:Name="result" HorizontalAlignment="Left" Margin="584,447,0,0" TextWrapping="Wrap" Text="result" VerticalAlignment="Top"/>
     </Grid>
 </Page>

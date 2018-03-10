@@ -38,6 +38,7 @@ namespace ForTeacher
             string gardenName = gardenname.Text;
             string Password = password.Text;
             string Teacher = "Teacher";
+
             string msg = "";
 
             ConnectDB db = new ConnectDB();

@@ -7,14 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock HorizontalAlignment="Left" Margin="864,91,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="862,169,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="655,38,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="445,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" Height="40"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="447,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
-        <Button Content="הכנס" HorizontalAlignment="Left" Margin="480,222,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="864,313,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBlock HorizontalAlignment="Left" Margin="862,363,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBlock HorizontalAlignment="Left" Margin="656,244,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="445,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" Height="40"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="447,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
+        <Button Content="הכנס" HorizontalAlignment="Left" Margin="480,412,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
-        <TextBox Name ="result" HorizontalAlignment="Left" Margin="604,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <TextBox Name ="result" HorizontalAlignment="Left" Margin="594,419,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="images/loginBackground.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
     </Grid>
+    
 </Page>
