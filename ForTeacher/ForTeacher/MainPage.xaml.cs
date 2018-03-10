@@ -32,11 +32,23 @@ namespace ForTeacher
             Frame toRegister = Window.Current.Content as Frame;
             toRegister.Navigate(typeof(Registration));
         }
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toRegister = Window.Current.Content as Frame;
+            toRegister.Navigate(typeof(Statistics));
+        }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             Frame toLogin = Window.Current.Content as Frame;
             toLogin.Navigate(typeof(LoginTeacher));
+        }
+
+        private void Broadcast_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toSendBrodcast = Window.Current.Content as Frame;
+            toSendBrodcast.Navigate(typeof(SendBrodcast));
+
         }
     }
 }

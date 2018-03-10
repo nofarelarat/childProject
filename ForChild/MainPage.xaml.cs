@@ -8,6 +8,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage.Auth;
+
 
 namespace ForChild
 {
@@ -16,6 +21,8 @@ namespace ForChild
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        const String StorageAccountName = "functionqueuecob099";
+        const String StorageAccountKey = "0/gynCIsiLI5IxzrQUAgAUtPiAzVrfetdrrXCvHPWM972iT9fdA5JbBqgZkbJIY37AgzMiwMpdBdB/Jcvu+6aQ==";
         public MainPage()
         {
             this.InitializeComponent();
@@ -51,47 +58,22 @@ namespace ForChild
             toMather.Navigate(typeof(loginChild));
         }
 
-        //noy added need to check
-        private async void get_msg()
-        {
-            //Create an HTTP client object
-            HttpClient httpClient = new HttpClient();
-            Uri requestUri = new Uri("https://functionqueuecob099.table.core.windows.net/outTable?$filter=Message_Send%20eq%" + loginChild.who_am_i);
-
-            ////Send the GET request asynchronously and retrieve the response as a string.
-            HttpResponseMessage httpResponse = new HttpResponseMessage();
-            string httpResponseBody = "";
-
-            try
-            {
-                //Send the GET request
-                httpResponse = await httpClient.GetAsync(requestUri);
-                httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                string[] userMsg = JsonConvert.DeserializeObject<string[]>(httpResponseBody);
-
-            }
-
-            catch (Exception ex)
-            {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-            }
-
-        }
-        private void test_Click(object sender, RoutedEventArgs e)
+        private async void test_ClickAsync(object sender, RoutedEventArgs e)
         {
             //ConnectDB db = new ConnectDB();
             //db.TestDelete("osnat@gmail.con");
             //db.GetGardenChildren("flowers");
             //Common.UpdateCounterAsync("iagree");
             //Common.GetUserCounterAsync("iagree");
+            TableQuerySegment<OutTable> x = await Common.GetMsgAsync();
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
         {
             Frame toAddUsersForChat = Window.Current.Content as Frame;
             toAddUsersForChat.Navigate(typeof(AddUsersForChat));
-        }       
+        }
+      
 
     }
 }
