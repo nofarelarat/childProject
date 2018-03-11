@@ -15,5 +15,6 @@ namespace ForChild
         public Nullable<int> childyear { get; set; }
         public string password { get; set; }
         public string type { get; set; }
-        }
+        //Child, Parent, Teacher
+    }
 }

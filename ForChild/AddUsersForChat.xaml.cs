@@ -27,17 +27,24 @@ namespace ForChild
             this.InitializeComponent();
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private async void Add_ClickAsync(object sender, RoutedEventArgs e)
         {
-            string[] emails = new string[7];
-            emails[0] = "child";
-            emails[1] = Common.who_am_i;
+            string[] emails = new string[6];
+            emails[0] = "Child";
+            //emails[1] = Common.who_am_i;
+            emails[1] = "rami@gmail.com";
             emails[2] = TextBoxMother.Text;
             emails[3] = TextBoxFather.Text;
             emails[4] = TextBoxFriend.Text;
             emails[5] = TextBoxSister.Text;
 
-            //Common.AddUsersToDB(emails);
+            bool x = await Common.AddUserChatContact(emails);
         }
+        private void Button_Click_back(object sender, RoutedEventArgs e)
+        {
+            Frame toHome = Window.Current.Content as Frame;
+            toHome.Navigate(typeof(MainPage));
+        }
+
     }
 }

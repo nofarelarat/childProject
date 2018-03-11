@@ -16,7 +16,7 @@ namespace ForChild
             string email = "rami@gmail.com";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
-            if(user != null){
+            if(user != null && symbolName!=""){
                 symbol symbol = new symbol
                 {
                     email = user.email,
@@ -24,12 +24,18 @@ namespace ForChild
                     date = DateTime.Today
                 };
                 await db.UpdateUserCounterAsync(symbol);
-            }      
+            }
+            else
+            {
+                //user or symbol is empty
+            }
         }
-        public static async void GetUserCounterAsync(string symbolName)
+
+        public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             //string email = who_am_i;
             string email = "rami@gmail.com";
+            symbol[] res = null;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
             if (user != null)
@@ -40,8 +46,48 @@ namespace ForChild
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
-                await db.GetUserCounterAsync(symbol);
+                res = await db.GetUserCounterAsync(symbol);
             }
+            return res;
+        }
+
+        public static async Task<symbol[]> GetUserAllCounterAsync()
+        {
+            //string email = who_am_i;
+            string email = "rami@gmail.com";
+            symbol[] res = null;
+            ConnectDB db = new ConnectDB();
+            user user = await db.GetUserByMailAsync(email);
+            if (user != null)
+            {
+                res = await db.GetUserAllCountersAsync(email);
+            }
+            return res;
+        }
+        public static async void GetUserContactsAsync(string email)
+        {
+            //string email = who_am_i;
+            ConnectDB db = new ConnectDB();
+            //await db.GetGardenChildren("flowers");
+            user user = await db.GetUserByMailAsync(email);
+            if (user != null)
+            {
+                await db.GetUserContactsAsync(email);
+            }
+        }
+        public static async Task<bool> AddUserChatContact(string[] emails)
+        {
+            ConnectDB db = new ConnectDB();
+            for (int i=1;i<emails.Length;i++)
+            {
+                user user = await db.GetUserByMailAsync(emails[i]);
+                if (user == null)
+                {
+                    return false;
+                }
+            }
+            bool x = await db.AddUserContactsAsync(emails);
+            return x;
         }
     }
 }

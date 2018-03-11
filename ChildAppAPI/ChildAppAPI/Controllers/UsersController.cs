@@ -83,46 +83,5 @@ namespace ChildAppAPI.Controllers
                 return (null);
             }
         }
-
-        [HttpGet]
-        public bool UpdateUserCounter([FromBody] symbol data)
-        {
-            try
-            {
-                using (APP_DBEntities db = new APP_DBEntities())
-                {
-                    db.symbols.Add(data);
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        [HttpGet]
-        public symbol[] getUserSymbolUsage([FromUri] string email, [FromUri] string symbolName)
-        {
-            try
-            {
-                using (APP_DBEntities db = new APP_DBEntities())
-                {
-                    var userSymbol = db.symbols.Where(u => u.email == email && u.symbolName == symbolName);
-                    
-                    if (userSymbol != null)
-                    {
-                        return userSymbol.ToArray();
-                    }
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
     }
 }
