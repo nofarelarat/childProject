@@ -1,6 +1,18 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage.Auth;
+
 
 namespace ForChild
 {
@@ -9,6 +21,8 @@ namespace ForChild
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        const String StorageAccountName = "functionqueuecob099";
+        const String StorageAccountKey = "0/gynCIsiLI5IxzrQUAgAUtPiAzVrfetdrrXCvHPWM972iT9fdA5JbBqgZkbJIY37AgzMiwMpdBdB/Jcvu+6aQ==";
         public MainPage()
         {
             this.InitializeComponent();
@@ -43,8 +57,8 @@ namespace ForChild
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(loginChild));
         }
-        
-        private void test_Click(object sender, RoutedEventArgs e)
+
+        private async void test_ClickAsync(object sender, RoutedEventArgs e)
         {
             //ConnectDB db = new ConnectDB();
             //db.TestDelete("osnat@gmail.con");
@@ -59,6 +73,8 @@ namespace ForChild
         {
             Frame toAddUsersForChat = Window.Current.Content as Frame;
             toAddUsersForChat.Navigate(typeof(AddUsersForChat));
-        }       
+        }
+      
+
     }
 }
