@@ -14,9 +14,6 @@ namespace ForTeacher
         public string gardenname { get; set; }
         public Nullable<int> childyear { get; set; }
         public string password { get; set; }
-        public string type { get; set; }
-        public int count_month { get; set; }
-        public string count_year { get; set; }
-
+        public string type { get; set; }//Child, Parent, Teacher
     }
 }

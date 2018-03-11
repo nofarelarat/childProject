@@ -12,14 +12,12 @@ namespace ChildAppAPI
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class userContacts
     {
         public string email { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string gardenname { get; set; }
-        public Nullable<int> childyear { get; set; }
-        public string password { get; set; }
-        public string type { get; set; }//Child, Parent, Teacher
+        public string father { get; set; }
+        public string mother { get; set; }
+        public string sister { get; set; }
+        public string friend { get; set; }
     }
 }

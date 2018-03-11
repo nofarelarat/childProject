@@ -59,9 +59,13 @@ namespace ForChild
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Send_Click(object sender, RoutedEventArgs e)
         {
-
+            //mee.Source = new BitmapImage(new Uri("D:\\try.png"));
+        }
+        private void Symbol_Click(object sender, RoutedEventArgs e)
+        {
+            //mee.Source = new BitmapImage(new Uri("D:\\try.png"));
         }
     }
 }

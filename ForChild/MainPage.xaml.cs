@@ -64,8 +64,9 @@ namespace ForChild
             //db.TestDelete("osnat@gmail.con");
             //db.GetGardenChildren("flowers");
             //Common.UpdateCounterAsync("iagree");
-            //Common.GetUserCounterAsync("iagree");
-            TableQuerySegment<OutTable> x = await Common.GetMsgAsync();
+            Common.GetUserCounterAsync("iagree");
+            Common.GetUserAllCounterAsync();
+            //Common.GetUserContactsAsync("rami@gmail.com");
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
