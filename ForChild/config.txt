@@ -1,0 +1,3 @@
+﻿friend1: noypitt@gmail.com,
+friend2: nofar@gmail.com,
+Parent: rami@gmail.com
