@@ -121,11 +121,25 @@
     <None Include="ForTeacher_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\back.PNG" />
     <Content Include="images\background.png" />
+    <Content Include="images\background1.PNG" />
+    <Content Include="images\broadcast.PNG" />
     <Content Include="images\chatBackground.PNG" />
+    <Content Include="images\chatBackground1.PNG" />
+    <Content Include="images\login.PNG" />
     <Content Include="images\loginBackground.PNG" />
+    <Content Include="images\loginBackground1.PNG" />
+    <Content Include="images\registation.PNG" />
+    <Content Include="images\register.PNG" />
     <Content Include="images\RegisterBackground.PNG" />
+    <Content Include="images\RegisterBackground1.PNG" />
+    <Content Include="images\Send.PNG" />
+    <Content Include="images\signup1.PNG" />
+    <Content Include="images\statistics.PNG" />
     <Content Include="images\statisticsBackground.PNG" />
+    <Content Include="images\statisticsBackground1.PNG" />
+    <Content Include="images\teacher.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

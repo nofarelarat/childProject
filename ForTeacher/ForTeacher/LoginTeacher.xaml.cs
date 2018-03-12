@@ -38,7 +38,7 @@ namespace ForTeacher
             }
             else
             {
-                if (user.password.Equals(password.Text))
+                if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
                 {
                     result.Text = "welcome " + user.firstname + "!";
                     who_am_i = email.Text;
@@ -46,7 +46,7 @@ namespace ForTeacher
                 else
                 {
                     result.Text = "incorrect password";
-
+        
                 }
             }
         }

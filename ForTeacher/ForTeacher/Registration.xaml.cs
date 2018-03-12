@@ -60,8 +60,6 @@ namespace ForTeacher
                     type = Teacher,
                     gardenname = gardenName,
                     password = Password,
-                    count_month = 0,
-                    count_year = ""
                 };
 
                 bool isPass = await db.CreateUserAsync(newUser);

@@ -9,10 +9,24 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="images/chatBackground.png" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="images/chatBackground1.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        <TextBox HorizontalAlignment="Left" Margin="500,252,0,0" TextWrapping="Wrap" Text="אני רוצה לספר..." VerticalAlignment="Top" Height="261" Width="372" TextChanged="TextBox_TextChanged" Name="sendMsg"/>
-        <Button Content="חזור" HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Click="Button_Click_back" Width="174"/>
-        <Button Content="שלח" HorizontalAlignment="Left" Margin="593,536,0,0" VerticalAlignment="Top" Height="72" Width="214" Click="SendClick"/>
+        <Button Height="77" Width="167" HorizontalAlignment="Left" VerticalAlignment="top" Click="Button_Click_back" Margin="-85,-226,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/back.PNG" Margin="89,240,-25.8,-199.2" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <TextBox HorizontalAlignment="Left" Margin="184,202,0,0" TextWrapping="Wrap" Text="אני רוצה לספר..." VerticalAlignment="Top" Height="261" Width="372" TextChanged="TextBox_TextChanged" Name="sendMsg"/>
+        <Button Height="107" Width="205" HorizontalAlignment="Left" VerticalAlignment="top" Click="SendClick" Margin="211,247,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/send.PNG" Margin="89,240,-25.8,-199.2" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
     </Grid>
 </Page>

@@ -10,17 +10,42 @@
 
 
     <Grid Margin="-30,0,10,0">
-        <Button x:Name="Broadcast" Content="Broadcast" HorizontalAlignment="Left" Margin="460,427,0,0" VerticalAlignment="Top" Height="88" Width="202" Click="Broadcast_Click"/>
-        <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="198.15,302.82,0,0" VerticalAlignment="Top" Click="Login_Click" Height="96.36" Width="185.7" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="-0.328"/>
-            </Button.RenderTransform>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Broadcast_Click" Margin="296,180,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/broadcast.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
         </Button>
-        <Button x:Name="Register" Content="Register" HorizontalAlignment="Left" Margin="465,299,0,0" VerticalAlignment="Top" Click="Register_Click" Height="99" Width="194"/>
-        <Button x:Name="Statistics" Content="Statistics" HorizontalAlignment="Left" Margin="204,430,0,0" VerticalAlignment="Top" Click="Statistics_Click" Height="81" Width="172"/>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Login_Click" Margin="44,56,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/login.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Register_Click" Margin="296,56,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/registation.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Statistics_Click" Margin="44,180,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/statistics.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Image Source="/Images/teacher.PNG" Margin="357,73,328,408"/>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="images/background.png" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="images/background1.png" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
     </Grid>
-    
+
 </Page>
