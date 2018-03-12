@@ -15,10 +15,22 @@ namespace ForChild
     public sealed partial class MotherPage : Page
     {
         static int symbolsForSend_curr = 0;
-        static string[] symbolsForSend = new string[5];
+        static Image[] symbolsForSend = new Image[5];
+        static Image[] symbolsAfterSend = new Image[5];
         public MotherPage()
         {
             this.InitializeComponent();
+            symbolsForSend[0] = forSend1;
+            symbolsForSend[1] = forSend2;
+            symbolsForSend[2] = forSend3;
+            symbolsForSend[3] = forSend4;
+            symbolsForSend[4] = forSend5;
+            symbolsAfterSend[0] = afterSend1;
+            symbolsAfterSend[1] = afterSend2;
+            symbolsAfterSend[2] = afterSend3;
+            symbolsAfterSend[3] = afterSend4;
+            symbolsAfterSend[4] = afterSend5;
+
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -29,29 +41,18 @@ namespace ForChild
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
+            string sentence = "";
             if (symbolsForSend_curr != 0)
             {
                 symbolsForSend_curr = 0;
-                afterSend1.Source = forSend1.Source;
-                afterSend2.Source = forSend2.Source;
-                afterSend3.Source = forSend3.Source;
-                afterSend4.Source = forSend4.Source;
-                afterSend5.Source = forSend5.Source;
-                forSend1.Source = blank.Source;
-                forSend2.Source = blank.Source;
-                forSend3.Source = blank.Source;
-                forSend4.Source = blank.Source;
-                forSend5.Source = blank.Source;
-                Common.UpdateCounterAsync(forSend1.Tag.ToString());
-                Common.UpdateCounterAsync(forSend2.Tag.ToString());
-                Common.UpdateCounterAsync(forSend3.Tag.ToString());
-                Common.UpdateCounterAsync(forSend4.Tag.ToString());
-                Common.UpdateCounterAsync(forSend5.Tag.ToString());
-                forSend1.Tag = blank.Tag;
-                forSend2.Tag = blank.Tag;
-                forSend3.Tag = blank.Tag;
-                forSend4.Tag = blank.Tag;
-                forSend5.Tag = blank.Tag;
+                for (int i=0; i < symbolsAfterSend.Length; i++)
+                {
+                    symbolsAfterSend[i].Source = symbolsForSend[i].Source;
+                    sentence = sentence + symbolsForSend[i].Tag.ToString() + "+";
+                    Common.UpdateCounterAsync(symbolsForSend[i].Tag.ToString());
+                    symbolsForSend[i].Source = blank.Source;
+                    symbolsForSend[i].Tag = blank.Tag;
+                }
             }
         }
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -70,33 +71,31 @@ namespace ForChild
             switch (symbolsForSend_curr)
             {
                 case (0):
-                        forSend1.Source = new BitmapImage(requestUri);
-                        forSend1.Tag = button_name;
+                        symbolsForSend[0].Source = new BitmapImage(requestUri);
+                        symbolsForSend[0].Tag = button_name;
                         symbolsForSend_curr++;
                         break;
                 case (1):
-                        forSend2.Source = new BitmapImage(requestUri);
-                        forSend2.Tag = button_name;
+                        symbolsForSend[1].Source = new BitmapImage(requestUri);
+                        symbolsForSend[1].Tag = button_name;
                         symbolsForSend_curr++;
                         break;
                 case (2):
-                        forSend3.Source = new BitmapImage(requestUri);
-                        forSend3.Tag = button_name;
+                        symbolsForSend[2].Source = new BitmapImage(requestUri);
+                        symbolsForSend[2].Tag = button_name;
                         symbolsForSend_curr++;
                         break;
                 case (3):
-                        forSend4.Source = new BitmapImage(requestUri);
-                        forSend1.Tag = button_name;
+                        symbolsForSend[3].Source = new BitmapImage(requestUri);
+                        symbolsForSend[3].Tag = button_name;
                         symbolsForSend_curr++;
                         break;
                 case (4):
-                        forSend5.Source = new BitmapImage(requestUri);
-                        forSend1.Tag = button_name;
+                        symbolsForSend[4].Source = new BitmapImage(requestUri);
+                        symbolsForSend[4].Tag = button_name;
                         symbolsForSend_curr++;
                         break;
             }
-            
-
         }
     }
 }
