@@ -58,5 +58,11 @@ namespace ForParent
             Frame toLogin = Window.Current.Content as Frame;
             toLogin.Navigate(typeof(LoginParent));
         }
+
+        private void forAnalysis_Click(object sender, RoutedEventArgs e)
+        {
+            Frame toAnalysis = Window.Current.Content as Frame;
+            toAnalysis.Navigate(typeof(Analysis));
+        }
     }
 }
