@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="arrow.png" />
-    <Content Include="Assets\JsonFx.Json.dll" />
     <Content Include="config.txt" />
     <Content Include="father.jpg" />
     <Content Include="father2.jpg" />
@@ -239,9 +238,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1</Version>

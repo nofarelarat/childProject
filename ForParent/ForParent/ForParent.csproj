@@ -120,6 +120,19 @@
   <ItemGroup>
     <Content Include="children.png" />
     <Content Include="father.jpg" />
+    <Content Include="Images\back.PNG" />
+    <Content Include="Images\background.png" />
+    <Content Include="Images\chat.PNG" />
+    <Content Include="Images\chatBackground.PNG" />
+    <Content Include="Images\login.PNG" />
+    <Content Include="Images\loginBackground.PNG" />
+    <Content Include="Images\loginBackground1.PNG" />
+    <Content Include="Images\parents.png" />
+    <Content Include="Images\registation.PNG" />
+    <Content Include="Images\register.PNG" />
+    <Content Include="Images\registerBackground.PNG" />
+    <Content Include="Images\signup.PNG" />
+    <Content Include="Images\signup1.PNG" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
