@@ -19,7 +19,11 @@ namespace ForChild
             string email = "rami@gmail.com";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
-            if(user != null && symbolName!=""){
+            //dont need to get user from db because 
+            //when login there is a check is user exisit 
+            //just check if who_am_i not empty - saving time
+
+            if (user != null && symbolName!=""){
                 symbol symbol = new symbol
                 {
                     email = user.email,
@@ -41,6 +45,10 @@ namespace ForChild
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
+            //dont need to get user from db because 
+            //when login there is a check is user exisit 
+            //just check if who_am_i not empty - saving time
+
             if (user != null)
             {
                 symbol symbol = new symbol
@@ -61,6 +69,10 @@ namespace ForChild
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
+            //dont need to get user from db because 
+            //when login there is a check is user exisit 
+            //just check if who_am_i not empty - saving time
+
             if (user != null)
             {
                 res = await db.GetUserAllCountersAsync(email);
@@ -73,17 +85,27 @@ namespace ForChild
             ConnectDB db = new ConnectDB();
             //await db.GetGardenChildren("flowers");
             user user = await db.GetUserByMailAsync(email);
+            //dont need to get user from db because 
+            //when login there is a check is user exisit 
+            //just check if who_am_i not empty - saving time
+
             if (user != null)
             {
                 await db.GetUserContactsAsync(email);
             }
         }
+
+        //updation user contacts update all the for contacts
         public static async Task<bool> AddUserChatContact(string[] emails)
         {
             ConnectDB db = new ConnectDB();
             for (int i=1;i<emails.Length;i++)
             {
                 user user = await db.GetUserByMailAsync(emails[i]);
+                //dont need to get user from db because 
+                //when login there is a check is user exisit 
+                //just check if who_am_i not empty - saving time
+
                 if (user == null)
                 {
                     return false;

@@ -26,7 +26,7 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="184" Width="535" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="613,0,312,298">
+        <Button Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="10,0,934,530" RenderTransformOrigin="0.472,0.36">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="plus.png" />
@@ -48,8 +48,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Image HorizontalAlignment="Left" Height="290" Margin="432,178,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
-        <Button x:Name="forLogin" Content="היכנס" HorizontalAlignment="Left" Margin="416,478,0,104" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click"/>
+        <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
+        <Button x:Name="forLogin" Content="היכנס" HorizontalAlignment="Left" Margin="428,450,0,160" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click"/>
         <Button x:Name="test" Content="test" HorizontalAlignment="Left" Margin="792,334,0,0" VerticalAlignment="Top" Height="134" Width="195" Click="test_ClickAsync"/>
     </Grid>
 </Page>
