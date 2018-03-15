@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid>
         <Button Height="79" Width="165" HorizontalAlignment="Left" VerticalAlignment="top" Click="forChat_Click" Margin="-14,-154,0,0">
             <Button.Template>
@@ -24,15 +23,19 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="79" Width="165" HorizontalAlignment="Left" VerticalAlignment="top" Click="forLogin_Click" Margin="-14,-78,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="Images/login.PNG" Margin="214,324,-177.667,-298.667" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Image Source="/Images/parents.PNG" Margin="25,57,348,248"/>
+            <Button Height="79" Width="165" HorizontalAlignment="Left" VerticalAlignment="top" Click="forLogin_Click" Margin="-14,-78,0,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="Images/login.PNG" Margin="214,324,-177.667,-298.667" />
+                    </ControlTemplate>
+                </Button.Template>
+                <Image Height="100" Width="100"/>
+            </Button>
+            <Button x:Name="forAnalysis" Content="ניתוח נתונים" HorizontalAlignment="Left" Margin="223,200,0,0" VerticalAlignment="Top" Height="31" Width="102" Click="forAnalysis_Click" RenderTransformOrigin="0.564,3.694"/>
+
+
+
+            <Image Source="/Images/parents.PNG" Margin="25,57,348,248"/>
 
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="27" Width="128" FontSize="15" Margin="145,15,87,0" FontWeight="Bold"/>
         <Grid.Background>

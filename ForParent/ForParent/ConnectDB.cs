@@ -5,11 +5,110 @@ using System.Net.Http;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using Windows.Web.Http;
+using Newtonsoft.Json;
+
 
 namespace ForParent
 {
     class ConnectDB
     {
+        public async Task<bool> UpdateUserCounterAsync(symbol userSymbol)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters";
+            //string completeUri = "http://localhost:49876/api/counters";
+
+            string json = WriteFromObject(userSymbol);
+
+            try
+            {
+                //Send the POSR request
+                HttpStringContent stringContent = new HttpStringContent(json.ToString());
+
+                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PATCH"), completeUri);
+                request.Content = new StringContent(json,
+                                                    Encoding.UTF8,
+                                                    "application/json");//CONTENT-TYPE header
+
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<symbol[]> GetUserCounterAsync(symbol userSymbol)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
+                + userSymbol.email + "&symbolName=" + userSymbol.symbolName;
+            //string completeUri = "http://localhost:49876/api/counters?email=" 
+            //    + userSymbol.email+"&symbolName="+ userSymbol.symbolName;
+
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
+
+                return userSymbolUsage;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
+            return null;
+        }
+
+        public async Task<symbol[]> GetUserAllCountersAsync(string email)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
+                + email;
+            //string completeUri = "http://localhost:49876/api/counters?email=" 
+            //    + email;
+
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
+
+                return userSymbolUsage;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
+            return null;
+        }
+
+
         public async Task<user> GetUserByMailAsync(string email)
         {
 
@@ -39,7 +138,9 @@ namespace ForParent
 
             return null;
         }
+        
 
+  
         public async Task<bool> CreateUserAsync(user user)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users";
@@ -76,6 +177,18 @@ namespace ForParent
             deserializedUser = ser.ReadObject(ms) as user;
             //ms.Close();
             return deserializedUser;
+        }
+        public static string WriteFromObject(symbol userSymbol)
+        {
+            //Create a stream to serialize the object to.
+            MemoryStream ms = new MemoryStream();
+
+            // Serializer the User object to the stream.
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(symbol));
+            ser.WriteObject(ms, userSymbol);
+            byte[] json = ms.ToArray();
+            //ms.Close();
+            return Encoding.UTF8.GetString(json, 0, json.Length);
         }
 
         public static string WriteFromObject(user user)
