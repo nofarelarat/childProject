@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page 
     x:Class="ForTeacher.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,10 +7,45 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="Broadcast" Content="Broadcast" HorizontalAlignment="Left" Margin="669,204,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="469,96,0,0" VerticalAlignment="Top" Click="Login_Click"/>
-        <Button x:Name="Register" Content="Register" HorizontalAlignment="Left" Margin="669,102,0,0" VerticalAlignment="Top" Click="Register_Click"/>
-        <Button x:Name="Statistics" Content="Statistics" HorizontalAlignment="Left" Margin="453,204,0,0" VerticalAlignment="Top"/>
+
+
+    <Grid Margin="-30,0,10,0">
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Broadcast_Click" Margin="296,180,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/broadcast.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Login_Click" Margin="44,56,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/login.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Register_Click" Margin="296,56,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/registation.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Statistics_Click" Margin="44,180,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/statistics.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Image Source="/Images/teacher.PNG" Margin="357,73,328,408"/>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="images/background1.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
     </Grid>
+
 </Page>

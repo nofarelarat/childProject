@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Json;
 using Windows.Data.Json;
 using Windows.Web.Http;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace ForTeacher
 {
@@ -120,6 +121,30 @@ namespace ForTeacher
             }
             return msg;
         }
+        public static async Task<user[]> GetGardenChildren(string garden)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/users?garden=" + garden;
+            //string completeUri = "http://localhost:49876/api/users?garden=" + garden;
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                user[] gardenUsers = JsonConvert.DeserializeObject<user[]>(httpResponseBody);
 
+                return gardenUsers;
+            }
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+            return null;
+        }
     }
 }

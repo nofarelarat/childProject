@@ -7,14 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock HorizontalAlignment="Left" Margin="864,91,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="862,169,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="655,38,0,0" TextWrapping="Wrap" Text="כניסה" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="93" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="445,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" Height="40"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="447,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
-        <Button Content="הכנס" HorizontalAlignment="Left" Margin="480,222,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
-        <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
-        <TextBox Name ="result" HorizontalAlignment="Left" Margin="604,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="546,313,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBlock HorizontalAlignment="Left" Margin="538,363,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="100,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" Height="40"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="103,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
+        <Button Height="77" Width="167" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="5,173,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/signup1.PNG" Margin="89,240,-25.8,-199.2" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Button Height="77" Width="167" HorizontalAlignment="Left" VerticalAlignment="top" Click="Button_Click_back" Margin="-85,-211,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/back.PNG" Margin="89,240,-25.8,-199.2" RenderTransformOrigin="0.5,0.5" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <TextBox Name ="result" HorizontalAlignment="Left" Margin="253,419,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="images/loginBackground1.png" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
     </Grid>
+    
 </Page>

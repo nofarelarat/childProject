@@ -50,6 +50,6 @@
         </Button>
         <Image HorizontalAlignment="Left" Height="290" Margin="432,178,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
         <Button x:Name="forLogin" Content="היכנס" HorizontalAlignment="Left" Margin="416,478,0,104" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click"/>
-        <Button x:Name="test" Content="test" HorizontalAlignment="Left" Margin="792,334,0,0" VerticalAlignment="Top" Height="134" Width="195" Click="test_Click"/>
+        <Button x:Name="test" Content="test" HorizontalAlignment="Left" Margin="792,334,0,0" VerticalAlignment="Top" Height="134" Width="195" Click="test_ClickAsync"/>
     </Grid>
 </Page>

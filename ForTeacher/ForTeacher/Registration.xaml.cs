@@ -38,6 +38,7 @@ namespace ForTeacher
             string gardenName = gardenname.Text;
             string Password = password.Text;
             string Teacher = "Teacher";
+
             string msg = "";
 
             ConnectDB db = new ConnectDB();
@@ -59,8 +60,6 @@ namespace ForTeacher
                     type = Teacher,
                     gardenname = gardenName,
                     password = Password,
-                    count_month = 0,
-                    count_year = ""
                 };
 
                 bool isPass = await db.CreateUserAsync(newUser);

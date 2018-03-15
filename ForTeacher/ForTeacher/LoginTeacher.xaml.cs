@@ -22,6 +22,8 @@ namespace ForTeacher
     /// </summary>
     public sealed partial class LoginTeacher : Page
     {
+        public static string who_am_i = "";
+
         public LoginTeacher()
         {
             this.InitializeComponent();
@@ -36,15 +38,15 @@ namespace ForTeacher
             }
             else
             {
-                if (user.password.Equals(password.Text))
+                if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
                 {
                     result.Text = "welcome " + user.firstname + "!";
-
+                    who_am_i = email.Text;
                 }
                 else
                 {
                     result.Text = "incorrect password";
-
+        
                 }
             }
         }

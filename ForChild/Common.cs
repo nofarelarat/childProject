@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure;
 
 namespace ForChild
 {
@@ -16,7 +19,7 @@ namespace ForChild
             string email = "rami@gmail.com";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
-            if(user != null){
+            if(user != null && symbolName!=""){
                 symbol symbol = new symbol
                 {
                     email = user.email,
@@ -24,12 +27,18 @@ namespace ForChild
                     date = DateTime.Today
                 };
                 await db.UpdateUserCounterAsync(symbol);
-            }      
+            }
+            else
+            {
+                //user or symbol is empty
+            }
         }
-        public static async void GetUserCounterAsync(string symbolName)
+
+        public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             //string email = who_am_i;
             string email = "rami@gmail.com";
+            symbol[] res = null;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
             if (user != null)
@@ -40,8 +49,83 @@ namespace ForChild
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
-                await db.GetUserCounterAsync(symbol);
+                res = await db.GetUserCounterAsync(symbol);
             }
+            return res;
+        }
+
+        public static async Task<symbol[]> GetUserAllCounterAsync()
+        {
+            //string email = who_am_i;
+            string email = "rami@gmail.com";
+            symbol[] res = null;
+            ConnectDB db = new ConnectDB();
+            user user = await db.GetUserByMailAsync(email);
+            if (user != null)
+            {
+                res = await db.GetUserAllCountersAsync(email);
+            }
+            return res;
+        }
+        public static async void GetUserContactsAsync(string email)
+        {
+            //string email = who_am_i;
+            ConnectDB db = new ConnectDB();
+            //await db.GetGardenChildren("flowers");
+            user user = await db.GetUserByMailAsync(email);
+            if (user != null)
+            {
+                await db.GetUserContactsAsync(email);
+            }
+        }
+        public static async Task<bool> AddUserChatContact(string[] emails)
+        {
+            ConnectDB db = new ConnectDB();
+            for (int i=1;i<emails.Length;i++)
+            {
+                user user = await db.GetUserByMailAsync(emails[i]);
+                if (user == null)
+                {
+                    return false;
+                }
+            }
+            bool x = await db.AddUserContactsAsync(emails);
+            return x;
+        }
+        //noy added need to check
+        public static async Task<TableQuerySegment<OutTable>> GetMsgAsync()
+        {
+
+           // string completeUri = "http://childappapiservice.azurewebsites.net/api/msg?email="
+             //   + who_am_i;
+            string completeUri = "http://localhost:49876/api/msg?email=" 
+                + who_am_i;
+
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                TableQuerySegment<OutTable> userSymbolUsage = JsonConvert.DeserializeObject<TableQuerySegment<OutTable>>(httpResponseBody);
+
+                return userSymbolUsage;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
+            return null;
         }
     }
 }

@@ -111,6 +111,7 @@ namespace ForParent
 
         public async Task<user> GetUserByMailAsync(string email)
         {
+
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users?email=" + email;
             Uri requestUri = new Uri(completeUri);
 

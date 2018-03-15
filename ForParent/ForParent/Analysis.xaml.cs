@@ -28,30 +28,30 @@ namespace ForParent
         {
             this.InitializeComponent();
             string[] colors = {
-                "ino",
-                "iagree",
-                "itowalk",
-                "icar",
-                "igrandmother",
-                "idad",
-                "ibro",
-                "idinner",
-                "ifor",
-                "ianger",
-                "itosleep",
-                "ipants",
-                "igrandfather",
-                "isis",
-                "imum",
-                "iwatermallon",
-                "ipain",
-                "iwant",
-                "ilove",
-                "ishirt",
-                "ishoes",
-                "iim",
-                "ijuice",
-                "ibreakfast",
+                "no",
+                "agree",
+                "towalk",
+                "car",
+                "grandmother",
+                "dad",
+                "bro",
+                "dinner",
+                "for",
+                "anger",
+                "tosleep",
+                "pants",
+                "grandfather",
+                "sis",
+                "mum",
+                "watermallon",
+                "pain",
+                "want",
+                "love",
+                "shirt",
+                "shoes",
+                "im",
+                "juice",
+                "breakfast",
                 "allsymbols"
 
 
@@ -97,7 +97,13 @@ namespace ForParent
         private async void ComBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string completeUri = "";
-            completeUri = await create_graphAsync(ComBox.SelectedItem.ToString());
+            if (ComBox.SelectedItem.ToString().Equals("allsymbols"))
+            {
+                completeUri = await create_graphAsync(ComBox.SelectedItem.ToString());
+            }
+            else {
+                completeUri = await create_graphAsync("i" + ComBox.SelectedItem.ToString());
+            }
             Uri requestUri = new Uri(completeUri);
             image.Source = new BitmapImage(requestUri);
          }
