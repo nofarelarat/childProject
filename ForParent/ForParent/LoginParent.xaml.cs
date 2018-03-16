@@ -39,15 +39,31 @@ namespace ForParent
             }
             else
             {
-                if (user.password.Equals(Password))
+                if (user.password.Equals(Password)&&user.type=="Parent")
                 {
-                    result.Text = "welcome " + user.firstname + "!";
                     Common.who_am_i = Email;
+
                     //write email & pass to local file
                     //write contact to local file
                     //add a message for get contact you need to login
-                    Common.GetParentContactAsync();
+                    //add check if string child is not email do something
+                    string child = await Common.GetParentContactAsync();
 
+                    //make the add child contacts page in the parent app
+                    // Create sample file; replace if exists.
+                    if(child.IndexOf('@')> 0)
+                    {
+                        Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                        Windows.Storage.StorageFile userFile =
+                            await storageFolder.CreateFileAsync("user.txt",
+                                Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                        await Windows.Storage.FileIO.WriteTextAsync(userFile, Email
+                            + "+" + Password + "+" + child);
+                        //await Windows.Storage.FileIO.WriteTextAsync(userFile, Password);
+                        //await Windows.Storage.FileIO.WriteTextAsync(userFile, child);
+                        result.Text = "welcome " + user.firstname + "!";
+                    }
                 }
                 else
                 {
