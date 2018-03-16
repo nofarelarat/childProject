@@ -25,7 +25,30 @@ namespace ChildAppAPI.Controllers
                 return (null);
             }
         }
-        
+
+        [HttpGet]
+        public string getParentContact([FromUri]string Parentemail, [FromUri]bool isParent)
+        {
+            if (!isParent)
+            {
+                return ("This is not a parent");
+            }
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var userContacts = db.contacts
+                    .Where(b => b.father.Equals(Parentemail) || b.mother.Equals(Parentemail))
+                    .FirstOrDefault();
+                    return (userContacts.email);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (null);
+            }
+        }
+
         [HttpPost]
         public bool AddChildContacts([FromBody] string[] emails)
         {

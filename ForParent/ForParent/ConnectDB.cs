@@ -108,6 +108,38 @@ namespace ForParent
             return null;
         }
 
+        public async Task<string> GetParentContactAsync(string email)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?email=" + email
+                + "&isParent=true";
+            //string completeUri = "http://localhost:49876/api/contacts?email=" + email
+            //+"&isParent=true";
+            Uri requestUri = new Uri(completeUri);
+
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                userContacts userContacts = JsonConvert.DeserializeObject<userContacts>(httpResponseBody);
+                return userContacts.email;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
+            return null;
+        }
+
 
         public async Task<user> GetUserByMailAsync(string email)
         {

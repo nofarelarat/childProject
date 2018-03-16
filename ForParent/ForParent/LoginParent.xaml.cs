@@ -43,6 +43,10 @@ namespace ForParent
                 {
                     result.Text = "welcome " + user.firstname + "!";
                     Common.who_am_i = Email;
+                    //write email & pass to local file
+                    //write contact to local file
+                    //add a message for get contact you need to login
+                    Common.GetParentContactAsync();
 
                 }
                 else

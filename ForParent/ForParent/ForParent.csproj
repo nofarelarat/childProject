@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="symbol.cs" />
     <Compile Include="user.cs" />
+    <Compile Include="userContacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
