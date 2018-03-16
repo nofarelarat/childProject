@@ -74,6 +74,7 @@ namespace ForChild
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
 
+            GetMsgFromMother();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -122,7 +123,6 @@ namespace ForChild
                 {//all full
                     fullFlag = 1;
                 }
-
             }
             else
             {
@@ -225,7 +225,30 @@ namespace ForChild
 
         }
 
-        private void get_message_from_other(Image[] symbolsSentFromOther)
+        private void GetMessage(OutTable[] message)
+        {
+            Image[] images = new Image[5];
+
+            int i = 0;
+            if (message.Length > 0)
+            {
+                string msg = message[0].Message;
+                string[] tmp = msg.Split(' ');
+                foreach (string source in tmp)
+                {
+                    if (i >= 5)
+                        break;
+                    Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                    images[i] = new Image();
+                    images[i].Source = new BitmapImage(requestUri);
+                    i++;
+                }
+
+                GetMessageImg(images);
+            }
+
+        }
+        private void GetMessageImg(Image[] symbolsSentFromOther)
         {
             if (symbolsSentFromOther_full1 == 0) {
                 for (int i = 0; i < symbolsSentFromOther1.Length; i++)
@@ -236,7 +259,7 @@ namespace ForChild
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
             }
-            if (symbolsSentFromOther_full2 == 0)
+            else if (symbolsSentFromOther_full2 == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther2.Length; i++)
                 {
@@ -247,7 +270,7 @@ namespace ForChild
 
 
             }
-            if (symbolsSentFromOther_full3 == 0)
+            else if (symbolsSentFromOther_full3 == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther3.Length; i++)
                 {
@@ -255,6 +278,14 @@ namespace ForChild
                 }
                 symbolsSentFromOther_full3 = 1;
             }
+
+        }
+
+        private async void GetMsgFromMother()
+        {
+            OutTable[] table = await Common.GetMsgAsync();
+            GetMessage(table);
+
         }
     }
 }
