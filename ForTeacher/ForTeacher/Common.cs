@@ -8,5 +8,6 @@ namespace ForTeacher
 {
     class Common
     {
+        public static string who_am_i = "";
     }
 }

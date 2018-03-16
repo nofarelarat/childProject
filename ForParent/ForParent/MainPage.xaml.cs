@@ -62,8 +62,16 @@ namespace ForParent
 
         private void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
-            Frame toAnalysis = Window.Current.Content as Frame;
-            toAnalysis.Navigate(typeof(Analysis));
+            if (Common.who_am_i == "")
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
+            else
+            {
+                Frame toAnalysis = Window.Current.Content as Frame;
+                toAnalysis.Navigate(typeof(Analysis));
+            }
         }
     }
 }

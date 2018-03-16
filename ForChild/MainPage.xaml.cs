@@ -21,8 +21,6 @@ namespace ForChild
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        const String StorageAccountName = "functionqueuecob099";
-        const String StorageAccountKey = "0/gynCIsiLI5IxzrQUAgAUtPiAzVrfetdrrXCvHPWM972iT9fdA5JbBqgZkbJIY37AgzMiwMpdBdB/Jcvu+6aQ==";
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,26 +28,58 @@ namespace ForChild
 
         private void Button_Click_Friend(object sender, RoutedEventArgs e)
         {
-            Frame toFriend = Window.Current.Content as Frame;
-            toFriend.Navigate(typeof(FriendPage));
+            if(Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            { 
+                Frame toFriend = Window.Current.Content as Frame;
+                toFriend.Navigate(typeof(FriendPage));
+            }
         }
 
         private void Button_Click_father(object sender, RoutedEventArgs e)
         {
-            Frame toFather = Window.Current.Content as Frame;
-            toFather.Navigate(typeof(FatherPage));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            { 
+                Frame toFather = Window.Current.Content as Frame;
+                toFather.Navigate(typeof(FatherPage));
+            }
         }
 
         private void Button_Click_Sister(object sender, RoutedEventArgs e)
         {
-            Frame toFather = Window.Current.Content as Frame;
-            toFather.Navigate(typeof(SisterPage));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            { 
+                Frame toFather = Window.Current.Content as Frame;
+                toFather.Navigate(typeof(SisterPage));
+            }
         }
 
         private void Button_Click_mother(object sender, RoutedEventArgs e)
         {
-            Frame toMather = Window.Current.Content as Frame;
-            toMather.Navigate(typeof(MotherPage));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            { 
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(MotherPage));
+            }
         }
 
         private void forLogin_Click(object sender, RoutedEventArgs e)
@@ -64,15 +94,22 @@ namespace ForChild
             //db.TestDelete("osnat@gmail.con");
             //db.GetGardenChildren("flowers");
             //Common.UpdateCounterAsync("iagree");
-            Common.GetUserCounterAsync("iagree");
-            Common.GetUserAllCounterAsync();
+            Common.GetMsgAsync();
             //Common.GetUserContactsAsync("rami@gmail.com");
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
         {
-            Frame toAddUsersForChat = Window.Current.Content as Frame;
-            toAddUsersForChat.Navigate(typeof(AddUsersForChat));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            { 
+                Frame toAddUsersForChat = Window.Current.Content as Frame;
+                toAddUsersForChat.Navigate(typeof(AddUsersForChat));
+            }
         }
       
 

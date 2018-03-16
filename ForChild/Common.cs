@@ -114,13 +114,10 @@ namespace ForChild
             bool x = await db.AddUserContactsAsync(emails);
             return x;
         }
-        //noy added need to check
-        public static async Task<TableQuerySegment<OutTable>> GetMsgAsync()
-        {
 
-           // string completeUri = "http://childappapiservice.azurewebsites.net/api/msg?email="
-             //   + who_am_i;
-            string completeUri = "http://localhost:49876/api/msg?email=" 
+        public static async Task<OutTable[]> GetMsgAsync()
+        {
+            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
                 + who_am_i;
 
             Uri requestUri = new Uri(completeUri);
@@ -136,10 +133,8 @@ namespace ForChild
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-
-                TableQuerySegment<OutTable> userSymbolUsage = JsonConvert.DeserializeObject<TableQuerySegment<OutTable>>(httpResponseBody);
-
-                return userSymbolUsage;
+                OutTable[] msg = JsonConvert.DeserializeObject<OutTable[]>(httpResponseBody);
+                return msg;
             }
 
             catch (Exception ex)

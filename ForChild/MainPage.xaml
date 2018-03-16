@@ -34,7 +34,7 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="267" Width="488" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Friend" Margin="0,4,11,0">
+        <Button Height="267" Width="488" Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Friend" Margin="0,4,11,0" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="friends.jpg" />

@@ -39,7 +39,7 @@ namespace ForParent
             }
             else
             {
-                if (user.password.Equals(Password)&&user.type=="Parent")
+                if (user.password.Equals(Password) && user.type.Equals("Parent"))
                 {
                     Common.who_am_i = Email;
 
@@ -65,10 +65,13 @@ namespace ForParent
                         result.Text = "welcome " + user.firstname + "!";
                     }
                 }
+                else if(!user.type.Equals("Parent"))
+                {
+                    result.Text = "The type is not Parent";
+                }
                 else
                 {
                     result.Text = "incorrect password";
-
                 }
             }
         }

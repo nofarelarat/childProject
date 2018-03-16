@@ -34,9 +34,17 @@ namespace ForTeacher
         }
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
-            Frame toRegister = Window.Current.Content as Frame;
-            toRegister.Navigate(typeof(Statistics));
-        }
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }
+            else
+            { 
+                Frame toRegister = Window.Current.Content as Frame;
+                toRegister.Navigate(typeof(Statistics));
+            }
+    }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
@@ -46,9 +54,16 @@ namespace ForTeacher
 
         private void Broadcast_Click(object sender, RoutedEventArgs e)
         {
-            Frame toSendBrodcast = Window.Current.Content as Frame;
-            toSendBrodcast.Navigate(typeof(SendBrodcast));
-
+            if(Common.who_am_i.Equals(""))
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }
+            else
+            { 
+                Frame toSendBrodcast = Window.Current.Content as Frame;
+                toSendBrodcast.Navigate(typeof(SendBrodcast));
+            }
         }
     }
 }
