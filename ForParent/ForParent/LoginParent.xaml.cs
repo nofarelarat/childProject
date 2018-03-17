@@ -39,7 +39,7 @@ namespace ForParent
             }
             else
             {
-                if (user.password.Equals(Password))
+                if (user.password.Equals(Password) && user.type.Equals("Parent"))
                 {
                     result.Text = "welcome " + user.firstname + "!";
                     Common.who_am_i = Email;
@@ -49,10 +49,13 @@ namespace ForParent
                     Common.GetParentContactAsync();
 
                 }
+                else if(!user.type.Equals("Parent"))
+                {
+                    result.Text = "The type is not Parent";
+                }
                 else
                 {
                     result.Text = "incorrect password";
-
                 }
             }
         }
