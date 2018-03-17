@@ -200,7 +200,7 @@ namespace ForChild
             string json = JsonConvert.SerializeObject(emails);
             try
             {
-                //Send the POSR request
+                //Send the POST request
                 HttpStringContent stringContent = new HttpStringContent(json.ToString());
                 System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("POST"), completeUri);
                 request.Content = new StringContent(json,

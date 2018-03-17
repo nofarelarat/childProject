@@ -26,10 +26,14 @@ namespace ForChild
             }
             else
             {
-                if (user.password.Equals(password.Text))
+                if (user.password.Equals(password.Text) && user.type.Equals("Child"))
                 {
                     result.Text ="welcome "+ user.firstname+ "!";
                      Common.who_am_i = user.email;
+                }
+                else if(!user.type.Equals("Child"))
+                {
+                    result.Text = "The type is not child";
                 }
                 else
                 {

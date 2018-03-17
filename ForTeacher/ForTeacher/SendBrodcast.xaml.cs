@@ -36,7 +36,7 @@ namespace ForTeacher
             string sendMsg = GetMsg();
             if (sendMsg != "")
             {
-                String final_msg = sendMsg + "$" + LoginTeacher.who_am_i + "$";
+                String final_msg = sendMsg + "$" + Common.who_am_i + "$";
                 // Get Garden children
                 user[] kids = await ConnectDB.GetGardenChildren("flowers");
                 for (int i = 0; i < kids.Length; i++)
