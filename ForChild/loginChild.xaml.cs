@@ -36,6 +36,7 @@ namespace ForChild
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text ="welcome "+ user.firstname+ "!";
                      Common.who_am_i = user.email;
+                    Common.GetUserContactsAsync();
                 }
                 else if(!user.type.Equals("Child"))
                 {

@@ -12,7 +12,7 @@
         <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="238,341,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
         <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="238,485,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
         <TextBox x:Name="TextBoxSister" HorizontalAlignment="Left" Margin="238,597,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
-        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="606,613,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="606,613,0,0" VerticalAlignment="Top" Click="Add_ClickAsync"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
     </Grid>
 </Page>

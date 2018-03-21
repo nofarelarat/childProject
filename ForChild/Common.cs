@@ -11,11 +11,16 @@ using Windows.UI.Xaml.Controls;
 using System.Net.Http;
 using Windows.UI.Xaml.Media.Imaging;
 
+
 namespace ForChild
 {
     static class Common
     {
         public static string who_am_i = "";
+        public static string myFather = "";
+        public static string myMother = "";
+        public static string myFriend = "";
+        public static string mySister = "";
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string addressee)
@@ -40,7 +45,6 @@ namespace ForChild
             }
         }
 
-
         public static async void UpdateCounterAsync(string symbolName)
         {
             //string email = who_am_i;
@@ -51,7 +55,7 @@ namespace ForChild
             //when login there is a check is user exisit 
             //just check if who_am_i not empty - saving time
 
-            if (user != null && symbolName!=""){
+            if (user != null && symbolName != "") {
                 symbol symbol = new symbol
                 {
                     email = user.email,
@@ -68,20 +72,13 @@ namespace ForChild
 
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
-
-            if (user != null)
+            if (!who_am_i.Equals(""))
             {
                 symbol symbol = new symbol
                 {
-                    email = user.email,
+                    email = who_am_i,
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
@@ -107,40 +104,60 @@ namespace ForChild
             }
             return res;
         }
-        public static async void GetUserContactsAsync(string email)
+        public static async void GetUserContactsAsync()
         {
-            //string email = who_am_i;
+            string email = who_am_i;
             ConnectDB db = new ConnectDB();
-            //await db.GetGardenChildren("flowers");
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
-
-            if (user != null)
+            
+            if (!who_am_i.Equals(""))
             {
-                await db.GetUserContactsAsync(email);
+                userContacts contacts = await db.GetUserContactsAsync(email);
+                if (contacts != null)
+                {
+                    myFather = contacts.father;
+                    myMother = contacts.mother;
+                    myFriend = contacts.friend;
+                    mySister = contacts.sister;
+                }
+                else
+                {
+                    Frame toAddUsersForChat = Window.Current.Content as Frame;
+                    toAddUsersForChat.Navigate(typeof(AddUsersForChat));
+                }
             }
         }
 
         //updation user contacts update all the for contacts
         public static async Task<bool> AddUserChatContact(string[] emails)
         {
-            ConnectDB db = new ConnectDB();
-            for (int i=1;i<emails.Length;i++)
+            if (who_am_i.Equals(""))
             {
-                user user = await db.GetUserByMailAsync(emails[i]);
-                //dont need to get user from db because 
-                //when login there is a check is user exisit 
-                //just check if who_am_i not empty - saving time
-
-                if (user == null)
+                return false;
+            }
+            user[] users = new user[4];
+            ConnectDB db = new ConnectDB();
+            for (int i = 0;i < users.Length;i++)
+            {
+                users[i] = await db.GetUserByMailAsync(emails[i+2]);
+                if (users[i] == null)
                 {
                     return false;
                 }
             }
-            bool x = await db.AddUserContactsAsync(emails);
-            return x;
+            if(users[0].type.Equals("Parent")&& users[1].type.Equals("Parent")
+                && users[2].type.Equals("Parent") && users[3].type.Equals("Child"))
+            {
+                bool x = await db.AddUserContactsAsync(emails);
+                if (x == true)
+                {
+                    myFather = users[0].email;
+                    myMother = users[1].email;
+                    mySister = users[2].email;
+                    myFriend = users[3].email;
+                }
+                return x;
+            }
+            return false;
         }
 
         public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg,string msg_sender)
@@ -190,5 +207,25 @@ namespace ForChild
             }
             return null;
         }
+
+        public static async Task<bool> CheckForSimilarFriendAsync()
+        {
+            ConnectDB db = new ConnectDB();
+
+            if (!(who_am_i.Equals("") || myFriend.Equals("")))
+            {
+                userContacts contacts = await db.GetUserContactsAsync(myFriend);
+                if (contacts != null)
+                {
+                    if (contacts.friend.Equals(who_am_i))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+                
+        }
     }
 }
+

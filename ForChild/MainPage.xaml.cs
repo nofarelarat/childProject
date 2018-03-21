@@ -25,18 +25,22 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
-
-        private void Button_Click_Friend(object sender, RoutedEventArgs e)
+        private async void Button_Click_FriendAsync(object sender, RoutedEventArgs e)
         {
-            if(Common.who_am_i.Equals(""))
+            bool isSimilar = false;
+            if (Common.who_am_i.Equals(""))
             {
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
             else
-            { 
-                Frame toFriend = Window.Current.Content as Frame;
-                toFriend.Navigate(typeof(FriendPage));
+            {
+                isSimilar = await Common.CheckForSimilarFriendAsync();
+                if (isSimilar == true)
+                {
+                    Frame toFriend = Window.Current.Content as Frame;
+                    toFriend.Navigate(typeof(FriendPage));
+                }
             }
         }
 
@@ -48,9 +52,12 @@ namespace ForChild
                 toMather.Navigate(typeof(loginChild));
             }
             else
-            { 
-                Frame toFather = Window.Current.Content as Frame;
-                toFather.Navigate(typeof(FatherPage));
+            {
+                if (!Common.myFather.Equals(""))
+                {
+                    Frame toFather = Window.Current.Content as Frame;
+                    toFather.Navigate(typeof(FatherPage));
+                }
             }
         }
 
@@ -62,9 +69,12 @@ namespace ForChild
                 toMather.Navigate(typeof(loginChild));
             }
             else
-            { 
-                Frame toFather = Window.Current.Content as Frame;
-                toFather.Navigate(typeof(SisterPage));
+            {
+                if (!Common.mySister.Equals(""))
+                {
+                    Frame toFather = Window.Current.Content as Frame;
+                    toFather.Navigate(typeof(SisterPage));
+                }
             }
         }
 
@@ -76,9 +86,12 @@ namespace ForChild
                 toMather.Navigate(typeof(loginChild));
             }
             else
-            { 
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(MotherPage));
+            {
+                if (!Common.myMother.Equals(""))
+                {
+                    Frame toMather = Window.Current.Content as Frame;
+                    toMather.Navigate(typeof(MotherPage));
+                }
             }
         }
 

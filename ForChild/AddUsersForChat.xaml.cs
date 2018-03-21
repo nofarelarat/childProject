@@ -31,14 +31,15 @@ namespace ForChild
         {
             string[] emails = new string[6];
             emails[0] = "Child";
-            //emails[1] = Common.who_am_i;
-            emails[1] = "rami@gmail.com";
+            emails[1] = Common.who_am_i;
             emails[2] = TextBoxMother.Text;
             emails[3] = TextBoxFather.Text;
             emails[4] = TextBoxFriend.Text;
             emails[5] = TextBoxSister.Text;
 
-            bool x = await Common.AddUserChatContact(emails);
+            bool res = await Common.AddUserChatContact(emails);
+            Frame toHome = Window.Current.Content as Frame;
+            toHome.Navigate(typeof(MainPage));
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {

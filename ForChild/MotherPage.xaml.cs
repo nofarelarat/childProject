@@ -231,28 +231,36 @@ namespace ForChild
 
         private async void GetMessageAsync(OutTable[] message)
         {
-            string contact = "osnat@gmail.com";
-            OutTable[] msg_final = await Common.GetDedicatedMsgAsync(message, contact);
+            string contact = "shosh@gmail.com";
             Image[] images = new Image[5];
 
+            int numofmsg = 0; //the number of messages cant be more than 3.
             //TODO : add to the if 
-            if (msg_final!= null && msg_final.Length > 0)
+            if (message.Length > 0)
             {
-                int i = 0;
-                for (int x = 0; x < msg_final.Length; x++)
+                for (int x = 0; x < message.Length; x++)
                 {
-                    string msg = msg_final[x].Message;
-                    string[] tmp = msg.Split(' ');
-                    foreach (string source in tmp)
+                    int i = 0;
+                    if (message[x].Message_Send.Equals(contact))
                     {
-                        if (i >= 5)
-                            break;
-                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
-                        images[i] = new Image();
-                        images[i].Source = new BitmapImage(requestUri);
-                        i++;
+                        numofmsg++;
+                        string msg = message[x].Message;
+                        string[] tmp = msg.Split(' ');
+                        foreach (string source in tmp)
+                        {
+                            if (i >= 5)
+                                break;
+                            Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                            images[i] = new Image();
+                            images[i].Source = new BitmapImage(requestUri);
+                            i++;
+                        }
+                        GetMessageImg(images);
                     }
-                    GetMessageImg(images);
+                    if (numofmsg == 3)
+                    {
+                        return;
+                    }//if
                 }
             }
         }
