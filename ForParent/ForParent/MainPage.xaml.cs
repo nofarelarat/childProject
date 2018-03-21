@@ -25,8 +25,9 @@ namespace ForParent
         public MainPage()
         {
             this.InitializeComponent();
-            //if there is parent in xml file 
-            //update common.who_am_i
+            //start this function in srart world
+            //if not working go to login page
+            Common.GetUserFromFileAsync();
         }
 
         private void forChat_Click(object sender, RoutedEventArgs e)

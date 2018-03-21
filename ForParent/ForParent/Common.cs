@@ -3,39 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace ForParent
 {
      class Common
     {
         public static string who_am_i = "";
-        public static async void UpdateCounterAsync(string symbolName)
-        {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
-            ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
+        public static string myChild = "";
 
-            if (user != null && symbolName != "")
+        public static async void GetUserFromFileAsync()
+        {
+            try
             {
-                symbol symbol = new symbol
+                Windows.Storage.StorageFolder storageFolder =
+                Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync("user.txt");
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+                if (text.Equals(""))
                 {
-                    email = user.email,
-                    symbolName = symbolName,
-                    date = DateTime.Today
-                };
-                await db.UpdateUserCounterAsync(symbol);
+                    Frame toLogin = Window.Current.Content as Frame;
+                    toLogin.Navigate(typeof(LoginParent));
+                }
+                else
+                {
+                    string[] fileResult = text.Split('+');
+                    who_am_i = fileResult[0];
+                    myChild = fileResult[2];
+                }
             }
-            else
+            
+            catch
             {
-                //user or symbol is empty
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
             }
         }
-
+       
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             //string email = who_am_i;
@@ -66,7 +72,7 @@ namespace ForParent
             return res;
         }
 
-        public static async void GetParentContactAsync()
+        public static async Task<string> GetParentContactAsync()
         {
             //string email = who_am_i;
             string email = "rami@gmail.com";
@@ -86,8 +92,7 @@ namespace ForParent
             {
                 res = "Can't find the parent in the Database";
             }
-        }
-
-        
+            return res;
+        } 
     }
 }
