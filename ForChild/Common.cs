@@ -6,12 +6,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using System.Net.Http;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace ForChild
 {
     static class Common
     {
         public static string who_am_i = "";
+        // Input: message and addresse
+        // Output: send the message to azure storage Queue 
+        public static async void sendMsg(string message,string addressee)
+        {
+            String final_msg = message + "$" + Common.who_am_i + "$";
+            //Create an HTTP client object
+            HttpClient httpClient = new HttpClient();
+            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + addressee);
+            //Send the GET request asynchronously and retrieve the response as a string.
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                // errormessage.Text = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+
+                //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+        }
+
 
         public static async void UpdateCounterAsync(string symbolName)
         {
@@ -115,6 +143,25 @@ namespace ForChild
             return x;
         }
 
+        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg,string msg_sender)
+        {
+            int index = 0; //arr index
+            OutTable[] dedicate_msg = null;
+            for (int i=0; i < msg.Length; i++)
+            {
+                if (msg[i].Message_Send.Equals(msg_sender))
+                {
+                    dedicate_msg[index] = msg[i];
+                    index++;
+                    if (index ==3)
+                    {
+                        break;
+                    }
+                }
+            }
+            return dedicate_msg;
+        }
+
         public static async Task<OutTable[]> GetMsgAsync()
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
@@ -126,7 +173,7 @@ namespace ForChild
             //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
-
+ 
             try
             {
                 //Send the GET request
@@ -141,7 +188,6 @@ namespace ForChild
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
-
             return null;
         }
     }

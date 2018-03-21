@@ -16,5 +16,13 @@
         <Button Content="הכנס" HorizontalAlignment="Left" Margin="480,222,0,0" VerticalAlignment="Top" Click="EnterAppAsync"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
         <TextBox Name ="result" HorizontalAlignment="Left" Margin="604,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
+        <Button x:Name="loading" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="460,0,0,400" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/images/loading.bmp" Margin="87,90,-87,-90" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="108" Width="108"/>
+        </Button>
     </Grid>
 </Page>

@@ -150,8 +150,11 @@ namespace ForChild
                     }
                 }
             }
-           send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //To do : sent to is hard coded!!
+            Common.sendMsg(sentence,"gadi@gmail.com");
+            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
+
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
             int symbolsForSend_messege = -1;
@@ -180,6 +183,7 @@ namespace ForChild
                 AddToForSendGrid(button_name, symbolsForSend_messege);
             }
         }
+
         private void AddToForSendGrid(string button_name, int symbolsForSend_curr)
         {
             Uri requestUri = new Uri(base.BaseUri, "/symbols/" + button_name + ".png");
@@ -225,28 +229,32 @@ namespace ForChild
 
         }
 
-        private void GetMessage(OutTable[] message)
+        private async void GetMessageAsync(OutTable[] message)
         {
+            string contact = "osnat@gmail.com";
+            OutTable[] msg_final = await Common.GetDedicatedMsgAsync(message, contact);
             Image[] images = new Image[5];
 
-            int i = 0;
-            if (message.Length > 0)
+            //TODO : add to the if 
+            if (msg_final!= null && msg_final.Length > 0)
             {
-                string msg = message[0].Message;
-                string[] tmp = msg.Split(' ');
-                foreach (string source in tmp)
+                int i = 0;
+                for (int x = 0; x < msg_final.Length; x++)
                 {
-                    if (i >= 5)
-                        break;
-                    Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
-                    images[i] = new Image();
-                    images[i].Source = new BitmapImage(requestUri);
-                    i++;
+                    string msg = msg_final[x].Message;
+                    string[] tmp = msg.Split(' ');
+                    foreach (string source in tmp)
+                    {
+                        if (i >= 5)
+                            break;
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                        images[i] = new Image();
+                        images[i].Source = new BitmapImage(requestUri);
+                        i++;
+                    }
+                    GetMessageImg(images);
                 }
-
-                GetMessageImg(images);
             }
-
         }
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
@@ -257,7 +265,6 @@ namespace ForChild
                 }
                 symbolsSentFromOther_full1 = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
             }
             else if (symbolsSentFromOther_full2 == 0)
             {
@@ -284,7 +291,7 @@ namespace ForChild
         private async void GetMsgFromMother()
         {
             OutTable[] table = await Common.GetMsgAsync();
-            GetMessage(table);
+            GetMessageAsync(table);
 
         }
     }

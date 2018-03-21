@@ -147,6 +147,8 @@
     <Content Include="father2.jpg" />
     <Content Include="friends.jpg" />
     <Content Include="friends2.jpg" />
+    <Content Include="images\loading.bmp" />
+    <Content Include="images\loading.PNG" />
     <Content Include="mather.jpg" />
     <Content Include="me.jpg" />
     <Content Include="mother2.jpg" />

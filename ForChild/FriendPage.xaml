@@ -21,200 +21,239 @@
             </Button.Template>
             <Image Height="108" Width="108"/>
         </Button>
-
-        <Grid>
-            <Button x:Name="ino" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,217" Height="108" Width="108">
+            <Grid Margin="0,-10,0,10">
+                <Button x:Name="ino" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ino.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="iagree" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\iagree.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="itowalk" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\itowalk.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="icar" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\icar.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="igrandmother" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\igrandmother.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="idad" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\idad.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ibro" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ibro.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="idinner" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,217" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\idinner.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ifor" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ifor.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ianger" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ianger.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="itosleep" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\itosleep.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ipants" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ipants.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="igrandfather" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\igrandfather.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="isis" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,123" Height="106" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\isis.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="imum" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\imum.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="iwatermallon" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,123" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\iwatermallon.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ipain" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ipain.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="iwant" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\iwant.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ilove" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ilove.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ishirt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ishirt.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ishoes" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ishoes.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="iim" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,30" Height="106" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\iim.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ijuice" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ijuice.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Button x:Name="ibreakfast" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,30" Height="108" Width="108">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="symbols\ibreakfast.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Image Height="108" Width="108"/>
+                </Button>
+                <Image x:Name="forSend21" Tag="" HorizontalAlignment="Left" Height="68" Margin="891,328,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend22" Tag="" HorizontalAlignment="Left" Height="68" Margin="824,328,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend23" Tag="" HorizontalAlignment="Left" Height="65" Margin="758,330,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend24" Tag="" HorizontalAlignment="Left" Height="62" Margin="690,332,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend25" Tag="" HorizontalAlignment="Left" Height="62" Margin="620,332,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend31" Tag="" HorizontalAlignment="Left" Height="68" Margin="891,504,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend32" Tag="" HorizontalAlignment="Left" Height="68" Margin="824,504,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend33" Tag="" HorizontalAlignment="Left" Height="65" Margin="758,506,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend34" Tag="" HorizontalAlignment="Left" Height="62" Margin="690,508,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="forSend35" Tag="" HorizontalAlignment="Left" Height="62" Margin="620,508,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend21" Tag=""  HorizontalAlignment="Left" Height="62" Margin="359,425,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend22" Tag="" HorizontalAlignment="Left" Height="62" Margin="289,425,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend23" Tag="" HorizontalAlignment="Left" Height="62" Margin="219,428,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend24" Tag="" HorizontalAlignment="Left" Height="62" Margin="145,428,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend25" Tag="" HorizontalAlignment="Left" Height="62" Margin="69,428,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend31" Tag=""  HorizontalAlignment="Left" Height="62" Margin="356,561,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend32" Tag="" HorizontalAlignment="Left" Height="62" Margin="286,564,0,0" VerticalAlignment="Top" Width="66" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="afterSend33" Tag="" HorizontalAlignment="Left" Height="62" Margin="213,564,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend34" Tag="" HorizontalAlignment="Left" Height="62" Margin="142,564,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend35" Tag="" HorizontalAlignment="Left" Height="62" Margin="69,564,0,0" VerticalAlignment="Top" Width="66"/>
+            <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="460,0,0,532" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
                 <Button.Template>
                     <ControlTemplate>
-                        <Image Source="symbols\ino.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="iagree" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\iagree.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="itowalk" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\itowalk.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="icar" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\icar.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="igrandmother" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\igrandmother.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="idad" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\idad.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ibro" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ibro.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="idinner" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,217" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\idinner.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ifor" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ifor.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ianger" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ianger.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="itosleep" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\itosleep.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ipants" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ipants.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="igrandfather" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\igrandfather.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="isis" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,123" Height="106" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\isis.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="imum" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\imum.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="iwatermallon" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,123" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\iwatermallon.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ipain" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="60,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ipain.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="iwant" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="175,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\iwant.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ilove" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="290,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ilove.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ishirt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="405,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ishirt.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ishoes" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="520,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ishoes.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="iim" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="635,0,0,30" Height="106" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\iim.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ijuice" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="750,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ijuice.png" />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Height="108" Width="108"/>
-            </Button>
-            <Button x:Name="ibreakfast" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="865,0,0,30" Height="108" Width="108">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="symbols\ibreakfast.png" />
+                        <Image Source="delete.jpg"/>
                     </ControlTemplate>
                 </Button.Template>
                 <Image Height="108" Width="108"/>
             </Button>
         </Grid>
+        <Image x:Name="forSend11" Tag="" HorizontalAlignment="Left" Height="68" Margin="891,134,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="forSend12" Tag="" HorizontalAlignment="Left" Height="68" Margin="824,134,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="forSend13" Tag="" HorizontalAlignment="Left" Height="65" Margin="758,136,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="forSend14" Tag="" HorizontalAlignment="Left" Height="62" Margin="690,138,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="forSend15" Tag="" HorizontalAlignment="Left" Height="62" Margin="620,138,0,0" VerticalAlignment="Top" Width="66"/>
+
+        <Image x:Name="afterSend11" Tag=""  HorizontalAlignment="Left" Height="62" Margin="353,225,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="afterSend12" Tag="" HorizontalAlignment="Left" Height="62" Margin="283,225,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="afterSend13" Tag="" HorizontalAlignment="Left" Height="62" Margin="213,225,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="afterSend14" Tag="" HorizontalAlignment="Left" Height="62" Margin="145,225,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="afterSend15" Tag="" HorizontalAlignment="Left" Height="62" Margin="69,225,0,0" VerticalAlignment="Top" Width="66"/>
+        <Image x:Name="blank" Tag="" HorizontalAlignment="Left" Height="62" Margin="65,186,0,0" VerticalAlignment="Top" Width="66" Visibility="Collapsed"/>
     </Grid>
 </Page>
