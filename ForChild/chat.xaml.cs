@@ -32,12 +32,7 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
-
-        private void TextBlock_SelectionChanged(System.Object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private async void Button_Click(System.Object sender, RoutedEventArgs e) 
         {
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
