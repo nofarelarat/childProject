@@ -142,6 +142,7 @@
   <ItemGroup>
     <Content Include="arrow.png" />
     <Content Include="config.txt" />
+    <Content Include="delete.jpg" />
     <Content Include="father.jpg" />
     <Content Include="father2.jpg" />
     <Content Include="friends.jpg" />
