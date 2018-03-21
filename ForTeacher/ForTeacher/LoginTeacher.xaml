@@ -28,6 +28,7 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
+        
         <TextBox Name ="result" HorizontalAlignment="Left" Margin="253,419,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="images/loginBackground1.png" AlignmentY="Top" AlignmentX="Center"/>
