@@ -179,10 +179,10 @@ namespace ForChild
             return dedicate_msg;
         }
 
-        public static async Task<OutTable[]> GetMsgAsync()
+        public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
-                + who_am_i;
+                + who_am_i +"$"+ contact;
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();

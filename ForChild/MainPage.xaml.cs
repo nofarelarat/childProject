@@ -107,7 +107,7 @@ namespace ForChild
             //db.TestDelete("osnat@gmail.con");
             //db.GetGardenChildren("flowers");
             //Common.UpdateCounterAsync("iagree");
-            Common.GetMsgAsync();
+            Common.GetMsgAsync("osnat@gmail.com");
             //Common.GetUserContactsAsync("rami@gmail.com");
         }
 

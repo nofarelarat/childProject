@@ -280,32 +280,29 @@ namespace ForChild
         }
         private async void GetMessageAsync(OutTable[] message)
         {
-            string contact = "shosh@gmail.com";
+            string contact = "rami@gmail.com";
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
-            //TODO : add to the if 
+                              //TODO : add to the if 
             if (message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
-                    if (message[x].Message_Send.Equals(contact))
+                    numofmsg++;
+                    string msg = message[x].Message;
+                    string[] tmp = msg.Split(' ');
+                    foreach (string source in tmp)
                     {
-                        numofmsg++;
-                        string msg = message[x].Message;
-                        string[] tmp = msg.Split(' ');
-                        foreach (string source in tmp)
-                        {
-                            if (i >= 5)
-                                break;
-                            Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
-                            images[i] = new Image();
-                            images[i].Source = new BitmapImage(requestUri);
-                            i++;
-                        }
-                        GetMessageImg(images);
+                        if (i >= 5)
+                            break;
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                        images[i] = new Image();
+                        images[i].Source = new BitmapImage(requestUri);
+                        i++;
                     }
+                    GetMessageImg(images);
                     if (numofmsg == 3)
                     {
                         return;
@@ -316,7 +313,8 @@ namespace ForChild
 
         private async void GetMsgFromFriend()
         {
-            OutTable[] table = await Common.GetMsgAsync();
+            string contact = "shosh@gmail.com";
+            OutTable[] table = await Common.GetMsgAsync(contact);
             GetMessageAsync(table);
 
         }

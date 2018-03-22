@@ -241,8 +241,6 @@ namespace ForChild
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
-                    if (message[x].Message_Send.Equals(contact))
-                    {
                         numofmsg++;
                         string msg = message[x].Message;
                         string[] tmp = msg.Split(' ');
@@ -256,7 +254,6 @@ namespace ForChild
                             i++;
                         }
                         GetMessageImg(images);
-                    }
                     if (numofmsg == 3)
                     {
                         return;
@@ -298,7 +295,8 @@ namespace ForChild
 
         private async void GetMsgFromMother()
         {
-            OutTable[] table = await Common.GetMsgAsync();
+            string contact = "shosh@gmail.com";
+            OutTable[] table = await Common.GetMsgAsync(contact);
             GetMessageAsync(table);
 
         }

@@ -12,7 +12,7 @@
         <TextBox HorizontalAlignment="Left" Margin="60,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="195" Width="390"/>
         <TextBox HorizontalAlignment="Left" Margin="581,120,0,0" TextWrapping="Wrap" Text="אני רוצה לספר..." VerticalAlignment="Top" Height="195" Width="390" x:Name="sendMsg"/>
         <Image x:Name="mee" HorizontalAlignment="Left" Height="115" Margin="745,0,0,0" VerticalAlignment="Top" Width="159" Source="Me.jpg"/>
-        <Image HorizontalAlignment="Left" Height="115" Margin="245,0,0,0" VerticalAlignment="Top" Width="159" Source="sister2.jpg"/>
+        <Image HorizontalAlignment="Left" Height="115" Margin="245,0,0,0" VerticalAlignment="Top" Width="159" Source="friends2.jpg"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Send_Click" Margin="460,0,0,374" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
             <Button.Template>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -43,9 +44,9 @@ namespace ForChild
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
 
+        public String friendName = "osnat@gmail.com";
         public SisterPage()
         {
-            this.InitializeComponent();
             this.InitializeComponent();
             symbolsForSend1[0] = forSend11;
             symbolsForSend1[1] = forSend12;
@@ -82,19 +83,66 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
+            GetMsgFromFriend();
 
-            GetMsgFromSister();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < symbolsForSend1.Length; i++)
+            {
+                symbolsForSend1[i].Source = null;
+                symbolsForSend2[i].Source = null;
+                symbolsForSend3[i].Source = null;
+                symbolsSentFromOther1[i].Source = null;
+                symbolsSentFromOther2[i].Source = null;
+                symbolsSentFromOther3[i].Source = null;
+            }
+            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+            symbolsForSend_curr1 = 0;
+            symbolsForSend_curr2 = 0;
+            symbolsForSend_curr3 = 0;
+
+            symbolsForSend_full1 = 0;
+            symbolsForSend_full2 = 0;
+            symbolsForSend_full3 = 0;
+
+        }
+        private async void FriendSendClick(object sender, RoutedEventArgs e)
+        {
+
+            // Create final message
+            String final_msg = sendMsg.Text + "$" + Common.who_am_i + "$" + friendName;
+            //Create an HTTP client object
+            HttpClient httpClient = new HttpClient();
+            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg);
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                // errormessage.Text = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+
+                //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+        }
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             int message_num = 0;
             string sentence = "";
+            string contact = "gadi@gmail.com"; //the string is hardcoded but need to change it
             Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
             if (symbolsForSend_full1 != 0)
@@ -141,7 +189,7 @@ namespace ForChild
                 }
             }
             //To do : sent to is hard coded!!
-            Common.sendMsg(sentence, "gadi@gmail.com");
+            Common.sendMsg(sentence, contact);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
@@ -195,6 +243,7 @@ namespace ForChild
                 symbolsForSend_curr3++;
             }
         }
+
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
             if (symbolsSentFromOther_full1 == 0)
@@ -226,35 +275,33 @@ namespace ForChild
                 }
                 symbolsSentFromOther_full3 = 1;
             }
+
         }
-            private void GetMessage(OutTable[] message)
+        private async void GetMessageAsync(OutTable[] message)
         {
-            string contact = "shosh@gmail.com";
+            string contact = "rami@gmail.com";
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
-            //TODO : add to the if 
+                              //TODO : add to the if 
             if (message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
-                    if (message[x].Message_Send.Equals(contact))
+                    numofmsg++;
+                    string msg = message[x].Message;
+                    string[] tmp = msg.Split(' ');
+                    foreach (string source in tmp)
                     {
-                        numofmsg++;
-                        string msg = message[x].Message;
-                        string[] tmp = msg.Split(' ');
-                        foreach (string source in tmp)
-                        {
-                            if (i >= 5)
-                                break;
-                            Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
-                            images[i] = new Image();
-                            images[i].Source = new BitmapImage(requestUri);
-                            i++;
-                        }
-                        GetMessageImg(images);
+                        if (i >= 5)
+                            break;
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                        images[i] = new Image();
+                        images[i].Source = new BitmapImage(requestUri);
+                        i++;
                     }
+                    GetMessageImg(images);
                     if (numofmsg == 3)
                     {
                         return;
@@ -262,32 +309,13 @@ namespace ForChild
                 }
             }
         }
-        private void delete_Click(object sender, RoutedEventArgs e)
+
+        private async void GetMsgFromFriend()
         {
-            for (int i = 0; i < symbolsForSend1.Length; i++)
-            {
-                symbolsForSend1[i].Source = null;
-                symbolsForSend2[i].Source = null;
-                symbolsForSend3[i].Source = null;
-                symbolsSentFromOther1[i].Source = null;
-                symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;
-            }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            string contact = "rami@gmail.com";
+            OutTable[] table = await Common.GetMsgAsync(contact);
+            GetMessageAsync(table);
 
-            symbolsForSend_curr1 = 0;
-            symbolsForSend_curr2 = 0;
-            symbolsForSend_curr3 = 0;
-
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
-
-        }
-        private async void GetMsgFromSister()
-        {
-            OutTable[] table = await Common.GetMsgAsync();
-            GetMessage(table);
         }
     }
 }
