@@ -25,7 +25,6 @@ namespace ForChild
         {
             this.InitializeComponent();
         }
-
         private async void Button_Click_FriendAsync(object sender, RoutedEventArgs e)
         {
             bool isSimilar = false;
@@ -108,7 +107,7 @@ namespace ForChild
             //db.TestDelete("osnat@gmail.con");
             //db.GetGardenChildren("flowers");
             //Common.UpdateCounterAsync("iagree");
-            Common.GetMsgAsync();
+            Common.GetMsgAsync("osnat@gmail.com");
             //Common.GetUserContactsAsync("rami@gmail.com");
         }
 

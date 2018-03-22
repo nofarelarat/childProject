@@ -41,22 +41,25 @@ namespace ForTeacher
                 user[] kids = await ConnectDB.GetGardenChildren("flowers");
                 for (int i = 0; i < kids.Length; i++)
                 {
-                    //Create an HTTP client object
-                    HttpClient httpClient = new HttpClient();
-                    Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
-                    //Send the GET request asynchronously and retrieve the response as a string.
-                    HttpResponseMessage httpResponse = new HttpResponseMessage();
-                    try
+                    if (kids[i].type != "Teacher" && kids[i].type != "Parent")
                     {
-                        //Send the GET request
-                        httpResponse = await httpClient.GetAsync(requestUri);
-                        httpResponse.EnsureSuccessStatusCode();
-                        // errormessage.Text = await response.Content.ReadAsStringAsync();
-                    }
-                    catch (Exception ex)
-                    {
+                        //Create an HTTP client object
+                        HttpClient httpClient = new HttpClient();
+                        Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
+                        //Send the GET request asynchronously and retrieve the response as a string.
+                        HttpResponseMessage httpResponse = new HttpResponseMessage();
+                        try
+                        {
+                            //Send the GET request
+                            httpResponse = await httpClient.GetAsync(requestUri);
+                            httpResponse.EnsureSuccessStatusCode();
+                            // errormessage.Text = await response.Content.ReadAsStringAsync();
+                        }
+                        catch (Exception ex)
+                        {
 
-                        //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                            //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                        }
                     }
                 }
             }

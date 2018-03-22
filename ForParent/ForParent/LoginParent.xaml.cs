@@ -29,6 +29,7 @@ namespace ForParent
 
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
+            result.Text = "loading...";
             string Email = email.Text;
             string Password = password.Text;
             ConnectDB db = new ConnectDB();

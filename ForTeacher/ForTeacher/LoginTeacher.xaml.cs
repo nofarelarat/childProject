@@ -28,6 +28,9 @@ namespace ForTeacher
         }
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
+            // var path = "images/loading.PNG";
+            // var uri = new Uri(path);
+            result.Text = "loading...";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
             if (user == null)
