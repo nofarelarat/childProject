@@ -25,27 +25,38 @@ namespace ForTeacher
         public LoginTeacher()
         {
             this.InitializeComponent();
+            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
-            // var path = "images/loading.PNG";
-            // var uri = new Uri(path);
+            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
             result.Text = "loading...";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
             if (user == null)
             {
+                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 result.Text = "user doesn't exists";
+
             }
             else
             {
                 if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "welcome " + user.firstname + "!";
                     Common.who_am_i = email.Text;
                 }
+                else if(!user.type.Equals("Teacher"))
+                {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    result.Text = "Type is nt a teacher";
+
+                }
                 else
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "incorrect password";
         
                 }

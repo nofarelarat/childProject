@@ -20,6 +20,7 @@ namespace ForChild
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
             string[] lines = System.IO.File.ReadAllLines(@"config.txt");
             result.Text = "loading...";
             ConnectDB db = new ConnectDB();

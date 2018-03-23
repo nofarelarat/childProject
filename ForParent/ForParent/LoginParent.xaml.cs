@@ -25,10 +25,13 @@ namespace ForParent
         public LoginParent()
         {
             this.InitializeComponent();
+            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
 
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
+            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
             result.Text = "loading...";
             string Email = email.Text;
             string Password = password.Text;
@@ -36,6 +39,7 @@ namespace ForParent
             user user = await db.GetUserByMailAsync(Email);
             if (user == null)
             {
+                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 result.Text = "user doesn't exists";
             }
             else
@@ -63,15 +67,18 @@ namespace ForParent
                             + "+" + Password + "+" + child);
                         //await Windows.Storage.FileIO.WriteTextAsync(userFile, Password);
                         //await Windows.Storage.FileIO.WriteTextAsync(userFile, child);
+                        loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
                     }
                 }
                 else if(!user.type.Equals("Parent"))
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "The type is not Parent";
                 }
                 else
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "incorrect password";
                 }
             }
