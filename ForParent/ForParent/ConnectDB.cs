@@ -110,9 +110,9 @@ namespace ForParent
 
         public async Task<string> GetParentContactAsync(string email)
         {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?email=" + email
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?Parentemail=" + email
                 + "&isParent=true";
-            //string completeUri = "http://localhost:49876/api/contacts?email=" + email
+            //string completeUri = "http://localhost:49876/api/contacts?Parentemail=" + email
             //+"&isParent=true";
             Uri requestUri = new Uri(completeUri);
 

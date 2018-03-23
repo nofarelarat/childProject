@@ -43,27 +43,25 @@ namespace ForParent
                 if (user.password.Equals(Password) && user.type.Equals("Parent"))
                 {
                     Common.who_am_i = Email;
-
-                    //write email & pass to local file
-                    //write contact to local file
-                    //add a message for get contact you need to login
-                    //add check if string child is not email do something
-                    string child = await Common.GetParentContactAsync();
-
-                    //make the add child contacts page in the parent app
+                    Common.isConectet = true;
+                    string childResult = await Common.GetParentContactAsync();
+                    
                     // Create sample file; replace if exists.
-                    if(child.IndexOf('@')> 0)
+                    if(childResult.IndexOf('@')> 0)
                     {
+                        Common.myChild = childResult;
                         Windows.Storage.StorageFolder storageFolder =
                         Windows.Storage.ApplicationData.Current.LocalFolder;
                         Windows.Storage.StorageFile userFile =
-                            await storageFolder.CreateFileAsync("user.txt",
+                            await storageFolder.CreateFileAsync("userParent.txt",
                                 Windows.Storage.CreationCollisionOption.ReplaceExisting);
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, Email
-                            + "+" + Password + "+" + child);
-                        //await Windows.Storage.FileIO.WriteTextAsync(userFile, Password);
-                        //await Windows.Storage.FileIO.WriteTextAsync(userFile, child);
+                            + "+" + Password + "+" + childResult);
                         result.Text = "welcome " + user.firstname + "!";
+                    }
+                    else
+                    {
+                        result.Text = childResult;
                     }
                 }
                 else if(!user.type.Equals("Parent"))
