@@ -36,7 +36,7 @@ namespace ForChild
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
-                    await Common.GetUserContactsAsync();
+                    Common.GetUserContactsAsync();
 
                     // Create sample file; replace if exists.
                     Windows.Storage.StorageFolder storageFolder =
