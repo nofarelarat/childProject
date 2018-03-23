@@ -129,15 +129,19 @@
   <ItemGroup>
     <Content Include="children.png" />
     <Content Include="father.jpg" />
+    <Content Include="Images\arrow.png" />
     <Content Include="Images\back.PNG" />
     <Content Include="Images\background.png" />
     <Content Include="Images\chat.PNG" />
     <Content Include="Images\chatBackground.PNG" />
+    <Content Include="Images\child.png" />
     <Content Include="Images\loading.bmp" />
     <Content Include="Images\login.PNG" />
     <Content Include="Images\loginBackground.PNG" />
     <Content Include="Images\loginBackground1.PNG" />
     <Content Include="Images\parents.png" />
+    <Content Include="Images\parents.wmf" />
+    <Content Include="Images\parents_blue.png" />
     <Content Include="Images\registation.PNG" />
     <Content Include="Images\register.PNG" />
     <Content Include="Images\registerBackground.PNG" />
