@@ -34,12 +34,24 @@ namespace ForChild
             {
                 if (user.password.Equals(password.Text) && user.type.Equals("Child"))
                 {
+                    Common.who_am_i = email.Text;
+                    Common.isConectet = true;
+                    await Common.GetUserContactsAsync();
+
+                    // Create sample file; replace if exists.
+                    Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile userFile =
+                        await storageFolder.CreateFileAsync("userChild.txt",
+                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                    await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
+                        Common.who_am_i + "+password:" + password.Text
+                        + "+father:" + Common.myFather + "+mother:" + Common.myMother
+                        + "+sister:" + Common.mySister + "+friend:" + Common.myFriend);
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    result.Text ="welcome "+ user.firstname+ "!";
-                     Common.who_am_i = user.email;
-                    Common.GetUserContactsAsync();
+                    result.Text = "welcome " + user.firstname + "!";
                 }
-                else if(!user.type.Equals("Child"))
+                else if (!user.type.Equals("Child"))
                 {
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "The type is not child";
@@ -49,9 +61,9 @@ namespace ForChild
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "incorrect password";
                 }
+                
             }
         }
-
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             Frame toHome = Window.Current.Content as Frame;

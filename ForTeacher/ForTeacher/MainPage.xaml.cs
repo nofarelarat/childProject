@@ -25,6 +25,10 @@ namespace ForTeacher
         public MainPage()
         {
             this.InitializeComponent();
+            if (Common.isConectet == false)
+            {
+                CheckUserExistAsync();
+            }
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -63,6 +67,15 @@ namespace ForTeacher
             { 
                 Frame toSendBrodcast = Window.Current.Content as Frame;
                 toSendBrodcast.Navigate(typeof(SendBrodcast));
+            }
+        }
+        private async void CheckUserExistAsync()
+        {
+            bool success = await Common.GetUserFromFileAsync();
+            if (success == false)
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
             }
         }
     }

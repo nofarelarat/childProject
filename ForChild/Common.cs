@@ -21,6 +21,7 @@ namespace ForChild
         public static string myMother = "";
         public static string myFriend = "";
         public static string mySister = "";
+        public static bool isConectet = false;
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string addressee)
@@ -104,7 +105,8 @@ namespace ForChild
             }
             return res;
         }
-        public static async void GetUserContactsAsync()
+
+        public static async Task GetUserContactsAsync()
         {
             string email = who_am_i;
             ConnectDB db = new ConnectDB();
@@ -226,6 +228,56 @@ namespace ForChild
             return false;
                 
         }
+        public static async Task<bool> GetUserFromFileAsync()
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync("userChild.txt");
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+                if (text.Equals(""))
+                {
+                    return false;
+                }
+                else
+                {
+                    string[] fileResult = text.Split('+');
+                    foreach (string per in fileResult)
+                    {
+                        string[] per_arr = per.Split(':');
+                        switch (per_arr[0])
+                        {
+                            case "email":
+                                who_am_i = per_arr[1];
+                                break;
+                            case "father":
+                                myFather = per_arr[1];
+                                break;
+                            case "mother":
+                                myMother = per_arr[1];
+                                break;
+                            case "sister":
+                                mySister = per_arr[1];
+                                break;
+                            case "friend":
+                                myFriend = per_arr[1];
+                                break;
+                        }
+                    }
+
+                    isConectet = true;
+                    return true;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
 

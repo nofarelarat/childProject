@@ -36,7 +36,10 @@ namespace ForParent
                 {
                     string[] fileResult = text.Split('+');
                     who_am_i = fileResult[0];
-                    myChild = fileResult[2];
+                    if (fileResult.Length >= 3)
+                    {
+                        myChild = fileResult[2];
+                    }
                     isConectet = true;
                     return true;
                 }
