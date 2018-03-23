@@ -41,14 +41,19 @@ namespace ForParent
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
             }
+            else if (Common.myChild =="")
+            {
+                Frame toChat = Window.Current.Content as Frame;
+                toChat.Navigate(typeof(Chat));
+            }
             else
             {
                 //if there is no chat email in the local xml
                 //file goto add child
                 //else check in db the child has the parent
                 //in his contact list and then open chat with the child
-                Frame toAdd = Window.Current.Content as Frame;
-                toAdd.Navigate(typeof(AddChild));
+                Frame toChat = Window.Current.Content as Frame;
+                toChat.Navigate(typeof(Chat));
             }
         }
 

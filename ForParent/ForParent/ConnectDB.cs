@@ -128,8 +128,8 @@ namespace ForParent
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                userContacts userContacts = JsonConvert.DeserializeObject<userContacts>(httpResponseBody);
-                return userContacts.email;
+                string childEmail = JsonConvert.DeserializeObject<string>(httpResponseBody);
+                return childEmail;
             }
 
             catch (Exception ex)
