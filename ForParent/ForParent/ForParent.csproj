@@ -101,6 +101,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="ConnectDB.cs" />
     <Compile Include="LoginParent.xaml.cs">
@@ -109,6 +112,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OutTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
@@ -129,6 +133,7 @@
     <Content Include="Images\background.png" />
     <Content Include="Images\chat.PNG" />
     <Content Include="Images\chatBackground.PNG" />
+    <Content Include="Images\loading.bmp" />
     <Content Include="Images\login.PNG" />
     <Content Include="Images\loginBackground.PNG" />
     <Content Include="Images\loginBackground1.PNG" />
@@ -146,6 +151,38 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="symbols\iagree.png" />
+    <Content Include="symbols\ianger.png" />
+    <Content Include="symbols\ibreakfast.png" />
+    <Content Include="symbols\ibro.png" />
+    <Content Include="symbols\icar.png" />
+    <Content Include="symbols\idad.png" />
+    <Content Include="symbols\idinner.png" />
+    <Content Include="symbols\ifor.png" />
+    <Content Include="symbols\igrandfather.png" />
+    <Content Include="symbols\igrandmother.png" />
+    <Content Include="symbols\ihamanear.png" />
+    <Content Include="symbols\iim.png" />
+    <Content Include="symbols\ijuice.png" />
+    <Content Include="symbols\ilove.png" />
+    <Content Include="symbols\ilunch.png" />
+    <Content Include="symbols\imum.png" />
+    <Content Include="symbols\ino.png" />
+    <Content Include="symbols\ior.png" />
+    <Content Include="symbols\ipain.png" />
+    <Content Include="symbols\ipants.png" />
+    <Content Include="symbols\ishirt.png" />
+    <Content Include="symbols\ishoes.png" />
+    <Content Include="symbols\isis.png" />
+    <Content Include="symbols\itolaugh.png" />
+    <Content Include="symbols\itosit.png" />
+    <Content Include="symbols\itosleep.png" />
+    <Content Include="symbols\itowalk.png" />
+    <Content Include="symbols\itowear.png" />
+    <Content Include="symbols\iwant.png" />
+    <Content Include="symbols\iwater.png" />
+    <Content Include="symbols\iwatermallon.png" />
+    <Content Include="symbols\iyes.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -157,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Analysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +220,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="WindowsAzure.Storage">
+      <Version>9.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

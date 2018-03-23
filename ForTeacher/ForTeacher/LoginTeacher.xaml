@@ -28,7 +28,15 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        
+        <Button x:Name="loading" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="277,0,0,214" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/images/loading.bmp" Margin="87,90,-87,-90" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="108" Width="108"/>
+        </Button>
+
         <TextBox Name ="result" HorizontalAlignment="Left" Margin="253,419,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="236"/>
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="images/loginBackground1.png" AlignmentY="Top" AlignmentX="Center"/>
