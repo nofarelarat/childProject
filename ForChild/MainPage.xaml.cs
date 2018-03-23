@@ -24,6 +24,11 @@ namespace ForChild
         public MainPage()
         {
             this.InitializeComponent();
+            if (Common.isConectet == false)
+            {
+                CheckUserExistAsync();
+            }
+
         }
         private async void Button_Click_FriendAsync(object sender, RoutedEventArgs e)
         {
@@ -124,7 +129,15 @@ namespace ForChild
                 toAddUsersForChat.Navigate(typeof(AddUsersForChat));
             }
         }
-      
+        private async void CheckUserExistAsync()
+        {
+            bool success = await Common.GetUserFromFileAsync();
+            if (success == false)
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(loginChild));
+            }
+        }
 
     }
 }

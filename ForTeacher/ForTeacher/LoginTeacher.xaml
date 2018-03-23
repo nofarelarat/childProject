@@ -11,7 +11,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="546,313,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBlock HorizontalAlignment="Left" Margin="538,363,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
         <TextBox x:Name="email" HorizontalAlignment="Left" Margin="100,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393" Height="40"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="103,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="103,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="389" Height="35"/>
         <Button Height="77" Width="167" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="5,173,0,0">
             <Button.Template>
                 <ControlTemplate>
