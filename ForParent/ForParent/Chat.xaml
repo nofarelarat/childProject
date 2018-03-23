@@ -11,7 +11,7 @@
         <Border Background="GhostWhite" Margin="33,125,875,346"/>
         <Border Background="GhostWhite" Margin="595,127,317,346"/>
         <Button Content="חזור" HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Click="Button_Click_back" Width="174"/>
-        <Image x:Name="me" HorizontalAlignment="Left" Height="121" Margin="798,8,0,0" VerticalAlignment="Top" Width="284" Source="Images/parents_blue.png"/>
+        <Image x:Name="me" HorizontalAlignment="Left" Height="121" Margin="798,4,0,0" VerticalAlignment="Top" Width="284" Source="Images/parents_blue.png"/>
         <Image HorizontalAlignment="Left" Height="114" Margin="195,11,0,0" VerticalAlignment="Top" Width="393" Source="Images/child.png"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Send_Click" Margin="460,0,0,400" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">

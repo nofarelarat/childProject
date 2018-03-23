@@ -122,25 +122,6 @@ namespace ForParent
             }
             return null;
         }
-        public static async void UpdateCounterAsync(string symbolName)
-        {
-            ConnectDB db = new ConnectDB();
-            
-            if (!(who_am_i.Equals("") || symbolName.Equals("")))
-            {
-                symbol symbol = new symbol
-                {
-                    email = who_am_i,
-                    symbolName = symbolName,
-                    date = DateTime.Today
-                };
-                await db.UpdateUserCounterAsync(symbol);
-            }
-            else
-            {
-                //user or symbol is empty
-            }
-        }
 
         public static async void sendMsg(string message, string addressee)
         {
