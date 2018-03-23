@@ -110,9 +110,9 @@ namespace ForParent
 
         public async Task<string> GetParentContactAsync(string email)
         {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?email=" + email
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?Parentemail=" + email
                 + "&isParent=true";
-            //string completeUri = "http://localhost:49876/api/contacts?email=" + email
+            //string completeUri = "http://localhost:49876/api/contacts?Parentemail=" + email
             //+"&isParent=true";
             Uri requestUri = new Uri(completeUri);
 
@@ -128,8 +128,8 @@ namespace ForParent
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                userContacts userContacts = JsonConvert.DeserializeObject<userContacts>(httpResponseBody);
-                return userContacts.email;
+                string childEmail = JsonConvert.DeserializeObject<string>(httpResponseBody);
+                return childEmail;
             }
 
             catch (Exception ex)

@@ -27,7 +27,11 @@ namespace ForParent
             this.InitializeComponent();
             //start this function in srart world
             //if not working go to login page
-            Common.GetUserFromFileAsync();
+
+            if(Common.isConectet == false)
+            {
+                CheckUserExistAsync();
+            }
         }
 
         private void forChat_Click(object sender, RoutedEventArgs e)
@@ -50,6 +54,16 @@ namespace ForParent
                 //in his contact list and then open chat with the child
                 Frame toChat = Window.Current.Content as Frame;
                 toChat.Navigate(typeof(Chat));
+            }
+        }
+
+        private async void CheckUserExistAsync()
+        {
+            bool success = await Common.GetUserFromFileAsync();
+            if(success == false)
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
             }
         }
 
