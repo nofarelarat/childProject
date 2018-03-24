@@ -54,15 +54,24 @@ namespace ForParent
                     if(childResult.IndexOf('@')> 0)
                     {
                         Common.myChild = childResult;
-                        Windows.Storage.StorageFolder storageFolder =
-                        Windows.Storage.ApplicationData.Current.LocalFolder;
-                        Windows.Storage.StorageFile userFile =
-                            await storageFolder.CreateFileAsync("userParent.txt",
-                                Windows.Storage.CreationCollisionOption.ReplaceExisting);
-                        await Windows.Storage.FileIO.WriteTextAsync(userFile, Email
-                            + "+" + Password + "+" + childResult);
+                        try
+                        {
+                            Windows.Storage.StorageFolder storageFolder =
+                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                            Windows.Storage.StorageFile userFile =
+                                await storageFolder.CreateFileAsync("userParent.txt",
+                                    Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                            await Windows.Storage.FileIO.WriteTextAsync(userFile, Email
+                                + "+" + Password + "+" + childResult);
+                        }
+                        catch
+                        {
+                            //cant access file
+                        }
                         loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
+                        Frame toMainPage = Window.Current.Content as Frame;
+                        toMainPage.Navigate(typeof(MainPage));
                     }
                     else
                     {

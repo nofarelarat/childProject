@@ -28,7 +28,7 @@
         <Button x:Name="for_login" Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="sign_in" Source="/Images/sign-in.png"  />
+                    <Image Source="/Images/sign-in.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
@@ -38,7 +38,6 @@
                     <Image Source="/Images/sign-up.png" />
                 </ControlTemplate>
             </Button.Template>
-
         </Button>
         <Image Source="/Images/logo3.png" HorizontalAlignment="Left" Height="295" Margin="58,-39,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>

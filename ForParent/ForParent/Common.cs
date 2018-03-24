@@ -25,10 +25,18 @@ namespace ForParent
             {
                 Windows.Storage.StorageFolder storageFolder =
                 Windows.Storage.ApplicationData.Current.LocalFolder;
+                if(storageFolder == null)
+                {
+                    return false;
+                }
                 Windows.Storage.StorageFile userFile =
                     await storageFolder.GetFileAsync("userParent.txt");
+                if (userFile == null)
+                {
+                    return false;
+                }
                 string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
-                if (text.Equals(""))
+                if (String.IsNullOrEmpty(text) ||String.IsNullOrWhiteSpace(text) || text.Equals(""))
                 {
                     return false;
                 }
@@ -59,17 +67,17 @@ namespace ForParent
                         Windows.Storage.ApplicationData.Current.LocalFolder;
                 Windows.Storage.StorageFile userFile =
                     await storageFolder.CreateFileAsync("userParent.txt",
-                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
-                
-                who_am_i = "";
-                myChild = "";
-                return true;
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);    
             }
-
+            
             catch
             {
                 return false;
             }
+
+            who_am_i = "";
+            myChild = "";
+            return true;
         }
 
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)

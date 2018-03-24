@@ -234,10 +234,18 @@ namespace ForChild
             {
                 Windows.Storage.StorageFolder storageFolder =
                 Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
                 Windows.Storage.StorageFile userFile =
                     await storageFolder.GetFileAsync("userChild.txt");
+                if (userFile == null)
+                {
+                    return false;
+                }
                 string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
-                if (text.Equals(""))
+                if (String.IsNullOrEmpty(text) || String.IsNullOrWhiteSpace(text) || text.Equals(""))
                 {
                     return false;
                 }

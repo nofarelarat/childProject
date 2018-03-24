@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -66,6 +67,19 @@ namespace ForParent
             {
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
+            }
+            else
+            {
+                //for sign out
+
+                //Uri requestUri = new Uri(base.BaseUri, "/Images/sign-out.png");
+
+                //Image _img = for_login.Template("image1", for_login) as Image;
+               
+                //Style _imgStyle = new Style { TargetType = typeof(Image) };
+                //_imgStyle.Setters.Add(new Setter(Image.SourceProperty, new BitmapImage(new Uri(@"pack://application:,,,/YourAssemblyName;component//Images/ContentImage1.png"))));
+                //_img.Style = _imgStyle;
+                
             }
         }
 
