@@ -44,9 +44,18 @@ namespace ForTeacher
             {
                 if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    result.Text = "welcome " + user.firstname + "!";
                     Common.who_am_i = email.Text;
+                    Common.isConectet = true;
+                        Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                        Windows.Storage.StorageFile userFile =
+                            await storageFolder.CreateFileAsync("userTeacher.txt",
+                                Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                        await Windows.Storage.FileIO.WriteTextAsync(userFile, email.Text
+                            + "+" + password.Text);
+                        loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                        result.Text = "welcome " + user.firstname + "!";
+                    
                 }
                 else if(!user.type.Equals("Teacher"))
                 {
@@ -68,9 +77,6 @@ namespace ForTeacher
             toHome.Navigate(typeof(MainPage));
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
