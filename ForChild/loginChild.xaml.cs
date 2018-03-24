@@ -20,8 +20,6 @@ namespace ForChild
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            string[] lines = System.IO.File.ReadAllLines(@"config.txt");
             result.Text = "loading...";
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
@@ -36,8 +34,8 @@ namespace ForChild
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
-                    Common.GetUserContactsAsync();
-
+                    await Common.GetUserContactsAsync();
+                    
                     // Create sample file; replace if exists.
                     Windows.Storage.StorageFolder storageFolder =
                     Windows.Storage.ApplicationData.Current.LocalFolder;

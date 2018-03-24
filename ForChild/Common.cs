@@ -106,7 +106,7 @@ namespace ForChild
             return res;
         }
 
-        public static async void GetUserContactsAsync()
+        public static async Task GetUserContactsAsync()
         {
             string email = who_am_i;
             ConnectDB db = new ConnectDB();

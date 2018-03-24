@@ -50,7 +50,28 @@ namespace ForParent
                 return false;
             }
         }
-       
+
+        public static async Task<bool> DeleteFileAsync()
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync("userParent.txt",
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                
+                who_am_i = "";
+                myChild = "";
+                return true;
+            }
+
+            catch
+            {
+                return false;
+            }
+        }
+
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             //string email = who_am_i;
