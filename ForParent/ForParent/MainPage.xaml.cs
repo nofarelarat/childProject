@@ -70,15 +70,6 @@ namespace ForParent
             }
             else
             {
-                //for sign out
-
-                //Uri requestUri = new Uri(base.BaseUri, "/Images/sign-out.png");
-
-                //Image _img = for_login.Template("image1", for_login) as Image;
-               
-                //Style _imgStyle = new Style { TargetType = typeof(Image) };
-                //_imgStyle.Setters.Add(new Setter(Image.SourceProperty, new BitmapImage(new Uri(@"pack://application:,,,/YourAssemblyName;component//Images/ContentImage1.png"))));
-                //_img.Style = _imgStyle;
                 
             }
         }
