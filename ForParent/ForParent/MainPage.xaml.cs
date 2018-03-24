@@ -40,6 +40,8 @@ namespace ForParent
             {
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
+                
+
             }
             else if (Common.myChild =="")
             {
@@ -91,6 +93,18 @@ namespace ForParent
                 Frame toAnalysis = Window.Current.Content as Frame;
                 toAnalysis.Navigate(typeof(Analysis));
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame todesign = Window.Current.Content as Frame;
+            todesign.Navigate(typeof(design));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame todesign = Window.Current.Content as Frame;
+            todesign.Navigate(typeof(design));
         }
     }
 }

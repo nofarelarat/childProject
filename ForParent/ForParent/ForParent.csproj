@@ -106,6 +106,9 @@
     </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="ConnectDB.cs" />
+    <Compile Include="design.xaml.cs">
+      <DependentUpon>design.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginParent.xaml.cs">
       <DependentUpon>LoginParent.xaml</DependentUpon>
     </Compile>
@@ -129,24 +132,43 @@
   <ItemGroup>
     <Content Include="children.png" />
     <Content Include="father.jpg" />
-    <Content Include="Images\arrow.png" />
     <Content Include="Images\back.PNG" />
-    <Content Include="Images\background.png" />
+    <Content Include="Images\background.jpg" />
+    <Content Include="Images\birth_year.png" />
+    <Content Include="Images\charts.png" />
     <Content Include="Images\chat.PNG" />
+    <Content Include="Images\chat1.png" />
     <Content Include="Images\chatBackground.PNG" />
-    <Content Include="Images\child.png" />
+    <Content Include="Images\email.png" />
+    <Content Include="Images\first_name.png" />
+    <Content Include="Images\havent_signed.png" />
+    <Content Include="Images\kindergarten_name.png" />
+    <Content Include="Images\kindergarten_name1.png" />
+    <Content Include="Images\last_name.png" />
     <Content Include="Images\loading.bmp" />
+    <Content Include="Images\loding.gif" />
     <Content Include="Images\login.PNG" />
     <Content Include="Images\loginBackground.PNG" />
     <Content Include="Images\loginBackground1.PNG" />
+    <Content Include="Images\login_button.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo2.png" />
+    <Content Include="Images\note.png" />
     <Content Include="Images\parents.png" />
-    <Content Include="Images\parents.wmf" />
-    <Content Include="Images\parents_blue.png" />
+    <Content Include="Images\password.png" />
     <Content Include="Images\registation.PNG" />
     <Content Include="Images\register.PNG" />
     <Content Include="Images\registerBackground.PNG" />
+    <Content Include="Images\sign-in-headline.png" />
+    <Content Include="Images\sign-in.png" />
+    <Content Include="Images\sign-up-hedline.png" />
+    <Content Include="Images\sign-up-temp.png" />
+    <Content Include="Images\sign-up.png" />
+    <Content Include="Images\signing_for.png" />
     <Content Include="Images\signup.PNG" />
     <Content Include="Images\signup1.PNG" />
+    <Content Include="Images\sign_up_button.png" />
+    <Content Include="Images\symbols_use.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -155,6 +177,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Sketch0012.jpg" />
     <Content Include="symbols\iagree.png" />
     <Content Include="symbols\ianger.png" />
     <Content Include="symbols\ibreakfast.png" />
@@ -202,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="design.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

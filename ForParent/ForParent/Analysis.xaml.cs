@@ -78,7 +78,7 @@ namespace ForParent
         public async Task<string> create_graphAsync(string combox)
         {
             symbol userSymbol = new symbol();
-            userSymbol.email = Common.who_am_i;
+            userSymbol.email = Common.myChild;
             userSymbol.symbolName = combox;
             symbol[] userSymbolUsage = await Common.GetUserCounterAsync(combox.ToString());
             string graph_values = "";

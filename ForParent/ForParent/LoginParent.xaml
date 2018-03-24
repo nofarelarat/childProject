@@ -8,16 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Margin="1,-50,-1,50">
-        <TextBlock HorizontalAlignment="Left" Margin="281,167,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBlock HorizontalAlignment="Left" Margin="274,211,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="24,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="25,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239"/>
-        <Button Content="עוד לא נרשמת?" HorizontalAlignment="Left" Margin="60,263,0,0" VerticalAlignment="Top" Click="Register"/>
-        <TextBox Name ="result" HorizontalAlignment="Left" Margin="128,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Button Height="72" Width="117" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="202,73,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="382*"/>
+            <RowDefinition Height="259*"/>
+        </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Click="Register" Width="268" Height="122">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="Images/signup1.PNG" Margin="-6,182,42.333,-157" />
+                    <Image Source="Images/havent_signed.PNG" Margin="-71,135,-94,-196" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Height="72" Width="117"  Background="Black" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="202,73,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Images/login_button.PNG" Margin="-37,158,-43,-175" />
                 </ControlTemplate>
             </Button.Template>
             <Image Height="100" Width="100"/>
@@ -30,16 +35,16 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button x:Name="loading" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="460,0,0,400" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="/images/loading.bmp" Margin="87,90,-87,-90" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="108" Width="108"/>
-        </Button>
+        <Image Source="/Images/sign-in-headline.png" HorizontalAlignment="Left" Height="219" Margin="82,-27,-162,0" VerticalAlignment="Top" Width="440"/>
+        <Image Source="/Images/email.png" HorizontalAlignment="Left" Height="126" Margin="11,115,0,0" VerticalAlignment="Top" Width="267"/>
+
+        <Image Source="/Images/password.png" HorizontalAlignment="Left" Height="155" Margin="-21,141,0,0" VerticalAlignment="Top" Width="267"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="31" Margin="99,200,0,0" VerticalAlignment="Top" Width="239"/>
+        <TextBlock  Name ="result" HorizontalAlignment="Left" Height="69" Margin="116,70.667,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="175"/>
+        <Image x:Name="loading" Source="Images/loding.gif" HorizontalAlignment="Left" Height="62" Margin="132,79.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Height="3" Margin="98,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239"/>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Images/loginBackground1.png" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
     </Grid>
 </Page>

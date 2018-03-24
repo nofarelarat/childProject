@@ -8,32 +8,31 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="282,124,0,0" TextWrapping="Wrap" Text="שם " VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567"/>
-        <TextBlock HorizontalAlignment="Left" Margin="227,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Height="17" Width="89">
-            <Run Text="שם משפחה"/>
-            <Run Text=" "/>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="265,293,0,0" TextWrapping="Wrap" Text="אימייל" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="firstname" HorizontalAlignment="Left" Margin="29,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" Height="28"/>
-        <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="30,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
-        <TextBox x:Name="gardenname" HorizontalAlignment="Left" Margin="30,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBlock HorizontalAlignment="Left" Margin="262,335,0,0" TextWrapping="Wrap" Text="סיסמא" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="childyear" HorizontalAlignment="Left" Margin="30,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
-        <Button Height="72" Width="117" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="RegisterAsync" Margin="117,0,0,306">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="339*"/>
+            <RowDefinition Height="302*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Images/sign-up-hedline.png" HorizontalAlignment="Left" Height="219" Margin="82,-27,-162,0" VerticalAlignment="Top" Width="440"/>
+
+
+        <TextBox x:Name="firstname" HorizontalAlignment="Left" Margin="156,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="28"/>
+        <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="155,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="gardenname" HorizontalAlignment="Left" Margin="155,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="childyear" HorizontalAlignment="Left" Margin="155,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="155,317,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172" Grid.RowSpan="2"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="155,22.667,0,0" VerticalAlignment="Top" Width="172" Grid.Row="1"/>
+
+        <Button Height="72" Width="117" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="RegisterAsync" Margin="108,0,0,294" Grid.RowSpan="2">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="Images/register.PNG" Margin="-6,182,42.333,-157" />
+                    <Image Source="Images/sign_up_button.PNG" Margin="81,106,-151,-151" />
                 </ControlTemplate>
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="258,209,0,0" TextWrapping="Wrap" Text="שם הגן" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="53"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Margin="29,287,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="29,328,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172"/>
-        <TextBlock HorizontalAlignment="Left" Margin="210,254,0,0" TextWrapping="Wrap" Text="שנת לידת הילד" VerticalAlignment="Top" RenderTransformOrigin="2.121,0.567" Width="98"/>
-        <CheckBox Name="Ischild" Content="האם אתה הילד?" HorizontalAlignment="Left" Margin="158,366.5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <CheckBox Name="Ischild"  HorizontalAlignment="Left" Margin="89.019,83.308,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.Row="1" Width="68.77" Height="29.696">
             <CheckBox.RenderTransform>
-                <CompositeTransform Rotation="0.726"/>
+                <CompositeTransform Rotation="0.726" ScaleX="-1"/>
             </CheckBox.RenderTransform>
         </CheckBox>
         <Button Height="72" Width="117" HorizontalAlignment="Left" VerticalAlignment="top" Click="Button_Click_back" Margin="14,-176,0,0">
@@ -44,10 +43,19 @@
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <TextBox HorizontalAlignment="Left" Margin="39,505,0,0" TextWrapping="Wrap" Text="יש להרשם בנפרד עבורך ועבור ילדך. בעת הרשמת ילדך יש לסמן כי מדובר בהרשמה עבורו בשדה מתאים." VerticalAlignment="Top" Height="87" Width="254"/>
-        <TextBox x:Name="result" HorizontalAlignment="Left" Margin="131,456,0,0" TextWrapping="Wrap" Text="result" VerticalAlignment="Top"/>
+        <Image Source="Images/first_name.png" HorizontalAlignment="Left" Height="151" Margin="-2,86,0,0" VerticalAlignment="Top" Width="244"/>
+        <Image Source="Images/last_name.png" HorizontalAlignment="Left" Height="151" Margin="-2,131,0,0" VerticalAlignment="Top" Width="244"/>
+        <Image Source="Images/kindergarten_name1.png" HorizontalAlignment="Left" Height="200" Margin="-16,149,0,0" VerticalAlignment="Top" Width="316" Grid.RowSpan="2"/>
+        <Image Source="Images/birth_year.png" HorizontalAlignment="Left" Height="154" Margin="-1,216,0,0" VerticalAlignment="Top" Width="339" Grid.RowSpan="2"/>
+        <Image Source="Images/email.png" HorizontalAlignment="Left" Height="117" Margin="29,274,0,0" VerticalAlignment="Top" Width="282" Grid.RowSpan="2"/>
+        <Image Source="Images/password.png" HorizontalAlignment="Left" Height="137" Margin="16,305,0,0" VerticalAlignment="Top" Width="278" Grid.RowSpan="2"/>
+        <Image Source="Images/signing_for.png" HorizontalAlignment="Left" Height="192" Margin="12,4.667,0,0" VerticalAlignment="Top" Width="208" Grid.Row="1"/>
+        <TextBlock x:Name="result" HorizontalAlignment="Left" Height="54" Margin="105,162.667,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119"/>
+        <Image x:Name="loading" Source="Images/loding.gif" HorizontalAlignment="Left" Height="62" Margin="132,124.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110"/>
+        <Image Source="Images/note.png" HorizontalAlignment="Left" Height="225" Margin="59,137.667,-140,-61" Grid.Row="1" VerticalAlignment="Top" Width="441"/>
+
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Images/registerBackground.png" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
     </Grid>
 </Page>
