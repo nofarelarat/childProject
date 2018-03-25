@@ -27,11 +27,11 @@ namespace ForParent
             this.InitializeComponent();
             //start this function in srart world
             //if not working go to login page
-
-            if(Common.isConectet == false)
+            if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
             }
+
         }
 
         private void forChat_Click(object sender, RoutedEventArgs e)
@@ -40,6 +40,8 @@ namespace ForParent
             {
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
+                
+
             }
             else if (Common.myChild =="")
             {
@@ -76,7 +78,8 @@ namespace ForParent
         private void forLogin_Click(object sender, RoutedEventArgs e)
         {
             Frame toLogin = Window.Current.Content as Frame;
-            toLogin.Navigate(typeof(LoginParent));
+            toLogin.Navigate(typeof(LoginParent));           
+            
         }
 
         private void forAnalysis_Click(object sender, RoutedEventArgs e)
@@ -92,5 +95,6 @@ namespace ForParent
                 toAnalysis.Navigate(typeof(Analysis));
             }
         }
+
     }
 }

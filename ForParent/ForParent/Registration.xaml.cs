@@ -11,19 +11,24 @@ namespace ForParent
         public Registration()
         {
             this.InitializeComponent();
+            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
 
         private async void RegisterAsync(object sender, RoutedEventArgs e)
         {
             //get data from textbox
-            
+            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            result.Text = "";
+
+
             string Email = email.Text;
             string firstName = firstname.Text;
             string lastName = lastname.Text;
             string childYear = childyear.Text;
             bool childCheckBox = (bool)Ischild.IsChecked;
             string gardenName = gardenname.Text;
-            string Password = password.Text;
+            string Password = password.Password.ToString();
             string type = "Parent";
             string msg = "";
             
@@ -32,6 +37,7 @@ namespace ForParent
                 childYear, gardenName, Password);
             if (!msg.Equals("success"))
             {
+                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 result.Text = "faild: " + msg;
             }
             else
@@ -56,12 +62,14 @@ namespace ForParent
 
                 if (isPass == false)
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     msg = "Can't connect database";
                     result.Text = "faild: " + msg;
                 }
 
                 if (isPass == true)
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "success";
                 }
             }

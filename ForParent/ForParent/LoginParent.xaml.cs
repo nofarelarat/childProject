@@ -32,9 +32,9 @@ namespace ForParent
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            result.Text = "loading...";
+            result.Text = "";
             string Email = email.Text;
-            string Password = password.Text;
+            string Password = password.Password.ToString();
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(Email);
             if (user == null)

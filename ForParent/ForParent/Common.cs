@@ -53,22 +53,22 @@ namespace ForParent
        
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
+            string child_email = myChild;
+           // string email = "rami@gmail.com";
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
             
-            if (who_am_i.Equals(""))
+            if (!who_am_i.Equals("") && !child_email.Equals(""))
             {
                 symbol symbol = new symbol
                 {
-                    email = who_am_i,
+                    email = child_email,
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
                 if (symbolName.Equals("allsymbols"))
                 {
-                    res = await db.GetUserAllCountersAsync(email);
+                    res = await db.GetUserAllCountersAsync(child_email);
                 }
                 else {
                     res = await db.GetUserCounterAsync(symbol);
