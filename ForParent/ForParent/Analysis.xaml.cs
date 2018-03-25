@@ -68,12 +68,12 @@ namespace ForParent
             toHome.Navigate(typeof(MainPage));
         }
 
-        private void Button_Click_graph(object sender, RoutedEventArgs e)
-        {
-            string completeUri = "http://chart.googleapis.com/chart?cht=bvg&chs=400x300&chxs=0,6699ff,12,0,lt|1,6699ff,10,1,lt&chxt=x,y&chxl=0:|Jan|Feb|Mar|Apr|May|June|July|Aug|Sep|Oct|Nov|Dec&chd=t:10,70,50,40,80,5,25,95,3,5,7&chf=bg,s,ccffff&chco=3399ff";
-            Uri requestUri = new Uri(completeUri);
-            image.Source = new BitmapImage(requestUri);
-        }
+        //private void Button_Click_graph(object sender, RoutedEventArgs e)
+        //{
+        //    string completeUri = "http://chart.googleapis.com/chart?cht=bvg&chs=480x450&chxs=0,6699ff,12,0,lt|1,6699ff,10,1,lt&chxt=x,y&chxl=0:|Jan|Feb|Mar|Apr|May|June|July|Aug|Sep|Oct|Nov|Dec&chd=t:10,70,50,40,80,5,25,95,3,5,7&chf=bg,s,&chco=3399ff";
+        //    Uri requestUri = new Uri(completeUri);
+        //    image.Source = new BitmapImage(requestUri);
+        //}
 
         public async Task<string> create_graphAsync(string combox)
         {
@@ -90,7 +90,7 @@ namespace ForParent
                 graph_values += month_values[i].ToString() + ",";
             }
             graph_values += month_values[11].ToString();        
-            return "http://chart.googleapis.com/chart?cht=bvg&chs=380x250&chxs=0,6699ff,12,0,lt|1,6699ff,10,1,lt&chxt=x,y&chxl=0:|Jan|Feb|Mar|Apr|May|June|July|Aug|Sep|Oct|Nov|Dec&chd=t:"+ graph_values +"&chf=bg,s,ccffff&chco=3399ff";
+            return "http://chart.googleapis.com/chart?cht=bvg&chs=400x350&chxs=0,6699ff,12,0,lt|1,6699ff,10,1,lt&chxt=x,y&chxl=0:|Jan|Feb|Mar|Apr|May|June|July|Aug|Sep|Oct|Nov|Dec&chd=t:"+ graph_values +"&chf=bg,s,&chco=3399ff";
         }
 
 

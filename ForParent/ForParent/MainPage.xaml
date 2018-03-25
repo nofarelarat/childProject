@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="/Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,164,0,0" VerticalAlignment="Top" Width="89">
+        <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
 
                 <ControlTemplate>
@@ -18,21 +18,21 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,164,0,0" VerticalAlignment="Top" Width="89">
+        <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template >
                 <ControlTemplate>
                     <Image Source="/Images/charts.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,276,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="for_login" Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="/Images/sign-in.png" />
+                    <Image x:Name="sign_in" Source="/Images/sign-in.png"  />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Click="forRegister_Click" HorizontalAlignment="Left" Height="73" Margin="198,276,0,0" VerticalAlignment="Top" Width="89">
+        <Button Click="forRegister_Click" HorizontalAlignment="Left" Height="73" Margin="198,328,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-up.png" />
@@ -40,6 +40,6 @@
             </Button.Template>
 
         </Button>
-        <Image Source="/Images/logo2.png" HorizontalAlignment="Left" Height="219" Margin="82,-27,-162,0" VerticalAlignment="Top" Width="440"/>
+        <Image Source="/Images/logo3.png" HorizontalAlignment="Left" Height="295" Margin="58,-39,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>
 </Page>
