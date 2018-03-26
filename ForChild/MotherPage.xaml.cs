@@ -151,7 +151,7 @@ namespace ForChild
                 }
             }
             //To do : sent to is hard coded!!
-            Common.sendMsg(sentence,"gadi@gmail.com");
+            Common.sendMsg(sentence,Common.myMother);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
@@ -295,8 +295,7 @@ namespace ForChild
 
         private async void GetMsgFromMother()
         {
-            string contact = "shosh@gmail.com";
-            OutTable[] table = await Common.GetMsgAsync(contact);
+            OutTable[] table = await Common.GetMsgAsync(Common.myMother);
             GetMessageAsync(table);
 
         }
