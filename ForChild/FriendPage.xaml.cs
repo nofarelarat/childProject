@@ -116,27 +116,56 @@ namespace ForChild
         }
         private async void FriendSendClick(object sender, RoutedEventArgs e)
         {
-
-            // Create final message
-            String final_msg = sendMsg.Text + "$" + Common.who_am_i + "$" + friendName;
-            //Create an HTTP client object
-            HttpClient httpClient = new HttpClient();
-            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg);
-
-            //Send the GET request asynchronously and retrieve the response as a string.
-            HttpResponseMessage httpResponse = new HttpResponseMessage();
-            try
+            int message_num = 0;
+            string sentence = "";
+            Image[] symbolsForSend = symbolsForSend1;
+            int fullFlag = 0;
+            if (symbolsForSend_full1 != 0)
             {
-                //Send the GET request
-                httpResponse = await httpClient.GetAsync(requestUri);
-                httpResponse.EnsureSuccessStatusCode();
-                // errormessage.Text = await response.Content.ReadAsStringAsync();
+                if (symbolsForSend_full2 == 0)
+                {
+                    message_num = 2;
+                    symbolsForSend_full2 = 1;
+                }
+                else if (symbolsForSend_full3 == 0)
+                {
+                    message_num = 3;
+                    symbolsForSend_full3 = 1;
+                }
+                else
+                {//all full
+                    fullFlag = 1;
+                }
             }
-            catch (Exception ex)
+            else
             {
-
-                //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                message_num = 1;
+                symbolsForSend_full1 = 1;
             }
+            if (fullFlag == 0)
+            {
+                for (int i = 0; i < symbolsForSend1.Length; i++)
+                {
+                    if (message_num == 1)
+                    {
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
+                    }
+                    else if (message_num == 2)
+                    {
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
+                    }
+                    else if (message_num == 3)
+                    {
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
+                    }
+                }
+            }
+            //To do : sent to is hard coded!!
+            Common.sendMsg(sentence, Common.myMother);
+            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
