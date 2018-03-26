@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
 
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ForParent
@@ -42,6 +43,7 @@ namespace ForParent
         static int symbolsSentFromOther_full1 = 0;
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
+
         public Chat()
         {
             this.InitializeComponent();
@@ -80,9 +82,9 @@ namespace ForParent
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
-
-            GetMsgFromChild();
+               GetMsgFromChild();
         }
+
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -155,8 +157,9 @@ namespace ForParent
                 }
             }
             //To do : sent to is hard coded!!
-            Common.sendMsg(sentence, "gadi@gmail.com");
+            Common.sendMsg(sentence, Common.myChild);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -301,8 +304,7 @@ namespace ForParent
 
         private async void GetMsgFromChild()
         {
-            string contact = "shosh@gmail.com";
-            OutTable[] table = await Common.GetMsgAsync(contact);
+            OutTable[] table = await Common.GetMsgAsync(Common.myChild);
             GetMessageAsync(table);
 
         }
