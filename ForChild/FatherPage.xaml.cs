@@ -43,7 +43,6 @@ namespace ForChild
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
 
-        public String friendName = "osnat@gmail.com";
 
         public FatherPage()
         {
@@ -291,8 +290,7 @@ namespace ForChild
 
         private async void GetMsgFromFather()
         {
-            string contact = "rami@gmail.com";
-            OutTable[] table = await Common.GetMsgAsync(contact);
+            OutTable[] table = await Common.GetMsgAsync(Common.myFather);
             GetMessageAsync(table);
 
         }
