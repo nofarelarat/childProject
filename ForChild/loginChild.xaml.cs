@@ -32,7 +32,7 @@ namespace ForChild
             }
             else
             {
-                if (user.password.Equals(password.Text) && user.type.Equals("Child"))
+                if (user.password.Equals(password.Password.ToString()) && user.type.Equals("Child"))
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
@@ -45,7 +45,7 @@ namespace ForChild
                         await storageFolder.CreateFileAsync("userChild.txt",
                             Windows.Storage.CreationCollisionOption.ReplaceExisting);
                     await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
-                        Common.who_am_i + "+password:" + password.Text
+                        Common.who_am_i + "+password:" + password.Password.ToString()
                         + "+father:" + Common.myFather + "+mother:" + Common.myMother
                         + "+sister:" + Common.mySister + "+friend:" + Common.myFriend);
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;

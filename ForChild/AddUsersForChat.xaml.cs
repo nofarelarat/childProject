@@ -29,13 +29,12 @@ namespace ForChild
 
         private async void Add_ClickAsync(object sender, RoutedEventArgs e)
         {
-            string[] emails = new string[6];
+            string[] emails = new string[5];
             emails[0] = "Child";
             emails[1] = Common.who_am_i;
             emails[2] = TextBoxMother.Text;
             emails[3] = TextBoxFather.Text;
             emails[4] = TextBoxFriend.Text;
-            emails[5] = TextBoxSister.Text;
 
             bool res = await Common.AddUserChatContact(emails);
             Frame toHome = Window.Current.Content as Frame;

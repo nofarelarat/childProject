@@ -7,7 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Margin="-30,0,10,0" Background="#FF9DC3E7">
+    <Grid Margin="-28,0,8,0" Background="#FF9DC3E7">
+        <Button Height="280" Width="839" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="-143,0,0,8">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="father.jpg" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
         <Button Height="285.57" Width="498.986" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_mother" RenderTransformOrigin="0.5,0.5" Margin="41.157,-2.285,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-0.419"/>
@@ -18,38 +26,30 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Height="280" Width="839" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="-145,0,0,73">
+        <Button Height="114" Width="136" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="832,0,76,134" RenderTransformOrigin="0.472,0.36">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="father.jpg" />
+                    <Image Source="images/add.png" />
                 </ControlTemplate>
             </Button.Template>
             <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="10,0,934,530" RenderTransformOrigin="0.472,0.36">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="plus.png" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Button Height="267" Width="488" Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_FriendAsync" Margin="0,4,11,0" >
+        <Image Source="images/logo3.png" Margin="386,-87,338,358"/>
+        <Button Height="254" Width="488" x:Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_FriendAsync" Margin="0,17,11,0" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="friends.jpg" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Height="279" Width="293" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click_Sister" Margin="0,0,98,79">
+
+        <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
+        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="598,428,0,126" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="sister.jpg" />
+                    <Image Source="images/login.png" Margin="0,-43,-85.2,0.4" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
-        <Button x:Name="forLogin" Content="היכנס" HorizontalAlignment="Left" Margin="428,450,0,160" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click"/>
-        <Button x:Name="test" Content="test" HorizontalAlignment="Left" Margin="792,334,0,0" VerticalAlignment="Top" Height="134" Width="195" Click="test_ClickAsync"/>
     </Grid>
 </Page>

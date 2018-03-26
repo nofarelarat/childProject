@@ -161,6 +161,7 @@
     <Content Include="Images\registerBackground.PNG" />
     <Content Include="Images\sign-in-headline.png" />
     <Content Include="Images\sign-in.png" />
+    <Content Include="Images\sign-out.png" />
     <Content Include="Images\sign-up-hedline.png" />
     <Content Include="Images\sign-up.png" />
     <Content Include="Images\signing_for.png" />

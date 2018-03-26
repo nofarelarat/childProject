@@ -66,23 +66,6 @@ namespace ForChild
             }
         }
 
-        private void Button_Click_Sister(object sender, RoutedEventArgs e)
-        {
-            if (Common.who_am_i.Equals(""))
-            {
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(loginChild));
-            }
-            else
-            {
-                if (!Common.mySister.Equals(""))
-                {
-                    Frame toFather = Window.Current.Content as Frame;
-                    toFather.Navigate(typeof(SisterPage));
-                }
-            }
-        }
-
         private void Button_Click_mother(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i.Equals(""))
