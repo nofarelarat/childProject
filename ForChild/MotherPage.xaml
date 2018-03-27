@@ -18,13 +18,13 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Image x:Name="me" HorizontalAlignment="Left" Height="38" Margin="778,30,0,0" VerticalAlignment="Top" Width="83" Source="Me.jpg"/>
-        <Image HorizontalAlignment="Left" Height="43" Margin="245,29,0,0" VerticalAlignment="Top" Width="56" Source="mother2.jpg"/>
+        <Image x:Name="me" HorizontalAlignment="Left" Height="38" Margin="778,30,0,0" VerticalAlignment="Top" Width="83" Source="images/Me.jpg"/>
+        <Image HorizontalAlignment="Left" Height="43" Margin="245,29,0,0" VerticalAlignment="Top" Width="56" Source="images/mother2.jpg"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Send_Click" Margin="460,0,0,400" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="arrow.png" />
+                    <Image Source="images/arrow.png" />
                 </ControlTemplate>
             </Button.Template>
             <Image Height="108" Width="108"/>
@@ -248,7 +248,7 @@
             <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="456,0,0,170" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
                 <Button.Template>
                     <ControlTemplate>
-                        <Image Source="delete.jpg"/>
+                        <Image Source="images/delete.jpg"/>
                     </ControlTemplate>
                 </Button.Template>
                 <Image Height="108" Width="108"/>

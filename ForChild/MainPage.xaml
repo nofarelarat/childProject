@@ -8,25 +8,31 @@
     mc:Ignorable="d">
 
     <Grid Margin="-28,0,8,0" Background="#FF9DC3E7">
-        <Button Height="280" Width="839" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="-143,0,0,8">
+        <Button Height="238" Width="319" x:Name="Friendbtn_Copy" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Teacher" Margin="0,338,84,0" >
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="father.jpg" />
+                    <Image Source="images/teacher.png" Margin="0,0,16,-23.6" />
                 </ControlTemplate>
             </Button.Template>
-            <Image Height="100" Width="100"/>
         </Button>
-        <Button Height="285.57" Width="498.986" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_mother" RenderTransformOrigin="0.5,0.5" Margin="41.157,-2.285,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <Button Height="280" Width="282" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click_father" Margin="131,0,0,20">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/father.jpg" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Height="285.57" Width="377.401" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_mother" RenderTransformOrigin="0.5,0.5" Margin="87.159,-1.84,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-0.419"/>
             </Button.RenderTransform>
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="mather.JPG" />
+                    <Image Source="images/mather.JPG" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Height="114" Width="136" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="832,0,76,134" RenderTransformOrigin="0.472,0.36">
+        <Button Height="61" Width="90" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Button_Click_Plus" Margin="929,0,25,360" RenderTransformOrigin="0.472,0.36">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/add.png" />
@@ -35,21 +41,22 @@
             <Image Height="100" Width="100"/>
         </Button>
         <Image Source="images/logo3.png" Margin="386,-87,338,358"/>
-        <Button Height="254" Width="488" x:Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_FriendAsync" Margin="0,17,11,0" >
+        <Button Height="254" Width="285" x:Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_FriendAsync" Margin="0,17,116,0" >
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="friends.jpg" />
+                    <Image Source="images/friends.jpg" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
 
-        <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="me.jpg"/>
-        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="598,428,0,126" VerticalAlignment="Stretch" Width="197" Click="forLogin_Click">
+        <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="images/me.jpg"/>
+        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="879,355,0,239" VerticalAlignment="Stretch" Width="120" Click="forLogin_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/login.png" Margin="0,-43,-85.2,0.4" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <TextBlock x:Name="todo"  HorizontalAlignment="Left" Height="67" Margin="450,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
     </Grid>
 </Page>
