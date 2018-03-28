@@ -24,6 +24,7 @@ namespace ForParent
     /// </summary>
     public sealed partial class Chat : Page
     {
+        static bool flag = true;
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
@@ -82,7 +83,8 @@ namespace ForParent
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
-               GetMsgFromChild();
+            flag = true;
+            GetMsgFromChild();
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -107,6 +109,7 @@ namespace ForParent
             symbolsForSend_full3 = 0;
 
             Frame toHome = Window.Current.Content as Frame;
+            flag = false;
             toHome.Navigate(typeof(MainPage));
         }
 
@@ -239,7 +242,6 @@ namespace ForParent
 
         private async void GetMessageAsync(OutTable[] message)
         {
-            string contact = "shosh@gmail.com";
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
@@ -266,6 +268,10 @@ namespace ForParent
                     {
                         return;
                     }//if
+                }
+                for (int x = 0; x < message.Length; x++)
+                {
+                    await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
@@ -304,9 +310,13 @@ namespace ForParent
 
         private async void GetMsgFromChild()
         {
-            OutTable[] table = await Common.GetMsgAsync(Common.myChild);
-            GetMessageAsync(table);
-
+            while (flag)
+            {
+                OutTable[] table = await Common.GetMsgAsync(Common.myChild);
+                GetMessageAsync(table);
+         
+            }
+            
         }
     }
 }

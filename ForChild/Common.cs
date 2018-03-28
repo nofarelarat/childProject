@@ -119,7 +119,7 @@ namespace ForChild
                     myFather = contacts.father;
                     myMother = contacts.mother;
                     myFriend = contacts.friend;
-                    myTeacher = contacts.sister;
+                    myTeacher = "shosh@gmail.com"; //TODO: change it!!!
                 }
                 else
                 {

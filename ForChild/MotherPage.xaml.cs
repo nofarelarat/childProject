@@ -14,6 +14,7 @@ namespace ForChild
     /// </summary>
     public sealed partial class MotherPage : Page
     {
+        static bool flag = true;
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
@@ -73,7 +74,7 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
-
+            flag = true;
             GetMsgFromMother();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -98,6 +99,7 @@ namespace ForChild
             symbolsForSend_full3 = 0;
 
             Frame toHome = Window.Current.Content as Frame;
+            flag = false;
             toHome.Navigate(typeof(MainPage));
         }
 
@@ -295,9 +297,11 @@ namespace ForChild
 
         private async void GetMsgFromMother()
         {
-            OutTable[] table = await Common.GetMsgAsync(Common.myMother);
-            GetMessageAsync(table);
-
+            while (flag)
+            { 
+                OutTable[] table = await Common.GetMsgAsync(Common.myMother);
+                GetMessageAsync(table);
+            }
         }
     }
 }

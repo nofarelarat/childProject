@@ -25,6 +25,7 @@ namespace ForChild
     /// </summary>
     public sealed partial class TeacherPage : Page
     {
+        static bool flag = true;
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
@@ -63,6 +64,7 @@ namespace ForChild
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
+            flag = false;
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
@@ -77,10 +79,7 @@ namespace ForChild
             }
 
         }
-  
-  
 
-   
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
             if (symbolsSentFromOther_full1 == 0)
@@ -146,8 +145,11 @@ namespace ForChild
 
         private async void GetMsgFromTeacher()
         {
-            OutTable[] table = await Common.GetMsgAsync(Common.myTeacher);
-            GetMessageAsync(table);
+            while (flag)
+            {
+                OutTable[] table = await Common.GetMsgAsync(Common.myTeacher);
+                GetMessageAsync(table);
+            }
 
         }
     }
