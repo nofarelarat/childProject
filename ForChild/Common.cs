@@ -20,7 +20,7 @@ namespace ForChild
         public static string myFather = "";
         public static string myMother = "";
         public static string myFriend = "";
-        public static string mySister = "";
+        public static string myTeacher = "";
         public static bool isConectet = false;
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
@@ -119,7 +119,7 @@ namespace ForChild
                     myFather = contacts.father;
                     myMother = contacts.mother;
                     myFriend = contacts.friend;
-                    mySister = contacts.sister;
+                    myTeacher = contacts.sister;
                 }
                 else
                 {
@@ -154,7 +154,7 @@ namespace ForChild
                 {
                     myFather = users[0].email;
                     myMother = users[1].email;
-                    mySister = users[2].email;
+                    myTeacher = users[2].email;
                     myFriend = users[3].email;
                 }
                 return x;
@@ -258,8 +258,8 @@ namespace ForChild
                             case "mother":
                                 myMother = per_arr[1];
                                 break;
-                            case "sister":
-                                mySister = per_arr[1];
+                            case "Teacher":
+                                myTeacher = per_arr[1];
                                 break;
                             case "friend":
                                 myFriend = per_arr[1];

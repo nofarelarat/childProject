@@ -35,16 +35,25 @@ namespace ForChild
             bool isSimilar = false;
             if (Common.who_am_i.Equals(""))
             {
+                todo.Text= "please log-in";
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
             else
             {
+                if (Common.myFriend.Equals(""))
+                {
+                    todo.Text = "please add friend";
+                }
                 isSimilar = await Common.CheckForSimilarFriendAsync();
                 if (isSimilar == true)
                 {
                     Frame toFriend = Window.Current.Content as Frame;
                     toFriend.Navigate(typeof(FriendPage));
+                }
+                else {
+                    todo.Text = "you have to be registerd at yout friend's app";
+
                 }
             }
         }
@@ -53,6 +62,7 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
+                todo.Text = "please log-in";
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
@@ -63,22 +73,9 @@ namespace ForChild
                     Frame toFather = Window.Current.Content as Frame;
                     toFather.Navigate(typeof(FatherPage));
                 }
-            }
-        }
+                else {
+                    todo.Text = "please add father";
 
-        private void Button_Click_Sister(object sender, RoutedEventArgs e)
-        {
-            if (Common.who_am_i.Equals(""))
-            {
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(loginChild));
-            }
-            else
-            {
-                if (!Common.mySister.Equals(""))
-                {
-                    Frame toFather = Window.Current.Content as Frame;
-                    toFather.Navigate(typeof(SisterPage));
                 }
             }
         }
@@ -87,6 +84,7 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
+                todo.Text = "please log-in";
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
@@ -97,6 +95,28 @@ namespace ForChild
                     Frame toMather = Window.Current.Content as Frame;
                     toMather.Navigate(typeof(MotherPage));
                 }
+                else {
+                    todo.Text = "please add mother";
+
+                }
+            }
+        }
+
+        private void Button_Click_Teacher(object sender, RoutedEventArgs e)
+        {
+            if (Common.who_am_i.Equals(""))
+            {
+                todo.Text = "please log-in";
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            {
+                if (!Common.myTeacher.Equals(""))
+                {
+                    Frame toTeacher = Window.Current.Content as Frame;
+                    toTeacher.Navigate(typeof(TeacherPage));
+                }
             }
         }
 
@@ -104,16 +124,6 @@ namespace ForChild
         {
             Frame toMather = Window.Current.Content as Frame;
             toMather.Navigate(typeof(loginChild));
-        }
-
-        private async void test_ClickAsync(object sender, RoutedEventArgs e)
-        {
-            //ConnectDB db = new ConnectDB();
-            //db.TestDelete("osnat@gmail.con");
-            //db.GetGardenChildren("flowers");
-            //Common.UpdateCounterAsync("iagree");
-            Common.GetMsgAsync("osnat@gmail.com");
-            //Common.GetUserContactsAsync("rami@gmail.com");
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
