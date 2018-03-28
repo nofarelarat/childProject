@@ -191,6 +191,7 @@ namespace ForParent
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2]= 0;
 
+            Common.DeleteFileAsync("chatWithChild.txt");
         }
 
         private async void GetMessageAsync(OutTable[] message)

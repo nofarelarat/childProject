@@ -59,7 +59,7 @@ namespace ForParent
             }
         }
 
-        public static async Task<bool> DeleteFileAsync()
+        public static async Task<bool> DeleteFileAsync(string fileName)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace ForParent
                     return false;
                 }
                 Windows.Storage.StorageFile userFile =
-                    await storageFolder.CreateFileAsync("userParent.txt",
+                    await storageFolder.CreateFileAsync(fileName,
                         Windows.Storage.CreationCollisionOption.ReplaceExisting);
                 if (userFile == null)
                 {
