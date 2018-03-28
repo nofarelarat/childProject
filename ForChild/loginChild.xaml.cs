@@ -20,7 +20,6 @@ namespace ForChild
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
             string[] lines = System.IO.File.ReadAllLines(@"config.txt");
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
@@ -35,18 +34,25 @@ namespace ForChild
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
-                    Common.GetUserContactsAsync();
+                    await Common.GetUserContactsAsync();
 
                     // Create sample file; replace if exists.
-                    Windows.Storage.StorageFolder storageFolder =
-                    Windows.Storage.ApplicationData.Current.LocalFolder;
-                    Windows.Storage.StorageFile userFile =
-                        await storageFolder.CreateFileAsync("userChild.txt",
-                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
-                    await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
-                        Common.who_am_i + "+password:" + password.Password.ToString()
-                        + "+father:" + Common.myFather + "+mother:" + Common.myMother
-                        + "+Teacher:" + Common.myTeacher + "+friend:" + Common.myFriend);
+                    try
+                    {
+                        Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                        Windows.Storage.StorageFile userFile =
+                            await storageFolder.CreateFileAsync("userChild.txt",
+                                Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                        await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
+                            Common.who_am_i + "+password:" + password.Password.ToString()
+                            + "+father:" + Common.myFather + "+mother:" + Common.myMother
+                            + "+Teacher:" + Common.myTeacher + "+friend:" + Common.myFriend);
+                    }
+                    catch
+                    {
+                        //cant access file
+                    }
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "welcome " + user.firstname + "!";
                 }

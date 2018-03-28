@@ -46,6 +46,8 @@ namespace ForTeacher
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
+                    try
+                    {
                         Windows.Storage.StorageFolder storageFolder =
                         Windows.Storage.ApplicationData.Current.LocalFolder;
                         Windows.Storage.StorageFile userFile =
@@ -53,6 +55,11 @@ namespace ForTeacher
                                 Windows.Storage.CreationCollisionOption.ReplaceExisting);
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, email.Text
                             + "+" + password.Text);
+                    }
+                    catch
+                    {
+                        //cant access file
+                    }
                         loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
                     

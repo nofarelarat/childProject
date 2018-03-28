@@ -18,10 +18,18 @@ namespace ForParent
             {
                 Windows.Storage.StorageFolder storageFolder =
                 Windows.Storage.ApplicationData.Current.LocalFolder;
+                if(storageFolder == null)
+                {
+                    return false;
+                }
                 Windows.Storage.StorageFile userFile =
                     await storageFolder.GetFileAsync("userParent.txt");
+                if (userFile == null)
+                {
+                    return false;
+                }
                 string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
-                if (text.Equals(""))
+                if (String.IsNullOrEmpty(text) ||String.IsNullOrWhiteSpace(text) || text.Equals(""))
                 {
                     return false;
                 }
@@ -43,7 +51,78 @@ namespace ForParent
                 return false;
             }
         }
-       
+
+        public static async Task<bool> DeleteFileAsync()
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync("userParent.txt",
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+            who_am_i = "";
+            myChild = "";
+            return true;
+        }
+
+        //in the sentence allreay see who send the message
+        public static async Task<bool> WriteConversation(string sentence)
+        {
+            try
+            {
+                 Windows.Storage.StorageFolder storageFolder =
+                       Windows.Storage.ApplicationData.Current.LocalFolder;
+                 if (storageFolder == null)
+                 {
+                     return false;
+                 }
+                 Windows.Storage.StorageFile userFile =
+                     await storageFolder.GetFileAsync("chatWithChild.txt");
+                 if (userFile == null)
+                 {
+                     return false;
+                 }
+                 IEnumerable<string> toAdd = new List<string>() { sentence };
+                 await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+
+            }
+            //trying to create the file
+            catch
+            {
+                try
+                {
+                    Windows.Storage.StorageFolder storageFolder =
+                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile userFile =
+                        await storageFolder.CreateFileAsync("chatWithChild.txt",
+                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                    IEnumerable<string> toAdd = new List<string>() { sentence };
+                    await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             string child_email = myChild;
