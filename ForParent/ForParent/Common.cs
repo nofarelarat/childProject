@@ -130,6 +130,25 @@ namespace ForParent
             return true;
         }
 
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;    
+            }
+
+            catch
+            {
+                return "";
+            }
+        }
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             string child_email = myChild;

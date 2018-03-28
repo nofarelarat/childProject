@@ -46,24 +46,17 @@ namespace ForChild
             }
         }
 
-        public static async void UpdateCounterAsync(string symbolName)
+        public static void UpdateCounterAsync(string symbolName)
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
-
-            if (user != null && symbolName != "") {
+            if (!(who_am_i.Equals("") || symbolName.Equals(""))) {
                 symbol symbol = new symbol
                 {
-                    email = user.email,
+                    email = who_am_i,
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
-                await db.UpdateUserCounterAsync(symbol);
+                 db.UpdateUserCounterAsync(symbol);
             }
             else
             {
