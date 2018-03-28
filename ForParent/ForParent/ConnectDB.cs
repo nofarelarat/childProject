@@ -139,8 +139,7 @@ namespace ForParent
 
             return null;
         }
-
-
+        
         public async Task<user> GetUserByMailAsync(string email)
         {
 
@@ -170,9 +169,7 @@ namespace ForParent
 
             return null;
         }
-        
 
-  
         public async Task<bool> CreateUserAsync(user user)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users";
