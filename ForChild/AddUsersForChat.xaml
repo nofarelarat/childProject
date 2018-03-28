@@ -8,11 +8,27 @@
     mc:Ignorable="d">
 
     <Grid Margin="-30,0,10,0" Background="#FF9DC3E7">
-        <TextBox x:Name="TextBoxMother" HorizontalAlignment="Left" Margin="238,197,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
-        <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="238,341,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
-        <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="238,485,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
-        <TextBox x:Name="TextBoxSister" HorizontalAlignment="Left" Margin="238,597,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Height="64" Width="210"/>
-        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="606,613,0,0" VerticalAlignment="Top" Click="Add_ClickAsync"/>
-        <Button Content="חזור" HorizontalAlignment="Left" Margin="18,16,0,0" VerticalAlignment="Top" Click="Button_Click_back"/>
+        <TextBox x:Name="TextBoxMother"  HorizontalAlignment="Left" Margin="406,197,0,0" TextWrapping="Wrap" Text="mother" VerticalAlignment="Top" Height="42" Width="311"/>
+        <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="405,263,0,0" TextWrapping="Wrap" Text="father" VerticalAlignment="Top" Height="45" Width="311" RenderTransformOrigin="0.485,-0.96"/>
+        <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="405,336,0,0" TextWrapping="Wrap" Text="friend" VerticalAlignment="Top" Height="41" Width="310"/>
+        <Image HorizontalAlignment="Left" Height="160" Margin="263,138,0,0" VerticalAlignment="Top" Width="169" Source="images/add_mother.png"/>
+        <Image HorizontalAlignment="Left" Height="160" Margin="263,210,0,0" VerticalAlignment="Top" Width="169" Source="images/add_father.png"/>
+        <Image HorizontalAlignment="Left" Height="160" Margin="263,286,0,0" VerticalAlignment="Top" Width="169" Source="images/add_friend.png"/>
+        <Button x:Name="Add" Click="Add_ClickAsync" Height="61" Width="90" HorizontalAlignment="Center" VerticalAlignment="Bottom"  RenderTransformOrigin="0.472,0.36">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/add_edit.png" Margin="-35,-196,-66.6,119.8" />
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="100" Width="100"/>
+        </Button>
+        <Image HorizontalAlignment="Left" Height="290" Margin="381,-55,0,0" VerticalAlignment="Top" Width="394" Source="images/add_chat_users.png"/>
+        <Button HorizontalAlignment="Left" Margin="-10,25,0,0" VerticalAlignment="Top" Click="Button_Click_back" Height="47" Width="125">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/back.PNG" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>
