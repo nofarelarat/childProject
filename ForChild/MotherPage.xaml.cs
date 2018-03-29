@@ -14,9 +14,12 @@ namespace ForChild
     /// </summary>
     public sealed partial class MotherPage : Page
     {
+        static string tray ="images/back.png";
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
+
+
         //index in massege
         static int symbolsForSend_curr1 = 0;
         static int symbolsForSend_curr2 = 0;
@@ -33,71 +36,59 @@ namespace ForChild
         static int symbolsSentFromOther_full1 = 0;
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
+        int initialize = 0;
 
 
         public MotherPage()
         {
             this.InitializeComponent();
-            symbolsForSend1[0] = forSend11;
-            symbolsForSend1[1] = forSend12;
-            symbolsForSend1[2] = forSend13;
-            symbolsForSend1[3] = forSend14;
-            symbolsForSend1[4] = forSend15;
+            if (initialize == 0) {
+                symbolsForSend1[0] = forSend11;
+                symbolsForSend1[1] = forSend12;
+                symbolsForSend1[2] = forSend13;
+                symbolsForSend1[3] = forSend14;
+                symbolsForSend1[4] = forSend15;
 
-            symbolsForSend2[0] = forSend21;
-            symbolsForSend2[1] = forSend22;
-            symbolsForSend2[2] = forSend23;
-            symbolsForSend2[3] = forSend24;
-            symbolsForSend2[4] = forSend25;
+                symbolsForSend2[0] = forSend21;
+                symbolsForSend2[1] = forSend22;
+                symbolsForSend2[2] = forSend23;
+                symbolsForSend2[3] = forSend24;
+                symbolsForSend2[4] = forSend25;
 
-            symbolsForSend3[0] = forSend31;
-            symbolsForSend3[1] = forSend32;
-            symbolsForSend3[2] = forSend33;
-            symbolsForSend3[3] = forSend34;
-            symbolsForSend3[4] = forSend35;
+                symbolsForSend3[0] = forSend31;
+                symbolsForSend3[1] = forSend32;
+                symbolsForSend3[2] = forSend33;
+                symbolsForSend3[3] = forSend34;
+                symbolsForSend3[4] = forSend35;
 
-            symbolsSentFromOther1[0] = afterSend11;
-            symbolsSentFromOther1[1] = afterSend12;
-            symbolsSentFromOther1[2] = afterSend13;
-            symbolsSentFromOther1[3] = afterSend14;
-            symbolsSentFromOther1[4] = afterSend15;
+                symbolsSentFromOther1[0] = afterSend11;
+                symbolsSentFromOther1[1] = afterSend12;
+                symbolsSentFromOther1[2] = afterSend13;
+                symbolsSentFromOther1[3] = afterSend14;
+                symbolsSentFromOther1[4] = afterSend15;
 
-            symbolsSentFromOther2[0] = afterSend21;
-            symbolsSentFromOther2[1] = afterSend22;
-            symbolsSentFromOther2[2] = afterSend23;
-            symbolsSentFromOther2[3] = afterSend24;
-            symbolsSentFromOther2[4] = afterSend25;
+                symbolsSentFromOther2[0] = afterSend21;
+                symbolsSentFromOther2[1] = afterSend22;
+                symbolsSentFromOther2[2] = afterSend23;
+                symbolsSentFromOther2[3] = afterSend24;
+                symbolsSentFromOther2[4] = afterSend25;
 
-            symbolsSentFromOther3[0] = afterSend31;
-            symbolsSentFromOther3[1] = afterSend32;
-            symbolsSentFromOther3[2] = afterSend33;
-            symbolsSentFromOther3[3] = afterSend34;
-            symbolsSentFromOther3[4] = afterSend35;
+                symbolsSentFromOther3[0] = afterSend31;
+                symbolsSentFromOther3[1] = afterSend32;
+                symbolsSentFromOther3[2] = afterSend33;
+                symbolsSentFromOther3[3] = afterSend34;
+                symbolsSentFromOther3[4] = afterSend35;
+
+            }
+            initialize += 1;
+
+
 
             GetMsgFromMother();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < symbolsForSend1.Length; i++)
-            {
-                symbolsForSend1[i].Source = null;
-                symbolsForSend2[i].Source = null;
-                symbolsForSend3[i].Source = null;
-                symbolsSentFromOther1[i].Source = null;
-                symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;
-            }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            symbolsForSend_curr1 = 0;
-            symbolsForSend_curr2 = 0;
-            symbolsForSend_curr3 = 0;
-
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
-
-            Frame toHome = Window.Current.Content as Frame;
+                 Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
 
@@ -105,7 +96,7 @@ namespace ForChild
         {
             int message_num = 0;
             string sentence = "";
-            Image[] symbolsForSend = symbolsForSend1;
+            //Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
             if (symbolsForSend_full1 != 0)
             {
@@ -190,11 +181,14 @@ namespace ForChild
             if (symbolsForSend_curr == 1 && symbolsForSend_curr1 < 5)
             {
                     symbolsForSend1[symbolsForSend_curr1].Source = new BitmapImage(requestUri);
-                    symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
+                forSend11.Tag = button_name;
+                forSend11.Source = new BitmapImage(requestUri);
+                symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
                     symbolsForSend_curr1++;                
             }
             if (symbolsForSend_curr == 2 && symbolsForSend_curr2 < 5)
             {
+                    forSend11.Source = new BitmapImage(requestUri);
                     symbolsForSend2[symbolsForSend_curr2].Source = new BitmapImage(requestUri);
                     symbolsForSend2[symbolsForSend_curr2].Tag = button_name;
                     symbolsForSend_curr2++;
