@@ -219,6 +219,18 @@ namespace ForParent
             //ms.Close();
             return Encoding.UTF8.GetString(json, 0, json.Length);
         }
+        public static string WriteFromObject(OutTable obj)
+        {
+            //Create a stream to serialize the object to.
+            MemoryStream ms = new MemoryStream();
+
+            // Serializer the User object to the stream.
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(OutTable));
+            ser.WriteObject(ms, obj);
+            byte[] json = ms.ToArray();
+            //ms.Close();
+            return Encoding.UTF8.GetString(json, 0, json.Length);
+        }
 
         public static string WriteFromObject(user user)
         {

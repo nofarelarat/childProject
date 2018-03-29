@@ -1,15 +1,10 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using System.Net.Http;
-using Windows.UI.Xaml.Media.Imaging;
+using System.Collections.Generic;
 
 namespace ForParent
 {
@@ -18,7 +13,6 @@ namespace ForParent
         public static string who_am_i = "";
         public static string myChild = "";
         public static bool isConectet = false;
-
         public static async Task<bool> GetUserFromFileAsync()
         {
             try
@@ -198,7 +192,7 @@ namespace ForParent
         public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
-                + who_am_i + "$" + contact;
+                + who_am_i + "$" + contact ;
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -243,6 +237,31 @@ namespace ForParent
             {
 
                 //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+        }
+
+       public static async Task<bool> markAsDeleteMsg(OutTable obj)
+        {
+            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp1?code=3moplIVTWNBkw4xdWvjsx9ePAOq64fDcIrexBFx1XrkZEm9U5Zd8aw==";
+            obj.Message_Recive = "0";
+            obj.Message_Send = "0";
+            //string json = ConnectDB.WriteFromObject(obj);
+            string json = JsonConvert.SerializeObject(obj);
+            try
+            {
+                //Send the PUT request
+                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
+                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
+                request.Content = new StringContent(json,
+                Encoding.UTF8,
+                "application/json");//CONTENT-TYPE header
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

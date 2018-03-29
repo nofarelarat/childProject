@@ -50,7 +50,7 @@ namespace ForChild
 
             try
             {
-                //Send the POSR request
+                //Send the POST request
                 HttpStringContent stringContent = new HttpStringContent(json.ToString());
 
                 System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Post, completeUri);
@@ -182,7 +182,6 @@ namespace ForChild
                 httpResponse = await httpClient.DeleteAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                
             }
 
             catch (Exception ex)

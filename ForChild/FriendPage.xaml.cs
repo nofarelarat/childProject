@@ -44,8 +44,8 @@ namespace ForChild
         static int symbolsSentFromOther_full1 = 0;
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
+        static bool flag = true;
 
-        public String friendName="osnat@gmail.com";
         public FriendPage()
         {
             this.InitializeComponent();
@@ -84,16 +84,19 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
+            flag = true;
             GetMsgFromFriend();
 
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
+            flag = false;
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsForSend1[i].Source = null;
@@ -340,8 +343,11 @@ namespace ForChild
 
         private async void GetMsgFromFriend()
         {
-            OutTable[] table = await Common.GetMsgAsync(Common.myFriend);
-            GetMessageAsync(table);
+            while (flag)
+            {
+                OutTable[] table = await Common.GetMsgAsync(Common.myFriend);
+                GetMessageAsync(table);
+            }
 
         }
     }

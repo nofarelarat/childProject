@@ -42,7 +42,7 @@ namespace ForChild
         static int symbolsSentFromOther_full1 = 0;
         static int symbolsSentFromOther_full2 = 0;
         static int symbolsSentFromOther_full3 = 0;
-
+        static bool flag = true;
 
         public FatherPage()
         {
@@ -82,11 +82,14 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
+            flag = true;
+
             GetMsgFromFather();
 
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
+            flag = false;
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
@@ -290,8 +293,11 @@ namespace ForChild
 
         private async void GetMsgFromFather()
         {
-            OutTable[] table = await Common.GetMsgAsync(Common.myFather);
-            GetMessageAsync(table);
+            while (flag)
+            {
+                OutTable[] table = await Common.GetMsgAsync(Common.myFather);
+                GetMessageAsync(table);
+            }
 
         }
     }
