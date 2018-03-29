@@ -53,7 +53,7 @@ namespace ForParent
             }
         }
 
-        public static async Task<bool> DeleteFileAsync()
+        public static async Task<bool> DeleteFileAsync(string fileName)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ForParent
                     return false;
                 }
                 Windows.Storage.StorageFile userFile =
-                    await storageFolder.CreateFileAsync("userParent.txt",
+                    await storageFolder.CreateFileAsync(fileName,
                         Windows.Storage.CreationCollisionOption.ReplaceExisting);
                 if (userFile == null)
                 {
@@ -124,6 +124,25 @@ namespace ForParent
             return true;
         }
 
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;    
+            }
+
+            catch
+            {
+                return "";
+            }
+        }
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             string child_email = myChild;
