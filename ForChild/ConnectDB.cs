@@ -69,7 +69,7 @@ namespace ForChild
             }
         }
 
-        public async Task<bool> UpdateUserCounterAsync(symbol userSymbol)
+        public async void UpdateUserCounterAsync(symbol userSymbol)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/counters";
             //string completeUri = "http://localhost:49876/api/counters";
@@ -88,12 +88,11 @@ namespace ForChild
 
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
                 System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-                return true;
             }
 
             catch (Exception ex)
             {
-                return false;
+                //cant update in db
             }
         }
        

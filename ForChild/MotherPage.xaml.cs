@@ -5,8 +5,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ForChild
 {
     /// <summary>
@@ -38,42 +36,7 @@ namespace ForChild
         public MotherPage()
         {
             this.InitializeComponent();
-            symbolsForSend1[0] = forSend11;
-            symbolsForSend1[1] = forSend12;
-            symbolsForSend1[2] = forSend13;
-            symbolsForSend1[3] = forSend14;
-            symbolsForSend1[4] = forSend15;
-
-            symbolsForSend2[0] = forSend21;
-            symbolsForSend2[1] = forSend22;
-            symbolsForSend2[2] = forSend23;
-            symbolsForSend2[3] = forSend24;
-            symbolsForSend2[4] = forSend25;
-
-            symbolsForSend3[0] = forSend31;
-            symbolsForSend3[1] = forSend32;
-            symbolsForSend3[2] = forSend33;
-            symbolsForSend3[3] = forSend34;
-            symbolsForSend3[4] = forSend35;
-
-            symbolsSentFromOther1[0] = afterSend11;
-            symbolsSentFromOther1[1] = afterSend12;
-            symbolsSentFromOther1[2] = afterSend13;
-            symbolsSentFromOther1[3] = afterSend14;
-            symbolsSentFromOther1[4] = afterSend15;
-
-            symbolsSentFromOther2[0] = afterSend21;
-            symbolsSentFromOther2[1] = afterSend22;
-            symbolsSentFromOther2[2] = afterSend23;
-            symbolsSentFromOther2[3] = afterSend24;
-            symbolsSentFromOther2[4] = afterSend25;
-
-            symbolsSentFromOther3[0] = afterSend31;
-            symbolsSentFromOther3[1] = afterSend32;
-            symbolsSentFromOther3[2] = afterSend33;
-            symbolsSentFromOther3[3] = afterSend34;
-            symbolsSentFromOther3[4] = afterSend35;
-
+            InitializeArrays();
             GetMsgFromMother();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -261,6 +224,7 @@ namespace ForChild
                 }
             }
         }
+
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
             if (symbolsSentFromOther_full1 == 0) {
@@ -299,5 +263,46 @@ namespace ForChild
             GetMessageAsync(table);
 
         }
+
+        private void InitializeArrays()
+        {
+            symbolsForSend1[0] = forSend11;
+            symbolsForSend1[1] = forSend12;
+            symbolsForSend1[2] = forSend13;
+            symbolsForSend1[3] = forSend14;
+            symbolsForSend1[4] = forSend15;
+
+            symbolsForSend2[0] = forSend21;
+            symbolsForSend2[1] = forSend22;
+            symbolsForSend2[2] = forSend23;
+            symbolsForSend2[3] = forSend24;
+            symbolsForSend2[4] = forSend25;
+
+            symbolsForSend3[0] = forSend31;
+            symbolsForSend3[1] = forSend32;
+            symbolsForSend3[2] = forSend33;
+            symbolsForSend3[3] = forSend34;
+            symbolsForSend3[4] = forSend35;
+
+            symbolsSentFromOther1[0] = afterSend11;
+            symbolsSentFromOther1[1] = afterSend12;
+            symbolsSentFromOther1[2] = afterSend13;
+            symbolsSentFromOther1[3] = afterSend14;
+            symbolsSentFromOther1[4] = afterSend15;
+
+            symbolsSentFromOther2[0] = afterSend21;
+            symbolsSentFromOther2[1] = afterSend22;
+            symbolsSentFromOther2[2] = afterSend23;
+            symbolsSentFromOther2[3] = afterSend24;
+            symbolsSentFromOther2[4] = afterSend25;
+
+            symbolsSentFromOther3[0] = afterSend31;
+            symbolsSentFromOther3[1] = afterSend32;
+            symbolsSentFromOther3[2] = afterSend33;
+            symbolsSentFromOther3[3] = afterSend34;
+            symbolsSentFromOther3[4] = afterSend35;
+
+        }
     }
+
 }

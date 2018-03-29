@@ -11,7 +11,6 @@ namespace ForParent
             public string email { get; set; }
             public string father { get; set; }
             public string mother { get; set; }
-            public string sister { get; set; }
             public string friend { get; set; }
         }
 }
