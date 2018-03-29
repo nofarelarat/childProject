@@ -42,7 +42,6 @@ namespace ForChild
         public MotherPage()
         {
             this.InitializeComponent();
-            if (initialize == 0) {
                 symbolsForSend1[0] = forSend11;
                 symbolsForSend1[1] = forSend12;
                 symbolsForSend1[2] = forSend13;
@@ -78,12 +77,6 @@ namespace ForChild
                 symbolsSentFromOther3[2] = afterSend33;
                 symbolsSentFromOther3[3] = afterSend34;
                 symbolsSentFromOther3[4] = afterSend35;
-
-            }
-            initialize += 1;
-
-
-
             GetMsgFromMother();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -181,9 +174,7 @@ namespace ForChild
             if (symbolsForSend_curr == 1 && symbolsForSend_curr1 < 5)
             {
                     symbolsForSend1[symbolsForSend_curr1].Source = new BitmapImage(requestUri);
-                forSend11.Tag = button_name;
-                forSend11.Source = new BitmapImage(requestUri);
-                symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
+                    symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
                     symbolsForSend_curr1++;                
             }
             if (symbolsForSend_curr == 2 && symbolsForSend_curr2 < 5)
