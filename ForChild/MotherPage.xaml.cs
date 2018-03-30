@@ -226,6 +226,10 @@ namespace ForChild
                         return;
                     }//if
                 }
+                for (int x = 0; x < message.Length; x++)
+                {
+                   // await Common.markAsDeleteMsg(message[x]);
+                }
             }
         }
 
@@ -362,11 +366,11 @@ namespace ForChild
                         images[j].Source = new BitmapImage(requestUri);
 
                     }
-                    if (message[0].Equals("child"))
+                    if (message[0].Equals("parent"))
                     {
                         GetMessageImg(images);
                     }
-                    if (message[0].Equals("parent"))
+                    if (message[0].Equals("child"))
                     {
                         GetSentMessage(images);
                     }

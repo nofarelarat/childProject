@@ -223,7 +223,7 @@ namespace ForParent
                     GetMessageImg(images);
                     if (numofmsg == 3)
                     {
-                        return;
+                       break;
                     }//if
                 }
                 for (int x = 0; x < message.Length; x++)
@@ -295,11 +295,11 @@ namespace ForParent
         private async void GetMsgFromChild()
         {
             while (flag)
-            {
+           {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
                 GetMessageAsync(table);
          
-            }
+           }
             
         }
 
@@ -366,11 +366,11 @@ namespace ForParent
                         images[j].Source = new BitmapImage(requestUri);
                            
                     }
-                    if (message[0].Equals("child"))
+                    if (message[0].Equals("parent"))
                     {
                         GetMessageImg(images);
                     }
-                    if (message[0].Equals("parent"))
+                    if (message[0].Equals("child"))
                     {
                         GetSentMessage(images);
                     }
