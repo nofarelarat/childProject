@@ -83,9 +83,7 @@ namespace ForChild
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
             flag = true;
-
             GetMsgFromFather();
-
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -287,6 +285,10 @@ namespace ForChild
                     {
                         return;
                     }//if
+                }
+                for (int x = 0; x < message.Length; x++)
+                {
+                    await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
