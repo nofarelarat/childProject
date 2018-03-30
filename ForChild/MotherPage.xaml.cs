@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -20,25 +21,23 @@ namespace ForChild
         static int symbolsForSend_curr1 = 0;
         static int symbolsForSend_curr2 = 0;
         static int symbolsForSend_curr3 = 0;
+        
         // full/open flag
-        static int symbolsForSend_full1 = 0;
-        static int symbolsForSend_full2 = 0;
-        static int symbolsForSend_full3 = 0;
+        static int[] symbolsForSend_full = new int[3];
 
         static Image[] symbolsSentFromOther1 = new Image[5];
         static Image[] symbolsSentFromOther2 = new Image[5];
         static Image[] symbolsSentFromOther3 = new Image[5];
 
-        static int symbolsSentFromOther_full1 = 0;
-        static int symbolsSentFromOther_full2 = 0;
-        static int symbolsSentFromOther_full3 = 0;
+        static int[] symbolsSentFromOther_full = new int[3];
 
 
         public MotherPage()
         {
             this.InitializeComponent();
             InitializeArrays();
-            GetMsgFromMother();
+            //GetMsgFromMother();
+            GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -57,9 +56,9 @@ namespace ForChild
             symbolsForSend_curr2 = 0;
             symbolsForSend_curr3 = 0;
 
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
 
             Frame toHome = Window.Current.Content as Frame;
             flag = false;
@@ -72,17 +71,17 @@ namespace ForChild
             string sentence = "";
             Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
-            if (symbolsForSend_full1 != 0)
+            if (symbolsForSend_full[0] != 0)
             {
-                if (symbolsForSend_full2 == 0)
+                if (symbolsForSend_full[1] == 0)
                 {
                     message_num = 2;
-                    symbolsForSend_full2 = 1;
+                    symbolsForSend_full[1] = 1;
                 }
-                else if (symbolsForSend_full3 == 0)
+                else if (symbolsForSend_full[2] == 0)
                 {
                     message_num = 3;
-                    symbolsForSend_full3 = 1;
+                    symbolsForSend_full[2] = 1;
                 }
                 else
                 {//all full
@@ -92,7 +91,7 @@ namespace ForChild
             else
             {
                 message_num = 1;
-                symbolsForSend_full1 = 1;
+                symbolsForSend_full[0] = 1;
             }
             if (fullFlag == 0)
             {
@@ -117,17 +116,18 @@ namespace ForChild
             }
             //To do : sent to is hard coded!!
             Common.sendMsg(sentence,Common.myMother);
+            Common.WriteConversation("child:" + sentence, "chatWithMother.txt");
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
             int symbolsForSend_messege = -1;
-            if (symbolsForSend_full1 != 0)
+            if (symbolsForSend_full[0] != 0)
             {
-                if (symbolsForSend_full2 != 0)
+                if (symbolsForSend_full[1] != 0)
                 {
-                    if (symbolsForSend_full3 == 0)
+                    if (symbolsForSend_full[2] == 0)
                     {
                         symbolsForSend_messege = 3;
                     }
@@ -188,10 +188,11 @@ namespace ForChild
             symbolsForSend_curr2 = 0;
             symbolsForSend_curr3 = 0;
 
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
 
+            Common.DeleteFileAsync("chatWithMother.txt");
         }
 
         private async void GetMessageAsync(OutTable[] message)
@@ -208,6 +209,7 @@ namespace ForChild
                     int i = 0;
                         numofmsg++;
                         string msg = message[x].Message;
+                        Common.WriteConversation("parent:" + msg, "chatWithMother.txt");
                         string[] tmp = msg.Split(' ');
                         foreach (string source in tmp)
                         {
@@ -229,34 +231,62 @@ namespace ForChild
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
-            if (symbolsSentFromOther_full1 == 0) {
+            if (symbolsSentFromOther_full[0] == 0) {
                 for (int i = 0; i < symbolsSentFromOther1.Length; i++)
                 {
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full1 = 1;
+                symbolsSentFromOther_full[0] = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
-            else if (symbolsSentFromOther_full2 == 0)
+            else if (symbolsSentFromOther_full[1] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther2.Length; i++)
                 {
                     symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full2 = 1;
+                symbolsSentFromOther_full[1] = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
 
             }
-            else if (symbolsSentFromOther_full3 == 0)
+            else if (symbolsSentFromOther_full[2] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther3.Length; i++)
                 {
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full3 = 1;
+                symbolsSentFromOther_full[2] = 1;
             }
 
+        }
+
+        private void GetSentMessage(Image[] symbolsSent)
+        {
+            if (symbolsForSend_full[0] == 0)
+            {
+                for (int i = 0; i < symbolsForSend1.Length; i++)
+                {
+                    symbolsForSend1[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[0] = 1;
+            }
+            else if (symbolsForSend_full[1] == 0)
+            {
+                for (int i = 0; i < symbolsForSend2.Length; i++)
+                {
+                    symbolsForSend2[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[1] = 1;
+            }
+            else if (symbolsForSend_full[2] == 0)
+            {
+                for (int i = 0; i < symbolsForSend3.Length; i++)
+                {
+                    symbolsForSend3[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[2] = 1;
+            }
         }
 
         private async void GetMsgFromMother()
@@ -307,6 +337,48 @@ namespace ForChild
             symbolsSentFromOther3[4] = afterSend35;
 
         }
+
+        private async void GetMsgFromFileAsync()
+        {
+            string res = await Common.ReadConversation("chatWithMother.txt");
+            if (!res.Equals(""))
+            {
+                res = res + "+";
+                string[] messages = res.Split('\r', '\n');
+                for (int i = 0; i < messages.Length; i++)
+                {
+                    string[] message = messages[i].Split(':', '+');
+                    Image[] images = new Image[5];
+
+                    for (int j = 0; j < images.Length; j++)
+                    {
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + ".png");
+
+                        if (j + 1 < message.Length)
+                        {
+                            requestUri = new Uri(base.BaseUri, "/symbols/" + message[j + 1] + ".png");
+                        }
+                        images[j] = new Image();
+                        images[j].Source = new BitmapImage(requestUri);
+
+                    }
+                    if (message[0].Equals("child"))
+                    {
+                        GetMessageImg(images);
+                    }
+                    if (message[0].Equals("parent"))
+                    {
+                        GetSentMessage(images);
+                    }
+
+                    if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+                    {
+                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+
     }
 
 }

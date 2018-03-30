@@ -36,7 +36,6 @@ namespace ForParent
             InitializeArrays();
             GetMsgFromChild();
             GetMsgFromFileAsync();
->>>>>>> origin/master
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)

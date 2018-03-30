@@ -22,6 +22,7 @@ namespace ForChild
         public static string myFriend = "";
         public static string myTeacher = "";
         public static bool isConectet = false;
+        
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string addressee)
@@ -83,16 +84,11 @@ namespace ForChild
 
         public static async Task<symbol[]> GetUserAllCounterAsync()
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
+            string email = who_am_i;
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
 
-            if (user != null)
+            if (!(who_am_i.Equals("")))
             {
                 res = await db.GetUserAllCountersAsync(email);
             }
@@ -276,6 +272,95 @@ namespace ForChild
             catch
             {
                 return false;
+            }
+        }
+
+        public static async Task<bool> DeleteFileAsync(string fileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //in the sentence allreay see who send the message
+        public static async Task<bool> WriteConversation(string sentence, string FileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                      Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(FileName);
+                if (userFile == null)
+                {
+                    return false;
+                }
+                IEnumerable<string> toAdd = new List<string>() { sentence };
+                await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+
+            }
+            //trying to create the file
+            catch
+            {
+                try
+                {
+                    Windows.Storage.StorageFolder storageFolder =
+                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile userFile =
+                        await storageFolder.CreateFileAsync(FileName,
+                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                    IEnumerable<string> toAdd = new List<string>() { sentence };
+                    await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;
+            }
+
+            catch
+            {
+                return "";
             }
         }
 
