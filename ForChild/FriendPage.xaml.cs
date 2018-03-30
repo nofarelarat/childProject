@@ -338,6 +338,10 @@ namespace ForChild
                         return;
                     }//if
                 }
+                for (int x = 0; x < message.Length; x++)
+                {
+                    await Common.markAsDeleteMsg(message[x]);
+                }
             }
         }
 

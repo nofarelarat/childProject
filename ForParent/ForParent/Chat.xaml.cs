@@ -36,7 +36,6 @@ namespace ForParent
             InitializeArrays();
             GetMsgFromChild();
             GetMsgFromFileAsync();
->>>>>>> origin/master
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -224,7 +223,7 @@ namespace ForParent
                     GetMessageImg(images);
                     if (numofmsg == 3)
                     {
-                        return;
+                       break;
                     }//if
                 }
                 for (int x = 0; x < message.Length; x++)
@@ -296,11 +295,11 @@ namespace ForParent
         private async void GetMsgFromChild()
         {
             while (flag)
-            {
+           {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
                 GetMessageAsync(table);
          
-            }
+           }
             
         }
 
