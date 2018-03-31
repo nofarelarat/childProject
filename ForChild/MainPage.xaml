@@ -50,7 +50,7 @@
         </Button>
 
         <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="images/me.jpg"/>
-        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="879,355,0,239" VerticalAlignment="Stretch" Width="120" Click="forLogin_Click">
+        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="879,355,0,239" VerticalAlignment="Stretch" Width="120" Click="forLogin_ClickAsync">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/login.png" Margin="0,-43,-85.2,0.4" />

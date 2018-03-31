@@ -97,7 +97,6 @@ namespace ForChild
                 }
                 else {
                     todo.Text = "please add mother";
-
                 }
             }
         }
@@ -120,10 +119,19 @@ namespace ForChild
             }
         }
 
-        private void forLogin_Click(object sender, RoutedEventArgs e)
+        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Frame toMather = Window.Current.Content as Frame;
-            toMather.Navigate(typeof(loginChild));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            {
+                await Common.DeleteFileAsync("userChild.txt");
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)

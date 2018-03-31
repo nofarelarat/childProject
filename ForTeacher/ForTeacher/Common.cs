@@ -47,5 +47,35 @@ namespace ForTeacher
             }
         }
 
+
+        public static async Task<bool> DeleteFileAsync(string fileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+            who_am_i = "";
+            isConectet = false;
+            return true;
+        }
+
     }
 }
