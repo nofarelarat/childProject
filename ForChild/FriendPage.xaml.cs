@@ -1,22 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
 
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ForChild
 {
@@ -33,60 +20,22 @@ namespace ForChild
         static int symbolsForSend_curr2 = 0;
         static int symbolsForSend_curr3 = 0;
         // full/open flag
-        static int symbolsForSend_full1 = 0;
-        static int symbolsForSend_full2 = 0;
-        static int symbolsForSend_full3 = 0;
+        static int[] symbolsForSend_full = new int[3];
 
         static Image[] symbolsSentFromOther1 = new Image[5];
         static Image[] symbolsSentFromOther2 = new Image[5];
         static Image[] symbolsSentFromOther3 = new Image[5];
 
-        static int symbolsSentFromOther_full1 = 0;
-        static int symbolsSentFromOther_full2 = 0;
-        static int symbolsSentFromOther_full3 = 0;
+        static int[] symbolsSentFromOther_full = new int[3];
         static bool flag = true;
 
         public FriendPage()
         {
             this.InitializeComponent();
-            symbolsForSend1[0] = forSend11;
-            symbolsForSend1[1] = forSend12;
-            symbolsForSend1[2] = forSend13;
-            symbolsForSend1[3] = forSend14;
-            symbolsForSend1[4] = forSend15;
-
-            symbolsForSend2[0] = forSend21;
-            symbolsForSend2[1] = forSend22;
-            symbolsForSend2[2] = forSend23;
-            symbolsForSend2[3] = forSend24;
-            symbolsForSend2[4] = forSend25;
-
-            symbolsForSend3[0] = forSend31;
-            symbolsForSend3[1] = forSend32;
-            symbolsForSend3[2] = forSend33;
-            symbolsForSend3[3] = forSend34;
-            symbolsForSend3[4] = forSend35;
-
-            symbolsSentFromOther1[0] = afterSend11;
-            symbolsSentFromOther1[1] = afterSend12;
-            symbolsSentFromOther1[2] = afterSend13;
-            symbolsSentFromOther1[3] = afterSend14;
-            symbolsSentFromOther1[4] = afterSend15;
-
-            symbolsSentFromOther2[0] = afterSend21;
-            symbolsSentFromOther2[1] = afterSend22;
-            symbolsSentFromOther2[2] = afterSend23;
-            symbolsSentFromOther2[3] = afterSend24;
-            symbolsSentFromOther2[4] = afterSend25;
-
-            symbolsSentFromOther3[0] = afterSend31;
-            symbolsSentFromOther3[1] = afterSend32;
-            symbolsSentFromOther3[2] = afterSend33;
-            symbolsSentFromOther3[3] = afterSend34;
-            symbolsSentFromOther3[4] = afterSend35;
+            InitializeArrays();
             flag = true;
             GetMsgFromFriend();
-
+            GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -112,10 +61,10 @@ namespace ForChild
             symbolsForSend_curr2 = 0;
             symbolsForSend_curr3 = 0;
 
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
-
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
+            Common.DeleteFileAsync("chatWithFriend.txt");
         }
         private async void FriendSendClick(object sender, RoutedEventArgs e)
         {
@@ -123,17 +72,17 @@ namespace ForChild
             string sentence = "";
             Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
-            if (symbolsForSend_full1 != 0)
+            if (symbolsForSend_full[0] != 0)
             {
-                if (symbolsForSend_full2 == 0)
+                if (symbolsForSend_full[1] == 0)
                 {
                     message_num = 2;
-                    symbolsForSend_full2 = 1;
+                    symbolsForSend_full[1] = 1;
                 }
-                else if (symbolsForSend_full3 == 0)
+                else if (symbolsForSend_full[2] == 0)
                 {
                     message_num = 3;
-                    symbolsForSend_full3 = 1;
+                    symbolsForSend_full[2] = 1;
                 }
                 else
                 {//all full
@@ -143,7 +92,7 @@ namespace ForChild
             else
             {
                 message_num = 1;
-                symbolsForSend_full1 = 1;
+                symbolsForSend_full[0] = 1;
             }
             if (fullFlag == 0)
             {
@@ -177,17 +126,17 @@ namespace ForChild
             string sentence = "";
             Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
-            if (symbolsForSend_full1 != 0)
+            if (symbolsForSend_full[0] != 0)
             {
-                if (symbolsForSend_full2 == 0)
+                if (symbolsForSend_full[1] == 0)
                 {
                     message_num = 2;
-                    symbolsForSend_full2 = 1;
+                    symbolsForSend_full[1] = 1;
                 }
-                else if (symbolsForSend_full3 == 0)
+                else if (symbolsForSend_full[2] == 0)
                 {
                     message_num = 3;
-                    symbolsForSend_full3 = 1;
+                    symbolsForSend_full[2] = 1;
                 }
                 else
                 {//all full
@@ -197,7 +146,7 @@ namespace ForChild
             else
             {
                 message_num = 1;
-                symbolsForSend_full1 = 1;
+                symbolsForSend_full[0] = 1;
             }
             if (fullFlag == 0)
             {
@@ -223,16 +172,17 @@ namespace ForChild
             //To do : sent to is hard coded!!
             Common.sendMsg(sentence, Common.myFriend);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
             int symbolsForSend_messege = -1;
-            if (symbolsForSend_full1 != 0)
+            if (symbolsForSend_full[0] != 0)
             {
-                if (symbolsForSend_full2 != 0)
+                if (symbolsForSend_full[1] != 0)
                 {
-                    if (symbolsForSend_full3 == 0)
+                    if (symbolsForSend_full[2] == 0)
                     {
                         symbolsForSend_messege = 3;
                     }
@@ -278,37 +228,65 @@ namespace ForChild
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
-            if (symbolsSentFromOther_full1 == 0)
+            if (symbolsSentFromOther_full[0] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther1.Length; i++)
                 {
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full1 = 1;
+                symbolsSentFromOther_full[0] = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
             }
-            else if (symbolsSentFromOther_full2 == 0)
+            else if (symbolsSentFromOther_full[1] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther2.Length; i++)
                 {
                     symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full2 = 1;
+                symbolsSentFromOther_full[1] = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
 
             }
-            else if (symbolsSentFromOther_full3 == 0)
+            else if (symbolsSentFromOther_full[2] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther3.Length; i++)
                 {
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
-                symbolsSentFromOther_full3 = 1;
+                symbolsSentFromOther_full[2] = 1;
             }
 
         }
+        private void GetSentMessage(Image[] symbolsSent)
+        {
+            if (symbolsForSend_full[0] == 0)
+            {
+                for (int i = 0; i < symbolsForSend1.Length; i++)
+                {
+                    symbolsForSend1[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[0] = 1;
+            }
+            else if (symbolsForSend_full[1] == 0)
+            {
+                for (int i = 0; i < symbolsForSend2.Length; i++)
+                {
+                    symbolsForSend2[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[1] = 1;
+            }
+            else if (symbolsForSend_full[2] == 0)
+            {
+                for (int i = 0; i < symbolsForSend3.Length; i++)
+                {
+                    symbolsForSend3[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[2] = 1;
+            }
+        }
+
         private async void GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
@@ -322,6 +300,7 @@ namespace ForChild
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
+                    Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
                     string[] tmp = msg.Split(' ');
                     foreach (string source in tmp)
                     {
@@ -340,7 +319,7 @@ namespace ForChild
                 }
                 for (int x = 0; x < message.Length; x++)
                 {
-                    await Common.markAsDeleteMsg(message[x]);
+                    //await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
@@ -354,6 +333,87 @@ namespace ForChild
             }
 
         }
+
+        private void InitializeArrays()
+        {
+            symbolsForSend1[0] = forSend11;
+            symbolsForSend1[1] = forSend12;
+            symbolsForSend1[2] = forSend13;
+            symbolsForSend1[3] = forSend14;
+            symbolsForSend1[4] = forSend15;
+
+            symbolsForSend2[0] = forSend21;
+            symbolsForSend2[1] = forSend22;
+            symbolsForSend2[2] = forSend23;
+            symbolsForSend2[3] = forSend24;
+            symbolsForSend2[4] = forSend25;
+
+            symbolsForSend3[0] = forSend31;
+            symbolsForSend3[1] = forSend32;
+            symbolsForSend3[2] = forSend33;
+            symbolsForSend3[3] = forSend34;
+            symbolsForSend3[4] = forSend35;
+
+            symbolsSentFromOther1[0] = afterSend11;
+            symbolsSentFromOther1[1] = afterSend12;
+            symbolsSentFromOther1[2] = afterSend13;
+            symbolsSentFromOther1[3] = afterSend14;
+            symbolsSentFromOther1[4] = afterSend15;
+
+            symbolsSentFromOther2[0] = afterSend21;
+            symbolsSentFromOther2[1] = afterSend22;
+            symbolsSentFromOther2[2] = afterSend23;
+            symbolsSentFromOther2[3] = afterSend24;
+            symbolsSentFromOther2[4] = afterSend25;
+
+            symbolsSentFromOther3[0] = afterSend31;
+            symbolsSentFromOther3[1] = afterSend32;
+            symbolsSentFromOther3[2] = afterSend33;
+            symbolsSentFromOther3[3] = afterSend34;
+            symbolsSentFromOther3[4] = afterSend35;
+        }
+
+        private async void GetMsgFromFileAsync()
+        {
+            string res = await Common.ReadConversation("chatWithFriend.txt");
+            if (!res.Equals(""))
+            {
+                res = res + "+";
+                string[] messages = res.Split('\r', '\n');
+                for (int i = 0; i < messages.Length; i++)
+                {
+                    string[] message = messages[i].Split(':', '+');
+                    Image[] images = new Image[5];
+
+                    for (int j = 0; j < images.Length; j++)
+                    {
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + ".png");
+
+                        if (j + 1 < message.Length)
+                        {
+                            requestUri = new Uri(base.BaseUri, "/symbols/" + message[j + 1] + ".png");
+                        }
+                        images[j] = new Image();
+                        images[j].Source = new BitmapImage(requestUri);
+
+                    }
+                    if (message[0].Equals("friend"))
+                    {
+                        GetMessageImg(images);
+                    }
+                    if (message[0].Equals("child"))
+                    {
+                        GetSentMessage(images);
+                    }
+
+                    if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+                    {
+                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+
     }
 }
 

@@ -366,11 +366,11 @@ namespace ForParent
                         images[j].Source = new BitmapImage(requestUri);
                            
                     }
-                    if (message[0].Equals("child"))
+                    if (message[0].Equals("parent"))
                     {
                         GetMessageImg(images);
                     }
-                    if (message[0].Equals("parent"))
+                    if (message[0].Equals("child"))
                     {
                         GetSentMessage(images);
                     }

@@ -22,6 +22,7 @@ namespace ForChild
         public static string myFriend = "";
         public static string myTeacher = "";
         public static bool isConectet = false;
+        
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string addressee)
@@ -83,16 +84,11 @@ namespace ForChild
 
         public static async Task<symbol[]> GetUserAllCounterAsync()
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
+            string email = who_am_i;
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
 
-            if (user != null)
+            if (!(who_am_i.Equals("")))
             {
                 res = await db.GetUserAllCountersAsync(email);
             }
@@ -279,38 +275,128 @@ namespace ForChild
             }
         }
 
-               public static async Task<bool> markAsDeleteMsg(OutTable obj)
+        public static async Task<bool> DeleteFileAsync(string fileName)
         {
-            if(obj ==null)
-            {
-                return false;
-            }
-            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
-            outTableChange new_msg = new outTableChange() ;
-            new_msg.Message_Recive = "0";
-            new_msg.Message_Send = "0";
-            new_msg.RowKey = obj.RowKey;
-            new_msg.PartitionKey = obj.PartitionKey;
-            //string json = ConnectDB.WriteFromObject(obj);
-            string json = JsonConvert.SerializeObject(new_msg);
-
             try
             {
-                //Send the PUT request
-                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
-                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
-                request.Content = new StringContent(json,
-                Encoding.UTF8,
-                "application/json");//CONTENT-TYPE header
-                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-                return true;
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
             }
-            catch (Exception ex)
+
+            catch
             {
                 return false;
             }
+
+            return true;
         }
+
+        //in the sentence allreay see who send the message
+        public static async Task<bool> WriteConversation(string sentence, string FileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                      Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(FileName);
+                if (userFile == null)
+                {
+                    return false;
+                }
+                IEnumerable<string> toAdd = new List<string>() { sentence };
+                await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+
+            }
+            //trying to create the file
+            catch
+            {
+                try
+                {
+                    Windows.Storage.StorageFolder storageFolder =
+                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile userFile =
+                        await storageFolder.CreateFileAsync(FileName,
+                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                    IEnumerable<string> toAdd = new List<string>() { sentence };
+                    await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;
+            }
+
+            catch
+            {
+                return "";
+            }
+        }
+
+        //   public static async Task<bool> markAsDeleteMsg(OutTable obj)
+        //   {
+        //    if(obj ==null)
+        //    {
+        //        return false;
+        //    }
+        //    string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
+        //    outTableChange new_msg = new outTableChange() ;
+        //    new_msg.Message_Recive = "0";
+        //    new_msg.Message_Send = "0";
+        //    new_msg.RowKey = obj.RowKey;
+        //    new_msg.PartitionKey = obj.PartitionKey;
+        //    //string json = ConnectDB.WriteFromObject(obj);
+        //    string json = JsonConvert.SerializeObject(new_msg);
+
+        //    try
+        //    {
+        //        //Send the PUT request
+        //        Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
+        //        System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
+        //        request.Content = new StringContent(json,
+        //        Encoding.UTF8,
+        //        "application/json");//CONTENT-TYPE header
+        //        System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+        //        System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
+
     }
 }
 

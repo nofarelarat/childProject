@@ -113,7 +113,6 @@
     <Compile Include="FatherPage.xaml.cs">
       <DependentUpon>FatherPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="outTableChange.cs" />
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
