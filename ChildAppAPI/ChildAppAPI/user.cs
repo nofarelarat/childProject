@@ -20,6 +20,6 @@ namespace ChildAppAPI
         public string gardenname { get; set; }
         public Nullable<int> childyear { get; set; }
         public string password { get; set; }
-        public string type { get; set; }//Child, Parent, Teacher
+        public string type { get; set; }
     }
 }

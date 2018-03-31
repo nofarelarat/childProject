@@ -79,7 +79,7 @@ namespace ForParent
 
         private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
         {
-            if (Common.who_am_i != "")
+            if (Common.who_am_i.Equals(""))
             {
                 await Common.DeleteFileAsync("userParent.txt");
                 Frame toLogin = Window.Current.Content as Frame;

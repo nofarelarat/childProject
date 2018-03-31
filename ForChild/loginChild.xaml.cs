@@ -47,7 +47,7 @@ namespace ForChild
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
                             Common.who_am_i + "+password:" + password.Password.ToString()
                             + "+father:" + Common.myFather + "+mother:" + Common.myMother
-                            + "+Teacher:" + Common.myTeacher + "+friend:" + Common.myFriend);
+                            + "+friend:" + Common.myFriend);
                     }
                     catch
                     {

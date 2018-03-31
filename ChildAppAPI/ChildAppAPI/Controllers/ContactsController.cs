@@ -64,8 +64,7 @@ namespace ChildAppAPI.Controllers
                 email = userEmail,
                 father = emails[2],
                 mother = emails[3],
-                sister = emails[4],
-                friend = emails[5]
+                friend = emails[4]
             };
             try
             {
@@ -83,7 +82,6 @@ namespace ChildAppAPI.Controllers
                     }
                     userContacts.father = contacts.father;
                     userContacts.mother = contacts.mother;
-                    userContacts.sister = contacts.sister;
                     userContacts.friend = contacts.friend;
                     db.SaveChanges();
                     return true;

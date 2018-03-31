@@ -77,8 +77,6 @@ namespace ForParent
                 return false;
             }
 
-            who_am_i = "";
-            myChild = "";
             return true;
         }
 

@@ -24,7 +24,7 @@ namespace ForChild
         public static bool isConectet = false;
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
-        public static async void sendMsg(string message,string addressee)
+        public static async void sendMsg(string message, string addressee)
         {
             String final_msg = message + "$" + Common.who_am_i + "$";
             //Create an HTTP client object
@@ -49,14 +49,15 @@ namespace ForChild
         public static void UpdateCounterAsync(string symbolName)
         {
             ConnectDB db = new ConnectDB();
-            if (!(who_am_i.Equals("") || symbolName.Equals(""))) {
+            if (!(who_am_i.Equals("") || symbolName.Equals("")))
+            {
                 symbol symbol = new symbol
                 {
                     email = who_am_i,
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
-                 db.UpdateUserCounterAsync(symbol);
+                db.UpdateUserCounterAsync(symbol);
             }
             else
             {
@@ -103,7 +104,7 @@ namespace ForChild
         {
             string email = who_am_i;
             ConnectDB db = new ConnectDB();
-            
+
             if (!who_am_i.Equals(""))
             {
                 userContacts contacts = await db.GetUserContactsAsync(email);
@@ -131,15 +132,15 @@ namespace ForChild
             }
             user[] users = new user[4];
             ConnectDB db = new ConnectDB();
-            for (int i = 0;i < users.Length;i++)
+            for (int i = 0; i < users.Length; i++)
             {
-                users[i] = await db.GetUserByMailAsync(emails[i+2]);
+                users[i] = await db.GetUserByMailAsync(emails[i + 2]);
                 if (users[i] == null)
                 {
                     return false;
                 }
             }
-            if(users[0].type.Equals("Parent")&& users[1].type.Equals("Parent")
+            if (users[0].type.Equals("Parent") && users[1].type.Equals("Parent")
                 && users[2].type.Equals("Parent") && users[3].type.Equals("Child"))
             {
                 bool x = await db.AddUserContactsAsync(emails);
@@ -155,17 +156,17 @@ namespace ForChild
             return false;
         }
 
-        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg,string msg_sender)
+        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg, string msg_sender)
         {
             int index = 0; //arr index
             OutTable[] dedicate_msg = null;
-            for (int i=0; i < msg.Length; i++)
+            for (int i = 0; i < msg.Length; i++)
             {
                 if (msg[i].Message_Send.Equals(msg_sender))
                 {
                     dedicate_msg[index] = msg[i];
                     index++;
-                    if (index ==3)
+                    if (index == 3)
                     {
                         break;
                     }
@@ -177,7 +178,7 @@ namespace ForChild
         public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
-                + who_am_i +"$"+ contact;
+                + who_am_i + "$" + contact;
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -185,7 +186,7 @@ namespace ForChild
             //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
- 
+
             try
             {
                 //Send the GET request
@@ -219,7 +220,7 @@ namespace ForChild
                 }
             }
             return false;
-                
+
         }
         public static async Task<bool> GetUserFromFileAsync()
         {
@@ -311,6 +312,98 @@ namespace ForChild
             }
         }
 
+        public static async Task<bool> DeleteFileAsync(string fileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+            who_am_i = "";
+            myFather = "";
+            myMother = "";
+            myFriend = "";
+            myTeacher = "";
+            return true;
+        }
+
+
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;
+            }
+
+            catch
+            {
+                return "";
+            }
+        }
+        //in the sentence allreay see who send the message
+        public static async Task<bool> WriteConversation(string sentence, string FileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                      Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(FileName);
+                if (userFile == null)
+                {
+                    return false;
+                }
+                IEnumerable<string> toAdd = new List<string>() { sentence };
+                await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+
+            }
+            //trying to create the file
+            catch
+            {
+                try
+                {
+                    Windows.Storage.StorageFolder storageFolder =
+                            Windows.Storage.ApplicationData.Current.LocalFolder;
+                    Windows.Storage.StorageFile userFile =
+                        await storageFolder.CreateFileAsync(FileName,
+                            Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                    IEnumerable<string> toAdd = new List<string>() { sentence };
+                    await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
 
