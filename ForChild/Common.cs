@@ -22,9 +22,9 @@ namespace ForChild
         public static string myFriend = "";
         public static string myTeacher = "";
         public static bool isConectet = false;
-        
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
+
         public static async void sendMsg(string message,string sendtoAddress)
         {
             String final_msg = message + "$" + Common.who_am_i + "$";
@@ -50,14 +50,15 @@ namespace ForChild
         public static void UpdateCounterAsync(string symbolName)
         {
             ConnectDB db = new ConnectDB();
-            if (!(who_am_i.Equals("") || symbolName.Equals(""))) {
+            if (!(who_am_i.Equals("") || symbolName.Equals("")))
+            {
                 symbol symbol = new symbol
                 {
                     email = who_am_i,
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
-                 db.UpdateUserCounterAsync(symbol);
+                db.UpdateUserCounterAsync(symbol);
             }
             else
             {
@@ -84,11 +85,16 @@ namespace ForChild
 
         public static async Task<symbol[]> GetUserAllCounterAsync()
         {
-            string email = who_am_i;
+            //string email = who_am_i;
+            string email = "rami@gmail.com";
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
+            user user = await db.GetUserByMailAsync(email);
+            //dont need to get user from db because 
+            //when login there is a check is user exisit 
+            //just check if who_am_i not empty - saving time
 
-            if (!(who_am_i.Equals("")))
+            if (user != null)
             {
                 res = await db.GetUserAllCountersAsync(email);
             }
@@ -99,7 +105,7 @@ namespace ForChild
         {
             string email = who_am_i;
             ConnectDB db = new ConnectDB();
-            
+
             if (!who_am_i.Equals(""))
             {
                 userContacts contacts = await db.GetUserContactsAsync(email);
@@ -127,15 +133,15 @@ namespace ForChild
             }
             user[] users = new user[4];
             ConnectDB db = new ConnectDB();
-            for (int i = 0;i < users.Length;i++)
+            for (int i = 0; i < users.Length; i++)
             {
-                users[i] = await db.GetUserByMailAsync(emails[i+2]);
+                users[i] = await db.GetUserByMailAsync(emails[i + 2]);
                 if (users[i] == null)
                 {
                     return false;
                 }
             }
-            if(users[0].type.Equals("Parent")&& users[1].type.Equals("Parent")
+            if (users[0].type.Equals("Parent") && users[1].type.Equals("Parent")
                 && users[2].type.Equals("Parent") && users[3].type.Equals("Child"))
             {
                 bool x = await db.AddUserContactsAsync(emails);
@@ -151,17 +157,17 @@ namespace ForChild
             return false;
         }
 
-        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg,string msg_sender)
+        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg, string msg_sender)
         {
             int index = 0; //arr index
             OutTable[] dedicate_msg = null;
-            for (int i=0; i < msg.Length; i++)
+            for (int i = 0; i < msg.Length; i++)
             {
                 if (msg[i].Message_Send.Equals(msg_sender))
                 {
                     dedicate_msg[index] = msg[i];
                     index++;
-                    if (index ==3)
+                    if (index == 3)
                     {
                         break;
                     }
@@ -173,7 +179,7 @@ namespace ForChild
         public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
-                + who_am_i +"$"+ contact;
+                + who_am_i + "$" + contact;
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -181,7 +187,7 @@ namespace ForChild
             //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
- 
+
             try
             {
                 //Send the GET request
@@ -215,7 +221,7 @@ namespace ForChild
                 }
             }
             return false;
-                
+
         }
         public static async Task<bool> GetUserFromFileAsync()
         {
@@ -274,6 +280,38 @@ namespace ForChild
                 return false;
             }
         }
+        public static async Task<bool> markAsDeleteMsg(OutTable obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
+            outTableChange new_msg = new outTableChange();
+            new_msg.Message_Recive = "0";
+            new_msg.Message_Send = "0";
+            new_msg.RowKey = obj.RowKey; 
+            new_msg.PartitionKey = obj.PartitionKey;
+            //string json = ConnectDB.WriteFromObject(obj);
+            string json = JsonConvert.SerializeObject(new_msg);
+
+            try
+            {
+                //Send the PUT request
+                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
+                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
+                request.Content = new StringContent(json,
+                Encoding.UTF8,
+                "application/json");//CONTENT-TYPE header
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         public static async Task<bool> DeleteFileAsync(string fileName)
         {
@@ -298,10 +336,34 @@ namespace ForChild
             {
                 return false;
             }
-
+            who_am_i = "";
+            myFather = "";
+            myMother = "";
+            myFriend = "";
+            myTeacher = "";
             return true;
         }
 
+
+        public static async Task<string> ReadConversation(string filename)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.GetFileAsync(filename);
+
+                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
+
+                return text;
+            }
+
+            catch
+            {
+                return "";
+            }
+        }
         //in the sentence allreay see who send the message
         public static async Task<bool> WriteConversation(string sentence, string FileName)
         {
@@ -343,60 +405,6 @@ namespace ForChild
             }
             return true;
         }
-
-        public static async Task<string> ReadConversation(string filename)
-        {
-            try
-            {
-                Windows.Storage.StorageFolder storageFolder =
-                    Windows.Storage.ApplicationData.Current.LocalFolder;
-                Windows.Storage.StorageFile userFile =
-                    await storageFolder.GetFileAsync(filename);
-
-                string text = await Windows.Storage.FileIO.ReadTextAsync(userFile);
-
-                return text;
-            }
-
-            catch
-            {
-                return "";
-            }
-        }
-
-        //   public static async Task<bool> markAsDeleteMsg(OutTable obj)
-        //   {
-        //    if(obj ==null)
-        //    {
-        //        return false;
-        //    }
-        //    string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
-        //    outTableChange new_msg = new outTableChange() ;
-        //    new_msg.Message_Recive = "0";
-        //    new_msg.Message_Send = "0";
-        //    new_msg.RowKey = obj.RowKey;
-        //    new_msg.PartitionKey = obj.PartitionKey;
-        //    //string json = ConnectDB.WriteFromObject(obj);
-        //    string json = JsonConvert.SerializeObject(new_msg);
-
-        //    try
-        //    {
-        //        //Send the PUT request
-        //        Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
-        //        System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
-        //        request.Content = new StringContent(json,
-        //        Encoding.UTF8,
-        //        "application/json");//CONTENT-TYPE header
-        //        System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-        //        System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //}
-
     }
 }
 
