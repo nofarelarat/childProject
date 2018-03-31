@@ -36,7 +36,7 @@ namespace ForChild
         {
             this.InitializeComponent();
             InitializeArrays();
-            //GetMsgFromMother();
+            GetMsgFromMother();
             GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -59,6 +59,10 @@ namespace ForChild
             symbolsForSend_full[0] = 0;
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
+
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
 
             Frame toHome = Window.Current.Content as Frame;
             flag = false;
@@ -251,8 +255,6 @@ namespace ForChild
                 }
                 symbolsSentFromOther_full[1] = 1;
                 send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-
             }
             else if (symbolsSentFromOther_full[2] == 0)
             {

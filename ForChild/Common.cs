@@ -24,12 +24,13 @@ namespace ForChild
         public static bool isConectet = false;
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
-        public static async void sendMsg(string message, string addressee)
+
+        public static async void sendMsg(string message,string sendtoAddress)
         {
             String final_msg = message + "$" + Common.who_am_i + "$";
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
-            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + addressee);
+            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + sendtoAddress);
             //Send the GET request asynchronously and retrieve the response as a string.
             HttpResponseMessage httpResponse = new HttpResponseMessage();
             try

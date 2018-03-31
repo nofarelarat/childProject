@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -17,23 +18,297 @@ namespace ForChild
         static int symbolsForSend_curr1 = 0;
         static int symbolsForSend_curr2 = 0;
         static int symbolsForSend_curr3 = 0;
-        // full/open flag
-        static int symbolsForSend_full1 = 0;
-        static int symbolsForSend_full2 = 0;
-        static int symbolsForSend_full3 = 0;
+        // full/open flag        
+        static int[] symbolsForSend_full = new int[3];
+
 
         static Image[] symbolsSentFromOther1 = new Image[5];
         static Image[] symbolsSentFromOther2 = new Image[5];
         static Image[] symbolsSentFromOther3 = new Image[5];
 
-        static int symbolsSentFromOther_full1 = 0;
-        static int symbolsSentFromOther_full2 = 0;
-        static int symbolsSentFromOther_full3 = 0;
+        static int[] symbolsSentFromOther_full = new int[3];
         static bool flag = true;
 
         public FatherPage()
         {
             this.InitializeComponent();
+            InitializeArrays();
+            flag = true;
+            GetMsgFromFileAsync();
+        }
+        private void Button_Click_back(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < symbolsForSend1.Length; i++)
+            {
+                symbolsForSend1[i].Source = null;
+                symbolsForSend2[i].Source = null;
+                symbolsForSend3[i].Source = null;
+                symbolsSentFromOther1[i].Source = null;
+                symbolsSentFromOther2[i].Source = null;
+                symbolsSentFromOther3[i].Source = null;
+            }
+            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+            symbolsForSend_curr1 = 0;
+            symbolsForSend_curr2 = 0;
+            symbolsForSend_curr3 = 0;
+
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
+
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
+
+            flag = false;
+            Frame toHome = Window.Current.Content as Frame;
+            toHome.Navigate(typeof(MainPage));
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < symbolsForSend1.Length; i++)
+            {
+                symbolsForSend1[i].Source = null;
+                symbolsForSend2[i].Source = null;
+                symbolsForSend3[i].Source = null;
+                symbolsSentFromOther1[i].Source = null;
+                symbolsSentFromOther2[i].Source = null;
+                symbolsSentFromOther3[i].Source = null;
+            }
+            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+            symbolsForSend_curr1 = 0;
+            symbolsForSend_curr2 = 0;
+            symbolsForSend_curr3 = 0;
+
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
+            Common.DeleteFileAsync("chatWithFather.txt");
+        }
+
+        private void Send_Click(object sender, RoutedEventArgs e)
+        {
+
+            int message_num = 0;
+            string sentence = "";
+            string contact = Common.myFather;
+            Image[] symbolsForSend = symbolsForSend1;
+            int fullFlag = 0;
+            if (symbolsForSend_full[0] != 0)
+            {
+                if (symbolsForSend_full[1] == 0)
+                {
+                    message_num = 2;
+                    symbolsForSend_full[1] = 1;
+                }
+                else if (symbolsForSend_full[2] == 0)
+                {
+                    message_num = 3;
+                    symbolsForSend_full[2] = 1;
+                }
+                else
+                {//all full
+                    fullFlag = 1;
+                }
+            }
+            else
+            {
+                message_num = 1;
+                symbolsForSend_full[0] = 1;
+            }
+            if (fullFlag == 0)
+            {
+                for (int i = 0; i < symbolsForSend1.Length; i++)
+                {
+                    if (message_num == 1)
+                    {
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
+                    }
+                    else if (message_num == 2)
+                    {
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
+                    }
+                    else if (message_num == 3)
+                    {
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
+                    }
+                }
+            }
+            //To do : sent to is hard coded!!
+            Common.sendMsg(sentence, contact);
+            Common.WriteConversation("child:" + sentence, "chatWithFather.txt");
+            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+
+        private void AddToForSendGrid(string button_name, int symbolsForSend_curr)
+        {
+            Uri requestUri = new Uri(base.BaseUri, "/symbols/" + button_name + ".png");
+            if (symbolsForSend_curr == 1 && symbolsForSend_curr1 < 5)
+            {
+                symbolsForSend1[symbolsForSend_curr1].Source = new BitmapImage(requestUri);
+                symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
+                symbolsForSend_curr1++;
+            }
+            if (symbolsForSend_curr == 2 && symbolsForSend_curr2 < 5)
+            {
+                symbolsForSend2[symbolsForSend_curr2].Source = new BitmapImage(requestUri);
+                symbolsForSend2[symbolsForSend_curr2].Tag = button_name;
+                symbolsForSend_curr2++;
+            }
+            if (symbolsForSend_curr == 3 && symbolsForSend_curr3 < 5)
+            {
+                symbolsForSend3[symbolsForSend_curr3].Source = new BitmapImage(requestUri);
+                symbolsForSend3[symbolsForSend_curr3].Tag = button_name;
+                symbolsForSend_curr3++;
+            }
+        }
+
+        private void Symbol_Click(object sender, RoutedEventArgs e)
+        {
+            int symbolsForSend_messege = -1;
+            if (symbolsForSend_full[0] != 0)
+            {
+                if (symbolsForSend_full[1] != 0)
+                {
+                    if (symbolsForSend_full[2] == 0)
+                    {
+                        symbolsForSend_messege = 3;
+                    }
+                }
+                else
+                {
+                    symbolsForSend_messege = 2;
+                }
+            }
+            else
+            {
+                symbolsForSend_messege = 1;
+            }
+            Button button = (Button)sender;
+            string button_name = button.Name;
+            if (symbolsForSend_messege != -1)
+            {
+                AddToForSendGrid(button_name, symbolsForSend_messege);
+            }
+        }
+
+        private void GetMessageImg(Image[] symbolsSentFromOther)
+        {
+            if (symbolsSentFromOther_full[0] == 0)
+            {
+                for (int i = 0; i < symbolsSentFromOther1.Length; i++)
+                {
+                    symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
+                }
+                symbolsSentFromOther_full[0] = 1;
+                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+            }
+            else if (symbolsSentFromOther_full[1] == 0)
+            {
+                for (int i = 0; i < symbolsSentFromOther2.Length; i++)
+                {
+                    symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
+                }
+                symbolsSentFromOther_full[1] = 1;
+                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+
+            }
+            else if (symbolsSentFromOther_full[2] == 0)
+            {
+                for (int i = 0; i < symbolsSentFromOther3.Length; i++)
+                {
+                    symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
+                }
+                symbolsSentFromOther_full[2] = 1;
+            }
+
+        }
+
+        private async void GetMessageAsync(OutTable[] message)
+        {
+            string contact = "rami@gmail.com";
+            Image[] images = new Image[5];
+
+            int numofmsg = 0; //the number of messages cant be more than 3.
+                              //TODO : add to the if 
+            if (message.Length > 0)
+            {
+                for (int x = 0; x < message.Length; x++)
+                {
+                    int i = 0;
+                    numofmsg++;
+                    string msg = message[x].Message;
+                    await Common.WriteConversation("parent:" + msg, "chatWithFather.txt");
+                    string[] tmp = msg.Split(' ');
+                    foreach (string source in tmp)
+                    {
+                        if (i >= 5)
+                            break;
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
+                        images[i] = new Image();
+                        images[i].Source = new BitmapImage(requestUri);
+                        i++;
+                    }
+                    GetMessageImg(images);
+                    if (numofmsg == 3)
+                    {
+                        return;
+                    }//if
+                }
+                for (int x = 0; x < message.Length; x++)
+                {
+                    //await Common.markAsDeleteMsg(message[x]);
+                }
+            }
+        }
+
+        private async void GetMsgFromFather()
+        {
+            while (flag)
+            {
+                OutTable[] table = await Common.GetMsgAsync(Common.myFather);
+                GetMessageAsync(table);
+            }
+
+        }
+        private void GetSentMessage(Image[] symbolsSent)
+        {
+            if (symbolsForSend_full[0] == 0)
+            {
+                for (int i = 0; i < symbolsForSend1.Length; i++)
+                {
+                    symbolsForSend1[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[0] = 1;
+            }
+            else if (symbolsForSend_full[1] == 0)
+            {
+                for (int i = 0; i < symbolsForSend2.Length; i++)
+                {
+                    symbolsForSend2[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[1] = 1;
+            }
+            else if (symbolsForSend_full[2] == 0)
+            {
+                for (int i = 0; i < symbolsForSend3.Length; i++)
+                {
+                    symbolsForSend3[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[2] = 1;
+            }
+        }
+
+        private void InitializeArrays()
+        {
             symbolsForSend1[0] = forSend11;
             symbolsForSend1[1] = forSend12;
             symbolsForSend1[2] = forSend13;
@@ -69,225 +344,50 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
-            flag = true;
+
+        }
+
+        private async void GetMsgFromFileAsync()
+        {
             GetMsgFromFather();
-        }
-        private void Button_Click_back(object sender, RoutedEventArgs e)
-        {
-            flag = false;
-            Frame toHome = Window.Current.Content as Frame;
-            toHome.Navigate(typeof(MainPage));
-        }
-
-        private void delete_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < symbolsForSend1.Length; i++)
+            string res = await Common.ReadConversation("chatWithFather.txt");
+            if (!res.Equals(""))
             {
-                symbolsForSend1[i].Source = null;
-                symbolsForSend2[i].Source = null;
-                symbolsForSend3[i].Source = null;
-                symbolsSentFromOther1[i].Source = null;
-                symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;
-            }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            symbolsForSend_curr1 = 0;
-            symbolsForSend_curr2 = 0;
-            symbolsForSend_curr3 = 0;
-
-            symbolsForSend_full1 = 0;
-            symbolsForSend_full2 = 0;
-            symbolsForSend_full3 = 0;
-
-        }
-        private void Send_Click(object sender, RoutedEventArgs e)
-        {
-
-            int message_num = 0;
-            string sentence = "";
-            string contact = "gadi@gmail.com"; //the string is hardcoded but need to change it
-            Image[] symbolsForSend = symbolsForSend1;
-            int fullFlag = 0;
-            if (symbolsForSend_full1 != 0)
-            {
-                if (symbolsForSend_full2 == 0)
+                res = res + "+";
+                string[] messages = res.Split('\r', '\n');
+                for (int i = 0; i < messages.Length; i++)
                 {
-                    message_num = 2;
-                    symbolsForSend_full2 = 1;
-                }
-                else if (symbolsForSend_full3 == 0)
-                {
-                    message_num = 3;
-                    symbolsForSend_full3 = 1;
-                }
-                else
-                {//all full
-                    fullFlag = 1;
-                }
-            }
-            else
-            {
-                message_num = 1;
-                symbolsForSend_full1 = 1;
-            }
-            if (fullFlag == 0)
-            {
-                for (int i = 0; i < symbolsForSend1.Length; i++)
-                {
-                    if (message_num == 1)
+                    string[] message = messages[i].Split(':', '+');
+                    Image[] images = new Image[5];
+
+                    for (int j = 0; j < images.Length; j++)
                     {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
+                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + ".png");
+
+                        if (j + 1 < message.Length)
+                        {
+                            requestUri = new Uri(base.BaseUri, "/symbols/" + message[j + 1] + ".png");
+                        }
+                        images[j] = new Image();
+                        images[j].Source = new BitmapImage(requestUri);
+
                     }
-                    else if (message_num == 2)
+                    if (message[0].Equals("parent"))
                     {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
+                        GetMessageImg(images);
                     }
-                    else if (message_num == 3)
+                    if (message[0].Equals("child"))
                     {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
+                        GetSentMessage(images);
+                    }
+
+                    if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+                    {
+                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     }
                 }
             }
-            //To do : sent to is hard coded!!
-            Common.sendMsg(sentence, contact);
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private void AddToForSendGrid(string button_name, int symbolsForSend_curr)
-        {
-            Uri requestUri = new Uri(base.BaseUri, "/symbols/" + button_name + ".png");
-            if (symbolsForSend_curr == 1 && symbolsForSend_curr1 < 5)
-            {
-                symbolsForSend1[symbolsForSend_curr1].Source = new BitmapImage(requestUri);
-                symbolsForSend1[symbolsForSend_curr1].Tag = button_name;
-                symbolsForSend_curr1++;
-            }
-            if (symbolsForSend_curr == 2 && symbolsForSend_curr2 < 5)
-            {
-                symbolsForSend2[symbolsForSend_curr2].Source = new BitmapImage(requestUri);
-                symbolsForSend2[symbolsForSend_curr2].Tag = button_name;
-                symbolsForSend_curr2++;
-            }
-            if (symbolsForSend_curr == 3 && symbolsForSend_curr3 < 5)
-            {
-                symbolsForSend3[symbolsForSend_curr3].Source = new BitmapImage(requestUri);
-                symbolsForSend3[symbolsForSend_curr3].Tag = button_name;
-                symbolsForSend_curr3++;
-            }
-        }
-
-        private void Symbol_Click(object sender, RoutedEventArgs e)
-        {
-            int symbolsForSend_messege = -1;
-            if (symbolsForSend_full1 != 0)
-            {
-                if (symbolsForSend_full2 != 0)
-                {
-                    if (symbolsForSend_full3 == 0)
-                    {
-                        symbolsForSend_messege = 3;
-                    }
-                }
-                else
-                {
-                    symbolsForSend_messege = 2;
-                }
-            }
-            else
-            {
-                symbolsForSend_messege = 1;
-            }
-            Button button = (Button)sender;
-            string button_name = button.Name;
-            if (symbolsForSend_messege != -1)
-            {
-                AddToForSendGrid(button_name, symbolsForSend_messege);
-            }
-        }
-
-        private void GetMessageImg(Image[] symbolsSentFromOther)
-        {
-            if (symbolsSentFromOther_full1 == 0)
-            {
-                for (int i = 0; i < symbolsSentFromOther1.Length; i++)
-                {
-                    symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
-                }
-                symbolsSentFromOther_full1 = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            }
-            else if (symbolsSentFromOther_full2 == 0)
-            {
-                for (int i = 0; i < symbolsSentFromOther2.Length; i++)
-                {
-                    symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
-                }
-                symbolsSentFromOther_full2 = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-
-            }
-            else if (symbolsSentFromOther_full3 == 0)
-            {
-                for (int i = 0; i < symbolsSentFromOther3.Length; i++)
-                {
-                    symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
-                }
-                symbolsSentFromOther_full3 = 1;
-            }
-
-        }
-
-        private async void GetMessageAsync(OutTable[] message)
-        {
-            string contact = "rami@gmail.com";
-            Image[] images = new Image[5];
-
-            int numofmsg = 0; //the number of messages cant be more than 3.
-                              //TODO : add to the if 
-            if (message.Length > 0)
-            {
-                for (int x = 0; x < message.Length; x++)
-                {
-                    int i = 0;
-                    numofmsg++;
-                    string msg = message[x].Message;
-                    string[] tmp = msg.Split(' ');
-                    foreach (string source in tmp)
-                    {
-                        if (i >= 5)
-                            break;
-                        Uri requestUri = new Uri(base.BaseUri, "/symbols/" + source + ".png");
-                        images[i] = new Image();
-                        images[i].Source = new BitmapImage(requestUri);
-                        i++;
-                    }
-                    GetMessageImg(images);
-                    if (numofmsg == 3)
-                    {
-                        return;
-                    }//if
-                }
-                for (int x = 0; x < message.Length; x++)
-                {
-                    //await Common.markAsDeleteMsg(message[x]);
-                }
-            }
-        }
-
-        private async void GetMsgFromFather()
-        {
-            while (flag)
-            {
-                OutTable[] table = await Common.GetMsgAsync(Common.myFather);
-                GetMessageAsync(table);
-            }
-
-        }
     }
 }

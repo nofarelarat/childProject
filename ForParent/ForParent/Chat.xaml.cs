@@ -34,7 +34,7 @@ namespace ForParent
         {
             this.InitializeComponent();
             InitializeArrays();
-            GetMsgFromChild();
+            //GetMsgFromChild();
             GetMsgFromFileAsync();
         }
 
