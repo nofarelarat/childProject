@@ -289,7 +289,7 @@ namespace ForChild
             outTableChange new_msg = new outTableChange();
             new_msg.Message_Recive = "0";
             new_msg.Message_Send = "0";
-            new_msg.RowKey = obj.RowKey;
+            new_msg.RowKey = obj.RowKey; 
             new_msg.PartitionKey = obj.PartitionKey;
             //string json = ConnectDB.WriteFromObject(obj);
             string json = JsonConvert.SerializeObject(new_msg);
