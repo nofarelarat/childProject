@@ -77,10 +77,19 @@ namespace ForParent
             toRegister.Navigate(typeof(Registration));
         }
 
-        private void forLogin_Click(object sender, RoutedEventArgs e)
+        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Frame toLogin = Window.Current.Content as Frame;
-            toLogin.Navigate(typeof(LoginParent));  
+            if (Common.who_am_i != "")
+            {
+                await Common.DeleteFileAsync("userParent.txt");
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
+            else
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
         }
 
         private void forAnalysis_Click(object sender, RoutedEventArgs e)

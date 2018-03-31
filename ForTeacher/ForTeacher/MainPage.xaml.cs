@@ -50,10 +50,21 @@ namespace ForTeacher
             }
     }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private async void Login_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Frame toLogin = Window.Current.Content as Frame;
-            toLogin.Navigate(typeof(LoginTeacher));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }
+            else
+            {
+                await Common.DeleteFileAsync("userTeacher.txt");
+                Common.who_am_i = "";
+                Common.isConectet = false;
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }
         }
 
         private void Broadcast_Click(object sender, RoutedEventArgs e)

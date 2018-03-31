@@ -278,15 +278,14 @@ namespace ForChild
                 return false;
             }
         }
-
-               public static async Task<bool> markAsDeleteMsg(OutTable obj)
+        public static async Task<bool> markAsDeleteMsg(OutTable obj)
         {
-            if(obj ==null)
+            if (obj == null)
             {
                 return false;
             }
-            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
-            outTableChange new_msg = new outTableChange() ;
+            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
+            outTableChange new_msg = new outTableChange();
             new_msg.Message_Recive = "0";
             new_msg.Message_Send = "0";
             new_msg.RowKey = obj.RowKey;
@@ -296,21 +295,22 @@ namespace ForChild
 
             try
             {
-                //Send the PUT request
-                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
+                //Send the PUT request
+                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
                 System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
                 request.Content = new StringContent(json,
                 Encoding.UTF8,
                 "application/json");//CONTENT-TYPE header
-                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-                return true;
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                return true;
             }
             catch (Exception ex)
             {
                 return false;
             }
         }
+
     }
 }
 
