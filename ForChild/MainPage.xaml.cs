@@ -129,6 +129,10 @@ namespace ForChild
             else
             {
                 await Common.DeleteFileAsync("userChild.txt");
+                await Common.DeleteFileAsync("chatWithFriend.txt");
+                await Common.DeleteFileAsync("chatWithMother.txt");
+               // await Common.DeleteFileAsync(); //Need to add the Father file
+
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
