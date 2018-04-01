@@ -94,7 +94,6 @@ namespace ForChild
 
             int message_num = 0;
             string sentence = "";
-            string contact = Common.myFather;
             Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
             if (symbolsForSend_full[0] != 0)
@@ -141,7 +140,7 @@ namespace ForChild
                 }
             }
             //To do : sent to is hard coded!!
-            Common.sendMsg(sentence, contact);
+            Common.sendMsg(sentence, Common.myFather);
             Common.WriteConversation("child:" + sentence, "chatWithFather.txt");
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
@@ -234,7 +233,6 @@ namespace ForChild
 
         private async void GetMessageAsync(OutTable[] message)
         {
-            string contact = "rami@gmail.com";
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.

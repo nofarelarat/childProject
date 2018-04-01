@@ -82,6 +82,7 @@ namespace ForParent
             if (Common.who_am_i.Equals(""))
             {
                 await Common.DeleteFileAsync("userParent.txt");
+                await Common.DeleteFileAsync("chatWithChild.txt");
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
             }
