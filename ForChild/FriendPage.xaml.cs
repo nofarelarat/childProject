@@ -39,6 +39,29 @@ namespace ForChild
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < symbolsForSend1.Length; i++)
+            {
+                symbolsForSend1[i].Source = null;
+                symbolsForSend2[i].Source = null;
+                symbolsForSend3[i].Source = null;
+                symbolsSentFromOther1[i].Source = null;
+                symbolsSentFromOther2[i].Source = null;
+                symbolsSentFromOther3[i].Source = null;
+            }
+            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+            symbolsForSend_curr1 = 0;
+            symbolsForSend_curr2 = 0;
+            symbolsForSend_curr3 = 0;
+
+            symbolsForSend_full[0] = 0;
+            symbolsForSend_full[1] = 0;
+            symbolsForSend_full[2] = 0;
+
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
+
             flag = false;
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
