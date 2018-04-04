@@ -35,6 +35,7 @@ namespace ForParent
         {
             this.InitializeComponent();
             InitializeArrays();
+            flag = true;
             GetMsgFromFileAsync();
         }
 
@@ -210,7 +211,7 @@ namespace ForParent
                     numofmsg++;
                     string msg = message[x].Message;
                     await Common.WriteConversation("child:" + msg);
-                    string[] tmp = msg.Split(' ');
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)
@@ -298,7 +299,6 @@ namespace ForParent
            {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
                 await GetMessageAsync(table);
-         
            }
             
         }
@@ -344,7 +344,7 @@ namespace ForParent
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromChild();
+            GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
             {

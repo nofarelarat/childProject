@@ -35,6 +35,7 @@ namespace ForChild
 
         public MotherPage()
         {
+            flag = true;
             this.InitializeComponent();
             InitializeArrays();
             GetMsgFromFileAsync();
@@ -213,7 +214,7 @@ namespace ForChild
                         numofmsg++;
                         string msg = message[x].Message;
                         await Common.WriteConversation("parent:" + msg, "chatWithMother.txt");
-                        string[] tmp = msg.Split(' ');
+                        string[] tmp = msg.Split('-');
                         foreach (string source in tmp)
                         {
                             if (i >= 5)
@@ -345,7 +346,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromMother(); 
+            GetMsgFromMother(); 
             string res = await Common.ReadConversation("chatWithMother.txt");
             if (!res.Equals(""))
             {
@@ -353,7 +354,7 @@ namespace ForChild
                 string[] messages = res.Split('\r', '\n');
                 for (int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':', '+');
+                    string[] message = messages[i].Split(':', '-');
                     Image[] images = new Image[5];
 
                     for (int j = 0; j < images.Length; j++)

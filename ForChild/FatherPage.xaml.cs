@@ -348,7 +348,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromFather();
+            GetMsgFromFather();
             string res = await Common.ReadConversation("chatWithFather.txt");
             if (!res.Equals(""))
             {
@@ -356,7 +356,7 @@ namespace ForChild
                 string[] messages = res.Split('\r', '\n');
                 for (int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':', '+');
+                    string[] message = messages[i].Split(':', '-');
                     Image[] images = new Image[5];
 
                     for (int j = 0; j < images.Length; j++)

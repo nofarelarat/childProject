@@ -398,7 +398,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromFriend();
+            GetMsgFromFriend();
             string res = await Common.ReadConversation("chatWithFriend.txt");
             if (!res.Equals(""))
             {
