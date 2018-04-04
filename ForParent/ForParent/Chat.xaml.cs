@@ -184,7 +184,7 @@ namespace ForParent
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
