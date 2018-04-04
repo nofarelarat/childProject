@@ -9,6 +9,7 @@ namespace ForTeacher
     class Common
     {
         public static string who_am_i = "";
+        public static string garden = "";
         public static bool isConectet = false;
 
         public static async Task<bool> GetUserFromFileAsync()
@@ -36,6 +37,7 @@ namespace ForTeacher
                 {
                     string[] fileResult = text.Split('+');
                     who_am_i = fileResult[0];
+                    garden = fileResult[2];
                     isConectet = true;
                     return true;
                 }
@@ -71,9 +73,6 @@ namespace ForTeacher
             {
                 return false;
             }
-
-            who_am_i = "";
-            isConectet = false;
             return true;
         }
 
