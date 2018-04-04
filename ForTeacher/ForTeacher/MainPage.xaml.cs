@@ -48,6 +48,7 @@ namespace ForTeacher
                 Common.who_am_i = "";
                 Common.garden = "";
                 Common.isConectet = false;
+
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
