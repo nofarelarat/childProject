@@ -72,13 +72,15 @@ namespace ForChild
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-
+            flag = true;
+            GetMsgFromTeacher();
         }
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
