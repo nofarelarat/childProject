@@ -73,7 +73,7 @@ namespace ForTeacher
                 symbolsForSend_curr = 0;
                 for (int i = 0; i < symbolsForSend.Length; i++)
                 {
-                    sentence = sentence + symbolsForSend[i].Tag.ToString() + "+";
+                    sentence = sentence + symbolsForSend[i].Tag.ToString() + "-";
                     symbolsForSend[i].Source = blank.Source;
                     symbolsForSend[i].Tag = blank.Tag;
                 }

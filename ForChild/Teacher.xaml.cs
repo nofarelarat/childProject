@@ -124,7 +124,7 @@ namespace ForChild
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
-                    string[] tmp = msg.Split(' ');
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)

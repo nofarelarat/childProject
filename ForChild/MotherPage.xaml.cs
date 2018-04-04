@@ -35,6 +35,7 @@ namespace ForChild
 
         public MotherPage()
         {
+            flag = true;
             this.InitializeComponent();
             InitializeArrays();
             GetMsgFromFileAsync();
@@ -103,17 +104,17 @@ namespace ForChild
                 {
                     if (message_num == 1)
                     {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
                     }
                     else if (message_num == 2)
                     {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
                     }
                     else if (message_num == 3)
                     {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
                     }
                 }
@@ -213,7 +214,7 @@ namespace ForChild
                         numofmsg++;
                         string msg = message[x].Message;
                         await Common.WriteConversation("parent:" + msg, "chatWithMother.txt");
-                        string[] tmp = msg.Split(' ');
+                        string[] tmp = msg.Split('-');
                         foreach (string source in tmp)
                         {
                             if (i >= 5)
@@ -231,7 +232,7 @@ namespace ForChild
                 }
                 for (int x = 0; x < message.Length; x++)
                 {
-                   // await Common.markAsDeleteMsg(message[x]);
+                   await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
@@ -345,7 +346,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromMother(); 
+            GetMsgFromMother(); 
             string res = await Common.ReadConversation("chatWithMother.txt");
             if (!res.Equals(""))
             {
@@ -353,7 +354,7 @@ namespace ForChild
                 string[] messages = res.Split('\r', '\n');
                 for (int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':', '+');
+                    string[] message = messages[i].Split(':', '-');
                     Image[] images = new Image[5];
 
                     for (int j = 0; j < images.Length; j++)
