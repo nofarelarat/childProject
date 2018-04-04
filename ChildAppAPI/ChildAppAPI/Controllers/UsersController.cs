@@ -73,7 +73,7 @@ namespace ChildAppAPI.Controllers
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
                     var users = db.users
-                    .Where(b => b.gardenname.Equals(garden) && b.type.Equals("Child"));
+                    .Where(b => b.gardenname.Equals(garden));
                     user[] res = users.ToArray();
                     return res;
                 }
