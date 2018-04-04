@@ -33,6 +33,8 @@ namespace ForParent
 
         public Chat()
         {
+            this.InitializeComponent();
+            InitializeArrays();
             GetMsgFromFileAsync();
         }
 
@@ -342,8 +344,6 @@ namespace ForParent
 
         private async Task GetMsgFromFileAsync()
         {
-            this.InitializeComponent();
-            InitializeArrays();
             await GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
