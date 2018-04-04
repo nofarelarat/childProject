@@ -402,7 +402,7 @@ namespace ForChild
             string res = await Common.ReadConversation("chatWithFriend.txt");
             if (!res.Equals(""))
             {
-                res = res + "+";
+                res = res + "-";
                 string[] messages = res.Split('\r', '\n');
                 for (int i = 0; i < messages.Length; i++)
                 {
