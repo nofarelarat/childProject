@@ -336,11 +336,7 @@ namespace ForChild
             {
                 return false;
             }
-            who_am_i = "";
-            myFather = "";
-            myMother = "";
-            myFriend = "";
-            myTeacher = "";
+
             return true;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -36,7 +37,6 @@ namespace ForChild
         {
             this.InitializeComponent();
             InitializeArrays();
-            GetMsgFromMother();
             GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -199,21 +199,20 @@ namespace ForChild
             Common.DeleteFileAsync("chatWithMother.txt");
         }
 
-        private async void GetMessageAsync(OutTable[] message)
+        private async Task GetMessageAsync(OutTable[] message)
         {
-            string contact = "shosh@gmail.com";
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
             //TODO : add to the if 
-            if (message.Length > 0)
+            if (message != null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
                         numofmsg++;
                         string msg = message[x].Message;
-                        Common.WriteConversation("parent:" + msg, "chatWithMother.txt");
+                        await Common.WriteConversation("parent:" + msg, "chatWithMother.txt");
                         string[] tmp = msg.Split(' ');
                         foreach (string source in tmp)
                         {
@@ -295,12 +294,12 @@ namespace ForChild
             }
         }
 
-        private async void GetMsgFromMother()
+        private async Task GetMsgFromMother()
         {
             while (flag)
             { 
                 OutTable[] table = await Common.GetMsgAsync(Common.myMother);
-                GetMessageAsync(table);
+                await GetMessageAsync(table);
             }
         }
 
@@ -346,6 +345,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
+            await GetMsgFromMother(); 
             string res = await Common.ReadConversation("chatWithMother.txt");
             if (!res.Equals(""))
             {
