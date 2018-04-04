@@ -59,6 +59,7 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
+            flag = true;
             GetMsgFromTeacher();
 
         }
