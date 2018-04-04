@@ -42,10 +42,21 @@ namespace ForTeacher
             }
             else
             {
-                if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
+                if (user.password.Equals(password.Password.ToString()) && user.type.Equals("Teacher"))
                 {
                     Common.who_am_i = email.Text;
                     Common.isConectet = true;
+                    Common.garden = user.gardenname;
+                    Common.gardenChildren = await db.GetGardenChildren(user.gardenname);
+                    int counter_child = 0;
+                    for (int i = 0; i < Common.gardenChildren.Length; i++)
+                    {
+                        if (Common.gardenChildren[i].type != "Teacher" && Common.gardenChildren[i].type != "Parent")
+                        {
+                            counter_child++;
+                        }
+                    }
+                    Common.counter_child = counter_child;
                     try
                     {
                         Windows.Storage.StorageFolder storageFolder =
@@ -54,7 +65,7 @@ namespace ForTeacher
                             await storageFolder.CreateFileAsync("userTeacher.txt",
                                 Windows.Storage.CreationCollisionOption.ReplaceExisting);
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, email.Text
-                            + "+" + password.Text);
+                            + "+" + password.Password.ToString());
                     }
                     catch
                     {
@@ -84,6 +95,10 @@ namespace ForTeacher
             toHome.Navigate(typeof(MainPage));
         }
 
-        
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            Frame toRegister = Window.Current.Content as Frame;
+            toRegister.Navigate(typeof(Registration));
+        }
     }
 }

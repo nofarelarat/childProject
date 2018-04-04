@@ -34,9 +34,9 @@ namespace ForTeacher
             string Email = email.Text;
             string firstName = firstname.Text;
             string lastName = lastname.Text;
-            string childYear = childyear.Text;
+            string childYear = "0";
             string gardenName = gardenname.Text;
-            string Password = password.Text;
+            string Password = password.Password.ToString();
             string Teacher = "Teacher";
 
             string msg = "";
@@ -56,7 +56,7 @@ namespace ForTeacher
                     email = Email,
                     firstname = firstName,
                     lastname = lastName,
-                    childyear = int.Parse(childYear),
+                    childyear = 0,
                     type = Teacher,
                     gardenname = gardenName,
                     password = Password,

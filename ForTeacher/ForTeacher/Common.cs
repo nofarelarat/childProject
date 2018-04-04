@@ -9,7 +9,10 @@ namespace ForTeacher
     class Common
     {
         public static string who_am_i = "";
+        public static string garden = "";
         public static bool isConectet = false;
+        public static user[] gardenChildren = null;
+        public static int counter_child = 0;
 
         public static async Task<bool> GetUserFromFileAsync()
         {

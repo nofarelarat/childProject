@@ -121,7 +121,7 @@ namespace ForTeacher
             }
             return msg;
         }
-        public static async Task<user[]> GetGardenChildren(string garden)
+        public async Task<user[]> GetGardenChildren(string garden)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users?garden=" + garden;
             //string completeUri = "http://localhost:49876/api/users?garden=" + garden;
