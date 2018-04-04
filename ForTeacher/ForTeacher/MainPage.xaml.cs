@@ -60,8 +60,6 @@ namespace ForTeacher
             else
             {
                 await Common.DeleteFileAsync("userTeacher.txt");
-                Common.who_am_i = "";
-                Common.isConectet = false;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
