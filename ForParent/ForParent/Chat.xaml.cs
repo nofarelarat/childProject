@@ -35,6 +35,7 @@ namespace ForParent
         {
             this.InitializeComponent();
             InitializeArrays();
+            flag = true;
             GetMsgFromFileAsync();
         }
 
@@ -102,15 +103,15 @@ namespace ForParent
                 {
                     if (message_num == 1)
                     {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "-";
                     }
                     else if (message_num == 2)
                     {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "-";
                     }
                     else if (message_num == 3)
                     {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "-";
                     }
                 }
             }
@@ -210,7 +211,7 @@ namespace ForParent
                     numofmsg++;
                     string msg = message[x].Message;
                     await Common.WriteConversation("child:" + msg);
-                    string[] tmp = msg.Split(' ');
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)
@@ -298,7 +299,6 @@ namespace ForParent
            {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
                 await GetMessageAsync(table);
-         
            }
             
         }
@@ -344,7 +344,7 @@ namespace ForParent
 
         private async void GetMsgFromFileAsync()
         {
-            await GetMsgFromChild();
+            GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
             {
@@ -352,7 +352,7 @@ namespace ForParent
                 string[] messages = res.Split('\r','\n');
                 for(int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':','+');
+                    string[] message = messages[i].Split(':','-');
                     Image[] images = new Image[5];
 
                     for (int j =0;j<images.Length;j++)
