@@ -103,17 +103,17 @@ namespace ForChild
                 {
                     if (message_num == 1)
                     {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
                     }
                     else if (message_num == 2)
                     {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
                     }
                     else if (message_num == 3)
                     {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
                     }
                 }
@@ -231,7 +231,7 @@ namespace ForChild
                 }
                 for (int x = 0; x < message.Length; x++)
                 {
-                   // await Common.markAsDeleteMsg(message[x]);
+                   await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -34,7 +35,6 @@ namespace ForChild
             this.InitializeComponent();
             InitializeArrays();
             flag = true;
-            GetMsgFromFriend();
             GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -310,21 +310,21 @@ namespace ForChild
             }
         }
 
-        private async void GetMessageAsync(OutTable[] message)
+        private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
                               //TODO : add to the if 
-            if (message.Length > 0)
+            if (message != null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
-                    Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
-                    string[] tmp = msg.Split(' ');
+                    await Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)
@@ -342,17 +342,17 @@ namespace ForChild
                 }
                 for (int x = 0; x < message.Length; x++)
                 {
-                    //await Common.markAsDeleteMsg(message[x]);
+                    await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
 
-        private async void GetMsgFromFriend()
+        private async Task GetMsgFromFriend()
         {
             while (flag)
             {
                 OutTable[] table = await Common.GetMsgAsync(Common.myFriend);
-                GetMessageAsync(table);
+                await GetMessageAsync(table);
             }
 
         }
@@ -398,6 +398,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
+            await GetMsgFromFriend();
             string res = await Common.ReadConversation("chatWithFriend.txt");
             if (!res.Equals(""))
             {
@@ -405,7 +406,7 @@ namespace ForChild
                 string[] messages = res.Split('\r', '\n');
                 for (int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':', '+');
+                    string[] message = messages[i].Split(':', '-');
                     Image[] images = new Image[5];
 
                     for (int j = 0; j < images.Length; j++)
