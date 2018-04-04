@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -231,13 +232,13 @@ namespace ForChild
 
         }
 
-        private async void GetMessageAsync(OutTable[] message)
+        private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
                               //TODO : add to the if 
-            if (message.Length > 0)
+            if (message != null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
@@ -268,12 +269,12 @@ namespace ForChild
             }
         }
 
-        private async void GetMsgFromFather()
+        private async Task GetMsgFromFather()
         {
             while (flag)
             {
                 OutTable[] table = await Common.GetMsgAsync(Common.myFather);
-                GetMessageAsync(table);
+                await GetMessageAsync(table);
             }
 
         }
@@ -347,7 +348,7 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            GetMsgFromFather();
+            await GetMsgFromFather();
             string res = await Common.ReadConversation("chatWithFather.txt");
             if (!res.Equals(""))
             {

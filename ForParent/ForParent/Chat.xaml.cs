@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -34,7 +35,6 @@ namespace ForParent
         {
             this.InitializeComponent();
             InitializeArrays();
-            //GetMsgFromChild();
             GetMsgFromFileAsync();
         }
 
@@ -196,20 +196,20 @@ namespace ForParent
             Common.DeleteFileAsync("chatWithChild.txt");
         }
 
-        private async void GetMessageAsync(OutTable[] message)
+        private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
             //TODO : add to the if 
-            if (message.Length > 0)
+            if (message!= null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
-                    Common.WriteConversation("child:" + msg);
+                    await Common.WriteConversation("child:" + msg);
                     string[] tmp = msg.Split(' ');
                     foreach (string source in tmp)
                     {
@@ -292,12 +292,12 @@ namespace ForParent
             }
         }
 
-        private async void GetMsgFromChild()
+        private async Task GetMsgFromChild()
         {
             while (flag)
            {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
-                GetMessageAsync(table);
+                await GetMessageAsync(table);
          
            }
             
@@ -344,6 +344,7 @@ namespace ForParent
 
         private async void GetMsgFromFileAsync()
         {
+            await GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
             {
