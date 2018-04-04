@@ -85,8 +85,7 @@ namespace ForChild
 
         public static async Task<symbol[]> GetUserAllCounterAsync()
         {
-            //string email = who_am_i;
-            string email = "rami@gmail.com";
+            string email = who_am_i;
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email);
@@ -261,7 +260,7 @@ namespace ForChild
                             case "mother":
                                 myMother = per_arr[1];
                                 break;
-                            case "Teacher":
+                            case "teacher":
                                 myTeacher = per_arr[1];
                                 break;
                             case "friend":
