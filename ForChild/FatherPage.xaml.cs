@@ -69,6 +69,7 @@ namespace ForChild
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsForSend1[i].Source = null;
@@ -88,6 +89,8 @@ namespace ForChild
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
             Common.DeleteFileAsync("chatWithFather.txt");
+            flag = true;
+            GetMsgFromFather();
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
