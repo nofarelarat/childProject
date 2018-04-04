@@ -121,6 +121,7 @@ namespace ForChild
                 await Common.DeleteFileAsync("userChild.txt");
                 await Common.DeleteFileAsync("chatWithFriend.txt");
                 await Common.DeleteFileAsync("chatWithMother.txt");
+                await Common.DeleteFileAsync("chatWithFather.txt");
                 Common.who_am_i = "";
                 Common.myFather = "";
                 Common.myMother = "";
