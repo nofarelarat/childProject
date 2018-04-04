@@ -33,8 +33,6 @@ namespace ForParent
 
         public Chat()
         {
-            this.InitializeComponent();
-            InitializeArrays();
             GetMsgFromFileAsync();
         }
 
@@ -342,8 +340,10 @@ namespace ForParent
             symbolsSentFromOther3[4] = afterSend35;
         }
 
-        private async void GetMsgFromFileAsync()
+        private async Task GetMsgFromFileAsync()
         {
+            this.InitializeComponent();
+            InitializeArrays();
             await GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
@@ -367,16 +367,16 @@ namespace ForParent
                         images[j].Source = new BitmapImage(requestUri);
                            
                     }
-                    if (message[0].Equals("parent"))
+                    if (message[0].Equals("child"))
                     {
                         GetMessageImg(images);
                     }
-                    if (message[0].Equals("child"))
+                    if (message[0].Equals("parent"))
                     {
                         GetSentMessage(images);
                     }
 
-                    if(symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+                    if(symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
                     {
                         send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     }
