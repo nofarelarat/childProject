@@ -4,9 +4,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace ForTeacher
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class LoginTeacher : Page
     {
         public LoginTeacher()
@@ -32,6 +29,7 @@ namespace ForTeacher
                 if (user.password.Equals(password.Text) && user.type.Equals("Teacher"))
                 {
                     Common.who_am_i = email.Text;
+                    Common.garden = user.gardenname;
                     Common.isConectet = true;
                     try
                     {
@@ -41,7 +39,7 @@ namespace ForTeacher
                             await storageFolder.CreateFileAsync("userTeacher.txt",
                                 Windows.Storage.CreationCollisionOption.ReplaceExisting);
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, email.Text
-                            + "+" + password.Text);
+                            + "+" + password.Text + "+" + Common.garden);
                     }
                     catch
                     {
@@ -54,7 +52,7 @@ namespace ForTeacher
                 else if(!user.type.Equals("Teacher"))
                 {
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    result.Text = "Type is nt a teacher";
+                    result.Text = "Type is not a teacher";
 
                 }
                 else
