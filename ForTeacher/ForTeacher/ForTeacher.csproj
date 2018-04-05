@@ -166,6 +166,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\logo2.png" />
     <Content Include="images\logo3.png" />
+    <Content Include="images\Logout.gif" />
     <Content Include="images\mather.jpg" />
     <Content Include="images\me.jpg" />
     <Content Include="images\mother2.jpg" />

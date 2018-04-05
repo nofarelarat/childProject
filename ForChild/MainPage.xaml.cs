@@ -14,9 +14,15 @@ namespace ForChild
         public MainPage()
         {
             this.InitializeComponent();
+            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
+            }
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }
@@ -116,8 +122,9 @@ namespace ForChild
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
             }
-            else
-            {
+        }
+        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        {
                 await Common.DeleteFileAsync("userChild.txt");
                 await Common.DeleteFileAsync("chatWithFriend.txt");
                 await Common.DeleteFileAsync("chatWithMother.txt");
@@ -132,7 +139,6 @@ namespace ForChild
 
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
-            }
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
@@ -153,8 +159,15 @@ namespace ForChild
             bool success = await Common.GetUserFromFileAsync();
             if (success == false)
             {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
+            }
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 

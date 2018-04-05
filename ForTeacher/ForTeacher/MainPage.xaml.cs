@@ -15,11 +15,17 @@ namespace ForTeacher
         public MainPage()
         {
             this.InitializeComponent();
+            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
             }
-
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
         }
   
 
@@ -44,14 +50,34 @@ namespace ForTeacher
 
         private async void CheckUserExistAsync()
         {
+
             bool success = await Common.GetUserFromFileAsync();
             if (success == false)
             {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
 
         }
+
+        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            await Common.DeleteFileAsync("userTeacher.txt");
+            Common.who_am_i = "";
+            Common.garden = "";
+            Common.isConectet = false;
+
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginTeacher));
+        }
+
 
         private void forRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -64,16 +90,6 @@ namespace ForTeacher
         {
             if (Common.who_am_i.Equals(""))
             {
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
-            }
-            else
-            {
-                await Common.DeleteFileAsync("userTeacher.txt");
-                Common.who_am_i = "";
-                Common.garden = "";
-                Common.isConectet = false;
-
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
