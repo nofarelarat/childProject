@@ -25,12 +25,14 @@ namespace ForTeacher
         public Registration()
         {
             this.InitializeComponent();
+            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
 
         private async void RegisterAsync(object sender, RoutedEventArgs e)
         {
             //get data from textbox
-
+            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
             string Email = email.Text;
             string firstName = firstname.Text;
             string lastName = lastname.Text;
@@ -46,6 +48,7 @@ namespace ForTeacher
                 childYear, gardenName, Password);
             if (!msg.Equals("success"))
             {
+                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 result.Text = "faild: " + msg;
             }
             
@@ -66,12 +69,14 @@ namespace ForTeacher
 
                 if (isPass == false)
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     msg = "Can't connect database";
                     result.Text = "faild: " + msg;
                 }
 
                 if (isPass == true)
                 {
+                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "success";
                 }
             }

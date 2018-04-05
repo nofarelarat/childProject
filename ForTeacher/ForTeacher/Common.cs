@@ -49,6 +49,59 @@ namespace ForTeacher
                 return false;
             }
         }
+        public static async Task<bool> DeleteFileAsync(string fileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+         //   who_am_i = "";
+         //   gardenChildren = null;
+            return true;
+        }
+        public static async Task<symbol[]> GetUserCounterAsync(string symbolName, string childEmail)
+        {
+            string child_email = childEmail;
+            symbol[] res = null;
+            ConnectDB db = new ConnectDB();
+
+            if (!who_am_i.Equals("") && !child_email.Equals(""))
+            {
+                symbol symbol = new symbol
+                {
+                    email = child_email,
+                    symbolName = symbolName,
+                    date = DateTime.Today
+                };
+                if (symbolName.Equals("allsymbols"))
+                {
+                    res = await db.GetUserAllCountersAsync(child_email);
+                }
+                else
+                {
+                    res = await db.GetUserCounterAsync(symbol);
+                }
+            }
+            return res;
+        }
 
     }
 }

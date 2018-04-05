@@ -57,6 +57,7 @@ namespace ForTeacher
                         }
                     }
                     Common.counter_child = counter_child;
+                    Common.gardenChildren = await db.GetGardenChildren(Common.garden);
                     try
                     {
                         Windows.Storage.StorageFolder storageFolder =
