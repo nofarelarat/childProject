@@ -20,7 +20,6 @@ namespace ForChild
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
             loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            string[] lines = System.IO.File.ReadAllLines(@"config.txt");
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
             if (user == null)
@@ -47,7 +46,7 @@ namespace ForChild
                         await Windows.Storage.FileIO.WriteTextAsync(userFile, "email:" +
                             Common.who_am_i + "+password:" + password.Password.ToString()
                             + "+father:" + Common.myFather + "+mother:" + Common.myMother
-                            + "+Teacher:" + Common.myTeacher + "+friend:" + Common.myFriend);
+                            + "+friend:" + Common.myFriend + "+teacher:" + Common.myTeacher);
                     }
                     catch
                     {

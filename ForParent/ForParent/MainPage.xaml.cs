@@ -77,10 +77,23 @@ namespace ForParent
             toRegister.Navigate(typeof(Registration));
         }
 
-        private void forLogin_Click(object sender, RoutedEventArgs e)
+        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Frame toLogin = Window.Current.Content as Frame;
-            toLogin.Navigate(typeof(LoginParent));  
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
+            else
+            {
+                await Common.DeleteFileAsync("userParent.txt");
+                await Common.DeleteFileAsync("chatWithChild.txt");
+                Common.who_am_i = "";
+                Common.isConectet = false;
+                Common.myChild = "";
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
+            }
         }
 
         private void forAnalysis_Click(object sender, RoutedEventArgs e)

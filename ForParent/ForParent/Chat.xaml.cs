@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -34,7 +35,7 @@ namespace ForParent
         {
             this.InitializeComponent();
             InitializeArrays();
-            GetMsgFromChild();
+            flag = true;
             GetMsgFromFileAsync();
         }
 
@@ -101,15 +102,15 @@ namespace ForParent
                 {
                     if (message_num == 1)
                     {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "-";
                     }
                     else if (message_num == 2)
                     {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "-";
                     }
                     else if (message_num == 3)
                     {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
+                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "-";
                     }
                 }
             }
@@ -173,6 +174,7 @@ namespace ForParent
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsForSend1[i].Source = null;
@@ -182,7 +184,7 @@ namespace ForParent
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -193,23 +195,25 @@ namespace ForParent
             symbolsForSend_full[2]= 0;
 
             Common.DeleteFileAsync("chatWithChild.txt");
+            flag = true;
+            GetMsgFromChild();
         }
 
-        private async void GetMessageAsync(OutTable[] message)
+        private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
             int numofmsg = 0; //the number of messages cant be more than 3.
             //TODO : add to the if 
-            if (message.Length > 0)
+            if (message!= null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
-                    Common.WriteConversation("child:" + msg);
-                    string[] tmp = msg.Split(' ');
+                    await Common.WriteConversation("child:" + msg);
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)
@@ -222,7 +226,7 @@ namespace ForParent
                     GetMessageImg(images);
                     if (numofmsg == 3)
                     {
-                        return;
+                       break;
                     }//if
                 }
                 for (int x = 0; x < message.Length; x++)
@@ -291,14 +295,13 @@ namespace ForParent
             }
         }
 
-        private async void GetMsgFromChild()
+        private async Task GetMsgFromChild()
         {
             while (flag)
-            {
+           {
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
-                GetMessageAsync(table);
-         
-            }
+                await GetMessageAsync(table);
+           }
             
         }
 
@@ -341,16 +344,17 @@ namespace ForParent
             symbolsSentFromOther3[4] = afterSend35;
         }
 
-        private async void GetMsgFromFileAsync()
+        private async Task GetMsgFromFileAsync()
         {
+            GetMsgFromChild();
             string res = await Common.ReadConversation("chatWithChild.txt");
             if (!res.Equals(""))
             {
-                res = res + "+";
+                res = res + "-";
                 string[] messages = res.Split('\r','\n');
                 for(int i = 0; i < messages.Length; i++)
                 {
-                    string[] message = messages[i].Split(':','+');
+                    string[] message = messages[i].Split(':','-');
                     Image[] images = new Image[5];
 
                     for (int j =0;j<images.Length;j++)
@@ -374,7 +378,7 @@ namespace ForParent
                         GetSentMessage(images);
                     }
 
-                    if(symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+                    if(symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
                     {
                         send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     }

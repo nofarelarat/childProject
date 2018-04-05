@@ -24,7 +24,8 @@
             </Button.Template>
         </Button>
         <Image x:Name="image" Margin="27,0,0,99" HorizontalAlignment="Left" Width="289" Grid.ColumnSpan="2" Height="269" VerticalAlignment="Bottom"/>
-        <ComboBox x:Name="ComBox" SelectionChanged="ComBox_SelectionChanged"  Margin="27,131,0,0" Width="153" Height="38"/>
+        <ComboBox x:Name="ComBox" SelectionChanged="ComBox_SelectionChanged"  Margin="19,131,0,0" Width="153" Height="38"/>
+        <ComboBox x:Name="ComBox_child" SelectionChanged="child_SelectionChanged"  Margin="179,131,0,0" Width="153" Height="38" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Page>

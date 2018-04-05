@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -11,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,9 +24,12 @@ namespace ForTeacher
     /// </summary>
     public sealed partial class Statistics : Page
     {
+        static user current_child = null;
+
         public Statistics()
         {
             this.InitializeComponent();
+            ComBox.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             string[] symbols = {
                 "no",
                 "agree",
@@ -53,7 +58,18 @@ namespace ForTeacher
                 "allsymbols"
             };
             ComBox.ItemsSource = symbols;
-
+            user[] kids = Common.gardenChildren;
+            string[] childrenInGarden = new string[Common.counter_child];
+            int child_count = 0;
+            for (int i = 0; i < Common.gardenChildren.Length; i++)
+            {
+                if (Common.gardenChildren[i].type != "Teacher" && Common.gardenChildren[i].type != "Parent")
+                {
+                    childrenInGarden[child_count] = Common.gardenChildren[i].email;
+                    child_count++;
+                }
+            }
+            ComBox_child.ItemsSource = childrenInGarden;
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
@@ -63,9 +79,9 @@ namespace ForTeacher
         public async Task<string> create_graphAsync(string combox)
         {
             symbol userSymbol = new symbol();
-            userSymbol.email = Common.myChild;
+            userSymbol.email = current_child.email;
             userSymbol.symbolName = combox;
-            symbol[] userSymbolUsage = await Common.GetUserCounterAsync(combox.ToString());
+            symbol[] userSymbolUsage = await Common.GetUserCounterAsync(combox.ToString(), userSymbol.email);
             string graph_values = "";
             int[] month_values = new int[12];
             for (int i = 0; i < userSymbolUsage.Length; i++)
@@ -94,6 +110,13 @@ namespace ForTeacher
             }
             Uri requestUri = new Uri(completeUri);
             image.Source = new BitmapImage(requestUri);
+        }
+
+        private async void child_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ConnectDB db = new ConnectDB();
+            current_child = await db.GetUserByMailAsync(ComBox_child.SelectedItem.ToString());
+            ComBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
     }
 }

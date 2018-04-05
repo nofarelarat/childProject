@@ -59,6 +59,7 @@ namespace ForChild
             symbolsSentFromOther3[2] = afterSend33;
             symbolsSentFromOther3[3] = afterSend34;
             symbolsSentFromOther3[4] = afterSend35;
+            flag = true;
             GetMsgFromTeacher();
 
         }
@@ -71,13 +72,15 @@ namespace ForChild
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-
+            flag = true;
+            GetMsgFromTeacher();
         }
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
@@ -124,7 +127,7 @@ namespace ForChild
                     int i = 0;
                     numofmsg++;
                     string msg = message[x].Message;
-                    string[] tmp = msg.Split(' ');
+                    string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
                     {
                         if (i >= 5)
@@ -139,6 +142,10 @@ namespace ForChild
                     {
                         return;
                     }//if
+                }
+                for (int x = 0; x < message.Length; x++)
+                {
+                   await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }

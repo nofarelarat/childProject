@@ -20,12 +20,13 @@
         </Button>
         <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template >
+
                 <ControlTemplate>
                     <Image Source="/Images/charts.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="for_login" Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="for_login" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
                 <ControlTemplate>
                     <Image x:Name="sign_in" Source="/Images/sign-in.png"/>

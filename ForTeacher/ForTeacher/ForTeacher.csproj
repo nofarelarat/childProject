@@ -116,6 +116,7 @@
     <Compile Include="Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="symbol.cs" />
     <Compile Include="user.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,7 @@
     <Content Include="images\background1.PNG" />
     <Content Include="images\birth_year.png" />
     <Content Include="images\broadcast.PNG" />
+    <Content Include="images\brodcast.png" />
     <Content Include="images\charts.png" />
     <Content Include="images\chat1.png" />
     <Content Include="images\chat2.png" />

@@ -41,72 +41,7 @@ namespace ForTeacher
 
             return null;
         }
-        public async Task<symbol[]> GetUserAllCountersAsync(string email)
-        {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
-                + email;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + email;
 
-            Uri requestUri = new Uri(completeUri);
-            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
-            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
-            string httpResponseBody = "";
-
-            try
-            {
-                //Send the GET request
-                httpResponse = await httpClient.GetAsync(requestUri);
-                httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-
-                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
-
-                return userSymbolUsage;
-            }
-
-            catch (Exception ex)
-            {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-            }
-
-            return null;
-        }
-        public async Task<symbol[]> GetUserCounterAsync(symbol userSymbol)
-        {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
-                + userSymbol.email + "&symbolName=" + userSymbol.symbolName;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + userSymbol.email+"&symbolName="+ userSymbol.symbolName;
-
-            Uri requestUri = new Uri(completeUri);
-            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
-            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
-            string httpResponseBody = "";
-
-            try
-            {
-                //Send the GET request
-                httpResponse = await httpClient.GetAsync(requestUri);
-                httpResponse.EnsureSuccessStatusCode();
-                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-
-                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
-
-                return userSymbolUsage;
-            }
-
-            catch (Exception ex)
-            {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-            }
-
-            return null;
-        }
         public async Task<bool> CreateUserAsync(user user)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users";
@@ -209,6 +144,72 @@ namespace ForTeacher
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
+            return null;
+        }
+        public async Task<symbol[]> GetUserAllCountersAsync(string email)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
+                + email;
+            //string completeUri = "http://localhost:49876/api/counters?email=" 
+            //    + email;
+
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
+
+                return userSymbolUsage;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
+            return null;
+        }
+        public async Task<symbol[]> GetUserCounterAsync(symbol userSymbol)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
+                + userSymbol.email + "&symbolName=" + userSymbol.symbolName;
+            //string completeUri = "http://localhost:49876/api/counters?email=" 
+            //    + userSymbol.email+"&symbolName="+ userSymbol.symbolName;
+
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                symbol[] userSymbolUsage = JsonConvert.DeserializeObject<symbol[]>(httpResponseBody);
+
+                return userSymbolUsage;
+            }
+
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+
             return null;
         }
     }

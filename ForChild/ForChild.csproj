@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>29BC99D47BE9019CC5389DD54B4E03BD7F3BF034</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>867F610515B60F14AA5C0704B75D8BE401118910</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -113,6 +113,7 @@
     <Compile Include="FatherPage.xaml.cs">
       <DependentUpon>FatherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="outTableChange.cs" />
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>

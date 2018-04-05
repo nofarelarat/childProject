@@ -14,6 +14,7 @@ namespace ForTeacher
         public static user[] gardenChildren = null;
         public static int counter_child = 0;
 
+
         public static async Task<bool> GetUserFromFileAsync()
         {
             try
@@ -39,6 +40,7 @@ namespace ForTeacher
                 {
                     string[] fileResult = text.Split('+');
                     who_am_i = fileResult[0];
+                    garden = fileResult[2];
                     isConectet = true;
                     return true;
                 }
@@ -48,34 +50,6 @@ namespace ForTeacher
             {
                 return false;
             }
-        }
-        public static async Task<bool> DeleteFileAsync(string fileName)
-        {
-            try
-            {
-                Windows.Storage.StorageFolder storageFolder =
-                        Windows.Storage.ApplicationData.Current.LocalFolder;
-                if (storageFolder == null)
-                {
-                    return false;
-                }
-                Windows.Storage.StorageFile userFile =
-                    await storageFolder.CreateFileAsync(fileName,
-                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
-                if (userFile == null)
-                {
-                    return false;
-                }
-            }
-
-            catch
-            {
-                return false;
-            }
-
-         //   who_am_i = "";
-         //   gardenChildren = null;
-            return true;
         }
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName, string childEmail)
         {
@@ -101,6 +75,32 @@ namespace ForTeacher
                 }
             }
             return res;
+        }
+
+        public static async Task<bool> DeleteFileAsync(string fileName)
+        {
+            try
+            {
+                Windows.Storage.StorageFolder storageFolder =
+                        Windows.Storage.ApplicationData.Current.LocalFolder;
+                if (storageFolder == null)
+                {
+                    return false;
+                }
+                Windows.Storage.StorageFile userFile =
+                    await storageFolder.CreateFileAsync(fileName,
+                        Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                if (userFile == null)
+                {
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
     }

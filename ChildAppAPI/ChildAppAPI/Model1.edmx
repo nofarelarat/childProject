@@ -12,7 +12,6 @@
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="father" Type="varchar" MaxLength="50" />
           <Property Name="mother" Type="varchar" MaxLength="50" />
-          <Property Name="sister" Type="varchar" MaxLength="50" />
           <Property Name="friend" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="symbols">
@@ -78,7 +77,6 @@
           <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="father" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="mother" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="sister" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="friend" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
@@ -114,7 +112,6 @@
             <EntityTypeMapping TypeName="APP_DBModel.userContacts">
               <MappingFragment StoreEntitySet="contacts">
                 <ScalarProperty Name="friend" ColumnName="friend" />
-                <ScalarProperty Name="sister" ColumnName="sister" />
                 <ScalarProperty Name="mother" ColumnName="mother" />
                 <ScalarProperty Name="father" ColumnName="father" />
                 <ScalarProperty Name="email" ColumnName="email" />

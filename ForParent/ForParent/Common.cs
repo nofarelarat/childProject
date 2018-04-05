@@ -77,8 +77,6 @@ namespace ForParent
                 return false;
             }
 
-            who_am_i = "";
-            myChild = "";
             return true;
         }
 
@@ -242,11 +240,19 @@ namespace ForParent
 
        public static async Task<bool> markAsDeleteMsg(OutTable obj)
         {
-            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp1?code=3moplIVTWNBkw4xdWvjsx9ePAOq64fDcIrexBFx1XrkZEm9U5Zd8aw==";
-            obj.Message_Recive = "0";
-            obj.Message_Send = "0";
+            if(obj ==null)
+            {
+                return false;
+            }
+            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
+            outTableChange new_msg = new outTableChange() ;
+            new_msg.Message_Recive = "0";
+            new_msg.Message_Send = "0";
+            new_msg.RowKey = obj.RowKey;
+            new_msg.PartitionKey = obj.PartitionKey;
             //string json = ConnectDB.WriteFromObject(obj);
-            string json = JsonConvert.SerializeObject(obj);
+            string json = JsonConvert.SerializeObject(new_msg);
+
             try
             {
                 //Send the PUT request

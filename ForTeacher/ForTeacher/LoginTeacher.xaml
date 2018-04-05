@@ -14,7 +14,7 @@
             <RowDefinition Height="259*"/>
         </Grid.RowDefinitions>
         <Image Source="/Images/sign-in-headline.png" HorizontalAlignment="Left" Height="219" Margin="93,-67,0,0" VerticalAlignment="Top" Width="218"/>
-        <Button HorizontalAlignment="Left" Margin="66,243,0,0" VerticalAlignment="Top" Click="Register" Width="262" Height="197" Grid.RowSpan="2">
+        <Button HorizontalAlignment="Left" Margin="60,243,0,0" VerticalAlignment="Top" Click="Register" Width="262" Height="197" Grid.RowSpan="2">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/havent_signed.PNG" />
@@ -22,7 +22,7 @@
             </Button.Template>
         </Button>
         <Image Source="/Images/password.png" HorizontalAlignment="Left" Height="152" Margin="-9,97,0,0" VerticalAlignment="Top" Width="267"/>
-        <Button Height="104" Width="155"  Background="Black" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="124,222,0,0">
+        <Button Height="104" Width="155"  Background="Black" HorizontalAlignment="Left" VerticalAlignment="top" Click="EnterAppAsync" Margin="106,222,0,0">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/login_button.PNG"  />

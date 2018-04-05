@@ -1,17 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Storage.Table;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage.Auth;
+
 
 
 namespace ForChild
@@ -97,7 +87,6 @@ namespace ForChild
                 }
                 else {
                     todo.Text = "please add mother";
-
                 }
             }
         }
@@ -120,10 +109,30 @@ namespace ForChild
             }
         }
 
-        private void forLogin_Click(object sender, RoutedEventArgs e)
+        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Frame toMather = Window.Current.Content as Frame;
-            toMather.Navigate(typeof(loginChild));
+            if (Common.who_am_i.Equals(""))
+            {
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
+            else
+            {
+                await Common.DeleteFileAsync("userChild.txt");
+                await Common.DeleteFileAsync("chatWithFriend.txt");
+                await Common.DeleteFileAsync("chatWithMother.txt");
+                await Common.DeleteFileAsync("chatWithFather.txt");
+                Common.who_am_i = "";
+                Common.myFather = "";
+                Common.myMother = "";
+                Common.myFriend = "";
+                Common.myTeacher = "";
+                Common.isConectet = false;
+                // await Common.DeleteFileAsync(); //Need to add the Father file
+
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
+            }
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)

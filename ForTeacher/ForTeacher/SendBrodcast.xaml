@@ -13,7 +13,7 @@
             <ImageBrush Stretch="Fill" ImageSource="/Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="138" Stroke="Black" VerticalAlignment="Top" Width="349" Margin="-3,378,0,0"/>
-        <Border Background="GhostWhite" Margin="-5,109,-2,248"/>
+        <Border Background="White" Margin="-5,165,-2,260"/>
         <Button HorizontalAlignment="Left" Margin="-17,16,0,0" VerticalAlignment="Top" Click="Button_Click_back" Height="47" Width="125">
             <Button.Template>
                 <ControlTemplate>
@@ -23,7 +23,7 @@
         </Button>
         <Image HorizontalAlignment="Left" Height="59" Margin="195,50,0,0" VerticalAlignment="Top" Width="147" Source="Images/child.png"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image Source="/Images/chat2.png" HorizontalAlignment="Left" Height="219" Margin="93,-167,0,0" VerticalAlignment="Top" Width="218"/>
+        <Image Source="/Images/brodcast.png" HorizontalAlignment="Left" Height="254" Margin="93,-82,0,0" VerticalAlignment="Top" Width="257"/>
 
         <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="SendClick" Margin="273,0,0,179" Height="61" Width="74" RenderTransformOrigin="0.496,0.489">
             <Button.Template>
@@ -226,30 +226,11 @@
             </Button.Template>
             <Image Height="108" Width="108"/>
         </Button>
-        <Image x:Name="forSend21" Tag="" HorizontalAlignment="Left" Height="49" Margin="283,206,0,0" VerticalAlignment="Top" Width="58"/>
-        <Image x:Name="forSend22" Tag="" HorizontalAlignment="Left" Height="49" Margin="222,206,0,0" VerticalAlignment="Top" Width="59"/>
-        <Image x:Name="forSend23" Tag="" HorizontalAlignment="Left" Height="47" Margin="164,207,0,0" VerticalAlignment="Top" Width="58"/>
-        <Image x:Name="forSend24" Tag="" HorizontalAlignment="Left" Height="45" Margin="105,209,0,0" VerticalAlignment="Top" Width="61"/>
-        <Image x:Name="forSend25" Tag="" HorizontalAlignment="Left" Height="45" Margin="41,209,0,0" VerticalAlignment="Top" Width="58"/>
-        <Image x:Name="forSend31" Tag="" HorizontalAlignment="Left" Height="50" Margin="279,315,0,0" VerticalAlignment="Top" Width="65"/>
-        <Image x:Name="forSend32" Tag="" HorizontalAlignment="Left" Height="50" Margin="216,315,0,0" VerticalAlignment="Top" Width="63"/>
-        <Image x:Name="forSend33" Tag="" HorizontalAlignment="Left" Height="48" Margin="152,316,0,0" VerticalAlignment="Top" Width="64"/>
-        <Image x:Name="forSend34" Tag="" HorizontalAlignment="Left" Height="46" Margin="101,318,0,0" VerticalAlignment="Top" Width="49"/>
-        <Image x:Name="forSend35" Tag="" HorizontalAlignment="Left" Height="49" Margin="34,315,0,0" VerticalAlignment="Top" Width="53"/>
-        <Image x:Name="afterSend33" Tag="" HorizontalAlignment="Left" Height="49" Margin="90,315,0,0" VerticalAlignment="Top" Width="55"/>
-        <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="7,0,0,166" Height="88" Width="59" RenderTransformOrigin="0.496,0.489">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="/Images/delete.jpg"/>
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="108" Width="108"/>
-        </Button>
-        <Image x:Name="forSend11" Tag="" HorizontalAlignment="Left" Height="52" Margin="283,114,0,0" VerticalAlignment="Top" Width="60"/>
-        <Image x:Name="forSend12" Tag="" HorizontalAlignment="Left" Height="52" Margin="224,114,0,0" VerticalAlignment="Top" Width="59"/>
-        <Image x:Name="forSend13" Tag="" HorizontalAlignment="Left" Height="50" Margin="158,115,0,0" VerticalAlignment="Top" Width="64"/>
-        <Image x:Name="forSend14" Tag="" HorizontalAlignment="Left" Height="47" Margin="101,118,0,0" VerticalAlignment="Top" Width="57"/>
-        <Image x:Name="forSend15" Tag="" HorizontalAlignment="Left" Height="47" Margin="45,118,0,0" VerticalAlignment="Top" Width="53"/>
+        <Image x:Name="forSend11" Tag="" HorizontalAlignment="Left" Height="52" Margin="271,198,0,0" VerticalAlignment="Top" Width="60"/>
+        <Image x:Name="forSend12" Tag="" HorizontalAlignment="Left" Height="52" Margin="212,198,0,0" VerticalAlignment="Top" Width="59"/>
+        <Image x:Name="forSend13" Tag="" HorizontalAlignment="Left" Height="50" Margin="146,199,0,0" VerticalAlignment="Top" Width="64"/>
+        <Image x:Name="forSend14" Tag="" HorizontalAlignment="Left" Height="49" Margin="89,200,0,0" VerticalAlignment="Top" Width="57"/>
+        <Image x:Name="forSend15" Tag="" HorizontalAlignment="Left" Height="49" Margin="23,200,0,0" VerticalAlignment="Top" Width="63"/>
         <Image x:Name="blank" Tag="" HorizontalAlignment="Left" Height="62" Margin="65,186,0,0" VerticalAlignment="Top" Width="66" Visibility="Collapsed"/>
 
     </Grid>
