@@ -24,9 +24,14 @@ namespace ForParent
         public MainPage()
         {
             this.InitializeComponent();
+            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
+            }
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }
@@ -65,10 +70,16 @@ namespace ForParent
             bool success = await Common.GetUserFromFileAsync();
             if(success == false)
             {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
             }
-
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
         }
 
         private void forRegister_Click(object sender, RoutedEventArgs e)
@@ -84,18 +95,18 @@ namespace ForParent
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
             }
-            else
-            {
-                await Common.DeleteFileAsync("userParent.txt");
-                await Common.DeleteFileAsync("chatWithChild.txt");
-                Common.who_am_i = "";
-                Common.isConectet = false;
-                Common.myChild = "";
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginParent));
-            }
         }
 
+        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            await Common.DeleteFileAsync("userParent.txt");
+            await Common.DeleteFileAsync("chatWithChild.txt");
+            Common.who_am_i = "";
+            Common.isConectet = false;
+            Common.myChild = "";
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginParent));
+        }
         private void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i == "")
