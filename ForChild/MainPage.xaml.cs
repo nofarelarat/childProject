@@ -123,6 +123,7 @@ namespace ForChild
                 toMather.Navigate(typeof(loginChild));
             }
         }
+
         private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
         {
                 await Common.DeleteFileAsync("userChild.txt");
