@@ -73,7 +73,6 @@ namespace ForParent
         {
             int message_num = 0;
             string sentence = "";
-            Image[] symbolsForSend = symbolsForSend1;
             int fullFlag = 0;
             if (symbolsForSend_full[0] != 0)
             {

@@ -11,17 +11,18 @@ namespace ForTeacher
     /// </summary>
     public sealed partial class SendBrodcast : Page
     {
+        static bool flag = true;
         static int symbolsForSend_curr = 0;
         static Image[] symbolsForSend = new Image[5];
-        
+
         public SendBrodcast()
         {
             this.InitializeComponent();
-            symbolsForSend[0] = forSend1;
-            symbolsForSend[1] = forSend2;
-            symbolsForSend[2] = forSend3;
-            symbolsForSend[3] = forSend4;
-            symbolsForSend[4] = forSend5;
+            symbolsForSend[0] = forSend11;
+            symbolsForSend[1] = forSend12;
+            symbolsForSend[2] = forSend13;
+            symbolsForSend[3] = forSend14;
+            symbolsForSend[4] = forSend15;
 
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace ForTeacher
             {
                 String final_msg = sendMsg + "$" + Common.who_am_i + "$";
                 // Get Garden children
-                user[] kids = await ConnectDB.GetGardenChildren("flowers");
+                user[] kids = Common.gardenChildren;
                 for (int i = 0; i < kids.Length; i++)
                 {
                     if (kids[i].type != "Teacher" && kids[i].type != "Parent")

@@ -11,6 +11,9 @@ namespace ForTeacher
         public static string who_am_i = "";
         public static string garden = "";
         public static bool isConectet = false;
+        public static user[] gardenChildren = null;
+        public static int counter_child = 0;
+
 
         public static async Task<bool> GetUserFromFileAsync()
         {
@@ -48,7 +51,31 @@ namespace ForTeacher
                 return false;
             }
         }
+        public static async Task<symbol[]> GetUserCounterAsync(string symbolName, string childEmail)
+        {
+            string child_email = childEmail;
+            symbol[] res = null;
+            ConnectDB db = new ConnectDB();
 
+            if (!who_am_i.Equals("") && !child_email.Equals(""))
+            {
+                symbol symbol = new symbol
+                {
+                    email = child_email,
+                    symbolName = symbolName,
+                    date = DateTime.Today
+                };
+                if (symbolName.Equals("allsymbols"))
+                {
+                    res = await db.GetUserAllCountersAsync(child_email);
+                }
+                else
+                {
+                    res = await db.GetUserCounterAsync(symbol);
+                }
+            }
+            return res;
+        }
 
         public static async Task<bool> DeleteFileAsync(string fileName)
         {

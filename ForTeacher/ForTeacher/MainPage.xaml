@@ -6,43 +6,41 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid Margin="-30,0,10,0">
-        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Broadcast_Click" Margin="296,180,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/broadcast.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Login_ClickAsync" Margin="44,56,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/login.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Register_Click" Margin="296,56,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/registation.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Button Height="115" Width="221" HorizontalAlignment="Left" VerticalAlignment="top" Click="Statistics_Click" Margin="44,180,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/statistics.PNG" Margin="89,240,-44,-206" RenderTransformOrigin="0.5,0.5" />
-                </ControlTemplate>
-            </Button.Template>
-            <Image Height="100" Width="100"/>
-        </Button>
-        <Image Source="/Images/teacher.PNG" Margin="357,73,328,408"/>
+    <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="images/background1.png" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="/Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
+        <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89">
+            <Button.Template>
+
+                <ControlTemplate>
+                    <Image Source="/Images/chat1.png" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89">
+            <Button.Template >
+
+                <ControlTemplate>
+                    <Image Source="/Images/charts.png" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="for_login" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image x:Name="sign_in" Source="/Images/sign-in.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Click="forRegister_Click" HorizontalAlignment="Left" Height="73" Margin="198,328,0,0" VerticalAlignment="Top" Width="89">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/Images/sign-up.png" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Image Source="/Images/logo3.png" HorizontalAlignment="Left" Height="295" Margin="58,-39,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>
 
 </Page>

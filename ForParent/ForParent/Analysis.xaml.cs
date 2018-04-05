@@ -27,7 +27,7 @@ namespace ForParent
         public Analysis()
         {
             this.InitializeComponent();
-            string[] colors = {
+            string[] symbols = {
                 "no",
                 "agree",
                 "towalk",
@@ -59,7 +59,7 @@ namespace ForParent
             };
 
             // Specify the ComboBox item source
-            ComBox.ItemsSource = colors;
+            ComBox.ItemsSource = symbols;
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)
