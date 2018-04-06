@@ -305,6 +305,8 @@ namespace ForChild
                 await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myMother);
                 await GetMessageAsync(table);
+                if (symbolsSentFromOther_full[2] == 1)
+                    delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
         }
 

@@ -243,7 +243,7 @@
             <Image x:Name="afterSend33" Tag="" HorizontalAlignment="Left" Height="47" Margin="214,387,0,0" VerticalAlignment="Top" Width="66"/>
             <Image x:Name="afterSend34" Tag="" HorizontalAlignment="Left" Height="47" Margin="144,387,0,0" VerticalAlignment="Top" Width="65"/>
             <Image x:Name="afterSend35" Tag="" HorizontalAlignment="Left" Height="47" Margin="71,387,0,0" VerticalAlignment="Top" Width="65"/>
-            <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="456,0,0,170" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
+            <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="456,0,0,170" Height="108" Width="108" RenderTransformOrigin="0.496,0.489" Visibility="Visible">
                 <Button.Template>
                     <ControlTemplate>
                         <Image Source="images/delete.jpg"/>
