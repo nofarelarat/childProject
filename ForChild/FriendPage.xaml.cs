@@ -87,6 +87,10 @@ namespace ForChild
             symbolsForSend_full[0] = 0;
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
+
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
             Common.DeleteFileAsync("chatWithFriend.txt");
             flag = true;
             GetMsgFromFriend();
@@ -300,10 +304,10 @@ namespace ForChild
         {
             while (flag)
             {
+                await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myFriend);
                 await GetMessageAsync(table);
             }
-
         }
 
         private void InitializeArrays()
@@ -386,7 +390,6 @@ namespace ForChild
                 }
             }
         }
-
     }
 }
 

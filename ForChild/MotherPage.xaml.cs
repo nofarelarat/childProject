@@ -301,7 +301,8 @@ namespace ForChild
         private async Task GetMsgFromMother()
         {
             while (flag)
-            { 
+            {
+                await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myMother);
                 await GetMessageAsync(table);
             }
