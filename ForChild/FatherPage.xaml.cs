@@ -276,6 +276,7 @@ namespace ForChild
         {
             while (flag)
             {
+                await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myFather);
                 await GetMessageAsync(table);
             }
