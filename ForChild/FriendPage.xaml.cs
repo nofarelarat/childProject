@@ -91,59 +91,6 @@ namespace ForChild
             flag = true;
             GetMsgFromFriend();
         }
-        private async void FriendSendClick(object sender, RoutedEventArgs e)
-        {
-            int message_num = 0;
-            string sentence = "";
-            Image[] symbolsForSend = symbolsForSend1;
-            int fullFlag = 0;
-            if (symbolsForSend_full[0] != 0)
-            {
-                if (symbolsForSend_full[1] == 0)
-                {
-                    message_num = 2;
-                    symbolsForSend_full[1] = 1;
-                }
-                else if (symbolsForSend_full[2] == 0)
-                {
-                    message_num = 3;
-                    symbolsForSend_full[2] = 1;
-                }
-                else
-                {//all full
-                    fullFlag = 1;
-                }
-            }
-            else
-            {
-                message_num = 1;
-                symbolsForSend_full[0] = 1;
-            }
-            if (fullFlag == 0)
-            {
-                for (int i = 0; i < symbolsForSend1.Length; i++)
-                {
-                    if (message_num == 1)
-                    {
-                        sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
-                    }
-                    else if (message_num == 2)
-                    {
-                        sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
-                    }
-                    else if (message_num == 3)
-                    {
-                        sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
-                        Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
-                    }
-                }
-            }
-            //To do : sent to is hard coded!!
-            Common.sendMsg(sentence, Common.myMother);
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-        }
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
