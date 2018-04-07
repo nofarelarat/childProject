@@ -82,6 +82,9 @@ namespace ForChild
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
+            my_num_of_msg = 0;
+            iStarted = true;
+
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
                 symbolsForSend1[i].Source = null;
@@ -91,7 +94,7 @@ namespace ForChild
 
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;
+                symbolsSentFromOther3[i].Source = null;          
             }
             send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
@@ -111,61 +114,7 @@ namespace ForChild
             GetMsgFromFriend();
         }
 
-        //private async void FriendSendClick(object sender, RoutedEventArgs e)
-        //{
-        //    int message_num = 0;
-        //    string sentence = "";
-        //    Image[] symbolsForSend = symbolsForSend1;
-        //    int fullFlag = 0;
-        //    if (symbolsForSend_full[0] != 0)
-        //    {
-        //        if (symbolsForSend_full[1] == 0)
-        //        {
-        //            message_num = 2;
-        //            symbolsForSend_full[1] = 1;
-        //        }
-        //        else if (symbolsForSend_full[2] == 0)
-        //        {
-        //            message_num = 3;
-        //            symbolsForSend_full[2] = 1;
-        //        }
-        //        else
-        //        {//all full
-        //            fullFlag = 1;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        message_num = 1;
-        //        symbolsForSend_full[0] = 1;
-        //    }
-        //    if (fullFlag == 0)
-        //    {
-        //        for (int i = 0; i < symbolsForSend1.Length; i++)
-        //        {
-        //            if (message_num == 1)
-        //            {
-        //                sentence = sentence + symbolsForSend1[i].Tag.ToString() + "+";
-        //                Common.UpdateCounterAsync(symbolsForSend1[i].Tag.ToString());
-        //            }
-        //            else if (message_num == 2)
-        //            {
-        //                sentence = sentence + symbolsForSend2[i].Tag.ToString() + "+";
-        //                Common.UpdateCounterAsync(symbolsForSend2[i].Tag.ToString());
-        //            }
-        //            else if (message_num == 3)
-        //            {
-        //                sentence = sentence + symbolsForSend3[i].Tag.ToString() + "+";
-        //                Common.UpdateCounterAsync(symbolsForSend3[i].Tag.ToString());
-        //            }
-        //        }
-        //    }
-        //    //To do : sent to is hard coded!!
-        //    Common.sendMsg(sentence, Common.myMother);
-        //    send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-        //}
-
-        private void Send_Click(object sender, RoutedEventArgs e)
+           private void Send_Click(object sender, RoutedEventArgs e)
         {
             my_num_of_msg++;
             int index = my_num_of_msg;
@@ -294,8 +243,8 @@ namespace ForChild
             }
             if (symbolsForSend_curr == 4 && symbolsForSend_curr4 < 5)
             {
-                symbolsForSend3[symbolsForSend_curr4].Source = new BitmapImage(requestUri);
-                symbolsForSend3[symbolsForSend_curr4].Tag = button_name;
+                symbolsForSend4[symbolsForSend_curr4].Source = new BitmapImage(requestUri);
+                symbolsForSend4[symbolsForSend_curr4].Tag = button_name;
                 symbolsForSend_curr4++;
             }
         }
@@ -335,6 +284,8 @@ namespace ForChild
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
+                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
             }
 
         }

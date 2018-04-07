@@ -155,7 +155,11 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo3.png" />
+<<<<<<< HEAD
     <Content Include="Images\mother2.jpg" />
+=======
+    <Content Include="Images\Logout.gif" />
+>>>>>>> origin/master
     <Content Include="Images\note.png" />
     <Content Include="Images\parent.png" />
     <Content Include="Images\parents.png" />

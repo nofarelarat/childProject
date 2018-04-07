@@ -1,6 +1,12 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 
 namespace ForTeacher
 {
@@ -9,31 +15,76 @@ namespace ForTeacher
         public MainPage()
         {
             this.InitializeComponent();
+            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
             }
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+        }
+  
+
+        private async void forChat_Click(object sender, RoutedEventArgs e)
+        {
+            if (Common.who_am_i == "")
+            {
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }            
+            else if (Common.counter_child == 0)
+            {
+                Frame toChat = Window.Current.Content as Frame;
+                toChat.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                Frame toChat = Window.Current.Content as Frame;
+                toChat.Navigate(typeof(SendBrodcast));
+            }
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e)
+        private async void CheckUserExistAsync()
+        {
+
+            bool success = await Common.GetUserFromFileAsync();
+            if (success == false)
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
+            }
+            else
+            {
+                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+
+        }
+
+        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            await Common.DeleteFileAsync("userTeacher.txt");
+            Common.who_am_i = "";
+            Common.garden = "";
+            Common.isConectet = false;
+
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginTeacher));
+        }
+
+
+        private void forRegister_Click(object sender, RoutedEventArgs e)
         {
             Frame toRegister = Window.Current.Content as Frame;
             toRegister.Navigate(typeof(Registration));
         }
 
-        private void Statistics_Click(object sender, RoutedEventArgs e)
-        {
-            if (Common.who_am_i.Equals(""))
-            {
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
-            }
-            else
-            { 
-                Frame toRegister = Window.Current.Content as Frame;
-                toRegister.Navigate(typeof(Statistics));
-            }
-    }
 
         private async void Login_ClickAsync(object sender, RoutedEventArgs e)
         {
@@ -42,21 +93,11 @@ namespace ForTeacher
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
-            else
-            {
-                await Common.DeleteFileAsync("userTeacher.txt");
-                Common.who_am_i = "";
-                Common.garden = "";
-                Common.isConectet = false;
-
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
-            }
         }
 
-        private void Broadcast_Click(object sender, RoutedEventArgs e)
+        private void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
-            if(Common.who_am_i.Equals(""))
+            if (Common.who_am_i == "")
             {
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
@@ -64,18 +105,10 @@ namespace ForTeacher
             else
             { 
                 Frame toSendBrodcast = Window.Current.Content as Frame;
-                toSendBrodcast.Navigate(typeof(SendBrodcast));
+                toSendBrodcast.Navigate(typeof(Statistics));
             }
         }
 
-        private async void CheckUserExistAsync()
-        {
-            bool success = await Common.GetUserFromFileAsync();
-            if (success == false)
-            {
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
-            }
-        }
     }
+
 }
