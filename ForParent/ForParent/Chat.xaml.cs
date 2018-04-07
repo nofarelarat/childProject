@@ -117,7 +117,8 @@ namespace ForParent
             Common.sendMsg(sentence, Common.myChild);
             Common.WriteConversation("parent:" + sentence);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+            if (symbolsForSend_full[2] == 1)
+                delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -263,6 +264,7 @@ namespace ForParent
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
+                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }
@@ -299,6 +301,7 @@ namespace ForParent
         {
             while (flag)
            {
+                await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
                 await GetMessageAsync(table);
            }
@@ -376,13 +379,12 @@ namespace ForParent
                     if (message[0].Equals("parent"))
                     {
                         GetSentMessage(images);
-                    }
-
-                    if(symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
-                    {
-                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    }
+                    }                   
                 }
+            }
+            if (symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
+            {
+                send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
     }

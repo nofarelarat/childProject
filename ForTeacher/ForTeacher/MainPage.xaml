@@ -33,10 +33,10 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="forLogout" HorizontalAlignment="Left" Margin="26,0,0,328" VerticalAlignment="Stretch" Width="120" Click="forLogOut_ClickAsync">
+        <Button x:Name="forLogout" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="65" Click="forLogOut_ClickAsync" Margin="87,135,0,45">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="images/logout.gif" Margin="0,261,-85,-304" />
+                    <Image Source="images/sign-out.png"  />
                 </ControlTemplate>
             </Button.Template>
         </Button>

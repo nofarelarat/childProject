@@ -165,6 +165,7 @@
     <Content Include="images\Logout.gif" />
     <Content Include="images\password.png" />
     <Content Include="images\sign-in-headline.png" />
+    <Content Include="images\sign-out.png" />
     <Content Include="images\sign_up_button.png" />
     <Content Include="images\teacher.png" />
     <Content Include="images\teacher2.png" />

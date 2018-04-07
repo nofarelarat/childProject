@@ -50,17 +50,10 @@
         </Button>
 
         <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="images/me.jpg"/>
-        <Button x:Name="forLogin" HorizontalAlignment="Left" Margin="879,355,0,239" VerticalAlignment="Stretch" Width="120" Click="forLogin_ClickAsync">
+        <Button x:Name="forLogout" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogOut_ClickAsync" Margin="933,273,0,242">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="images/login.png" Margin="0,-43,-85.2,0.4" />
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="forLogout" HorizontalAlignment="Left" Margin="879,307,0,287" VerticalAlignment="Stretch" Width="120" Click="forLogOut_ClickAsync">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/logout.gif" Margin="0,261,-85,-304" />
+                    <Image Source="images/sign-out.png"   />
                 </ControlTemplate>
             </Button.Template>
         </Button>
