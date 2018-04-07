@@ -58,7 +58,10 @@ namespace ForTeacher
                     }
                         loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
-                    
+                        Frame toHome = Window.Current.Content as Frame;
+                        toHome.Navigate(typeof(MainPage));
+
+
                 }
                 else if(!user.type.Equals("Teacher"))
                 {
