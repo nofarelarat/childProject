@@ -26,17 +26,10 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="for_login" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="forLogout" Click="forLogOut_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="sign_in" Source="/Images/sign-in.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="forLogout" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="65" Click="forLogOut_ClickAsync" Margin="87,135,0,45">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="images/sign-out.png"  />
+                    <Image Source="/Images/sign-out.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>

@@ -127,32 +127,6 @@ namespace ForChild
                 index += 1;
             }
             symbolsForSend_full[index-1] = 1;
-
-            //int message_num = 0;
-            //string sentence = "";
-            //Image[] symbolsForSend = symbolsForSend1;
-            //if (symbolsForSend_full[0] != 0)
-            //{
-            //    if (symbolsForSend_full[1] == 0)
-            //    {
-            //        message_num = 2;
-            //        symbolsForSend_full[1] = 1;
-            //    }
-            //    else if (symbolsForSend_full[2] == 0)
-            //    {
-            //        message_num = 3;
-            //        symbolsForSend_full[2] = 1;
-            //    }
-            //    else
-            //    {//all full
-            //        fullFlag = 1;
-            //    }
-            //}
-            //else
-            //{
-            //    message_num = 1;
-            //    symbolsForSend_full[0] = 1;
-            //}
             if (my_num_of_msg <= 3)
             {
                 for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -181,7 +155,6 @@ namespace ForChild
 
                 }
             }
-            //To do : sent to is hard coded!!
             Common.sendMsg(sentence, Common.myFriend);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
@@ -196,27 +169,6 @@ namespace ForChild
             {
                 index += 1;
             }
-
-
-            //int symbolsForSend_messege = -1;
-            //if (symbolsForSend_full[0] != 0)
-            //{
-            //    if (symbolsForSend_full[1] != 0)
-            //    {
-            //        if (symbolsForSend_full[2] == 0)
-            //        {
-            //            symbolsForSend_messege = 3;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        symbolsForSend_messege = 2;
-            //    }
-            //}
-            //else
-            //{
-            //    symbolsForSend_messege = 1;
-            //}
             Button button = (Button)sender;
             string button_name = button.Name;
             AddToForSendGrid(button_name, index);
