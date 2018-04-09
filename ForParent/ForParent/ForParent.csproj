@@ -128,7 +128,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="children.png" />
     <Content Include="father.jpg" />
     <Content Include="Images\arrow.png" />
     <Content Include="Images\back.PNG" />
@@ -138,6 +137,7 @@
     <Content Include="Images\chat1.png" />
     <Content Include="Images\chat2.png" />
     <Content Include="Images\chatBackground.PNG" />
+    <Content Include="Images\child.png" />
     <Content Include="Images\delete.jpg" />
     <Content Include="Images\email.png" />
     <Content Include="Images\first_name.png" />
@@ -156,6 +156,7 @@
     <Content Include="Images\logo3.png" />
     <Content Include="Images\Logout.gif" />
     <Content Include="Images\note.png" />
+    <Content Include="Images\parent.png" />
     <Content Include="Images\parents.png" />
     <Content Include="Images\password.png" />
     <Content Include="Images\registation.PNG" />
@@ -163,6 +164,7 @@
     <Content Include="Images\registerBackground.PNG" />
     <Content Include="Images\sign-in-headline.png" />
     <Content Include="Images\sign-in.png" />
+    <Content Include="Images\sign-out%29.png" />
     <Content Include="Images\sign-up-hedline.png" />
     <Content Include="Images\sign-up.png" />
     <Content Include="Images\signing_for.png" />
@@ -178,7 +180,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Sketch0012.jpg" />
     <Content Include="symbols\iagree.png" />
     <Content Include="symbols\ianger.png" />
     <Content Include="symbols\ibreakfast.png" />

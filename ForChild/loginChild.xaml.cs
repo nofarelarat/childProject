@@ -54,6 +54,8 @@ namespace ForChild
                     }
                     loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     result.Text = "welcome " + user.firstname + "!";
+                    Frame toMainPage = Window.Current.Content as Frame;
+                    toMainPage.Navigate(typeof(MainPage));
                 }
                 else if (!user.type.Equals("Child"))
                 {

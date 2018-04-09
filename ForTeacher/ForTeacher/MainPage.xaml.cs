@@ -16,7 +16,7 @@ namespace ForTeacher
         {
             this.InitializeComponent();
             forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+         //   for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             if (Common.isConectet == false)
             {
@@ -55,14 +55,12 @@ namespace ForTeacher
             if (success == false)
             {
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                for_login.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
             else
             {
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
 
         }

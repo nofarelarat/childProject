@@ -15,7 +15,6 @@ namespace ForChild
         {
             this.InitializeComponent();
             forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
@@ -161,14 +160,12 @@ namespace ForChild
             if (success == false)
             {
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
             else
             {
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
