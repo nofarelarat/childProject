@@ -22,9 +22,9 @@ namespace ForChild
         public static string myFriend = "";
         public static string myTeacher = "";
         public static bool isConectet = false;
+        
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
-
         public static async void sendMsg(string message,string sendtoAddress)
         {
             String final_msg = message + "$" + Common.who_am_i + "$";
@@ -88,12 +88,8 @@ namespace ForChild
             string email = who_am_i;
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
-            user user = await db.GetUserByMailAsync(email);
-            //dont need to get user from db because 
-            //when login there is a check is user exisit 
-            //just check if who_am_i not empty - saving time
-
-            if (user != null)
+            
+            if (!who_am_i.Equals(""))
             {
                 res = await db.GetUserAllCountersAsync(email);
             }
@@ -113,7 +109,7 @@ namespace ForChild
                     myFather = contacts.father;
                     myMother = contacts.mother;
                     myFriend = contacts.friend;
-                    myTeacher = "shosh@gmail.com"; //TODO: change it!!!
+                    myTeacher = await db.GetGardenTeacher(who_am_i,"Teacher");
                 }
                 else
                 {
@@ -130,7 +126,7 @@ namespace ForChild
             {
                 return false;
             }
-            user[] users = new user[4];
+            user[] users = new user[3];
             ConnectDB db = new ConnectDB();
             for (int i = 0; i < users.Length; i++)
             {
@@ -141,15 +137,14 @@ namespace ForChild
                 }
             }
             if (users[0].type.Equals("Parent") && users[1].type.Equals("Parent")
-                && users[2].type.Equals("Parent") && users[3].type.Equals("Child"))
+                 && users[2].type.Equals("Child"))
             {
                 bool x = await db.AddUserContactsAsync(emails);
                 if (x == true)
                 {
                     myFather = users[0].email;
                     myMother = users[1].email;
-                    myTeacher = users[2].email;
-                    myFriend = users[3].email;
+                    myFriend = users[2].email;
                 }
                 return x;
             }
@@ -222,6 +217,7 @@ namespace ForChild
             return false;
 
         }
+
         public static async Task<bool> GetUserFromFileAsync()
         {
             try
@@ -279,6 +275,7 @@ namespace ForChild
                 return false;
             }
         }
+
         public static async Task<bool> markAsDeleteMsg(OutTable obj)
         {
             if (obj == null)
@@ -339,7 +336,6 @@ namespace ForChild
             return true;
         }
 
-
         public static async Task<string> ReadConversation(string filename)
         {
             try
@@ -359,6 +355,7 @@ namespace ForChild
                 return "";
             }
         }
+        
         //in the sentence allreay see who send the message
         public static async Task<bool> WriteConversation(string sentence, string FileName)
         {

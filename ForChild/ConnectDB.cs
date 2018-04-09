@@ -213,6 +213,7 @@ namespace ForChild
                 return false;
             }
         }
+
         public async Task<userContacts> GetUserContactsAsync(string email)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?email=" + email;
@@ -269,6 +270,34 @@ namespace ForChild
             }
             return null;
         }
+
+        public async Task<string> GetGardenTeacher(string email,string type)
+        {
+            string completeUri = "http://childappapiservice.azurewebsites.net/api/users?email=" + email
+                + "&type=" + type;
+            //string completeUri = "http://localhost:49876/api/users?email=" + email
+            //+"&type=" + type;
+            Uri requestUri = new Uri(completeUri);
+            Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+            //Send the GET request asynchronously and retrieve the response as a string.
+            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
+            string httpResponseBody = "";
+
+            try
+            {
+                //Send the GET request
+                httpResponse = await httpClient.GetAsync(requestUri);
+                httpResponse.EnsureSuccessStatusCode();
+                httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                user getUser = ReadToObjectUser(httpResponseBody);
+                return getUser.email;
+            }
+            catch (Exception ex)
+            {
+                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+            }
+            return null;
+        }
 
         public static user ReadToObjectUser(string json)
         {
