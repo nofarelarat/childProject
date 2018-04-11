@@ -51,8 +51,7 @@ namespace ForParent
                 Common.myChild = await Common.GetParentContactAsync();
                 if(Common.myChild == "")
                 {
-                    //the child didnt insert the parent has is contact
-                    //add alert
+                    todo.Text = "child didnt insert the parent has is contact";
                 }
                 else
                 {
