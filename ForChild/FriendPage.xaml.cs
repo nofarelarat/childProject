@@ -94,7 +94,15 @@ namespace ForChild
 
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;          
+                symbolsSentFromOther3[i].Source = null;
+                symbolsForSend1[i].Tag = "";
+                symbolsForSend2[i].Tag = "";
+                symbolsForSend3[i].Tag = "";
+                symbolsForSend4[i].Tag = "";
+
+                symbolsSentFromOther1[i].Tag = "";
+                symbolsSentFromOther2[i].Tag = "";
+                symbolsSentFromOther3[i].Tag = "";
             }
             send.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
