@@ -38,6 +38,7 @@ namespace ForChild
             flag = true;
             this.InitializeComponent();
             InitializeArrays();
+            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -310,8 +311,10 @@ namespace ForChild
                 await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myMother);
                 await GetMessageAsync(table);
-                if (symbolsSentFromOther_full[2] == 1)
+                if (symbolsSentFromOther_full[2] == 1) {
                     delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                }
             }
         }
 
@@ -354,6 +357,7 @@ namespace ForChild
             symbolsSentFromOther3[4] = afterSend35;
 
         }
+
 
         private async void GetMsgFromFileAsync()
         {

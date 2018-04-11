@@ -22,7 +22,10 @@ namespace ForChild
         public static string myFriend = "";
         public static string myTeacher = "";
         public static bool isConectet = false;
-        
+        public static int my_num_of_msg = 0;
+        public static bool iStarted = true;
+
+
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string sendtoAddress)

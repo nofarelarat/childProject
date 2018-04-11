@@ -26,7 +26,7 @@
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
         <Image Source="/Images/chat2.png" HorizontalAlignment="Left" Height="219" Margin="93,-67,0,0" VerticalAlignment="Top" Width="218"/>
 
-        <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Send_Click" Margin="273,0,0,179" Height="61" Width="74" RenderTransformOrigin="0.496,0.489" ToolTipService.ToolTip="Send">
+        <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Send_Click" Margin="273,0,0,164" Height="61" Width="74" RenderTransformOrigin="0.496,0.489" ToolTipService.ToolTip="Send">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/arrow.png" />
