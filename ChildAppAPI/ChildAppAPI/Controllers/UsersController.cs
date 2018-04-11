@@ -73,9 +73,33 @@ namespace ChildAppAPI.Controllers
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
                     var users = db.users
-                    .Where(b => b.gardenname.Equals(garden));
+                    .Where(b => b.gardenname.Equals(garden) && b.type.Equals("Child"));
                     user[] res = users.ToArray();
                     return res;
+                }
+            }
+            catch (Exception)
+            {
+                return (null);
+            }
+        }
+
+        [HttpGet]
+        public user getTeacher([FromUri] string email, [FromUri] string type)
+        {
+            try
+            {
+                using (APP_DBEntities db = new APP_DBEntities())
+                {
+                    var user = db.users
+                    .Where(b => b.email.Equals(email))
+                    .FirstOrDefault();
+                    var garden = user.gardenname;
+                    var teacher = db.users
+                    .Where(b => b.type.Equals(type) && b.gardenname.Equals(garden))
+                    .FirstOrDefault();
+
+                    return teacher;
                 }
             }
             catch (Exception)

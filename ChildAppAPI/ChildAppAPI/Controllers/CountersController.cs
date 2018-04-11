@@ -31,7 +31,7 @@ namespace ChildAppAPI.Controllers
             {
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
-                    var userSymbol = db.symbols.Where(u => u.email == email && u.symbolName == symbolName);
+                    var userSymbol = db.symbols.Where(u => u.email.Equals(email) && u.symbolName.Equals(symbolName));
 
                     if (userSymbol != null)
                     {
@@ -53,7 +53,7 @@ namespace ChildAppAPI.Controllers
             {
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
-                    var userSymbol = db.symbols.Where(u => u.email == email);
+                    var userSymbol = db.symbols.Where(u => u.email.Equals(email));
 
                     if (userSymbol != null)
                     {
