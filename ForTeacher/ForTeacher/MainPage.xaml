@@ -27,14 +27,14 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="forLogout" Click="forLogOut_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="forLogout" Click="forLogOut_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Logout">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-out.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="forLogin" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="forLogin" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Login">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-in.png"/>
