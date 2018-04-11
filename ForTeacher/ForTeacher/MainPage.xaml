@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="/Images/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
-        <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89">
+        <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Send broadcast">
             <Button.Template>
 
                 <ControlTemplate>
@@ -18,7 +18,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89">
+        <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Open statistics">
             <Button.Template >
 
                 <ControlTemplate>
@@ -41,7 +41,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Click="forRegister_Click" HorizontalAlignment="Left" Height="73" Margin="198,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button Click="forRegister_Click" HorizontalAlignment="Left" Height="73" Margin="198,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Registration">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-up.png" />

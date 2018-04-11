@@ -78,7 +78,7 @@ namespace ForChild
 
             try
             {
-                //Send the POSR request
+                //Send the PATCH request
                 HttpStringContent stringContent = new HttpStringContent(json.ToString());
 
                 System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PATCH"), completeUri);
@@ -87,7 +87,7 @@ namespace ForChild
                                                     "application/json");//CONTENT-TYPE header
 
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);
             }
 
             catch (Exception ex)
