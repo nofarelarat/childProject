@@ -70,7 +70,7 @@ namespace ForChild
             toHome.Navigate(typeof(MainPage));
         }
 
-        private void Send_Click(object sender, RoutedEventArgs e)
+        private async void Send_ClickAsync(object sender, RoutedEventArgs e)
         {
             int message_num = 0;
             string sentence = "";
@@ -121,7 +121,7 @@ namespace ForChild
             }
             //To do : sent to is hard coded!!
             Common.sendMsg(sentence,Common.myMother);
-            Common.WriteConversation("child:" + sentence, "chatWithMother.txt");
+            await Common.WriteConversation("child:" + sentence, "chatWithMother.txt");
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
@@ -177,7 +177,7 @@ namespace ForChild
             }
         }
 
-        private async void delete_ClickAsync(object sender, RoutedEventArgs e)
+        private async void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++) {

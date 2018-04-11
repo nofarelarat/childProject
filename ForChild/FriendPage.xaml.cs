@@ -127,7 +127,7 @@ namespace ForChild
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private void Send_Click(object sender, RoutedEventArgs e)
+        private async void Send_ClickAsync(object sender, RoutedEventArgs e)
         {
             my_num_of_msg++;
             int index = my_num_of_msg;
@@ -181,8 +181,8 @@ namespace ForChild
             }
             Common.sendMsg(sentence, Common.myFriend);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
-            Common.WriteConversation("my_num_of_msg:" + my_num_of_msg, "chatWithFriend.txt");
+            await Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
+            await Common.WriteConversation("my_num_of_msg:" + my_num_of_msg, "chatWithFriend.txt");
 
         }
 
