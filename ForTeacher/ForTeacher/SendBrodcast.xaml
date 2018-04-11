@@ -25,7 +25,7 @@
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
         <Image Source="/Images/brodcast.png" HorizontalAlignment="Left" Height="254" Margin="93,-82,0,0" VerticalAlignment="Top" Width="257"/>
 
-        <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="SendClick" Margin="273,0,0,179" Height="61" Width="74" RenderTransformOrigin="0.496,0.489">
+        <Button x:Name="send" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="SendClick" Margin="273,0,0,179" Height="61" Width="74" RenderTransformOrigin="0.496,0.489" ToolTipService.ToolTip="Send">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/arrow.png" />
