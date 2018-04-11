@@ -73,7 +73,7 @@ namespace ForParent
         {
             int message_num = 0;
             string sentence = "";
-            int fullFlag = 0;
+            int fullFlag =  0;
             if (symbolsForSend_full[0] != 0)
             {
                 if (symbolsForSend_full[1] == 0)

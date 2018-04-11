@@ -7,9 +7,6 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ForChild
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class FatherPage : Page
     {
         static Image[] symbolsForSend1 = new Image[5];
@@ -104,7 +101,7 @@ namespace ForChild
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private void Send_Click(object sender, RoutedEventArgs e)
+        private async void Send_Click(object sender, RoutedEventArgs e)
         {
 
             int message_num = 0;
@@ -156,7 +153,7 @@ namespace ForChild
             }
             //To do : sent to is hard coded!!
             Common.sendMsg(sentence, Common.myFather);
-            Common.WriteConversation("child:" + sentence, "chatWithFather.txt");
+            await Common.WriteConversation("child:" + sentence, "chatWithFather.txt");
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
