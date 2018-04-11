@@ -91,6 +91,7 @@ namespace ForChild
             Common.DeleteFileAsync("chatWithFather.txt");
             flag = true;
             GetMsgFromFather();
+            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
