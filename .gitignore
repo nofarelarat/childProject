@@ -69,10 +69,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
-<<<<<<< HEAD
 *.csproj
-=======
->>>>>>> origin
 # Chutzpah Test files
 _Chutzpah*
 
