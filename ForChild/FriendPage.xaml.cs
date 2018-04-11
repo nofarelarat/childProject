@@ -169,6 +169,7 @@ namespace ForChild
                 }
 
 
+
             }
             Common.sendMsg(sentence, Common.myFriend);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
