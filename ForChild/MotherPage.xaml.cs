@@ -203,6 +203,7 @@ namespace ForChild
             Common.DeleteFileAsync("chatWithMother.txt");
             flag = true;
            // GetMsgFromMother();
+            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         private async Task GetMessageAsync(OutTable[] message)

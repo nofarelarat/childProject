@@ -115,9 +115,10 @@ namespace ForChild
             Common.DeleteFileAsync("chatWithFriend.txt");
             flag = true;
            // GetMsgFromFriend();
+            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-           private void Send_Click(object sender, RoutedEventArgs e)
+        private void Send_Click(object sender, RoutedEventArgs e)
         {
             my_num_of_msg++;
             int index = my_num_of_msg;
@@ -154,6 +155,20 @@ namespace ForChild
 
 
                 }
+                if (iStarted == false)
+                {
+                    if (symbolsForSend_full[3] == 1) {
+                        delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    }
+                }
+                else {
+                    if (symbolsForSend_full[2] == 1) {
+                        delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    }
+                }
+
+
+
             }
             Common.sendMsg(sentence, Common.myFriend);
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
