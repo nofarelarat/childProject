@@ -90,7 +90,7 @@ namespace ForChild
             symbolsForSend_full[2] = 0;
             Common.DeleteFileAsync("chatWithFather.txt");
             flag = true;
-            GetMsgFromFather();
+            //GetMsgFromFather();
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
@@ -264,10 +264,6 @@ namespace ForChild
                     {
                         return;
                     }//if
-                }
-                for (int x = 0; x < message.Length; x++)
-                {
-                    await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }

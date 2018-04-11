@@ -173,7 +173,7 @@ namespace ForParent
             }
         }
 
-        private void delete_Click(object sender, RoutedEventArgs e)
+        private async void delete_ClickAsync(object sender, RoutedEventArgs e)
         {
             flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -195,9 +195,12 @@ namespace ForParent
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2]= 0;
 
-            Common.DeleteFileAsync("chatWithChild.txt");
-            flag = true;
-            GetMsgFromChild();
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
+            bool x = await  Common.DeleteFileAsync("chatWithChild.txt");
+           flag = true;
+          //  GetMsgFromChild();
         }
 
         private async Task GetMessageAsync(OutTable[] message)
@@ -230,10 +233,10 @@ namespace ForParent
                        break;
                     }//if
                 }
-                for (int x = 0; x < message.Length; x++)
+               /* for (int x = 0; x < message.Length; x++)
                 {
                     await Common.markAsDeleteMsg(message[x]);
-                }
+                }*/
             }
         }
 
