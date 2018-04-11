@@ -25,11 +25,15 @@ namespace ForParent
         {
             this.InitializeComponent();
             forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
             }
-            {
+            else{
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
@@ -47,8 +51,7 @@ namespace ForParent
                 Common.myChild = await Common.GetParentContactAsync();
                 if(Common.myChild == "")
                 {
-                    //the child didnt insert the parent has is contact
-                    //add alert
+                    todo.Text = "child didnt insert the parent has is contact";
                 }
                 else
                 {
@@ -69,13 +72,14 @@ namespace ForParent
             bool success = await Common.GetUserFromFileAsync();
             if(success == false)
             {
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginParent));
             }
             else
             {
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
             }
         }
 
@@ -103,6 +107,9 @@ namespace ForParent
             Common.myChild = "";
             Frame toLogin = Window.Current.Content as Frame;
             toLogin.Navigate(typeof(LoginParent));
+            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
         }
         private void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
