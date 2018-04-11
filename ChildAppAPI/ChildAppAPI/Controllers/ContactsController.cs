@@ -6,9 +6,8 @@ namespace ChildAppAPI.Controllers
 {
     public class ContactsController : ApiController
     {
-        //[Route("GetChildContacts")]
         [HttpGet]
-        public userContacts getChildContacts([FromUri]string email)
+        public userContacts GetChildContacts([FromUri]string email)
         {
             try
             {
@@ -27,7 +26,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpGet]
-        public string getParentContact([FromUri]string Parentemail, [FromUri]bool isParent)
+        public string GetParentContact([FromUri]string Parentemail, [FromUri]bool isParent)
         {
             if (!isParent)
             {
@@ -70,7 +69,6 @@ namespace ChildAppAPI.Controllers
             {
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
-                    //change to add or modify
                     var userContacts = db.contacts
                     .Where(b => b.email.Equals(contacts.email))
                     .FirstOrDefault();

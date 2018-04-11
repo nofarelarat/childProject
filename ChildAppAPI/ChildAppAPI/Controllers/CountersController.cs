@@ -25,7 +25,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpGet]
-        public symbol[] getUserSymbolUsage([FromUri] string email, [FromUri] string symbolName)
+        public symbol[] GetUserSymbolUsage([FromUri] string email, [FromUri] string symbolName)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpGet]
-        public symbol[] getUserAllSymbolsUsage([FromUri] string email)
+        public symbol[] GetUserAllSymbolsUsage([FromUri] string email)
         {
             try
             {
