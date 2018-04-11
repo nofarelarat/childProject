@@ -112,11 +112,11 @@ namespace ForChild
             symbolsSentFromOther_full[0] = 0;
             symbolsSentFromOther_full[1] = 0;
             symbolsSentFromOther_full[2] = 0;
+
             Common.DeleteFileAsync("chatWithFriend.txt");
             flag = true;
-            GetMsgFromFriend();
+           // GetMsgFromFriend();
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)
@@ -319,10 +319,6 @@ namespace ForChild
                     {
                         return;
                     }//if
-                }
-                for (int x = 0; x < messages.Length; x++)
-                {
-                    await Common.markAsDeleteMsg(messages[x]);
                 }
             }
         }

@@ -177,7 +177,7 @@ namespace ForChild
             }
         }
 
-        private void delete_Click(object sender, RoutedEventArgs e)
+        private async void delete_ClickAsync(object sender, RoutedEventArgs e)
         {
             flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++) {
@@ -197,10 +197,12 @@ namespace ForChild
             symbolsForSend_full[0] = 0;
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
-
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
             Common.DeleteFileAsync("chatWithMother.txt");
             flag = true;
-            GetMsgFromMother();
+           // GetMsgFromMother();
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
@@ -233,10 +235,6 @@ namespace ForChild
                     {
                         return;
                     }//if
-                }
-                for (int x = 0; x < message.Length; x++)
-                {
-                   await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }

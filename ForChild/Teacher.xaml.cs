@@ -82,7 +82,7 @@ namespace ForChild
                 symbolsSentFromOther3[i].Source = null;
             }
             flag = true;
-            GetMsgFromTeacher();
+            //GetMsgFromTeacher();
         }
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
@@ -144,10 +144,6 @@ namespace ForChild
                     {
                         return;
                     }//if
-                }
-                for (int x = 0; x < message.Length; x++)
-                {
-                   await Common.markAsDeleteMsg(message[x]);
                 }
             }
         }
