@@ -173,7 +173,7 @@ namespace ForParent
             }
         }
 
-        private async void delete_ClickAsync(object sender, RoutedEventArgs e)
+        private async void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
             for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -184,7 +184,14 @@ namespace ForParent
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
+                symbolsForSend1[i].Tag = "";
+                symbolsForSend2[i].Tag = "";
+                symbolsForSend3[i].Tag = "";
+                symbolsSentFromOther1[i].Tag = "";
+                symbolsSentFromOther2[i].Tag = "";
+                symbolsSentFromOther3[i].Tag = "";
             }
+
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             symbolsForSend_curr1 = 0;
