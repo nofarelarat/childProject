@@ -89,7 +89,7 @@ namespace ForParent
             toRegister.Navigate(typeof(Registration));
         }
 
-        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
+        private async void forLogin_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i.Equals(""))
             {
@@ -98,7 +98,7 @@ namespace ForParent
             }
         }
 
-        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        private async void forLogOut_Click(object sender, RoutedEventArgs e)
         {
             await Common.DeleteFileAsync("userParent.txt");
             await Common.DeleteFileAsync("chatWithChild.txt");
@@ -124,6 +124,7 @@ namespace ForParent
                 toAnalysis.Navigate(typeof(Analysis));
             }
         }
+
 
     }
 }
