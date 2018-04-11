@@ -15,7 +15,7 @@ namespace ForChild
         {
             this.InitializeComponent();
             forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
