@@ -57,6 +57,13 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Button x:Name="forLogin" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogin_ClickAsync" Margin="933,273,0,242">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="images/sign-in.png"   />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <TextBlock x:Name="todo"  HorizontalAlignment="Left" Height="67" Margin="450,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
     </Grid>
 </Page>
