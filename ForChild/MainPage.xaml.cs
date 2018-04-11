@@ -52,7 +52,6 @@ namespace ForChild
                 }
                 else {
                     todo.Text = "you have to be registerd at yout friend's app";
-
                 }
             }
         }
