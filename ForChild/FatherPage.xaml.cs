@@ -89,6 +89,10 @@ namespace ForChild
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
             Common.DeleteFileAsync("chatWithFather.txt");
+
+            symbolsSentFromOther_full[0] = 0;
+            symbolsSentFromOther_full[1] = 0;
+            symbolsSentFromOther_full[2] = 0;
             flag = true;
             //GetMsgFromFather();
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;

@@ -112,6 +112,7 @@ namespace ForChild
             symbolsSentFromOther_full[0] = 0;
             symbolsSentFromOther_full[1] = 0;
             symbolsSentFromOther_full[2] = 0;
+
             Common.DeleteFileAsync("chatWithFriend.txt");
             flag = true;
            // GetMsgFromFriend();
