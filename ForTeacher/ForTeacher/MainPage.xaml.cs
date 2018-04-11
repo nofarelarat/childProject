@@ -16,14 +16,17 @@ namespace ForTeacher
         {
             this.InitializeComponent();
             forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-         //   for_login.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginTeacher));
             }
             else
             {
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
         }
@@ -54,12 +57,12 @@ namespace ForTeacher
             bool success = await Common.GetUserFromFileAsync();
             if (success == false)
             {
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
             }
             else
             {
+                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
