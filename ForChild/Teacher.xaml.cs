@@ -1,30 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
 
 
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace ForChild
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TeacherPage : Page
     {
         static bool flag = true;
@@ -43,24 +25,7 @@ namespace ForChild
         public TeacherPage()
         {
             this.InitializeComponent();
-
-            symbolsSentFromOther1[0] = afterSend11;
-            symbolsSentFromOther1[1] = afterSend12;
-            symbolsSentFromOther1[2] = afterSend13;
-            symbolsSentFromOther1[3] = afterSend14;
-            symbolsSentFromOther1[4] = afterSend15;
-
-            symbolsSentFromOther2[0] = afterSend21;
-            symbolsSentFromOther2[1] = afterSend22;
-            symbolsSentFromOther2[2] = afterSend23;
-            symbolsSentFromOther2[3] = afterSend24;
-            symbolsSentFromOther2[4] = afterSend25;
-
-            symbolsSentFromOther3[0] = afterSend31;
-            symbolsSentFromOther3[1] = afterSend32;
-            symbolsSentFromOther3[2] = afterSend33;
-            symbolsSentFromOther3[3] = afterSend34;
-            symbolsSentFromOther3[4] = afterSend35;
+            IntializeArrays();
             flag = true;
             GetMsgFromTeacher();
 
@@ -157,6 +122,27 @@ namespace ForChild
                 GetMessageAsync(table);
             }
 
+        }
+
+        private void IntializeArrays()
+        {
+            symbolsSentFromOther1 [0] = afterSend11;
+            symbolsSentFromOther1 [1] = afterSend12;
+            symbolsSentFromOther1 [2] = afterSend13;
+            symbolsSentFromOther1 [3] = afterSend14;
+            symbolsSentFromOther1 [4] = afterSend15;
+
+            symbolsSentFromOther2 [0] = afterSend21;
+            symbolsSentFromOther2 [1] = afterSend22;
+            symbolsSentFromOther2 [2] = afterSend23;
+            symbolsSentFromOther2 [3] = afterSend24;
+            symbolsSentFromOther2 [4] = afterSend25;
+
+            symbolsSentFromOther3 [0] = afterSend31;
+            symbolsSentFromOther3 [1] = afterSend32;
+            symbolsSentFromOther3 [2] = afterSend33;
+            symbolsSentFromOther3 [3] = afterSend34;
+            symbolsSentFromOther3 [4] = afterSend35;
         }
     }
 }
