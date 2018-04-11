@@ -70,7 +70,7 @@ namespace ForChild
             toHome.Navigate(typeof(MainPage));
         }
 
-        private async void Send_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Send_Click(object sender, RoutedEventArgs e)
         {
             int message_num = 0;
             string sentence = "";

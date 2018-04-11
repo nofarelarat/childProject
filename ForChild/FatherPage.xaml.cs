@@ -101,7 +101,7 @@ namespace ForChild
             delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private async void Send_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Send_Click(object sender, RoutedEventArgs e)
         {
 
             int message_num = 0;
