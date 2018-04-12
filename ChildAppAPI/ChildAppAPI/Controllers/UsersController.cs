@@ -7,7 +7,7 @@ namespace ChildAppAPI.Controllers
     public class UsersController : ApiController
     {
         [HttpGet]
-        public user getUser([FromUri]string email)
+        public user GetUser([FromUri]string email)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpDelete]
-        public bool deleteUser([FromUri] string email)
+        public bool DeleteUser([FromUri] string email)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpPost]
-        public bool createUser([FromBody] user user)
+        public bool CreateUser([FromBody] user user)
         {
             try
             {
@@ -66,14 +66,14 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpGet]
-        public user[] getTeacherUsers([FromUri]string garden)
+        public user[] GetTeacherUsers([FromUri]string garden)
         {
             try
             {
                 using (APP_DBEntities db = new APP_DBEntities())
                 {
                     var users = db.users
-                    .Where(b => b.gardenname.Equals(garden) && b.type.Equals("Child"));
+                    .Where(b => b.gardenname.Equals(garden) && b.type.ToLower().Equals("child"));
                     user[] res = users.ToArray();
                     return res;
                 }
@@ -85,7 +85,7 @@ namespace ChildAppAPI.Controllers
         }
 
         [HttpGet]
-        public user getTeacher([FromUri] string email, [FromUri] string type)
+        public user GetTeacher([FromUri] string email, [FromUri] string type)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace ChildAppAPI.Controllers
                     .FirstOrDefault();
                     var garden = user.gardenname;
                     var teacher = db.users
-                    .Where(b => b.type.Equals(type) && b.gardenname.Equals(garden))
+                    .Where(b => b.type.ToLower().Equals("teacher") && b.gardenname.Equals(garden))
                     .FirstOrDefault();
 
                     return teacher;
