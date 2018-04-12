@@ -1,40 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 namespace ForParent
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
-            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            forLogout.Visibility = Visibility.Collapsed;
+            forLogin.Visibility = Visibility.Visible;
+
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginParent));
             }
-            else{
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            else
+            {
+                forLogin.Visibility = Visibility.Collapsed;
+                forLogout.Visibility = Visibility.Visible;
             }
 
         }
@@ -46,10 +31,10 @@ namespace ForParent
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
             }
-            else if (Common.myChild =="")
+            else if (Common.myChild.IndexOf('@') <= 0)
             {
                 Common.myChild = await Common.GetParentContactAsync();
-                if(Common.myChild == "")
+                if(Common.myChild.IndexOf('@') <= 0)
                 {
                     todo.Text = "child didnt insert the parent has is contact";
                 }
@@ -72,14 +57,15 @@ namespace ForParent
             bool success = await Common.GetUserFromFileAsync();
             if(success == false)
             {
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                forLogin.Visibility = Visibility.Visible;
+                forLogout.Visibility = Visibility.Collapsed;
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(LoginParent));
             }
             else
             {
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+                forLogout.Visibility = Visibility.Visible;
+                forLogin.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -91,11 +77,8 @@ namespace ForParent
 
         private async void forLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (Common.who_am_i.Equals(""))
-            {
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginParent));
-            }
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginParent));
         }
 
         private async void forLogOut_Click(object sender, RoutedEventArgs e)
@@ -105,18 +88,31 @@ namespace ForParent
             Common.who_am_i = "";
             Common.isConectet = false;
             Common.myChild = "";
+            forLogout.Visibility = Visibility.Collapsed;
+            forLogin.Visibility = Visibility.Visible;
             Frame toLogin = Window.Current.Content as Frame;
-            toLogin.Navigate(typeof(LoginParent));
-            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
+            toLogin.Navigate(typeof(LoginParent));        
         }
-        private void forAnalysis_Click(object sender, RoutedEventArgs e)
+        private async void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i == "")
             {
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginParent));
+            }
+            else if (Common.myChild.IndexOf('@') <= 0)
+            {
+                Common.myChild = await Common.GetParentContactAsync();
+                if (Common.myChild.IndexOf('@') <= 0)
+                {
+                    todo.Text = "child didnt insert the parent has is contact";
+                }
+                else
+                {
+                    //login again for update from db
+                    Frame toLogin = Window.Current.Content as Frame;
+                    toLogin.Navigate(typeof(LoginParent));
+                }
             }
             else
             {
@@ -124,7 +120,5 @@ namespace ForParent
                 toAnalysis.Navigate(typeof(Analysis));
             }
         }
-
-
     }
 }

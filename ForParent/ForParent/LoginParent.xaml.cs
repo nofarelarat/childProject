@@ -1,35 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace ForParent
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class LoginParent : Page
     {
         public LoginParent()
         {
             this.InitializeComponent();
-            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+            loading.Visibility = Visibility.Collapsed;
         }
 
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
-            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            loading.Visibility = Visibility.Visible;
             result.Text = "";
             string Email = email.Text;
             string Password = password.Password.ToString();
@@ -37,18 +22,17 @@ namespace ForParent
             user user = await db.GetUserByMailAsync(Email);
             if (user == null)
             {
-                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                loading.Visibility = Visibility.Collapsed;
                 result.Text = "user doesn't exists";
             }
             else
             {
-                if (user.password.Equals(Password) && user.type.Equals("Parent"))
+                if (user.password.Equals(Password) && user.type.ToLower().Equals("parent"))
                 {
                     Common.who_am_i = Email;
                     Common.isConectet = true;
                     string childResult = await Common.GetParentContactAsync();
                     
-                    // Create sample file; replace if exists.
                     if(childResult.IndexOf('@')> 0)
                     {
                         Common.myChild = childResult;
@@ -64,9 +48,8 @@ namespace ForParent
                         }
                         catch
                         {
-                            //cant access file
                         }
-                        loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                        loading.Visibility = Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
                         Frame toMainPage = Window.Current.Content as Frame;
                         toMainPage.Navigate(typeof(MainPage));
@@ -78,12 +61,12 @@ namespace ForParent
                 }
                 else if(!user.type.Equals("Parent"))
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    loading.Visibility = Visibility.Collapsed;
                     result.Text = "The type is not Parent";
                 }
                 else
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    loading.Visibility = Visibility.Collapsed;
                     result.Text = "incorrect password";
                 }
             }
@@ -100,6 +83,5 @@ namespace ForParent
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
-
     }
 }

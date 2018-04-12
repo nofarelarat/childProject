@@ -8,20 +8,8 @@
     mc:Ignorable="d">
 
     <Grid>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="299"/>
-        </Grid.RowDefinitions>-->
-        <!--<Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="299"/>
-        </Grid.RowDefinitions>-->
         <Image Source="/Images/sign-up-hedline.png" HorizontalAlignment="Left" Height="219" Margin="95,-66,0,0" VerticalAlignment="Top" Width="214"/>
         <Image Source="Images/signing_for.png" HorizontalAlignment="Left" Height="177" Margin="6,252,0,0" VerticalAlignment="Top" Width="175"/>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="299"/>  //x:Name="firstname"
-        </Grid.RowDefinitions>-->
         <Image Source="Images/password.png" HorizontalAlignment="Left" Height="150" Margin="-17,209,0,0" VerticalAlignment="Top" Width="152"/>
         <Image Source="Images/kindergarten_name1.png" HorizontalAlignment="Left" Height="200" Margin="-16,68,0,0" VerticalAlignment="Top" Width="200"/>
         <Image Source="Images/note.png" HorizontalAlignment="Left" Height="225" Margin="68,381,0,0" VerticalAlignment="Top" Width="219"/>

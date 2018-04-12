@@ -12,12 +12,12 @@
         </Grid.Background>
         <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Open chat">
             <Button.Template>
-
                 <ControlTemplate>
                     <Image Source="/Images/chat1.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        
         <TextBlock x:Name="todo"  HorizontalAlignment="Left" Height="67" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Margin="105,423,0,0"/>
 
         <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Open statistics">
@@ -27,10 +27,10 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="forLogout" Click="forLogOut_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="forLogout" Click="forLogOut_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Logout">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="sign_in" Source="/Images/sign-out).png"/>
+                    <Image x:Name="sign_out" Source="/Images/sign-out).png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
@@ -42,7 +42,7 @@
             </Button.Template>
         </Button>
         <Image Source="/Images/logo3.png" HorizontalAlignment="Left" Height="295" Margin="58,-39,0,0" VerticalAlignment="Top" Width="255"/>
-        <Button x:Name="forLogin" Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89">
+        <Button x:Name="forLogin" Click="forLogin_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Login">
             <Button.Template>
                 <ControlTemplate>
                     <Image x:Name="sign_in" Source="/Images/sign-in.png"/>
