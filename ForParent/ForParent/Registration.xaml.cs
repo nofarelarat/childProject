@@ -3,24 +3,19 @@ using Windows.UI.Xaml.Controls;
 
 namespace ForParent
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Registration : Page
     {
         public Registration()
         {
             this.InitializeComponent();
-            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+            loading.Visibility = Visibility.Collapsed;
         }
 
         private async void RegisterAsync(object sender, RoutedEventArgs e)
         {
             //get data from textbox
-            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            loading.Visibility = Visibility.Visible;
             result.Text = "";
-
 
             string Email = email.Text;
             string firstName = firstname.Text;
@@ -37,7 +32,7 @@ namespace ForParent
                 childYear, gardenName, Password);
             if (!msg.Equals("success"))
             {
-                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                loading.Visibility = Visibility.Collapsed;
                 result.Text = "faild: " + msg;
             }
             else
@@ -62,18 +57,16 @@ namespace ForParent
 
                 if (isPass == false)
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    loading.Visibility = Visibility.Collapsed;
                     msg = "Can't connect database";
                     result.Text = "faild: " + msg;
                 }
-
                 if (isPass == true)
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    loading.Visibility = Visibility.Collapsed;
                     result.Text = "success";
                 }
             }
-
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)

@@ -5,23 +5,20 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 
-
-
 namespace ForParent
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Chat : Page
     {
         static bool flag = true;
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
+        
         //index in massege
         static int symbolsForSend_curr1 = 0;
         static int symbolsForSend_curr2 = 0;
         static int symbolsForSend_curr3 = 0;
+        
         // full/open flag
         static int[] symbolsForSend_full = new int[3];
         
@@ -50,7 +47,7 @@ namespace ForParent
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Visibility.Visible;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -69,7 +66,7 @@ namespace ForParent
             toHome.Navigate(typeof(MainPage));
         }
 
-        private void Send_Click(object sender, RoutedEventArgs e)
+        private async void Send_Click(object sender, RoutedEventArgs e)
         {
             int message_num = 0;
             string sentence = "";
@@ -115,10 +112,12 @@ namespace ForParent
                 }
             }
             Common.sendMsg(sentence, Common.myChild);
-            Common.WriteConversation("parent:" + sentence);
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            await Common.WriteConversation("parent:" + sentence);
+            send.Visibility = Visibility.Collapsed;
             if (symbolsForSend_full[2] == 1)
-                delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            {
+                delete_all.Visibility = Visibility.Visible;
+            }
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -192,7 +191,7 @@ namespace ForParent
                 symbolsSentFromOther3[i].Tag = "";
             }
 
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            send.Visibility = Visibility.Collapsed;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -205,7 +204,7 @@ namespace ForParent
             symbolsSentFromOther_full[0] = 0;
             symbolsSentFromOther_full[1] = 0;
             symbolsSentFromOther_full[2] = 0;
-            bool x = await  Common.DeleteFileAsync("chatWithChild.txt");
+            bool x = await Common.DeleteFileAsync("chatWithChild.txt");
            flag = true;
           //  GetMsgFromChild();
         }
@@ -214,8 +213,7 @@ namespace ForParent
         {
             Image[] images = new Image[5];
 
-            int numofmsg = 0; //the number of messages cant be more than 3.
-            //TODO : add to the if 
+            int numofmsg = 0;
             if (message!= null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
@@ -240,10 +238,6 @@ namespace ForParent
                        break;
                     }//if
                 }
-               /* for (int x = 0; x < message.Length; x++)
-                {
-                    await Common.markAsDeleteMsg(message[x]);
-                }*/
             }
         }
 
@@ -256,7 +250,7 @@ namespace ForParent
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[0] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                send.Visibility = Visibility.Visible;
             }
             else if (symbolsSentFromOther_full[1] == 0)
             {
@@ -265,7 +259,7 @@ namespace ForParent
                     symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[1] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                send.Visibility = Visibility.Visible;
             }
             else if (symbolsSentFromOther_full[2] == 0)
             {
@@ -274,9 +268,8 @@ namespace ForParent
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                send.Visibility = Visibility.Visible;
             }
-
         }
 
         private void GetSentMessage(Image[] symbolsSent)
@@ -394,7 +387,7 @@ namespace ForParent
             }
             if (symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
             {
-                send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                send.Visibility = Visibility.Collapsed;
             }
         }
     }
