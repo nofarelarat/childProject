@@ -12,14 +12,15 @@ namespace ForChild
         static Image[] symbolsForSend1 = new Image[5];
         static Image[] symbolsForSend2 = new Image[5];
         static Image[] symbolsForSend3 = new Image[5];
+        
         //index in massege
         static int symbolsForSend_curr1 = 0;
         static int symbolsForSend_curr2 = 0;
         static int symbolsForSend_curr3 = 0;
+        
         // full/open flag        
         static int[] symbolsForSend_full = new int[3];
-
-
+        
         static Image[] symbolsSentFromOther1 = new Image[5];
         static Image[] symbolsSentFromOther2 = new Image[5];
         static Image[] symbolsSentFromOther3 = new Image[5];
@@ -32,6 +33,7 @@ namespace ForChild
             this.InitializeComponent();
             InitializeArrays();
             flag = true;
+            delete_all.Visibility = Visibility.Collapsed;
             GetMsgFromFileAsync();
         }
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -45,7 +47,7 @@ namespace ForChild
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Visibility.Visible;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -82,7 +84,7 @@ namespace ForChild
                 symbolsSentFromOther2[i].Tag = "";
                 symbolsSentFromOther3[i].Tag = "";
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Visibility.Visible;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -98,12 +100,11 @@ namespace ForChild
             symbolsSentFromOther_full[2] = 0;
             flag = true;
             //GetMsgFromFather();
-            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            delete_all.Visibility = Visibility.Collapsed;
         }
 
         private async void Send_Click(object sender, RoutedEventArgs e)
         {
-
             int message_num = 0;
             string sentence = "";
             Image[] symbolsForSend = symbolsForSend1;
@@ -151,10 +152,9 @@ namespace ForChild
                     }
                 }
             }
-            //To do : sent to is hard coded!!
             Common.sendMsg(sentence, Common.myFather);
             await Common.WriteConversation("child:" + sentence, "chatWithFather.txt");
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            send.Visibility = Visibility.Collapsed;
         }
 
         private void AddToForSendGrid(string button_name, int symbolsForSend_curr)
@@ -218,8 +218,7 @@ namespace ForChild
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[0] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
+                send.Visibility = Visibility.Visible;
             }
             else if (symbolsSentFromOther_full[1] == 0)
             {
@@ -228,9 +227,7 @@ namespace ForChild
                     symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[1] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-
+                send.Visibility = Visibility.Visible;
             }
             else if (symbolsSentFromOther_full[2] == 0)
             {
@@ -239,16 +236,17 @@ namespace ForChild
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
+                delete_all.Visibility = Visibility.Visible;
+                send.Visibility = Visibility.Collapsed;
             }
-
         }
 
         private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
-            int numofmsg = 0; //the number of messages cant be more than 3.
-                              //TODO : add to the if 
+            int numofmsg = 0;
+            
             if (message != null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
@@ -283,11 +281,10 @@ namespace ForChild
                 await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myFather);
                 await GetMessageAsync(table);
-                if(symbolsSentFromOther_full[2] == 1)
-                    delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }
+
         private void GetSentMessage(Image[] symbolsSent)
         {
             if (symbolsForSend_full[0] == 0)
@@ -385,18 +382,17 @@ namespace ForChild
                     {
                         GetMessageImg(images);
                     }
-                    if (message[0].Equals("child"))
+                    else if (message[0].Equals("child"))
                     {
                         GetSentMessage(images);
                     }
 
                     if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
                     {
-                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                        send.Visibility = Visibility.Collapsed;
                     }
                 }
             }
         }
-
     }
 }

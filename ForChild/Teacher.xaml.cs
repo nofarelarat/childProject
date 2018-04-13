@@ -10,29 +10,29 @@ namespace ForChild
     public sealed partial class TeacherPage : Page
     {
         static bool flag = true;
-        static Image[] symbolsForSend1 = new Image[5];
-        static Image[] symbolsForSend2 = new Image[5];
-        static Image[] symbolsForSend3 = new Image[5];
-
+        
         static Image[] symbolsSentFromOther1 = new Image[5];
-        static Image[] symbolsSentFromOther2 = new Image[5];
-        static Image[] symbolsSentFromOther3 = new Image[5];
-
+        
         static int symbolsSentFromOther_full1 = 0;
-        static int symbolsSentFromOther_full2 = 0;
-        static int symbolsSentFromOther_full3 = 0;
-
+        
         public TeacherPage()
         {
             this.InitializeComponent();
             IntializeArrays();
             flag = true;
+            if(symbolsSentFromOther_full1 == 0)
+                delete_all.Visibility = Visibility.Collapsed;
             GetMsgFromTeacher();
-
         }
+
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             flag = false;
+            symbolsSentFromOther_full1 = 0;
+            for (int i = 0; i < symbolsSentFromOther1.Length; i++)
+            {
+                symbolsSentFromOther1[i].Source = null;
+            }
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
@@ -40,11 +40,10 @@ namespace ForChild
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
-            for (int i = 0; i < symbolsForSend1.Length; i++)
+            symbolsSentFromOther_full1 = 0;
+            for (int i = 0; i < symbolsSentFromOther1.Length; i++)
             {
                 symbolsSentFromOther1[i].Source = null;
-                symbolsSentFromOther2[i].Source = null;
-                symbolsSentFromOther3[i].Source = null;
             }
             flag = true;
             //GetMsgFromTeacher();
@@ -59,35 +58,17 @@ namespace ForChild
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full1 = 1;
-
+                delete_all.Visibility = Visibility.Visible;
             }
-            else if (symbolsSentFromOther_full2 == 0)
-            {
-                for (int i = 0; i < symbolsSentFromOther2.Length; i++)
-                {
-                    symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
-                }
-                symbolsSentFromOther_full2 = 1;
-
-
-            }
-            else if (symbolsSentFromOther_full3 == 0)
-            {
-                for (int i = 0; i < symbolsSentFromOther3.Length; i++)
-                {
-                    symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
-                }
-                symbolsSentFromOther_full3 = 1;
-            }
-
         }
-        private async void GetMessageAsync(OutTable[] message)
+
+        private async Task GetMessageAsync(OutTable[] message)
         {
             Image[] images = new Image[5];
 
-            int numofmsg = 0; //the number of messages cant be more than 3.
-                              //TODO : add to the if 
-            if (message.Length > 0)
+            int numofmsg = 0; 
+            
+            if (message != null && message.Length > 0)
             {
                 for (int x = 0; x < message.Length; x++)
                 {
@@ -119,30 +100,17 @@ namespace ForChild
             {
                 await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myTeacher);
-                GetMessageAsync(table);
+                await GetMessageAsync(table);
             }
-
         }
 
         private void IntializeArrays()
         {
-            symbolsSentFromOther1 [0] = afterSend11;
-            symbolsSentFromOther1 [1] = afterSend12;
-            symbolsSentFromOther1 [2] = afterSend13;
-            symbolsSentFromOther1 [3] = afterSend14;
-            symbolsSentFromOther1 [4] = afterSend15;
-
-            symbolsSentFromOther2 [0] = afterSend21;
-            symbolsSentFromOther2 [1] = afterSend22;
-            symbolsSentFromOther2 [2] = afterSend23;
-            symbolsSentFromOther2 [3] = afterSend24;
-            symbolsSentFromOther2 [4] = afterSend25;
-
-            symbolsSentFromOther3 [0] = afterSend31;
-            symbolsSentFromOther3 [1] = afterSend32;
-            symbolsSentFromOther3 [2] = afterSend33;
-            symbolsSentFromOther3 [3] = afterSend34;
-            symbolsSentFromOther3 [4] = afterSend35;
+            symbolsSentFromOther1[0] = afterSend11;
+            symbolsSentFromOther1[1] = afterSend12;
+            symbolsSentFromOther1[2] = afterSend13;
+            symbolsSentFromOther1[3] = afterSend14;
+            symbolsSentFromOther1[4] = afterSend15;
         }
     }
 }

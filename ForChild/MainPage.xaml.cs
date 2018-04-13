@@ -3,19 +3,15 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 
-
 namespace ForChild
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
-            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            forLogout.Visibility = Visibility.Collapsed;
+            forLogin.Visibility = Visibility.Visible;
             if (Common.isConectet == false)
             {
                 CheckUserExistAsync();
@@ -24,17 +20,17 @@ namespace ForChild
             }
             else
             {
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogin.Visibility = Visibility.Collapsed;
+                forLogout.Visibility = Visibility.Visible;
             }
-
         }
-        private async void Button_Click_FriendAsync(object sender, RoutedEventArgs e)
+
+        private async void Button_Click_Friend(object sender, RoutedEventArgs e)
         {
             bool isSimilar = false;
             if (Common.who_am_i.Equals(""))
             {
-                todo.Text= "please log-in";
+                result.Text= "please log-in";
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
@@ -42,7 +38,9 @@ namespace ForChild
             {
                 if (Common.myFriend.Equals(""))
                 {
-                    todo.Text = "please add friend";
+                    result.Text = "please add contacts";
+                    Frame toAddContacts = Window.Current.Content as Frame;
+                    toAddContacts.Navigate(typeof(AddUsersForChat));
                 }
                 isSimilar = await Common.CheckForSimilarFriendAsync();
                 if (isSimilar == true)
@@ -51,7 +49,7 @@ namespace ForChild
                     toFriend.Navigate(typeof(FriendPage));
                 }
                 else {
-                    todo.Text = "you have to be registerd at yout friend's app";
+                    result.Text = "you have to be registerd at yout friend's app";
                 }
             }
         }
@@ -60,7 +58,7 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
-                todo.Text = "please log-in";
+                result.Text = "please log-in";
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
@@ -72,8 +70,9 @@ namespace ForChild
                     toFather.Navigate(typeof(FatherPage));
                 }
                 else {
-                    todo.Text = "please add father";
-
+                    result.Text = "please add contacts";
+                    Frame toAddContacts = Window.Current.Content as Frame;
+                    toAddContacts.Navigate(typeof(AddUsersForChat));
                 }
             }
         }
@@ -82,7 +81,7 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
-                todo.Text = "please log-in";
+                result.Text = "please log-in";
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
@@ -94,7 +93,9 @@ namespace ForChild
                     toMather.Navigate(typeof(MotherPage));
                 }
                 else {
-                    todo.Text = "please add mother";
+                    result.Text = "please add contacts";
+                    Frame toAddContacts = Window.Current.Content as Frame;
+                    toAddContacts.Navigate(typeof(AddUsersForChat));
                 }
             }
         }
@@ -103,7 +104,7 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
-                todo.Text = "please log-in";
+                result.Text = "please log-in";
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
@@ -117,7 +118,7 @@ namespace ForChild
             }
         }
 
-        private async void forLogin_ClickAsync(object sender, RoutedEventArgs e)
+        private void forLogin_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i.Equals(""))
             {
@@ -126,7 +127,7 @@ namespace ForChild
             }
         }
 
-        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        private async void forLogOut_Click(object sender, RoutedEventArgs e)
         {
                 await Common.DeleteFileAsync("userChild.txt");
                 await Common.DeleteFileAsync("chatWithFriend.txt");
@@ -139,7 +140,7 @@ namespace ForChild
                 Common.myTeacher = "";
                 Common.isConectet = false;
                 Common.my_num_of_msg = 0;
-                // await Common.DeleteFileAsync(); //Need to add the Father file
+                // await Common.DeleteFileAsync();
 
                 Frame toMather = Window.Current.Content as Frame;
                 toMather.Navigate(typeof(loginChild));
@@ -158,21 +159,22 @@ namespace ForChild
                 toAddUsersForChat.Navigate(typeof(AddUsersForChat));
             }
         }
+
         private async void CheckUserExistAsync()
         {
             bool success = await Common.GetUserFromFileAsync();
             if (success == false)
             {
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogout.Visibility = Visibility.Collapsed;
+                forLogin.Visibility = Visibility.Visible;
 
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(loginChild));
             }
             else
             {
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                forLogout.Visibility = Visibility.Visible;
+                forLogin.Visibility = Visibility.Collapsed;
 
             }
         }

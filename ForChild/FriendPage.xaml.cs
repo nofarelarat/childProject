@@ -8,9 +8,6 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ForChild
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class FriendPage : Page
     {
         static Image[] symbolsForSend1 = new Image[5];
@@ -33,16 +30,18 @@ namespace ForChild
 
         static int[] symbolsSentFromOther_full = new int[3];
         static bool flag = true;
-
+        public static bool iStarted = true;
 
         public FriendPage()
         {
             this.InitializeComponent();
             InitializeArrays();
-            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            delete_all.Visibility = Visibility.Collapsed;
             flag = true;
+            Common.my_num_of_msg = 0;
             GetMsgFromFileAsync();
         }
+
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -56,7 +55,7 @@ namespace ForChild
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Visibility.Visible;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
@@ -69,7 +68,6 @@ namespace ForChild
             symbolsForSend_full[2] = 0;
             symbolsForSend_full[3] = 0;
 
-
             symbolsSentFromOther_full[0] = 0;
             symbolsSentFromOther_full[1] = 0;
             symbolsSentFromOther_full[2] = 0;
@@ -78,11 +76,12 @@ namespace ForChild
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
+
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
             Common.my_num_of_msg = 0;
-            Common.iStarted = true;
+            iStarted = true;
 
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
@@ -103,13 +102,12 @@ namespace ForChild
                 symbolsSentFromOther2[i].Tag = "";
                 symbolsSentFromOther3[i].Tag = "";
             }
-            send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            send.Visibility = Visibility.Visible;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;
             symbolsForSend_curr3 = 0;
             symbolsForSend_curr4 = 0;
-
 
             symbolsForSend_full[0] = 0;
             symbolsForSend_full[1] = 0;
@@ -123,7 +121,7 @@ namespace ForChild
             Common.DeleteFileAsync("chatWithFriend.txt");
             flag = true;
            // GetMsgFromFriend();
-            delete_all.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            delete_all.Visibility = Visibility.Collapsed;
         }
 
         private async void Send_Click(object sender, RoutedEventArgs e)
@@ -131,7 +129,7 @@ namespace ForChild
             Common.my_num_of_msg++;
             int index = Common.my_num_of_msg;
             string sentence = "";
-            if (Common.iStarted == false)
+            if (iStarted == false)
             {
                 index += 1;
             }
@@ -160,44 +158,39 @@ namespace ForChild
                         sentence = sentence + symbolsForSend4[i].Tag.ToString() + "-";
                         Common.UpdateCounterAsync(symbolsForSend4[i].Tag.ToString());
                     }
-
-
                 }
-                if (Common.iStarted == false)
+
+                if (iStarted == false)
                 {
                     if (symbolsForSend_full[3] == 1 && symbolsSentFromOther_full[2] ==1) {
-                        delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+                        delete_all.Visibility = Visibility.Visible;
+                        send.Visibility = Visibility.Collapsed;
                     }
                 }
                 else {
                     if (symbolsForSend_full[2] == 1 && symbolsSentFromOther_full[2] == 1) {
-                        delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                        send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                        delete_all.Visibility = Visibility.Visible;
+                        send.Visibility = Visibility.Collapsed;
                     }
                 }
-
-
-
             }
+
             Common.sendMsg(sentence, Common.myFriend);
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            send.Visibility = Visibility.Collapsed;
             await Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
             await Common.WriteConversation("my_num_of_msg:" + Common.my_num_of_msg, "chatWithFriend.txt");
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
-            int index = Common.my_num_of_msg +1;
-            if (Common.iStarted == false)
+            int index = Common.my_num_of_msg + 1;
+            if (iStarted == false)
             {
                 index += 1;
             }
             Button button = (Button)sender;
             string button_name = button.Name;
-            AddToForSendGrid(button_name, index);
-            
+            AddToForSendGrid(button_name, index);            
         }
 
         private void AddToForSendGrid(string button_name, int symbolsForSend_curr)
@@ -233,7 +226,7 @@ namespace ForChild
         {
             if (symbolsForSend_full[0] == 0) {
                 symbolsForSend_full[0] = 1;
-                Common.iStarted = false;
+                iStarted = false;
             }
 
             if (symbolsSentFromOther_full[0] == 0)
@@ -243,9 +236,9 @@ namespace ForChild
                     symbolsSentFromOther1[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[0] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
+                send.Visibility = Visibility.Visible;
             }
+
             else if (symbolsSentFromOther_full[1] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther2.Length; i++)
@@ -253,9 +246,7 @@ namespace ForChild
                     symbolsSentFromOther2[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[1] = 1;
-                send.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-
+                send.Visibility = Visibility.Visible;
             }
             else if (symbolsSentFromOther_full[2] == 0)
             {
@@ -264,17 +255,17 @@ namespace ForChild
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
-                if (Common.iStarted == false)
+                if (iStarted == false)
                 {
-                    send.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    send.Visibility = Visibility.Visible;
                 }
                 else {
-                    send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    send.Visibility = Visibility.Collapsed;
+                    delete_all.Visibility = Visibility.Visible;
                 }
             }
-
         }
+
         private void GetSentMessage(Image[] symbolsSent)
         {
             if (symbolsForSend_full[0] == 0)
@@ -307,8 +298,8 @@ namespace ForChild
         {
             Image[] images = new Image[5];
 
-            int numofmsg = 0; //the number of messages cant be more than 3.
-                              //TODO : add to the if 
+            int numofmsg = 0; 
+            
             if (messages != null && messages.Length > 0)
             {
                 for (int x = 0; x < messages.Length; x++)
@@ -317,7 +308,7 @@ namespace ForChild
                     numofmsg++;
                     string msg = messages[x].Message;
                     await Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
-                    await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
+                    await Common.WriteConversation("iStarted:" + iStarted, "chatWithFriend.txt");
 
                     string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
@@ -406,16 +397,18 @@ namespace ForChild
                     string[] message = messages[i].Split(':', '-');
                     if (message[0].Equals("iStarted"))
                     {
-                        if (message[1].Equals("true")) {
-                            Common.iStarted = true;
+                        if (message[1].Equals("true"))
+                        {
+                            iStarted = true;
                         }
-                        Common.iStarted = false;
+                        iStarted = false;
                     }
                     else if (message[0].Equals("my_num_of_msg"))
                     {
                         Common.my_num_of_msg = Int32.Parse(message[1]);
                     }
-                    else {
+                    else
+                    {
                         Image[] images = new Image[5];
 
                         for (int j = 0; j < images.Length; j++)
@@ -428,8 +421,8 @@ namespace ForChild
                             }
                             images[j] = new Image();
                             images[j].Source = new BitmapImage(requestUri);
-
                         }
+
                         if (message[0].Equals("friend"))
                         {
                             GetMessageImg(images);
@@ -441,10 +434,9 @@ namespace ForChild
 
                         if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
                         {
-                            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                            send.Visibility = Visibility.Collapsed;
                         }
                     }
-
                 }
             }
         }

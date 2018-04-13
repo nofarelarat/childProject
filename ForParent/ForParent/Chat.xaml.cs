@@ -192,6 +192,7 @@ namespace ForParent
             }
 
             send.Visibility = Visibility.Collapsed;
+            delete_all.Visibility = Visibility.Collapsed;
 
             symbolsForSend_curr1 = 0;
             symbolsForSend_curr2 = 0;

@@ -41,7 +41,7 @@
             <Image Height="100" Width="100"/>
         </Button>
         <Image Source="images/logo3.png" Margin="386,-87,338,358"/>
-        <Button Height="254" Width="285" x:Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_FriendAsync" Margin="0,17,116,0" >
+        <Button Height="254" Width="285" x:Name="Friendbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Friend" Margin="0,17,116,0" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/friends.jpg" />
@@ -50,20 +50,20 @@
         </Button>
 
         <Image HorizontalAlignment="Left" Height="290" Margin="432,150,0,0" VerticalAlignment="Top" Width="233" Source="images/me.jpg"/>
-        <Button x:Name="forLogout" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogOut_ClickAsync" Margin="933,273,0,242">
+        <Button x:Name="forLogout" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogOut_Click" Margin="933,273,0,242">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/sign-out.png"   />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="forLogin" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogin_ClickAsync" Margin="933,273,0,242">
+        <Button x:Name="forLogin" HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="90" Click="forLogin_Click" Margin="933,273,0,242">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/sign-in.png"   />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <TextBlock x:Name="todo"  HorizontalAlignment="Left" Height="67" Margin="450,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
+        <TextBlock x:Name="result"  HorizontalAlignment="Left" Height="67" Margin="450,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
     </Grid>
 </Page>
