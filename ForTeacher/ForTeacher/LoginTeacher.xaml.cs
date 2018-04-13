@@ -9,19 +9,18 @@ namespace ForTeacher
         public LoginTeacher()
         {
             this.InitializeComponent();
-            loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
+            loading.Visibility = Visibility.Collapsed;
         }
+
         private async void EnterAppAsync(object sender, RoutedEventArgs e)
         {
-            loading.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            loading.Visibility = Visibility.Visible;
             ConnectDB db = new ConnectDB();
             user user = await db.GetUserByMailAsync(email.Text);
             if (user == null)
             {
-                loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                loading.Visibility = Visibility.Collapsed;
                 result.Text = "user doesn't exists";
-
             }
             else
             {
@@ -31,17 +30,7 @@ namespace ForTeacher
                     Common.garden = user.gardenname;
                     Common.isConectet = true;
                     Common.garden = user.gardenname;
-                    Common.gardenChildren = await db.GetGardenChildren(user.gardenname);
-                    int counter_child = 0;
-                    for (int i = 0; i < Common.gardenChildren.Length; i++)
-                    {
-                        if (Common.gardenChildren[i].type != "Teacher" && Common.gardenChildren[i].type != "Parent")
-                        {
-                            counter_child++;
-                        }
-                    }
-                    Common.counter_child = counter_child;
-                    Common.gardenChildren = await db.GetGardenChildren(Common.garden);
+                    Common.GetGardenChildrenAsync();
                     try
                     {
                         Windows.Storage.StorageFolder storageFolder =
@@ -54,29 +43,25 @@ namespace ForTeacher
                     }
                     catch
                     {
-                        //cant access file
                     }
-                        loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                        loading.Visibility = Visibility.Collapsed;
                         result.Text = "welcome " + user.firstname + "!";
                         Frame toHome = Window.Current.Content as Frame;
                         toHome.Navigate(typeof(MainPage));
-
-
                 }
                 else if(!user.type.Equals("Teacher"))
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    loading.Visibility = Visibility.Collapsed;
                     result.Text = "Type is not a teacher";
-
                 }
                 else
                 {
-                    loading.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    result.Text = "incorrect password";
-        
+                    loading.Visibility = Visibility.Collapsed;
+                    result.Text = "incorrect password";        
                 }
             }
         }
+
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             Frame toHome = Window.Current.Content as Frame;

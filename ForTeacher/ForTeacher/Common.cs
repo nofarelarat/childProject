@@ -14,7 +14,6 @@ namespace ForTeacher
         public static user[] gardenChildren = null;
         public static int counter_child = 0;
 
-
         public static async Task<bool> GetUserFromFileAsync()
         {
             try
@@ -51,6 +50,7 @@ namespace ForTeacher
                 return false;
             }
         }
+
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName, string childEmail)
         {
             string child_email = childEmail;
@@ -103,5 +103,15 @@ namespace ForTeacher
             return true;
         }
 
+        public static async Task GetGardenChildrenAsync()
+        {
+            ConnectDB db = new ConnectDB();
+            var res = await db.GetGardenChildren(garden);
+            if (res != null)
+            {
+                Common.gardenChildren = res;
+                Common.counter_child = res.Length;
+            }
+        }
     }
 }
