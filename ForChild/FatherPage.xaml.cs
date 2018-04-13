@@ -239,6 +239,8 @@ namespace ForChild
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
+                send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }

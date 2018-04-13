@@ -139,6 +139,7 @@ namespace ForChild
                 Common.myTeacher = "";
                 Common.isConectet = false;
                 Common.my_num_of_msg = 0;
+                Common.iStarted = true;
                 // await Common.DeleteFileAsync(); //Need to add the Father file
 
                 Frame toMather = Window.Current.Content as Frame;

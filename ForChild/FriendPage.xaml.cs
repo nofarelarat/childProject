@@ -185,6 +185,8 @@ namespace ForChild
             send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             await Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
             await Common.WriteConversation("my_num_of_msg:" + Common.my_num_of_msg, "chatWithFriend.txt");
+            await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
+
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -231,11 +233,6 @@ namespace ForChild
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
-            if (symbolsForSend_full[0] == 0) {
-                symbolsForSend_full[0] = 1;
-                Common.iStarted = false;
-            }
-
             if (symbolsSentFromOther_full[0] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther1.Length; i++)
@@ -277,6 +274,9 @@ namespace ForChild
         }
         private void GetSentMessage(Image[] symbolsSent)
         {
+            if (Common.iStarted == false) {
+                symbolsForSend_full[0] = 1;
+            }
             if (symbolsForSend_full[0] == 0)
             {
                 for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -306,18 +306,23 @@ namespace ForChild
         private async Task GetMessageAsync(OutTable[] messages)
         {
             Image[] images = new Image[5];
-
             int numofmsg = 0; //the number of messages cant be more than 3.
                               //TODO : add to the if 
             if (messages != null && messages.Length > 0)
             {
+
+                if (symbolsForSend_full[0] == 0)
+                {
+                    symbolsForSend_full[0] = 1;
+                    Common.iStarted = false;
+                }
+                await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
                 for (int x = 0; x < messages.Length; x++)
                 {
                     int i = 0;
                     numofmsg++;
                     string msg = messages[x].Message;
                     await Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
-                    await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
 
                     string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
@@ -406,10 +411,13 @@ namespace ForChild
                     string[] message = messages[i].Split(':', '-');
                     if (message[0].Equals("iStarted"))
                     {
-                        if (message[1].Equals("true")) {
+                        if (message[1].Equals("true"))
+                        {
                             Common.iStarted = true;
                         }
-                        Common.iStarted = false;
+                        else {
+                            Common.iStarted = false;
+                        }
                     }
                     else if (message[0].Equals("my_num_of_msg"))
                     {
