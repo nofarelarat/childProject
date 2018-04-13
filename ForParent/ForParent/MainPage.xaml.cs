@@ -36,7 +36,7 @@ namespace ForParent
                 Common.myChild = await Common.GetParentContactAsync();
                 if(Common.myChild.IndexOf('@') <= 0)
                 {
-                    todo.Text = "child didnt insert the parent has is contact";
+                    result.Text = "child didnt insert the parent has is contact";
                 }
                 else
                 {
@@ -105,7 +105,7 @@ namespace ForParent
                 Common.myChild = await Common.GetParentContactAsync();
                 if (Common.myChild.IndexOf('@') <= 0)
                 {
-                    todo.Text = "child didnt insert the parent has is contact";
+                    result.Text = "child didnt insert the parent has is contact";
                 }
                 else
                 {

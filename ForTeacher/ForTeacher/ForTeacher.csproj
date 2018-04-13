@@ -123,7 +123,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ForTeacher_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\add.png" />

@@ -18,7 +18,7 @@
             </Button.Template>
         </Button>
         
-        <TextBlock x:Name="todo"  HorizontalAlignment="Left" Height="67" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Margin="105,423,0,0"/>
+        <TextBlock x:Name="result"  HorizontalAlignment="Left" Height="67" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133" Margin="105,423,0,0"/>
 
         <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Open statistics">
             <Button.Template >

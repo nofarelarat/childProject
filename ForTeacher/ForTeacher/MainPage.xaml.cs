@@ -1,12 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 namespace ForTeacher
 {
@@ -15,8 +9,8 @@ namespace ForTeacher
         public MainPage()
         {
             this.InitializeComponent();
-            forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            forLogout.Visibility = Visibility.Collapsed;
+            forLogin.Visibility = Visibility.Collapsed;
 
             if (Common.isConectet == false)
             {
@@ -26,8 +20,8 @@ namespace ForTeacher
             }
             else
             {
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogin.Visibility = Visibility.Collapsed;
+                forLogout.Visibility = Visibility.Visible;
             }
         }
   
@@ -41,8 +35,11 @@ namespace ForTeacher
             }            
             else if (Common.counter_child == 0)
             {
-                Frame toChat = Window.Current.Content as Frame;
-                toChat.Navigate(typeof(MainPage));
+                await Common.GetGardenChildrenAsync();
+                if (Common.counter_child == 0)
+                {
+                    result.Text = "Cant find any children in the garden, plase try login again later";
+                }
             }
             else
             {
@@ -57,28 +54,28 @@ namespace ForTeacher
             bool success = await Common.GetUserFromFileAsync();
             if (success == false)
             {
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                forLogin.Visibility = Visibility.Visible;
+                forLogout.Visibility = Visibility.Collapsed;
             }
             else
             {
-                forLogin.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                forLogout.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                forLogin.Visibility = Visibility.Collapsed;
+                forLogout.Visibility = Visibility.Visible;
             }
-
         }
 
-        private async void forLogOut_ClickAsync(object sender, RoutedEventArgs e)
+        private async void forLogOut_Click(object sender, RoutedEventArgs e)
         {
             await Common.DeleteFileAsync("userTeacher.txt");
             Common.who_am_i = "";
             Common.garden = "";
             Common.isConectet = false;
+            Common.gardenChildren = null;
+            Common.counter_child = 0;
 
             Frame toLogin = Window.Current.Content as Frame;
             toLogin.Navigate(typeof(LoginTeacher));
         }
-
 
         private void forRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -86,16 +83,12 @@ namespace ForTeacher
             toRegister.Navigate(typeof(Registration));
         }
 
-
-        private async void Login_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (Common.who_am_i.Equals(""))
-            {
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(LoginTeacher));
-            }
+            Frame toLogin = Window.Current.Content as Frame;
+            toLogin.Navigate(typeof(LoginTeacher));
         }
-
+        
         private void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i == "")
@@ -103,10 +96,18 @@ namespace ForTeacher
                 Frame toLogin = Window.Current.Content as Frame;
                 toLogin.Navigate(typeof(LoginTeacher));
             }
+            else if (Common.counter_child == 0)
+            {
+                Common.GetGardenChildrenAsync();
+                if (Common.counter_child == 0)
+                {
+                    result.Text = "Cant find any children in the garden, plase try login again later";
+                }
+            }
             else
             { 
-                Frame toSendBrodcast = Window.Current.Content as Frame;
-                toSendBrodcast.Navigate(typeof(Statistics));
+                Frame toAnalysis = Window.Current.Content as Frame;
+                toAnalysis.Navigate(typeof(Statistics));
             }
         }
 

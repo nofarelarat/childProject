@@ -34,6 +34,15 @@
             <Image Height="108" Width="108"/>
         </Button>
 
+        <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="7,0,0,166" Height="88" Width="59" RenderTransformOrigin="0.496,0.489" Visibility="Collapsed" ToolTipService.ToolTip="Clear">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="/Images/delete.jpg"/>
+                </ControlTemplate>
+            </Button.Template>
+            <Image Height="108" Width="108"/>
+        </Button>
+
         <Button x:Name="ino" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Symbol_Click" Margin="-1,0,0,130" Height="33" Width="42">
             <Button.Template>
                 <ControlTemplate>

@@ -19,8 +19,6 @@ namespace ForTeacher
             Uri requestUri = new Uri(completeUri);
 
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -36,10 +34,8 @@ namespace ForTeacher
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
 
         public async Task<bool> CreateUserAsync(user user)
@@ -58,7 +54,7 @@ namespace ForTeacher
                                                     "application/json");//CONTENT-TYPE header
 
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request); 
                 return true;
             }
 
@@ -74,7 +70,6 @@ namespace ForTeacher
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
             DataContractJsonSerializer ser = new DataContractJsonSerializer(deserializedUser.GetType());
             deserializedUser = ser.ReadObject(ms) as user;
-            //ms.Close();
             return deserializedUser;
         }
 
@@ -87,7 +82,6 @@ namespace ForTeacher
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(user));
             ser.WriteObject(ms, user);
             byte[] json = ms.ToArray();
-            //ms.Close();
             return Encoding.UTF8.GetString(json, 0, json.Length);
         }
 
@@ -121,13 +115,13 @@ namespace ForTeacher
             }
             return msg;
         }
+
         public async Task<user[]> GetGardenChildren(string garden)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users?garden=" + garden;
-            //string completeUri = "http://localhost:49876/api/users?garden=" + garden;
+
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
             try
@@ -142,21 +136,17 @@ namespace ForTeacher
             }
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-            return null;
         }
+
         public async Task<symbol[]> GetUserAllCountersAsync(string email)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
                 + email;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + email;
-
+            
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -174,22 +164,17 @@ namespace ForTeacher
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
+
         public async Task<symbol[]> GetUserCounterAsync(symbol userSymbol)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
                 + userSymbol.email + "&symbolName=" + userSymbol.symbolName;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + userSymbol.email+"&symbolName="+ userSymbol.symbolName;
-
+            
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -207,10 +192,8 @@ namespace ForTeacher
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
     }
 }

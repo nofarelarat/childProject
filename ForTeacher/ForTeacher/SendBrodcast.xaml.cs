@@ -6,12 +6,8 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ForTeacher
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SendBrodcast : Page
     {
-        static bool flag = true;
         static int symbolsForSend_curr = 0;
         static Image[] symbolsForSend = new Image[5];
 
@@ -25,48 +21,57 @@ namespace ForTeacher
             symbolsForSend[4] = forSend15;
 
         }
+
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
+
         private async void SendClick(object sender, RoutedEventArgs e)
         {
 
             // Create final message
-            string sendMsg = GetMsg();
+            string sendMsg = GetMsgToSend();
+            delete_all.Visibility = Visibility.Visible;
+            send.Visibility = Visibility.Collapsed;
             if (sendMsg != "")
             {
                 String final_msg = sendMsg + "$" + Common.who_am_i + "$";
                 // Get Garden children
                 user[] kids = Common.gardenChildren;
-                for (int i = 0; i < kids.Length; i++)
+                if (kids != null)
                 {
-                    if (kids[i].type != "Teacher" && kids[i].type != "Parent")
+                    for (int i = 0; i < kids.Length; i++)
                     {
-                        //Create an HTTP client object
-                        HttpClient httpClient = new HttpClient();
-                        Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
-                        //Send the GET request asynchronously and retrieve the response as a string.
-                        HttpResponseMessage httpResponse = new HttpResponseMessage();
-                        try
+                        if (kids[i].type != "Teacher" && kids[i].type != "Parent")
                         {
-                            //Send the GET request
-                            httpResponse = await httpClient.GetAsync(requestUri);
-                            httpResponse.EnsureSuccessStatusCode();
-                            // errormessage.Text = await response.Content.ReadAsStringAsync();
-                        }
-                        catch (Exception ex)
-                        {
-
-                            //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                            //Create an HTTP client object
+                            HttpClient httpClient = new HttpClient();
+                            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
+                            
+                            HttpResponseMessage httpResponse = new HttpResponseMessage();
+                            try
+                            {
+                                //Send the GET request
+                                httpResponse = await httpClient.GetAsync(requestUri);
+                                httpResponse.EnsureSuccessStatusCode();
+                            }
+                            catch (Exception ex)
+                            {
+                            }
                         }
                     }
+                }
+                else
+                {
+                    Frame toHome = Window.Current.Content as Frame;
+                    toHome.Navigate(typeof(MainPage));
                 }
             }
         }
 
-        private string GetMsg()
+        private string GetMsgToSend()
         {
             string sentence = "";
             if (symbolsForSend_curr != 0)
@@ -75,12 +80,13 @@ namespace ForTeacher
                 for (int i = 0; i < symbolsForSend.Length; i++)
                 {
                     sentence = sentence + symbolsForSend[i].Tag.ToString() + "-";
-                    symbolsForSend[i].Source = blank.Source;
-                    symbolsForSend[i].Tag = blank.Tag;
+                    //symbolsForSend[i].Source = blank.Source;
+                    //symbolsForSend[i].Tag = blank.Tag;
                 }
             }
             return sentence;
         }
+
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -90,6 +96,7 @@ namespace ForTeacher
                 AddToForSendGrid(button_name);
             }
         }
+
         private void AddToForSendGrid(string button_name)
         {
             Uri requestUri = new Uri(base.BaseUri, "/symbols/" + button_name + ".png");
@@ -123,5 +130,17 @@ namespace ForTeacher
                     break;
             }
         }
+
+        private async void delete_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < symbolsForSend.Length; i++)
+            {
+                symbolsForSend[i].Source = null;
+                symbolsForSend[i].Tag = "";
+            }
+            send.Visibility = Visibility.Visible;
+            delete_all.Visibility = Visibility.Collapsed;
+        }
+
     }
 }
