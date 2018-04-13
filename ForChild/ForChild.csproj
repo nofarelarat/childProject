@@ -102,14 +102,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="chat.xaml.cs">
-      <DependentUpon>chat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="ConnectDB.cs" />
-    <Compile Include="ConnectServiceBus.xaml.cs">
-      <DependentUpon>ConnectServiceBus.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FatherPage.xaml.cs">
       <DependentUpon>FatherPage.xaml</DependentUpon>
     </Compile>
@@ -142,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\arrow.png" />
-    <Content Include="config.txt" />
     <Content Include="images\delete.jpg" />
     <Content Include="images\father.jpg" />
     <Content Include="images\father2.jpg" />
@@ -223,14 +216,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="chat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConnectServiceBus.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FatherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,9 +254,6 @@
     <PackageReference Include="WindowsAzure.Storage">
       <Version>4.0.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ForChild_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

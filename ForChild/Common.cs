@@ -1,16 +1,10 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Net.Http;
-using Windows.UI.Xaml.Media.Imaging;
-
 
 namespace ForChild
 {
@@ -21,11 +15,9 @@ namespace ForChild
         public static string myMother = "";
         public static string myFriend = "";
         public static string myTeacher = "";
-        public static bool isConectet = false;
         public static int my_num_of_msg = 0;
-        public static bool iStarted = true;
-
-
+        public static bool isConectet = false;
+        
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string sendtoAddress)
@@ -34,19 +26,16 @@ namespace ForChild
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
             Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + sendtoAddress);
-            //Send the GET request asynchronously and retrieve the response as a string.
+
             HttpResponseMessage httpResponse = new HttpResponseMessage();
             try
             {
                 //Send the GET request
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
-                // errormessage.Text = await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
             {
-
-                //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
         }
 
@@ -63,42 +52,8 @@ namespace ForChild
                 };
                 db.UpdateUserCounterAsync(symbol);
             }
-            else
-            {
-                //user or symbol is empty
-            }
         }
-
-        public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
-        {
-            symbol[] res = null;
-            ConnectDB db = new ConnectDB();
-            if (!who_am_i.Equals(""))
-            {
-                symbol symbol = new symbol
-                {
-                    email = who_am_i,
-                    symbolName = symbolName,
-                    date = DateTime.Today
-                };
-                res = await db.GetUserCounterAsync(symbol);
-            }
-            return res;
-        }
-
-        public static async Task<symbol[]> GetUserAllCounterAsync()
-        {
-            string email = who_am_i;
-            symbol[] res = null;
-            ConnectDB db = new ConnectDB();
-            
-            if (!who_am_i.Equals(""))
-            {
-                res = await db.GetUserAllCountersAsync(email);
-            }
-            return res;
-        }
-
+        
         public static async Task GetUserContactsAsync()
         {
             string email = who_am_i;
@@ -123,11 +78,13 @@ namespace ForChild
         }
 
         //updation user contacts update all the for contacts
-        public static async Task<bool> AddUserChatContact(string[] emails)
+        public static async Task<string> AddUserChatContact(string[] emails)
         {
+            string res = "success";
             if (who_am_i.Equals(""))
             {
-                return false;
+                res = "You need to login before";
+                return res;
             }
             user[] users = new user[3];
             ConnectDB db = new ConnectDB();
@@ -136,7 +93,8 @@ namespace ForChild
                 users[i] = await db.GetUserByMailAsync(emails[i + 2]);
                 if (users[i] == null)
                 {
-                    return false;
+                    res = "The user " + emails[i + 2] + " does not exist";
+                    return res;
                 }
             }
             if (users[0].type.Equals("Parent") && users[1].type.Equals("Parent")
@@ -148,31 +106,18 @@ namespace ForChild
                     myFather = users[0].email;
                     myMother = users[1].email;
                     myFriend = users[2].email;
+                    return res;
                 }
-                return x;
+                res = "Cant add the users to db, try again later";
+                return res;
             }
-            return false;
-        }
-
-        public static async Task<OutTable[]> GetDedicatedMsgAsync(OutTable[] msg, string msg_sender)
-        {
-            int index = 0; //arr index
-            OutTable[] dedicate_msg = null;
-            for (int i = 0; i < msg.Length; i++)
+            else
             {
-                if (msg[i].Message_Send.Equals(msg_sender))
-                {
-                    dedicate_msg[index] = msg[i];
-                    index++;
-                    if (index == 3)
-                    {
-                        break;
-                    }
-                }
+                res = "The users you trying to add are not from the proper type";
+                return res;
             }
-            return dedicate_msg;
         }
-
+        
         public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
@@ -181,7 +126,6 @@ namespace ForChild
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -197,9 +141,8 @@ namespace ForChild
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-            return null;
         }
 
         public static async Task<bool> CheckForSimilarFriendAsync()
@@ -209,7 +152,7 @@ namespace ForChild
             if (!(who_am_i.Equals("") || myFriend.Equals("")))
             {
                 userContacts contacts = await db.GetUserContactsAsync(myFriend);
-                if (contacts != null)
+                if (contacts != null && contacts.friend != null)
                 {
                     if (contacts.friend.Equals(who_am_i))
                     {
@@ -218,7 +161,6 @@ namespace ForChild
                 }
             }
             return false;
-
         }
 
         public static async Task<bool> GetUserFromFileAsync()
@@ -267,7 +209,6 @@ namespace ForChild
                                 break;
                         }
                     }
-
                     isConectet = true;
                     return true;
                 }
@@ -278,40 +219,7 @@ namespace ForChild
                 return false;
             }
         }
-
-        public static async Task<bool> markAsDeleteMsg(OutTable obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-            string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpPUT-CRUD-CSharp2?code=E3cZTihW7ZvJjfPgbWITpZbKApX8OHKj4BNwwKz3Sjur5HhRk3zrkA==";
-            outTableChange new_msg = new outTableChange();
-            new_msg.Message_Recive = "0";
-            new_msg.Message_Send = "0";
-            new_msg.RowKey = obj.RowKey; 
-            new_msg.PartitionKey = obj.PartitionKey;
-            //string json = ConnectDB.WriteFromObject(obj);
-            string json = JsonConvert.SerializeObject(new_msg);
-
-            try
-            {
-                //Send the PUT request
-                Windows.Web.Http.HttpStringContent stringContent = new Windows.Web.Http.HttpStringContent(json.ToString());
-                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PUT"), completeUri);
-                request.Content = new StringContent(json,
-                Encoding.UTF8,
-                "application/json");//CONTENT-TYPE header
-                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
+        
         public static async Task<bool> DeleteFileAsync(string fileName)
         {
             try
