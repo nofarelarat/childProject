@@ -11,7 +11,7 @@ namespace ForChild
             this.InitializeComponent();
         }
 
-        private async void Add_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Add_Click(object sender, RoutedEventArgs e)
         {
             string[] emails = new string[5];
             emails[0] = "Child";

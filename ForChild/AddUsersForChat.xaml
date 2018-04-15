@@ -7,17 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Margin="-30,0,10,0" Background="#FF9DC3E7">
+    <Grid Margin="-22,0,2,0" Background="#FF9DC3E7">
         <TextBox x:Name="TextBoxMother"  HorizontalAlignment="Left" Margin="406,197,0,0" TextWrapping="Wrap" Text="mother" VerticalAlignment="Top" Height="42" Width="311"/>
         <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="405,263,0,0" TextWrapping="Wrap" Text="father" VerticalAlignment="Top" Height="45" Width="311" RenderTransformOrigin="0.485,-0.96"/>
         <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="405,336,0,0" TextWrapping="Wrap" Text="friend" VerticalAlignment="Top" Height="41" Width="310"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,138,0,0" VerticalAlignment="Top" Width="169" Source="images/add_mother.png"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,210,0,0" VerticalAlignment="Top" Width="169" Source="images/add_father.png"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,286,0,0" VerticalAlignment="Top" Width="169" Source="images/add_friend.png"/>
-        <Button x:Name="Add" Click="Add_ClickAsync" Height="61" Width="90" HorizontalAlignment="Center" VerticalAlignment="Top"  RenderTransformOrigin="0.472,0.36" Margin="477,579,477,0">
+        <Button Height="165" Width="211"  Background="Black" HorizontalAlignment="Left" VerticalAlignment="top" Click="Add_Click" Margin="437,409,0,0">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="images/add_edit.png" Margin="-35,-196,-66.6,119.8" />
+                    <Image Source="Images/add_edit.PNG"  />
                 </ControlTemplate>
             </Button.Template>
             <Image Height="100" Width="100"/>

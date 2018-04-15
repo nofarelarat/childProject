@@ -154,7 +154,7 @@ namespace ForChild
                 userContacts contacts = await db.GetUserContactsAsync(myFriend);
                 if (contacts != null && contacts.friend != null)
                 {
-                    if (contacts.friend.Equals(who_am_i))
+                    if (contacts.friend.ToLower().Equals(who_am_i.ToLower()))
                     {
                         return true;
                     }
