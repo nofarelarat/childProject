@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Margin="-28,0,8,0" Background="#FF9DC3E7">
+    <Grid Margin="-20,0,0,0" Background="#FF9DC3E7">
         <Button Height="238" Width="319" x:Name="Friendbtn_Copy" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Teacher" Margin="0,338,84,0" >
             <Button.Template>
                 <ControlTemplate>

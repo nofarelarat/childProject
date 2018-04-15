@@ -122,8 +122,8 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(loginChild));
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(loginChild));
             }
         }
 
@@ -140,10 +140,9 @@ namespace ForChild
                 Common.myTeacher = "";
                 Common.isConectet = false;
                 Common.my_num_of_msg = 0;
-                // await Common.DeleteFileAsync();
 
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(loginChild));
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(loginChild));
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
