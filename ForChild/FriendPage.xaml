@@ -223,26 +223,26 @@
                 </Button.Template>
                 <Image Height="108" Width="108"/>
             </Button>
-            <Image x:Name="forSend21" Tag="" HorizontalAlignment="Left" Height="55" Margin="894,200,0,0" VerticalAlignment="Top" Width="63"/>
-            <Image x:Name="forSend22" Tag="" HorizontalAlignment="Left" Height="55" Margin="829,200,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="forSend23" Tag="" HorizontalAlignment="Left" Height="52" Margin="766,202,0,0" VerticalAlignment="Top" Width="63"/>
-            <Image x:Name="forSend24" Tag="" HorizontalAlignment="Left" Height="50" Margin="700,203,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="forSend25" Tag="" HorizontalAlignment="Left" Height="50" Margin="633,203,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="forSend31" Tag="" HorizontalAlignment="Left" Height="58" Margin="892,306,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend32" Tag="" HorizontalAlignment="Left" Height="58" Margin="827,306,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="forSend33" Tag="" HorizontalAlignment="Left" Height="57" Margin="762,307,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend34" Tag="" HorizontalAlignment="Left" Height="53" Margin="695,310,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend35" Tag="" HorizontalAlignment="Left" Height="53" Margin="627,310,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="afterSend21" Tag=""  HorizontalAlignment="Left" Height="48" Margin="348,255,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="afterSend22" Tag="" HorizontalAlignment="Left" Height="48" Margin="280,255,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="afterSend23" Tag="" HorizontalAlignment="Left" Height="49" Margin="211,257,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="afterSend24" Tag="" HorizontalAlignment="Left" Height="49" Margin="139,257,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="afterSend25" Tag="" HorizontalAlignment="Left" Height="49" Margin="64,257,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="afterSend31" Tag=""  HorizontalAlignment="Left" Height="47" Margin="345,373,0,0" VerticalAlignment="Top" Width="66"/>
-            <Image x:Name="afterSend32" Tag="" HorizontalAlignment="Left" Height="47" Margin="275,375,0,0" VerticalAlignment="Top" Width="66" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="afterSend33" Tag="" HorizontalAlignment="Left" Height="47" Margin="202,375,0,0" VerticalAlignment="Top" Width="66"/>
-            <Image x:Name="afterSend34" Tag="" HorizontalAlignment="Left" Height="47" Margin="132,375,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="afterSend35" Tag="" HorizontalAlignment="Left" Height="47" Margin="59,375,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend21" Tag="" HorizontalAlignment="Left" Height="55" Margin="894,176,0,0" VerticalAlignment="Top" Width="63"/>
+            <Image x:Name="forSend22" Tag="" HorizontalAlignment="Left" Height="55" Margin="829,176,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="forSend23" Tag="" HorizontalAlignment="Left" Height="52" Margin="766,178,0,0" VerticalAlignment="Top" Width="63"/>
+            <Image x:Name="forSend24" Tag="" HorizontalAlignment="Left" Height="50" Margin="700,179,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="forSend25" Tag="" HorizontalAlignment="Left" Height="50" Margin="633,179,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="forSend31" Tag="" HorizontalAlignment="Left" Height="58" Margin="892,282,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend32" Tag="" HorizontalAlignment="Left" Height="58" Margin="827,282,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="forSend33" Tag="" HorizontalAlignment="Left" Height="57" Margin="762,283,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend34" Tag="" HorizontalAlignment="Left" Height="53" Margin="695,286,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend35" Tag="" HorizontalAlignment="Left" Height="53" Margin="627,286,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="afterSend21" Tag=""  HorizontalAlignment="Left" Height="48" Margin="348,222,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="afterSend22" Tag="" HorizontalAlignment="Left" Height="48" Margin="280,222,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="afterSend23" Tag="" HorizontalAlignment="Left" Height="49" Margin="211,224,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="afterSend24" Tag="" HorizontalAlignment="Left" Height="49" Margin="139,224,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="afterSend25" Tag="" HorizontalAlignment="Left" Height="49" Margin="64,224,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="afterSend31" Tag=""  HorizontalAlignment="Left" Height="47" Margin="345,340,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend32" Tag="" HorizontalAlignment="Left" Height="47" Margin="275,342,0,0" VerticalAlignment="Top" Width="66" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="afterSend33" Tag="" HorizontalAlignment="Left" Height="47" Margin="202,342,0,0" VerticalAlignment="Top" Width="66"/>
+            <Image x:Name="afterSend34" Tag="" HorizontalAlignment="Left" Height="47" Margin="132,342,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="afterSend35" Tag="" HorizontalAlignment="Left" Height="47" Margin="59,342,0,0" VerticalAlignment="Top" Width="65"/>
             <Button x:Name="delete_all" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="delete_Click" Margin="456,0,0,191" Height="108" Width="108" RenderTransformOrigin="0.496,0.489">
                 <Button.Template>
                     <ControlTemplate>
@@ -251,23 +251,23 @@
                 </Button.Template>
                 <Image Height="108" Width="108"/>
             </Button>
-            <Image x:Name="forSend41" Tag="" HorizontalAlignment="Left" Height="58" Margin="892,402,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend42" Tag="" HorizontalAlignment="Left" Height="58" Margin="827,402,0,0" VerticalAlignment="Top" Width="64"/>
-            <Image x:Name="forSend43" Tag="" HorizontalAlignment="Left" Height="57" Margin="762,403,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend44" Tag="" HorizontalAlignment="Left" Height="53" Margin="695,406,0,0" VerticalAlignment="Top" Width="65"/>
-            <Image x:Name="forSend45" Tag="" HorizontalAlignment="Left" Height="53" Margin="627,406,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend41" Tag="" HorizontalAlignment="Left" Height="58" Margin="892,378,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend42" Tag="" HorizontalAlignment="Left" Height="58" Margin="827,378,0,0" VerticalAlignment="Top" Width="64"/>
+            <Image x:Name="forSend43" Tag="" HorizontalAlignment="Left" Height="57" Margin="762,379,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend44" Tag="" HorizontalAlignment="Left" Height="53" Margin="695,382,0,0" VerticalAlignment="Top" Width="65"/>
+            <Image x:Name="forSend45" Tag="" HorizontalAlignment="Left" Height="53" Margin="627,382,0,0" VerticalAlignment="Top" Width="65"/>
         </Grid>
-        <Image x:Name="forSend11" Tag="" HorizontalAlignment="Left" Height="60" Margin="893,74,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="forSend12" Tag="" HorizontalAlignment="Left" Height="60" Margin="823,74,0,0" VerticalAlignment="Top" Width="69"/>
-        <Image x:Name="forSend13" Tag="" HorizontalAlignment="Left" Height="57" Margin="755,76,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="forSend14" Tag="" HorizontalAlignment="Left" Height="54" Margin="685,78,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="forSend15" Tag="" HorizontalAlignment="Left" Height="54" Margin="612,78,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="forSend11" Tag="" HorizontalAlignment="Left" Height="60" Margin="893,50,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="forSend12" Tag="" HorizontalAlignment="Left" Height="60" Margin="823,50,0,0" VerticalAlignment="Top" Width="69"/>
+        <Image x:Name="forSend13" Tag="" HorizontalAlignment="Left" Height="57" Margin="755,52,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="forSend14" Tag="" HorizontalAlignment="Left" Height="54" Margin="685,54,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="forSend15" Tag="" HorizontalAlignment="Left" Height="54" Margin="612,54,0,0" VerticalAlignment="Top" Width="68"/>
 
-        <Image x:Name="afterSend11" Tag=""  HorizontalAlignment="Left" Height="54" Margin="346,133,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="afterSend12" Tag="" HorizontalAlignment="Left" Height="54" Margin="273,133,0,0" VerticalAlignment="Top" Width="69"/>
-        <Image x:Name="afterSend13" Tag="" HorizontalAlignment="Left" Height="54" Margin="201,133,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="afterSend14" Tag="" HorizontalAlignment="Left" Height="54" Margin="131,133,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image x:Name="afterSend15" Tag="" HorizontalAlignment="Left" Height="54" Margin="52,133,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="afterSend11" Tag=""  HorizontalAlignment="Left" Height="54" Margin="346,100,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="afterSend12" Tag="" HorizontalAlignment="Left" Height="54" Margin="273,100,0,0" VerticalAlignment="Top" Width="69"/>
+        <Image x:Name="afterSend13" Tag="" HorizontalAlignment="Left" Height="54" Margin="201,100,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="afterSend14" Tag="" HorizontalAlignment="Left" Height="54" Margin="131,100,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image x:Name="afterSend15" Tag="" HorizontalAlignment="Left" Height="54" Margin="52,100,0,0" VerticalAlignment="Top" Width="68"/>
         <Image x:Name="blank" Tag="" HorizontalAlignment="Left" Height="62" Margin="65,186,0,0" VerticalAlignment="Top" Width="66" Visibility="Collapsed"/>
     </Grid>
 </Page>
