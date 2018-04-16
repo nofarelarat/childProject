@@ -12,12 +12,14 @@
         </Grid.Background>
         <Button Click="forChat_Click" HorizontalAlignment="Left" Height="73" Margin="74,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Send broadcast">
             <Button.Template>
-
                 <ControlTemplate>
                     <Image Source="/Images/chat1.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
+        <TextBlock x:Name="result"  HorizontalAlignment="Left" Height="67" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213" Margin="74,423,0,0"/>
+
         <Button  Click="forAnalysis_Click" HorizontalAlignment="Left" Height="73" Margin="198,216,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Open statistics">
             <Button.Template >
 
@@ -27,14 +29,14 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="forLogout" Click="forLogOut_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Logout">
+        <Button x:Name="forLogout" Click="forLogOut_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Logout">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-out.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="forLogin" Click="Login_ClickAsync" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Login">
+        <Button x:Name="forLogin" Click="Login_Click" HorizontalAlignment="Left" Height="73" Margin="74,328,0,0" VerticalAlignment="Top" Width="89" ToolTipService.ToolTip="Login">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/sign-in.png"/>
@@ -50,5 +52,4 @@
         </Button>
         <Image Source="/Images/logo3.png" HorizontalAlignment="Left" Height="295" Margin="58,-39,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>
-
 </Page>

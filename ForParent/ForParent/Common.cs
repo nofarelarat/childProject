@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +12,7 @@ namespace ForParent
         public static string who_am_i = "";
         public static string myChild = "";
         public static bool isConectet = false;
+
         public static async Task<bool> GetUserFromFileAsync()
         {
             try
@@ -55,6 +55,7 @@ namespace ForParent
 
         public static async Task<bool> DeleteFileAsync(string fileName)
         {
+            //replace exisiting file with empty file 
             try
             {
                 Windows.Storage.StorageFolder storageFolder =
@@ -101,7 +102,7 @@ namespace ForParent
                  await Windows.Storage.FileIO.AppendLinesAsync(userFile, toAdd);
 
             }
-            //trying to create the file
+            //if cant appand to file try to create the file
             catch
             {
                 try
@@ -141,10 +142,10 @@ namespace ForParent
                 return "";
             }
         }
+
         public static async Task<symbol[]> GetUserCounterAsync(string symbolName)
         {
             string child_email = myChild;
-           // string email = "rami@gmail.com";
             symbol[] res = null;
             ConnectDB db = new ConnectDB();
             
@@ -158,10 +159,10 @@ namespace ForParent
                 };
                 if (symbolName.Equals("allsymbols"))
                 {
-                    res = await db.GetUserAllCountersAsync(child_email);
+                    res = await db.GetUserAllCountersfromDBAsync(child_email);
                 }
                 else {
-                    res = await db.GetUserCounterAsync(symbol);
+                    res = await db.GetUserCounterformDBAsync(symbol);
                 }
             }
             return res;
@@ -178,15 +179,18 @@ namespace ForParent
                 res = await db.GetParentContactAsync(email);
                 if(res == null)
                 {
-                    res = "The child don't have this parent as his contact";
+                    //The child don't have this parent as his contact
+                    res = "";
                 }
             }
             else
             {
-                res = "Parent is not connected";
+                //Parent is not connected
+                res = "";
             }
             return res;
         }
+
         public static async Task<OutTable[]> GetMsgAsync(string contact)
         {
             string completeUri = "https://function-queue-connect.azurewebsites.net/api/HttpGET-outTable-CSharp1?code=smvhBz/DBsmNUDqf7/TIhjZ1IMBSo77LwpSbhG2I9CsGCw1D6sNLkg==&&name="
@@ -194,8 +198,6 @@ namespace ForParent
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
-
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -211,9 +213,8 @@ namespace ForParent
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
-            }
-            return null;
+                return null;
+            }           
         }
 
         public static async void sendMsg(string message, string addressee)
@@ -222,19 +223,15 @@ namespace ForParent
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
             Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + addressee);
-            //Send the GET request asynchronously and retrieve the response as a string.
             HttpResponseMessage httpResponse = new HttpResponseMessage();
             try
             {
                 //Send the GET request
                 httpResponse = await httpClient.GetAsync(requestUri);
                 httpResponse.EnsureSuccessStatusCode();
-                // errormessage.Text = await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
             {
-
-                //  errormessage.Text = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
         }
 

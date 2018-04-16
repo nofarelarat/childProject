@@ -12,40 +12,10 @@ namespace ForParent
 {
     class ConnectDB
     {
-        public async Task<bool> UpdateUserCounterAsync(symbol userSymbol)
-        {
-            string completeUri = "http://childappapiservice.azurewebsites.net/api/counters";
-            //string completeUri = "http://localhost:49876/api/counters";
-
-            string json = WriteFromObject(userSymbol);
-
-            try
-            {
-                //Send the POSR request
-                HttpStringContent stringContent = new HttpStringContent(json.ToString());
-
-                System.Net.Http.HttpRequestMessage request = new System.Net.Http.HttpRequestMessage(new System.Net.Http.HttpMethod("PATCH"), completeUri);
-                request.Content = new StringContent(json,
-                                                    Encoding.UTF8,
-                                                    "application/json");//CONTENT-TYPE header
-
-                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
-                return true;
-            }
-
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public async Task<symbol[]> GetUserCounterAsync(symbol userSymbol)
+        public async Task<symbol[]> GetUserCounterformDBAsync(symbol userSymbol)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
                 + userSymbol.email + "&symbolName=" + userSymbol.symbolName;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + userSymbol.email+"&symbolName="+ userSymbol.symbolName;
 
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
@@ -68,23 +38,18 @@ namespace ForParent
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
 
-        public async Task<symbol[]> GetUserAllCountersAsync(string email)
+        public async Task<symbol[]> GetUserAllCountersfromDBAsync(string email)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/counters?email="
                 + email;
-            //string completeUri = "http://localhost:49876/api/counters?email=" 
-            //    + email;
-
+            
             Uri requestUri = new Uri(completeUri);
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -102,23 +67,18 @@ namespace ForParent
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
 
         public async Task<string> GetParentContactAsync(string email)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/contacts?Parentemail=" + email
                 + "&isParent=true";
-            //string completeUri = "http://localhost:49876/api/contacts?Parentemail=" + email
-            //+"&isParent=true";
             Uri requestUri = new Uri(completeUri);
 
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -134,10 +94,8 @@ namespace ForParent
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
         
         public async Task<user> GetUserByMailAsync(string email)
@@ -148,7 +106,6 @@ namespace ForParent
 
             Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
-            //Send the GET request asynchronously and retrieve the response as a string.
             Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
             string httpResponseBody = "";
 
@@ -164,17 +121,14 @@ namespace ForParent
 
             catch (Exception ex)
             {
-                httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
+                return null;
             }
-
-            return null;
         }
 
         public async Task<bool> CreateUserAsync(user user)
         {
             string completeUri = "http://childappapiservice.azurewebsites.net/api/users";
-            //string completeUri = "http://localhost:49875/api/users";
-
+            
             string json = WriteFromObject(user);
 
             try
@@ -188,7 +142,7 @@ namespace ForParent
                                                     "application/json");//CONTENT-TYPE header
 
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);  //I know I should have used async/await here!
+                System.Net.Http.HttpResponseMessage response = await client.SendAsync(request);
                 return true;
             }
 
@@ -204,34 +158,9 @@ namespace ForParent
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
             DataContractJsonSerializer ser = new DataContractJsonSerializer(deserializedUser.GetType());
             deserializedUser = ser.ReadObject(ms) as user;
-            //ms.Close();
             return deserializedUser;
         }
-        public static string WriteFromObject(symbol userSymbol)
-        {
-            //Create a stream to serialize the object to.
-            MemoryStream ms = new MemoryStream();
-
-            // Serializer the User object to the stream.
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(symbol));
-            ser.WriteObject(ms, userSymbol);
-            byte[] json = ms.ToArray();
-            //ms.Close();
-            return Encoding.UTF8.GetString(json, 0, json.Length);
-        }
-        public static string WriteFromObject(OutTable obj)
-        {
-            //Create a stream to serialize the object to.
-            MemoryStream ms = new MemoryStream();
-
-            // Serializer the User object to the stream.
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(OutTable));
-            ser.WriteObject(ms, obj);
-            byte[] json = ms.ToArray();
-            //ms.Close();
-            return Encoding.UTF8.GetString(json, 0, json.Length);
-        }
-
+        
         public static string WriteFromObject(user user)
         {
             //Create a stream to serialize the object to.
@@ -241,7 +170,6 @@ namespace ForParent
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(user));
             ser.WriteObject(ms, user);
             byte[] json = ms.ToArray();
-            //ms.Close();
             return Encoding.UTF8.GetString(json, 0, json.Length);
         }
 
