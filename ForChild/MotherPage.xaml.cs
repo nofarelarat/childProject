@@ -205,7 +205,7 @@ namespace ForChild
             symbolsSentFromOther_full[2] = 0;
             Common.DeleteFileAsync("chatWithMother.txt");
             flag = true;
-           // GetMsgFromMother();
+            GetMsgFromMother();
             delete_all.Visibility = Visibility.Collapsed;
         }
 
@@ -304,9 +304,9 @@ namespace ForChild
 
         private async Task GetMsgFromMother()
         {
-            while (flag)
+            while (flag && symbolsSentFromOther_full[2] != 1)
             {
-                await Task.Delay(TimeSpan.FromSeconds(4));
+                await Task.Delay(TimeSpan.FromSeconds(1));
                 OutTable[] table = await Common.GetMsgAsync(Common.myMother);
                 await GetMessageAsync(table);
             }
