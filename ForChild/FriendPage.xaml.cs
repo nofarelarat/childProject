@@ -30,7 +30,6 @@ namespace ForChild
 
         static int[] symbolsSentFromOther_full = new int[3];
         static bool flag = true;
-        public static bool iStarted = true;
 
         public FriendPage()
         {
@@ -49,11 +48,16 @@ namespace ForChild
                 symbolsForSend1[i].Source = null;
                 symbolsForSend2[i].Source = null;
                 symbolsForSend3[i].Source = null;
-                symbolsForSend4[i].Source = null;
 
                 symbolsSentFromOther1[i].Source = null;
                 symbolsSentFromOther2[i].Source = null;
                 symbolsSentFromOther3[i].Source = null;
+                symbolsForSend1[i].Tag = "";
+                symbolsForSend2[i].Tag = "";
+                symbolsForSend3[i].Tag = "";
+                symbolsSentFromOther1[i].Tag = "";
+                symbolsSentFromOther2[i].Tag = "";
+                symbolsSentFromOther3[i].Tag = "";
             }
             send.Visibility = Visibility.Visible;
 
@@ -72,6 +76,7 @@ namespace ForChild
             symbolsSentFromOther_full[1] = 0;
             symbolsSentFromOther_full[2] = 0;
 
+
             flag = false;
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
@@ -81,7 +86,7 @@ namespace ForChild
         {
             flag = false;
             Common.my_num_of_msg = 0;
-            iStarted = true;
+            Common.iStarted = true;
 
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
@@ -128,7 +133,7 @@ namespace ForChild
             Common.my_num_of_msg++;
             int index = Common.my_num_of_msg;
             string sentence = "";
-            if (iStarted == false)
+            if (Common.iStarted == false)
             {
                 index += 1;
             }
@@ -159,7 +164,7 @@ namespace ForChild
                     }
                 }
 
-                if (iStarted == false)
+                if (Common.iStarted == false)
                 {
                     if (symbolsForSend_full[3] == 1 && symbolsSentFromOther_full[2] ==1) {
                         delete_all.Visibility = Visibility.Visible;
@@ -185,7 +190,7 @@ namespace ForChild
         private void Symbol_Click(object sender, RoutedEventArgs e)
         {
             int index = Common.my_num_of_msg + 1;
-            if (iStarted == false)
+            if (Common.iStarted == false)
             {
                 index += 1;
             }
@@ -225,9 +230,9 @@ namespace ForChild
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
         {
-            if (symbolsForSend_full[0] == 0) {
+            if (Common.my_num_of_msg == 0) {
                 symbolsForSend_full[0] = 1;
-                iStarted = false;
+                Common.iStarted = false;
             }
             if (symbolsSentFromOther_full[0] == 0)
             {
@@ -255,7 +260,7 @@ namespace ForChild
                     symbolsSentFromOther3[i].Source = symbolsSentFromOther[i].Source;
                 }
                 symbolsSentFromOther_full[2] = 1;
-                if (iStarted == false)
+                if (Common.iStarted == false)
                 {
                     send.Visibility = Visibility.Visible;
                 }
@@ -304,7 +309,7 @@ namespace ForChild
             if (messages != null && messages.Length > 0)
             {
 
-                if (symbolsForSend_full[0] == 0)
+                if (Common.my_num_of_msg == 0)
                 {
                     symbolsForSend_full[0] = 1;
                     Common.iStarted = false;
@@ -316,7 +321,7 @@ namespace ForChild
                     numofmsg++;
                     string msg = messages[x].Message;
                     await Common.WriteConversation("friend:" + msg, "chatWithFriend.txt");
-                    await Common.WriteConversation("iStarted:" + iStarted, "chatWithFriend.txt");
+                    await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
 
                     string[] tmp = msg.Split('-');
                     foreach (string source in tmp)
@@ -409,7 +414,7 @@ namespace ForChild
                         {
                             Common.iStarted = true;
                         }
-                        else {
+                        else if (message[1].Equals("false")) { 
                             Common.iStarted = false;
                         }
                     }
