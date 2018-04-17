@@ -46,7 +46,7 @@ namespace ForChild
                 symbolsSentFromOther1[i].Source = null;
             }
             flag = true;
-            //GetMsgFromTeacher();
+            GetMsgFromTeacher();
         }
 
         private void GetMessageImg(Image[] symbolsSentFromOther)
@@ -96,7 +96,7 @@ namespace ForChild
 
         private async void GetMsgFromTeacher()
         {
-            while (flag)
+            while (flag && symbolsSentFromOther_full1 != 1)
             {
                 await Task.Delay(TimeSpan.FromSeconds(4));
                 OutTable[] table = await Common.GetMsgAsync(Common.myTeacher);
