@@ -119,11 +119,11 @@ namespace ForChild
             
             Common.sendMsg(sentence,Common.myMother);
             await Common.WriteConversation("child:" + sentence, "chatWithMother.txt");
-            send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            send.Visibility = Visibility.Collapsed;
             if (symbolsForSend_full[2] == 1 && symbolsSentFromOther_full[2] == 1)
             {
-                delete_all.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                send.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                delete_all.Visibility = Visibility.Visible;
+                send.Visibility = Visibility.Collapsed;
             }
         }
 
