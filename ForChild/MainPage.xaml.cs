@@ -122,8 +122,8 @@ namespace ForChild
         {
             if (Common.who_am_i.Equals(""))
             {
-                Frame toMather = Window.Current.Content as Frame;
-                toMather.Navigate(typeof(loginChild));
+                Frame toLogin = Window.Current.Content as Frame;
+                toLogin.Navigate(typeof(loginChild));
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Net.Http;
@@ -28,9 +29,37 @@ namespace ForTeacher
             toHome.Navigate(typeof(MainPage));
         }
 
+        private void isClickable(bool enable)
+        {
+            ino.IsEnabled = enable;
+            iagree.IsEnabled = enable;
+            itowalk.IsEnabled = enable;
+            icar.IsEnabled = enable;
+            igrandmother.IsEnabled = enable;
+            idad.IsEnabled = enable;
+            ibro.IsEnabled = enable;
+            idinner.IsEnabled = enable;
+            ifor.IsEnabled = enable;
+            ianger.IsEnabled = enable;
+            itosleep.IsEnabled = enable;
+            ipants.IsEnabled = enable;
+            igrandfather.IsEnabled = enable;
+            isis.IsEnabled = enable;
+            imum.IsEnabled = enable;
+            iwatermallon.IsEnabled = enable;
+            ipain.IsEnabled = enable;
+            iwant.IsEnabled = enable;
+            ilove.IsEnabled = enable;
+            ishirt.IsEnabled = enable;
+            ishoes.IsEnabled = enable;
+            iim.IsEnabled = enable;
+            ijuice.IsEnabled = enable;
+            ibreakfast.IsEnabled = enable;
+
+        }
         private async void SendClick(object sender, RoutedEventArgs e)
         {
-
+            isClickable(false);
             // Create final message
             string sendMsg = GetMsgToSend();
             delete_all.Visibility = Visibility.Visible;
@@ -140,6 +169,7 @@ namespace ForTeacher
             }
             send.Visibility = Visibility.Visible;
             delete_all.Visibility = Visibility.Collapsed;
+            isClickable(true);
         }
 
     }

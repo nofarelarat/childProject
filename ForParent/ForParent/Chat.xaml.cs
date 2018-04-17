@@ -207,7 +207,7 @@ namespace ForParent
             symbolsSentFromOther_full[2] = 0;
             bool x = await Common.DeleteFileAsync("chatWithChild.txt");
            flag = true;
-          //  GetMsgFromChild();
+           GetMsgFromChild();
         }
 
         private async Task GetMessageAsync(OutTable[] message)
@@ -303,7 +303,7 @@ namespace ForParent
 
         private async Task GetMsgFromChild()
         {
-            while (flag)
+            while (flag && symbolsSentFromOther_full[2] != 1)
            {
                 await Task.Delay(TimeSpan.FromSeconds(1));
                 OutTable[] table = await Common.GetMsgAsync(Common.myChild);
@@ -389,6 +389,10 @@ namespace ForParent
             if (symbolsForSend_full.Sum() >= symbolsSentFromOther_full.Sum())
             {
                 send.Visibility = Visibility.Collapsed;
+            }
+            if (symbolsForSend_full[2] == 1)
+            {
+                delete_all.Visibility = Visibility.Visible;
             }
         }
     }
