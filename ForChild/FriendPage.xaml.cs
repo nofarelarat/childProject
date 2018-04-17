@@ -179,6 +179,8 @@ namespace ForChild
             send.Visibility = Visibility.Collapsed;
             await Common.WriteConversation("child:" + sentence, "chatWithFriend.txt");
             await Common.WriteConversation("my_num_of_msg:" + Common.my_num_of_msg, "chatWithFriend.txt");
+            await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
+
         }
 
         private void Symbol_Click(object sender, RoutedEventArgs e)
@@ -228,7 +230,6 @@ namespace ForChild
                 symbolsForSend_full[0] = 1;
                 iStarted = false;
             }
-
             if (symbolsSentFromOther_full[0] == 0)
             {
                 for (int i = 0; i < symbolsSentFromOther1.Length; i++)
@@ -268,6 +269,9 @@ namespace ForChild
 
         private void GetSentMessage(Image[] symbolsSent)
         {
+            if (Common.iStarted == false) {
+                symbolsForSend_full[0] = 1;
+            }
             if (symbolsForSend_full[0] == 0)
             {
                 for (int i = 0; i < symbolsForSend1.Length; i++)
@@ -297,11 +301,16 @@ namespace ForChild
         private async Task GetMessageAsync(OutTable[] messages)
         {
             Image[] images = new Image[5];
-
-            int numofmsg = 0; 
-            
+            int numofmsg = 0;             
             if (messages != null && messages.Length > 0)
             {
+
+                if (symbolsForSend_full[0] == 0)
+                {
+                    symbolsForSend_full[0] = 1;
+                    Common.iStarted = false;
+                }
+                await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
                 for (int x = 0; x < messages.Length; x++)
                 {
                     int i = 0;
@@ -399,9 +408,11 @@ namespace ForChild
                     {
                         if (message[1].Equals("true"))
                         {
-                            iStarted = true;
+                            Common.iStarted = true;
                         }
-                        iStarted = false;
+                        else {
+                            Common.iStarted = false;
+                        }
                     }
                     else if (message[0].Equals("my_num_of_msg"))
                     {

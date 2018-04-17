@@ -140,9 +140,9 @@ namespace ForChild
                 Common.myTeacher = "";
                 Common.isConectet = false;
                 Common.my_num_of_msg = 0;
-
-                Frame toLogin = Window.Current.Content as Frame;
-                toLogin.Navigate(typeof(loginChild));
+                Common.iStarted = true;
+                Frame toMather = Window.Current.Content as Frame;
+                toMather.Navigate(typeof(loginChild));
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
