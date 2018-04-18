@@ -24,7 +24,7 @@ namespace ForChild
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string sendtoAddress)
         {
-            String final_msg = message + "$" + Common.who_am_i + "$";
+            String final_msg = message + "$" + Common.who_am_i.ToLower() + "$";
             //Create an HTTP client object
             HttpClient httpClient = new HttpClient();
             Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + sendtoAddress);
@@ -48,7 +48,7 @@ namespace ForChild
             {
                 symbol symbol = new symbol
                 {
-                    email = who_am_i,
+                    email = who_am_i.ToLower(),
                     symbolName = symbolName,
                     date = DateTime.Today
                 };
@@ -58,7 +58,7 @@ namespace ForChild
         
         public static async Task GetUserContactsAsync()
         {
-            string email = who_am_i;
+            string email = who_am_i.ToLower();
             ConnectDB db = new ConnectDB();
 
             if (!who_am_i.Equals(""))
@@ -66,9 +66,9 @@ namespace ForChild
                 userContacts contacts = await db.GetUserContactsAsync(email);
                 if (contacts != null)
                 {
-                    myFather = contacts.father;
-                    myMother = contacts.mother;
-                    myFriend = contacts.friend;
+                    myFather = contacts.father.ToLower();
+                    myMother = contacts.mother.ToLower();
+                    myFriend = contacts.friend.ToLower();
                     myTeacher = await db.GetGardenTeacher(who_am_i,"Teacher");
                 }
                 else
