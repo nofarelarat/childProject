@@ -89,7 +89,7 @@ namespace ForTeacher
             toLogin.Navigate(typeof(LoginTeacher));
         }
         
-        private void forAnalysis_Click(object sender, RoutedEventArgs e)
+        private async void forAnalysis_Click(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i == "")
             {
@@ -98,10 +98,15 @@ namespace ForTeacher
             }
             else if (Common.counter_child == 0)
             {
-                Common.GetGardenChildrenAsync();
+                await Common.GetGardenChildrenAsync();
                 if (Common.counter_child == 0)
                 {
                     result.Text = "Cant find any children in the garden, plase try login again later";
+                }
+                else
+                {
+                    Frame toAnalysis = Window.Current.Content as Frame;
+                    toAnalysis.Navigate(typeof(Statistics));
                 }
             }
             else

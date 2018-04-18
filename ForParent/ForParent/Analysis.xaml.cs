@@ -34,7 +34,7 @@ namespace ForParent
             {
                 for (int i = 0; i < userSymbolUsage.Length; i++)
                 {
-                    month_values[userSymbolUsage[i].date.Month] += 1;
+                    month_values[userSymbolUsage[i].date.Month - 1] += 1;
                 }
             }
             for (int i = 0; i < 11; i++) {
