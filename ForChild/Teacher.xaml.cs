@@ -40,6 +40,7 @@ namespace ForChild
         private void delete_Click(object sender, RoutedEventArgs e)
         {
             flag = false;
+            delete_all.Visibility = Visibility.Collapsed;
             symbolsSentFromOther_full1 = 0;
             for (int i = 0; i < symbolsSentFromOther1.Length; i++)
             {

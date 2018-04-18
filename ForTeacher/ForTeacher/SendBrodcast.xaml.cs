@@ -25,6 +25,15 @@ namespace ForTeacher
 
         private void Button_Click_back(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < symbolsForSend.Length; i++)
+            {
+                symbolsForSend[i].Source = null;
+                symbolsForSend[i].Tag = "";
+            }
+            symbolsForSend_curr = 0;
+            send.Visibility = Visibility.Visible;
+            delete_all.Visibility = Visibility.Collapsed;
+            isClickable(true);
             Frame toHome = Window.Current.Content as Frame;
             toHome.Navigate(typeof(MainPage));
         }
@@ -57,6 +66,7 @@ namespace ForTeacher
             ibreakfast.IsEnabled = enable;
 
         }
+
         private async void SendClick(object sender, RoutedEventArgs e)
         {
             isClickable(false);
@@ -73,22 +83,19 @@ namespace ForTeacher
                 {
                     for (int i = 0; i < kids.Length; i++)
                     {
-                        if (kids[i].type != "Teacher" && kids[i].type != "Parent")
-                        {
-                            //Create an HTTP client object
-                            HttpClient httpClient = new HttpClient();
-                            Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
+                        //Create an HTTP client object
+                        HttpClient httpClient = new HttpClient();
+                        Uri requestUri = new Uri("https://function-queue-connect.azurewebsites.net/api/HttpTriggerCSharp1-send?code=c4TP96qDiVU6X5Zd6HNmAOCOIp35R52MB0MZnL6GRjY8ldfF2GqZ3A==&&name=" + final_msg + kids[i].email);
                             
-                            HttpResponseMessage httpResponse = new HttpResponseMessage();
-                            try
-                            {
-                                //Send the GET request
-                                httpResponse = await httpClient.GetAsync(requestUri);
-                                httpResponse.EnsureSuccessStatusCode();
-                            }
-                            catch (Exception ex)
-                            {
-                            }
+                        HttpResponseMessage httpResponse = new HttpResponseMessage();
+                        try
+                        {
+                            //Send the GET request
+                            httpResponse = await httpClient.GetAsync(requestUri);
+                            httpResponse.EnsureSuccessStatusCode();
+                        }
+                        catch (Exception ex)
+                        {
                         }
                     }
                 }
@@ -167,6 +174,7 @@ namespace ForTeacher
                 symbolsForSend[i].Source = null;
                 symbolsForSend[i].Tag = "";
             }
+            symbolsForSend_curr = 0;
             send.Visibility = Visibility.Visible;
             delete_all.Visibility = Visibility.Collapsed;
             isClickable(true);
