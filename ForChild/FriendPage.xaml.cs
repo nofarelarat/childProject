@@ -418,7 +418,6 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            GetMsgFromFriend();
             string res = await Common.ReadConversation("chatWithFriend.txt");
             if (!res.Equals(""))
             {
@@ -479,6 +478,7 @@ namespace ForChild
             {
                 symbolsForSend_full[3] = 1;
             }
+            GetMsgFromFriend();
         }
     }
 }
