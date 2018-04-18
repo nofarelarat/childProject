@@ -309,6 +309,14 @@ namespace ForChild
                 }
                 symbolsForSend_full[2] = 1;
             }
+            else if (symbolsForSend_full[3] == 0)
+            {
+                for (int i = 0; i < symbolsForSend3.Length; i++)
+                {
+                    symbolsForSend4[i].Source = symbolsSent[i].Source;
+                }
+                symbolsForSend_full[3] = 1;
+            }
         }
 
         private async Task GetMessageAsync(OutTable[] messages)
