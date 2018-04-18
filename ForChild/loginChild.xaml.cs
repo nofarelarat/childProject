@@ -26,7 +26,7 @@ namespace ForChild
             {
                 if (user.password.Equals(password.Password.ToString()) && user.type.Equals("Child"))
                 {
-                    Common.who_am_i = email.Text;
+                    Common.who_am_i = email.Text.ToLower();
                     Common.isConectet = true;
                     await Common.GetUserContactsAsync();
 
