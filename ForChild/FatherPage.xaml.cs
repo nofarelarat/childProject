@@ -355,7 +355,6 @@ namespace ForChild
 
         private async void GetMsgFromFileAsync()
         {
-            GetMsgFromFather();
             string res = await Common.ReadConversation("chatWithFather.txt");
             if (!res.Equals(""))
             {
@@ -393,6 +392,7 @@ namespace ForChild
                     }
                 }
             }
+            GetMsgFromFather();
         }
     }
 }
