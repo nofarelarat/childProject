@@ -31,6 +31,7 @@ namespace ForChild
         static int[] symbolsSentFromOther_full = new int[3];
         static bool flag = true;
 
+
         public FriendPage()
         {
             this.InitializeComponent();
@@ -39,6 +40,8 @@ namespace ForChild
             flag = true;
             Common.my_num_of_msg = 0;
             GetMsgFromFileAsync();
+            symbolsForSend_full[3] = 1;
+
         }
 
         private void Button_Click_back(object sender, RoutedEventArgs e)
@@ -70,7 +73,7 @@ namespace ForChild
             symbolsForSend_full[0] = 0;
             symbolsForSend_full[1] = 0;
             symbolsForSend_full[2] = 0;
-            symbolsForSend_full[3] = 0;
+            symbolsForSend_full[3] = 1;
 
             symbolsSentFromOther_full[0] = 0;
             symbolsSentFromOther_full[1] = 0;
@@ -87,6 +90,7 @@ namespace ForChild
             flag = false;
             Common.my_num_of_msg = 0;
             Common.iStarted = true;
+            symbolsForSend_full[3] = 1;
 
             for (int i = 0; i < symbolsForSend1.Length; i++)
             {
@@ -220,7 +224,7 @@ namespace ForChild
                 symbolsForSend3[symbolsForSend_curr3].Tag = button_name;
                 symbolsForSend_curr3++;
             }
-            if (symbolsForSend_curr == 4 && symbolsForSend_curr4 < 5)
+            if (symbolsForSend_curr == 4 && symbolsForSend_curr4 < 5 && Common.iStarted==false)
             {
                 symbolsForSend4[symbolsForSend_curr4].Source = new BitmapImage(requestUri);
                 symbolsForSend4[symbolsForSend_curr4].Tag = button_name;
@@ -233,6 +237,7 @@ namespace ForChild
             if (Common.my_num_of_msg == 0) {
                 symbolsForSend_full[0] = 1;
                 Common.iStarted = false;
+                symbolsForSend_full[3] = 0;
             }
             if (symbolsSentFromOther_full[0] == 0)
             {
@@ -273,8 +278,12 @@ namespace ForChild
 
         private void GetSentMessage(Image[] symbolsSent)
         {
-            if (Common.iStarted == false) {
+            if (Common.iStarted == false)
+            {
                 symbolsForSend_full[0] = 1;
+            }
+            else {
+                symbolsForSend_full[3] = 1;
             }
             if (symbolsForSend_full[0] == 0)
             {
@@ -313,6 +322,8 @@ namespace ForChild
                 {
                     symbolsForSend_full[0] = 1;
                     Common.iStarted = false;
+                    symbolsForSend_full[3] = 0;
+
                 }
                 await Common.WriteConversation("iStarted:" + Common.iStarted, "chatWithFriend.txt");
                 for (int x = 0; x < messages.Length; x++)
@@ -413,9 +424,11 @@ namespace ForChild
                         if (message[1].Equals("true"))
                         {
                             Common.iStarted = true;
+                            symbolsForSend_full[3] = 1;
                         }
                         else if (message[1].Equals("false")) { 
                             Common.iStarted = false;
+                            symbolsForSend_full[3] = 0;
                         }
                     }
                     else if (message[0].Equals("my_num_of_msg"))
@@ -453,6 +466,10 @@ namespace ForChild
                         }
                     }
                 }
+            }
+            if (Common.iStarted == true)
+            {
+                symbolsForSend_full[3] = 1;
             }
         }
     }

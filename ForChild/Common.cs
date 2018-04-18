@@ -20,6 +20,7 @@ namespace ForChild
         public static bool iStarted = true;
 
 
+
         // Input: message and addresse
         // Output: send the message to azure storage Queue 
         public static async void sendMsg(string message,string sendtoAddress)
