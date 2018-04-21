@@ -467,16 +467,37 @@ namespace ForChild
                             GetSentMessage(images);
                         }
 
-                        if (symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
-                        {
-                            send.Visibility = Visibility.Collapsed;
-                        }
+                      
                     }
                 }
             }
             if (Common.iStarted == true)
             {
                 symbolsForSend_full[3] = 1;
+            }
+            if (Common.iStarted == false)
+            {
+                if (symbolsForSend_full[3] == 1 && symbolsSentFromOther_full[2] == 1)
+                {
+                    delete_all.Visibility = Visibility.Visible;
+                    send.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                if (symbolsForSend_full[2] == 1 && symbolsSentFromOther_full[2] == 1)
+                {
+                    delete_all.Visibility = Visibility.Visible;
+                    send.Visibility = Visibility.Collapsed;
+                }
+            }
+            if (Common.iStarted == false && symbolsForSend_full.Sum() > symbolsSentFromOther_full.Sum())
+            {
+               send.Visibility = Visibility.Collapsed;
+            }
+            else if(Common.iStarted == true && symbolsForSend_full.Sum() - 1 > symbolsSentFromOther_full.Sum())
+            {
+               send.Visibility = Visibility.Collapsed; 
             }
             GetMsgFromFriend();
         }
