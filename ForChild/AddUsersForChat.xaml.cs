@@ -16,8 +16,8 @@ namespace ForChild
             string[] emails = new string[5];
             emails[0] = "Child";
             emails[1] = Common.who_am_i;
-            emails[2] = TextBoxMother.Text;
-            emails[3] = TextBoxFather.Text;
+            emails[2] = TextBoxFather.Text;
+            emails[3] = TextBoxMother.Text;
             emails[4] = TextBoxFriend.Text;
             
             result.Text = await Common.AddUserChatContact(emails);

@@ -10,14 +10,6 @@
     <Grid Background="#FF9DC3E7">
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="199" Margin="0,442,-1,-1" Stroke="Black" VerticalAlignment="Top" Width="1025"/>
-
-        <Button  HorizontalAlignment="Left" Margin="18,2,0,0" VerticalAlignment="Top" Click="Button_Click_back" Width="59" Height="43">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image HorizontalAlignment="Left" Height="38"  VerticalAlignment="Top" Width="83" Source="images/back.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
         <Image x:Name="me" HorizontalAlignment="Left" Height="38" Margin="778,6,0,0" VerticalAlignment="Top" Width="56" Source="images/Me.jpg"/>
         <Image HorizontalAlignment="Left" Height="43" Margin="245,5,0,0" VerticalAlignment="Top" Width="56" Source="images/mother2.jpg"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="1133,585,0,0" VerticalAlignment="Top" Width="100"/>
@@ -271,5 +263,12 @@
             </Button>
         </Grid>
         <Image x:Name="blank" Tag="" HorizontalAlignment="Left" Height="62" Margin="65,186,0,0" VerticalAlignment="Top" Width="66" Visibility="Collapsed"/>
+        <Button  HorizontalAlignment="Left" Margin="18,2,0,0" VerticalAlignment="Top" Click="Button_Click_back" Width="71" Height="59">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image HorizontalAlignment="Left" Height="59"  VerticalAlignment="Top" Width="83" Source="images/back.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>

@@ -116,8 +116,6 @@ namespace ForTeacher
                 for (int i = 0; i < symbolsForSend.Length; i++)
                 {
                     sentence = sentence + symbolsForSend[i].Tag.ToString() + "-";
-                    //symbolsForSend[i].Source = blank.Source;
-                    //symbolsForSend[i].Tag = blank.Tag;
                 }
             }
             return sentence;

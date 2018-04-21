@@ -109,9 +109,8 @@ namespace ForParent
                 }
                 else
                 {
-                    //login again for update from db
-                    Frame toLogin = Window.Current.Content as Frame;
-                    toLogin.Navigate(typeof(LoginParent));
+                    Frame toAnalysis = Window.Current.Content as Frame;
+                    toAnalysis.Navigate(typeof(Analysis));
                 }
             }
             else
