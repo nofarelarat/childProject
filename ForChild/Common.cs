@@ -109,6 +109,7 @@ namespace ForChild
                     myFather = users[0].email;
                     myMother = users[1].email;
                     myFriend = users[2].email;
+                    myTeacher = await db.GetGardenTeacher(who_am_i, "Teacher");
                     return res;
                 }
                 res = "Cant add the users to db, try again later";

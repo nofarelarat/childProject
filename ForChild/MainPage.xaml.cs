@@ -100,7 +100,7 @@ namespace ForChild
             }
         }
 
-        private void Button_Click_Teacher(object sender, RoutedEventArgs e)
+        private async void Button_Click_Teacher(object sender, RoutedEventArgs e)
         {
             if (Common.who_am_i.Equals(""))
             {
@@ -114,6 +114,20 @@ namespace ForChild
                 {
                     Frame toTeacher = Window.Current.Content as Frame;
                     toTeacher.Navigate(typeof(TeacherPage));
+                }
+                else
+                {
+                    ConnectDB db = new ConnectDB();
+                    Common.myTeacher = await db.GetGardenTeacher(Common.who_am_i, "Teacher");
+                    if (!Common.myTeacher.Equals(""))
+                    {
+                        Frame toTeacher = Window.Current.Content as Frame;
+                        toTeacher.Navigate(typeof(TeacherPage));
+                    }
+                    else
+                    {
+                        result.Text = "cant fild any teacher to the child garden";
+                    }
                 }
             }
         }

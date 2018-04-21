@@ -8,9 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Margin="-22,0,2,0" Background="#FF9DC3E7">
-        <TextBox x:Name="TextBoxMother"  HorizontalAlignment="Left" Margin="406,197,0,0" TextWrapping="Wrap" Text="mother" VerticalAlignment="Top" Height="42" Width="311"/>
-        <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="405,263,0,0" TextWrapping="Wrap" Text="father" VerticalAlignment="Top" Height="45" Width="311" RenderTransformOrigin="0.485,-0.96"/>
-        <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="405,336,0,0" TextWrapping="Wrap" Text="friend" VerticalAlignment="Top" Height="41" Width="310"/>
+        <TextBox x:Name="TextBoxMother" HorizontalAlignment="Left" Margin="405,190,0,0" TextWrapping="Wrap" Text="mother" VerticalAlignment="Top" Height="45" Width="311"/>
+        <TextBox x:Name="TextBoxFather" HorizontalAlignment="Left" Margin="405,263,0,0" TextWrapping="Wrap" Text="father" VerticalAlignment="Top" Height="45" Width="311"/>
+        <TextBox x:Name="TextBoxFriend" HorizontalAlignment="Left" Margin="405,336,0,0" TextWrapping="Wrap" Text="friend" VerticalAlignment="Top" Height="45" Width="311"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,138,0,0" VerticalAlignment="Top" Width="169" Source="images/add_mother.png"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,210,0,0" VerticalAlignment="Top" Width="169" Source="images/add_father.png"/>
         <Image HorizontalAlignment="Left" Height="160" Margin="263,286,0,0" VerticalAlignment="Top" Width="169" Source="images/add_friend.png"/>

@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Margin="-20,0,0,0" Background="#FF9DC3E7">
-        <Button Height="238" Width="319" x:Name="Friendbtn_Copy" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Teacher" Margin="0,338,84,0" >
+        <Button Height="238" Width="319" x:Name="Teacherbtn" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Button_Click_Teacher" Margin="0,338,84,0" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="images/teacher.png" Margin="0,0,16,-23.6" />
@@ -64,6 +64,6 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <TextBlock x:Name="result"  HorizontalAlignment="Left" Height="67" Margin="450,539,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
+        <TextBlock x:Name="result"  HorizontalAlignment="Left" Height="67" Margin="462,495,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
     </Grid>
 </Page>
